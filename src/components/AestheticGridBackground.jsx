@@ -10,6 +10,19 @@ export const AestheticGridBackground = () => {
   const cursorSpotlightRef = useRef(null);
 
   useEffect(() => {
+    // On mobile devices and touch screens, avoid heavy requestAnimationFrame loops
+    // with multi-layer blur filters which causes GPU pipeline thrashing and flickering
+    const isMobileOrTouch = 
+      window.innerWidth <= 1024 ||
+      (window.matchMedia && (
+        window.matchMedia('(pointer: coarse)').matches ||
+        window.matchMedia('(hover: none)').matches
+      ));
+
+    if (isMobileOrTouch) {
+      return;
+    }
+
     let animationFrameId;
     const startTime = performance.now();
 

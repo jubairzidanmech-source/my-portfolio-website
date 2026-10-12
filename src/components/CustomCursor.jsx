@@ -7,8 +7,15 @@ export const CustomCursor = () => {
   const isVisibleRef = useRef(false);
 
   useEffect(() => {
-    // Only mount on desktop/fine-pointer devices
-    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+    // Only mount on desktop with fine mouse pointer
+    const isTouch = 
+      window.innerWidth <= 1024 ||
+      (window.matchMedia && (
+        window.matchMedia('(pointer: coarse)').matches ||
+        window.matchMedia('(hover: none)').matches
+      ));
+
+    if (isTouch) {
       return;
     }
 
@@ -46,6 +53,12 @@ export const CustomCursor = () => {
     };
 
     const onPointerMove = (e) => {
+      // Don't track touch pointers (pointerType === 'touch')
+      if (e.pointerType === 'touch') {
+        hideCursor();
+        return;
+      }
+
       mouse.targetX = e.clientX;
       mouse.targetY = e.clientY;
 
@@ -114,7 +127,6 @@ export const CustomCursor = () => {
     });
 
     const render = () => {
-      // Smooth liquid trailing: dot tracks tightly (0.28), glow trails smoothly (0.16)
       mouse.x += (mouse.targetX - mouse.x) * 0.16;
       mouse.y += (mouse.targetY - mouse.y) * 0.16;
 
@@ -144,13 +156,11 @@ export const CustomCursor = () => {
 
   return (
     <>
-      {/* Refined subtle outer glow halo */}
       <div 
         ref={glowRef} 
         className="academic-cursor-glow" 
         aria-hidden="true" 
       />
-      {/* Precision refined cursor dot */}
       <div 
         ref={dotRef} 
         className="academic-cursor-dot" 
