@@ -22,20 +22,13 @@ export function App() {
   };
 
   const [activePage, setActivePage] = useState(getInitialPage);
-  const [theme, setTheme] = useState(() => {
-    try {
-      const saved = localStorage.getItem('portfolio-theme');
-      if (saved === 'dark' || saved === 'light') return saved;
-      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    } catch (e) {
-      return 'light';
-    }
-  });
+  const [theme, setTheme] = useState('light');
 
   useEffect(() => {
     try {
       document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('portfolio-theme', theme);
+      // Clean up saved theme so future reloads/visits always start with light mode
+      localStorage.removeItem('portfolio-theme');
     } catch (e) {}
   }, [theme]);
 
