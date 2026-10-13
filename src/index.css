@@ -2072,37 +2072,97 @@ img {
 .card-interactive:hover .preview-card-desc,
 .pub-list-card:hover .pub-desc,
 .pub-list-card:hover .pub-authors,
-.pub-list-card:hover .pub-venue,
+.project-card:hover .project-desc,
+.exp-card:hover .exp-overview-text,
+.leadership-card:hover .exp-overview-text,
+.skill-tech-card:hover .skill-cat-desc,
+.competency-card:hover .competency-desc,
+.pub-list-card:hover .pub-abstract-text,
+.pub-list-card:hover .pub-checklist li {
+  color: #F1F5F9 !important;
+}
+
+/* Subheadings, University Names, Organizations & Meta Details */
+.timeline-academic-card:hover .timeline-card-subheading,
 .timeline-academic-card:hover .timeline-card-institution,
 .timeline-academic-card:hover .timeline-card-sub,
 .timeline-academic-card:hover .timeline-institution,
-.project-card:hover .project-desc,
-.project-card:hover .project-meta span,
-.exp-card:hover .exp-overview-text,
 .exp-card:hover .exp-org-name,
+.leadership-card:hover .exp-org-name {
+  color: #FFFFFF !important;
+  font-weight: 500 !important;
+}
+
+/* Dates, Years, Locations & Accents inside hovered cards (Clear Ice-Blue) */
+.card-interactive:hover .preview-card-category,
+.pub-list-card:hover .pub-year,
+.pub-list-card:hover .pub-venue,
+.pub-list-card:hover .pub-citation,
+.timeline-academic-card:hover .timeline-meta-label,
+.timeline-academic-card:hover .timeline-card-meta,
 .exp-card:hover .exp-meta-row,
 .exp-card:hover .exp-meta-period,
 .exp-card:hover .exp-meta-location,
-.leadership-card:hover .exp-overview-text,
-.leadership-card:hover .exp-org-name,
 .leadership-card:hover .exp-meta-row,
 .leadership-card:hover .exp-meta-period,
 .leadership-card:hover .exp-meta-location,
-.skill-tech-card:hover .skill-cat-desc,
-.competency-card:hover .competency-desc {
-  color: rgba(255, 255, 255, 0.92) !important;
-}
-
-/* Category & subtext accents */
-.card-interactive:hover .preview-card-category,
-.pub-list-card:hover .pub-meta-left span,
-.pub-list-card:hover .pub-status-badge,
-.timeline-academic-card:hover .timeline-meta-label,
-.timeline-academic-card:hover .timeline-card-meta {
+.project-card:hover .project-meta span {
   color: #DBEAFE !important;
 }
 
-/* Action Links and Arrow (Reference Image: "Learn more" in white) */
+.pub-list-card:hover .pub-sep,
+.exp-card:hover .exp-meta-dot,
+.leadership-card:hover .exp-meta-dot {
+  color: rgba(255, 255, 255, 0.75) !important;
+  opacity: 1 !important;
+}
+
+/* Academic CGPA Figures on Hover (High-contrast numbers, scales, tags and labels) */
+.timeline-academic-card:hover .academic-cgpa-num {
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+}
+
+.timeline-academic-card:hover .academic-cgpa-scale {
+  color: #DBEAFE !important;
+  font-weight: 600 !important;
+}
+
+.timeline-academic-card:hover .academic-cgpa-subtle-tag {
+  background: rgba(255, 255, 255, 0.24) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  font-weight: 600 !important;
+}
+
+.timeline-academic-card:hover .academic-cgpa-label {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+}
+
+.timeline-academic-card:hover .academic-cgpa-sublabel {
+  color: #E2E8F0 !important;
+  font-weight: 500 !important;
+}
+
+.timeline-academic-card:hover .milestones-label {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+}
+
+.timeline-academic-card:hover .milestones-badge {
+  background: rgba(255, 255, 255, 0.22) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  font-weight: 600 !important;
+}
+
+/* Hairline dividers inside academic card */
+.timeline-academic-card:hover .timeline-card-hairline {
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Action Links and Arrow (e.g. "View Education Timeline", "Learn more" in crisp white) */
 .card-interactive:hover .preview-card-action-text,
 .card-interactive:hover .preview-card-action-arrow,
 .card-interactive:hover .preview-card-action {
@@ -2115,9 +2175,10 @@ img {
 
 /* Icon Containers & SVGs */
 .card-interactive:hover .preview-card-icon-box,
-.skill-tech-card:hover .skill-cat-icon-box {
+.skill-tech-card:hover .skill-cat-icon-box,
+.competency-card:hover .skill-cat-icon-box {
   background: rgba(255, 255, 255, 0.22) !important;
-  border-color: rgba(255, 255, 255, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.42) !important;
   color: #FFFFFF !important;
 }
 
@@ -2133,8 +2194,23 @@ img {
   stroke: #FFFFFF !important;
 }
 
-/* Badges, Pills, Chips & Numbers */
-.pub-list-card:hover .pub-number,
+/* Badges, Pills, Chips & Numbers across ALL cards */
+.pub-list-card:hover .pub-number {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  color: #DBEAFE !important;
+  font-weight: 700 !important;
+}
+
+.pub-list-card:hover .pub-category-badge,
+.pub-list-card:hover .pub-category-badge.thesis,
+.pub-list-card:hover .pub-category-badge.conference,
+.pub-list-card:hover .pub-category-badge.presentation,
+.pub-list-card:hover .pub-category-badge.manuscript,
+.pub-list-card:hover .pub-category-badge.champion,
+.pub-list-card:hover .pub-category-badge.award,
+.pub-list-card:hover .pub-category-badge.verified,
+.pub-list-card:hover .pub-status-badge,
 .pub-list-card:hover .pub-tag-pill,
 .pub-list-card:hover .pub-year-badge,
 .pub-list-card:hover .pub-type-badge,
@@ -2142,17 +2218,91 @@ img {
 .project-card:hover .tool-chip,
 .project-card:hover .project-field-badge,
 .skill-tech-card:hover .skill-tool-pill,
+.timeline-academic-card:hover .degree-badge-dark,
 .timeline-academic-card:hover .timeline-current-pill,
-.timeline-academic-card:hover .milestones-badge,
 .exp-card:hover .exp-category-pill,
-.leadership-card:hover .exp-category-pill {
-  background: rgba(255, 255, 255, 0.2) !important;
-  border-color: rgba(255, 255, 255, 0.35) !important;
+.exp-card:hover .category-industrial,
+.exp-card:hover .category-teaching,
+.exp-card:hover .category-leadership,
+.leadership-card:hover .exp-category-pill,
+.leadership-card:hover .category-industrial,
+.leadership-card:hover .category-teaching,
+.leadership-card:hover .category-leadership {
+  background: rgba(255, 255, 255, 0.24) !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
   color: #FFFFFF !important;
+  font-weight: 600 !important;
 }
 
 .skill-tech-card:hover .skill-tool-dot {
   background: #FFFFFF !important;
+}
+
+/* Publication author highlight & banners on hover */
+.pub-list-card:hover .pub-author {
+  color: #FFFFFF !important;
+}
+
+.pub-list-card:hover .pub-author.highlight {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  text-decoration: underline !important;
+}
+
+.pub-list-card:hover .pub-award-banner {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.38) !important;
+}
+
+.pub-list-card:hover .award-banner-text,
+.pub-list-card:hover .pub-award-banner span {
+  color: #FFFFFF !important;
+}
+
+.pub-list-card:hover .pub-detail-heading {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+}
+
+.pub-list-card:hover .pub-checklist-icon {
+  color: #86EFAC !important;
+  stroke: #86EFAC !important;
+}
+
+/* Experience Responsibilities & Items */
+.exp-card:hover .exp-section-title,
+.leadership-card:hover .exp-section-title,
+.exp-card:hover .exp-item-title,
+.leadership-card:hover .exp-item-title {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+.exp-card:hover .exp-item-desc,
+.leadership-card:hover .exp-item-desc {
+  color: #E2E8F0 !important;
+}
+
+.exp-card:hover .exp-item-bullet,
+.leadership-card:hover .exp-item-bullet {
+  background: #FFFFFF !important;
+}
+
+.exp-card:hover .exp-divided-item,
+.leadership-card:hover .exp-divided-item {
+  border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.exp-card:hover .exp-image-caption,
+.leadership-card:hover .exp-image-caption {
+  color: #FFFFFF !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-top-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.exp-card:hover .exp-contained-image-box,
+.leadership-card:hover .exp-contained-image-box {
+  border-color: rgba(255, 255, 255, 0.35) !important;
 }
 
 /* Buttons inside cards */
@@ -2189,10 +2339,14 @@ img {
 
 /* Dividers & Borders inside cards */
 .pub-list-card:hover .pub-card-footer,
+.pub-list-card:hover .pub-expanded-body,
+.pub-list-card:hover .pub-detail-section,
 .exp-card:hover .exp-divider,
 .leadership-card:hover .exp-divider,
 .timeline-academic-card:hover [style*="borderTop"],
-.exp-card:hover [style*="borderTop"] {
+.timeline-academic-card:hover [style*="border-top"],
+.exp-card:hover [style*="borderTop"],
+.exp-card:hover [style*="border-top"] {
   border-color: rgba(255, 255, 255, 0.22) !important;
 }
 
@@ -2200,6 +2354,44 @@ img {
 .exp-card:hover .exp-org-logo-box {
   background: #FFFFFF !important;
   border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Universal text fallback across ALL cards on hover */
+.card:hover span:not(.pulse-dot),
+.award-card:hover span:not(.pulse-dot),
+.exp-card:hover span:not(.pulse-dot),
+.leadership-card:hover span:not(.pulse-dot),
+.thesis-hero-card:hover span:not(.pulse-dot),
+.timeline-academic-card:hover span:not(.pulse-dot),
+.project-card:hover span:not(.pulse-dot),
+.ongoing-research-card:hover span:not(.pulse-dot),
+.pub-list-card:hover span:not(.pulse-dot),
+.skill-tech-card:hover span:not(.pulse-dot),
+.competency-card:hover span:not(.pulse-dot),
+.stat-card-image4:hover span:not(.pulse-dot) {
+  color: #FFFFFF !important;
+}
+
+.card:hover [style*="color: var(--text-primary)"],
+.card:hover [style*="color:var(--text-primary)"],
+.timeline-academic-card:hover [style*="color: var(--text-primary)"],
+.timeline-academic-card:hover [style*="color:var(--text-primary)"],
+.pub-list-card:hover [style*="color: var(--text-primary)"],
+.pub-list-card:hover [style*="color:var(--text-primary)"],
+.exp-card:hover [style*="color: var(--text-primary)"],
+.exp-card:hover [style*="color:var(--text-primary)"] {
+  color: #FFFFFF !important;
+}
+
+.card:hover [style*="color: var(--text-secondary)"],
+.card:hover [style*="color:var(--text-secondary)"],
+.timeline-academic-card:hover [style*="color: var(--text-secondary)"],
+.timeline-academic-card:hover [style*="color:var(--text-secondary)"],
+.pub-list-card:hover [style*="color: var(--text-secondary)"],
+.pub-list-card:hover [style*="color:var(--text-secondary)"],
+.exp-card:hover [style*="color: var(--text-secondary)"],
+.exp-card:hover [style*="color:var(--text-secondary)"] {
+  color: #E2E8F0 !important;
 }
 
 .ongoing-research-card {
@@ -7313,7 +7505,7 @@ img {
   color: #F8FAFC !important;
 }
 
-/* Ensure all text inside hovered cards is white */
+/* Ensure all text, headings, badges, and figures inside hovered cards are white in dark mode */
 [data-theme="dark"] .card-interactive:hover span:not(.pulse-dot),
 [data-theme="dark"] .stat-card-image4:hover span:not(.pulse-dot),
 [data-theme="dark"] .card:hover span:not(.pulse-dot),
@@ -7321,8 +7513,33 @@ img {
 [data-theme="dark"] .exp-card:hover span:not(.pulse-dot),
 [data-theme="dark"] .leadership-card:hover span:not(.pulse-dot),
 [data-theme="dark"] .thesis-hero-card:hover span:not(.pulse-dot),
-[data-theme="dark"] .timeline-academic-card:hover span:not(.pulse-dot) {
+[data-theme="dark"] .timeline-academic-card:hover span:not(.pulse-dot),
+[data-theme="dark"] .pub-list-card:hover span:not(.pulse-dot),
+[data-theme="dark"] .skill-tech-card:hover span:not(.pulse-dot),
+[data-theme="dark"] .competency-card:hover span:not(.pulse-dot) {
   color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .timeline-card-subheading,
+[data-theme="dark"] .timeline-academic-card:hover .timeline-card-heading,
+[data-theme="dark"] .timeline-academic-card:hover .academic-cgpa-num,
+[data-theme="dark"] .timeline-academic-card:hover .academic-cgpa-label,
+[data-theme="dark"] .timeline-academic-card:hover .milestones-label {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .academic-cgpa-scale,
+[data-theme="dark"] .timeline-academic-card:hover .academic-cgpa-sublabel {
+  color: #DBEAFE !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .degree-badge-dark,
+[data-theme="dark"] .timeline-academic-card:hover .timeline-current-pill,
+[data-theme="dark"] .timeline-academic-card:hover .academic-cgpa-subtle-tag,
+[data-theme="dark"] .timeline-academic-card:hover .milestones-badge {
+  background: rgba(255, 255, 255, 0.24) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
 }
 
 /* ==========================================================================
