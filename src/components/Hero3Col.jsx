@@ -191,17 +191,17 @@ export const Hero3Col = ({ setActivePage }) => {
                 {/* Secondary Quick-Links & Download Row */}
                 <div className="portrait-blur-links-row">
                   <a
-                    href="https://scholar.google.com"
+                    href="https://www.researchgate.net"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="blur-pill-link"
-                    title="Google Scholar"
+                    title="ResearchGate Profile"
                   >
-                    <BookOpen size={12} />
-                    <span>Scholar</span>
+                    <ArrowUpRight size={12} />
+                    <span>ResearchGate</span>
                   </a>
                   <a
-                    href="https://www.linkedin.com"
+                    href="https://www.linkedin.com/in/jubairzidan"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="blur-pill-link"
@@ -211,7 +211,7 @@ export const Hero3Col = ({ setActivePage }) => {
                     <span>LinkedIn</span>
                   </a>
                   <a
-                    href={`mailto:${personalData.email}`}
+                    href={`mailto:${personalData.secondaryEmail || personalData.email}`}
                     className="blur-pill-link"
                     title="Direct Email"
                   >

@@ -102,7 +102,7 @@ export const CVModal = ({ isOpen, onClose }) => {
               <div className="cv-sheet-links-row">
                 <a href="https://linkedin.com/in/jubairzidan" target="_blank" rel="noreferrer">LinkedIn: jubairzidan</a>
                 <span>•</span>
-                <a href="https://scholar.google.com" target="_blank" rel="noreferrer">Google Scholar Profile</a>
+                <a href="https://www.researchgate.net" target="_blank" rel="noreferrer">ResearchGate: Jubair-Zidan</a>
                 <span>•</span>
                 <a href="https://github.com" target="_blank" rel="noreferrer">GitHub: jubairzidan</a>
               </div>
