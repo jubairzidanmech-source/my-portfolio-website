@@ -348,6 +348,7 @@ export const awardsData = {
       organizer: "Powered by The Daily Star & ActionAid Bangladesh",
       year: "2023",
       category: "Innovation & Climate Action",
+      imageUrl: "/images/award_placeholder.jpg",
       description: "Secured 1st place nationally for proposing innovative engineering and community-level mitigation solutions addressing climate vulnerability and sustainable clean energy adoption."
     },
     {
@@ -357,6 +358,7 @@ export const awardsData = {
       organizer: "Chittagong University of Engineering and Technology (CUET)",
       year: "2021",
       category: "Case Competition",
+      imageUrl: "/images/award_placeholder.jpg",
       description: "Awarded 1st Runner Up for strategic problem-solving, financial viability modeling, and innovative technical supply-chain case analysis."
     },
     {
@@ -448,6 +450,7 @@ export const awardsData = {
       title: "Design Lead & Executive Organizer",
       event: "Hult Prize Dhaka Impact Summit 2021",
       year: "2021",
+      imageUrl: "/images/award_placeholder.jpg",
       description: "Organized international impact summit coordinating delegate communications, sponsor branding, and stage design."
     },
     {
@@ -455,6 +458,7 @@ export const awardsData = {
       title: "Event Organizing Team Member",
       event: "Hult Prize Kuala Lumpur & Chittagong Impact Summits 2021",
       year: "2021",
+      imageUrl: "/images/award_placeholder.jpg",
       description: "Supported international cohort logistics and media management across regional chapters."
     },
     {
@@ -463,6 +467,7 @@ export const awardsData = {
       event: "Autodesk Academic Event: Introduction to Autodesk Fusion 360",
       venue: "CUET Campus",
       year: "2022",
+      imageUrl: "/images/award_placeholder.jpg",
       description: "Successfully arranged and coordinated a university-wide Autodesk 3D modeling and generative design hands-on workshop for engineering undergraduates."
     }
   ],
@@ -473,6 +478,7 @@ export const awardsData = {
       title: "Certified SolidWorks Associate (CSWA)",
       issuer: "Dassault Systèmes",
       field: "Mechanical Design & 3D Parametric CAD",
+      imageUrl: "/images/award_placeholder.jpg",
       description: "Official certification proving proficiency in parts, assemblies, engineering drawings, and design validation."
     },
     {
@@ -480,6 +486,7 @@ export const awardsData = {
       title: "Engineering Simulations (FEA & CFD)",
       issuer: "Advanced Simulation Training / Ansys Academic",
       field: "Finite Element & Computational Fluid Dynamics",
+      imageUrl: "/images/award_placeholder.jpg",
       description: "Comprehensive coursework on mesh generation, boundary conditions, turbulence models, and post-processing."
     },
     {
@@ -487,6 +494,7 @@ export const awardsData = {
       title: "MATLAB for Engineers & Numerical Computation",
       issuer: "MathWorks Academic Training",
       field: "Scientific Computing & Algorithm Development",
+      imageUrl: "/images/award_placeholder.jpg",
       description: "Numerical differentiation, matrix mathematics, ODE solvers, and graphical data visualization."
     }
   ]

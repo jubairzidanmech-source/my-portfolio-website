@@ -1,16 +1,150 @@
 import React, { useState } from 'react';
 import { 
-  Trophy, 
-  CheckCircle2, 
   ChevronDown, 
   ChevronUp, 
-  ExternalLink, 
-  Award, 
-  Sparkles, 
-  FileBadge 
+  ExternalLink
 } from 'lucide-react';
 import { awardsData } from '../data/portfolioData';
 import { InteractiveModal } from '../components/InteractiveModal';
+
+// Reusable Award Card with visual placeholder/artifact thumbnail, actions & modal
+const AwardCard = ({ 
+  item, 
+  itemIndex, 
+  isExpanded, 
+  onToggle, 
+  onOpenModal,
+  badgeClass, 
+  badgeLabel, 
+  statusLabel, 
+  title, 
+  authorLabel, 
+  venueLabel, 
+  tags, 
+  yearLabel,
+  expandOpenText = 'View Description & Details',
+  expandCloseText = 'Hide Details',
+  visualBtnText = 'View Award Artifact',
+  detailHeading = 'Recognition & Description'
+}) => {
+  const imageUrl = item.imageUrl || '/images/award_placeholder.jpg';
+  const displayYear = yearLabel || item.year;
+
+  return (
+    <article className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
+      {/* 1. Visual Card Thumbnail (Shows real image or placeholder, click to inspect in full modal) */}
+      <div 
+        className="award-card-thumb-wrap"
+        onClick={() => onOpenModal({
+          title: title,
+          subtitle: `${authorLabel || ''} ${venueLabel ? `• ${venueLabel}` : ''} ${displayYear ? `(${displayYear})` : ''}`,
+          imageUrl: imageUrl,
+          description: item.description
+        })}
+        title="Click to view full award artifact"
+      >
+        <img 
+          src={imageUrl} 
+          alt={title} 
+          className="award-card-thumb-img" 
+          loading="lazy" 
+        />
+        <div className="award-card-thumb-overlay">
+          <span className="award-thumb-zoom-badge">
+            <ExternalLink size={12} />
+            <span>View Artifact</span>
+          </span>
+        </div>
+      </div>
+
+      {/* 2. Main Card Content */}
+      <div className="pub-card-main">
+        <div className="pub-header-row">
+          <div className="pub-meta-left">
+            <span className="pub-number">0{itemIndex}</span>
+            <span className={`pub-category-badge ${badgeClass}`}>
+              {badgeLabel}
+            </span>
+            {statusLabel && (
+              <span className="pub-status-badge">{statusLabel}</span>
+            )}
+          </div>
+          {displayYear && <span className="pub-year">{displayYear}</span>}
+        </div>
+
+        <h3 className="pub-title">
+          {title}
+        </h3>
+
+        <div className="pub-citation">
+          <span className="pub-author highlight">{authorLabel}</span>
+          {venueLabel && (
+            <>
+              <span className="pub-sep">•</span>
+              <span className="pub-venue">{venueLabel}</span>
+            </>
+          )}
+        </div>
+
+        {tags && tags.length > 0 && (
+          <div className="pub-tags-row">
+            {tags.map((tag, tIdx) => (
+              <span key={tIdx} className="pub-tag-pill">{tag}</span>
+            ))}
+          </div>
+        )}
+
+        {/* 3. Action Buttons Row */}
+        <div className="pub-actions-row">
+          <button
+            onClick={() => onToggle(item.id)}
+            className="pub-expand-btn"
+            aria-expanded={isExpanded}
+          >
+            <span>{isExpanded ? expandCloseText : expandOpenText}</span>
+            {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+          </button>
+
+          <button
+            onClick={() => onOpenModal({
+              title: title,
+              subtitle: `${authorLabel || ''} ${venueLabel ? `• ${venueLabel}` : ''} ${displayYear ? `(${displayYear})` : ''}`,
+              imageUrl: imageUrl,
+              description: item.description
+            })}
+            className="pub-visual-btn"
+          >
+            <ExternalLink size={13} />
+            <span>{visualBtnText}</span>
+          </button>
+        </div>
+      </div>
+
+      {/* 4. Expandable Accordion Body */}
+      {isExpanded && (
+        <div className="pub-expanded-body">
+          <div className="pub-detail-section">
+            <h4 className="pub-detail-heading">{detailHeading}</h4>
+            <p className="pub-abstract-text">
+              {item.description}
+            </p>
+          </div>
+
+          <div className="pub-detail-section">
+            <h4 className="pub-detail-heading">Award Image Artifact</h4>
+            <div style={{ maxWidth: '420px', borderRadius: '10px', overflow: 'hidden', border: '1px solid var(--border-subtle)', marginTop: '6px' }}>
+              <img
+                src={imageUrl}
+                alt={title}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </article>
+  );
+};
 
 export const AwardsPage = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -22,6 +156,27 @@ export const AwardsPage = () => {
       ...prev,
       [id]: !prev[id]
     }));
+  };
+
+  const handleOpenModal = ({ title, subtitle, imageUrl, description }) => {
+    setActiveModalData({
+      title,
+      subtitle,
+      content: (
+        <div style={{ textAlign: 'center' }}>
+          <img 
+            src={imageUrl} 
+            alt={title} 
+            style={{ maxWidth: '100%', maxHeight: '520px', borderRadius: '12px', objectFit: 'contain' }} 
+          />
+          {description && (
+            <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+              {description}
+            </p>
+          )}
+        </div>
+      )
+    });
   };
 
   const categories = [
@@ -77,104 +232,25 @@ export const AwardsPage = () => {
 
           <div className="pub-grid-2col">
             {(awardsData?.competitions || []).map((item, idx) => {
-              const itemIndex = idx + 1;
-              const isExpanded = Boolean(expandedAwards[item.id]);
               const isChampion = item.title.toLowerCase().includes('champion');
               return (
-                <article key={item.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
-                  <div className="pub-card-main">
-                    <div className="pub-header-row">
-                      <div className="pub-meta-left">
-                        <span className="pub-number">0{itemIndex}</span>
-                        <span className={`pub-category-badge ${isChampion ? 'champion' : 'conference'}`}>
-                          {item.title}
-                        </span>
-                        <span className="pub-status-badge">National Honor</span>
-                      </div>
-                      <span className="pub-year">{item.year}</span>
-                    </div>
-
-                    <h3 className="pub-title">
-                      {item.event}
-                    </h3>
-
-                    <div className="pub-citation">
-                      <span className="pub-author highlight">{item.organizer}</span>
-                      {item.category && (
-                        <>
-                          <span className="pub-sep">•</span>
-                          <span className="pub-venue">{item.category}</span>
-                        </>
-                      )}
-                    </div>
-
-                    <div className="pub-tags-row">
-                      {[item.category, item.title, 'National Competition'].filter(Boolean).map((tag, tIdx) => (
-                        <span key={tIdx} className="pub-tag-pill">{tag}</span>
-                      ))}
-                    </div>
-
-                    <div className="pub-actions-row">
-                      <button
-                        onClick={() => toggleAward(item.id)}
-                        className="pub-expand-btn"
-                        aria-expanded={isExpanded}
-                      >
-                        <span>{isExpanded ? 'Hide Details' : 'View Description & Details'}</span>
-                        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                      </button>
-
-                      {item.imageUrl && (
-                        <button
-                          onClick={() => setActiveModalData({
-                            title: item.event,
-                            subtitle: `${item.title} • ${item.organizer} (${item.year})`,
-                            content: (
-                              <div style={{ textAlign: 'center' }}>
-                                <img 
-                                  src={item.imageUrl} 
-                                  alt={item.event} 
-                                  style={{ maxWidth: '100%', maxHeight: '520px', borderRadius: '12px', objectFit: 'contain' }} 
-                                />
-                                <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                                  {item.description}
-                                </p>
-                              </div>
-                            )
-                          })}
-                          className="pub-visual-btn"
-                        >
-                          <ExternalLink size={13} />
-                          <span>View Award Artifact</span>
-                        </button>
-                      )}
-                    </div>
-                  </div>
-
-                  {isExpanded && (
-                    <div className="pub-expanded-body">
-                      <div className="pub-detail-section">
-                        <h4 className="pub-detail-heading">Recognition & Description</h4>
-                        <p className="pub-abstract-text">
-                          {item.description}
-                        </p>
-                      </div>
-
-                      {item.imageUrl && (
-                        <div className="pub-detail-section">
-                          <h4 className="pub-detail-heading">Award Image</h4>
-                          <div style={{ maxWidth: '420px', borderRadius: '10px', overflow: 'hidden', border: '1px solid var(--border-subtle)', marginTop: '6px' }}>
-                            <img
-                              src={item.imageUrl}
-                              alt={item.event}
-                              style={{ width: '100%', height: 'auto', display: 'block' }}
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </article>
+                <AwardCard
+                  key={item.id}
+                  item={item}
+                  itemIndex={idx + 1}
+                  isExpanded={Boolean(expandedAwards[item.id])}
+                  onToggle={toggleAward}
+                  onOpenModal={handleOpenModal}
+                  badgeClass={isChampion ? 'champion' : 'conference'}
+                  badgeLabel={item.title}
+                  statusLabel="National Honor"
+                  title={item.event}
+                  authorLabel={item.organizer}
+                  venueLabel={item.category}
+                  tags={[item.category, item.title, 'National Competition'].filter(Boolean)}
+                  visualBtnText="View Award Artifact"
+                  detailHeading="Recognition & Description"
+                />
               );
             })}
           </div>
@@ -199,106 +275,27 @@ export const AwardsPage = () => {
           </div>
 
           <div className="pub-grid-2col">
-            {(awardsData?.posters || awardsData?.posterPresentations || []).map((item, idx) => {
-              const itemIndex = idx + 1;
-              const isExpanded = Boolean(expandedAwards[item.id]);
-              return (
-                <article key={item.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
-                  <div className="pub-card-main">
-                    <div className="pub-header-row">
-                      <div className="pub-meta-left">
-                        <span className="pub-number">0{itemIndex}</span>
-                        <span className="pub-category-badge presentation">
-                          Research Poster
-                        </span>
-                        <span className="pub-status-badge">Exposition</span>
-                      </div>
-                      <span className="pub-year">{item.year}</span>
-                    </div>
-
-                    <h3 className="pub-title">
-                      {item.title}
-                    </h3>
-
-                    <div className="pub-citation">
-                      <span className="pub-author highlight">{item.event}</span>
-                      {item.venue && (
-                        <>
-                          <span className="pub-sep">•</span>
-                          <span className="pub-venue">{item.venue}</span>
-                        </>
-                      )}
-                    </div>
-
-                    <div className="pub-tags-row">
-                      {['Poster Presentation', 'Research Exhibit', 'CUET'].map((tag, tIdx) => (
-                        <span key={tIdx} className="pub-tag-pill">{tag}</span>
-                      ))}
-                    </div>
-
-                    <div className="pub-actions-row">
-                      <button
-                        onClick={() => toggleAward(item.id)}
-                        className="pub-expand-btn"
-                        aria-expanded={isExpanded}
-                      >
-                        <span>{isExpanded ? 'Hide Abstract & Details' : 'View Presentation Details'}</span>
-                        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                      </button>
-
-                      {item.imageUrl && (
-                        <button
-                          onClick={() => setActiveModalData({
-                            title: item.title,
-                            subtitle: `${item.event} • ${item.venue} (${item.year})`,
-                            content: (
-                              <div style={{ textAlign: 'center' }}>
-                                <img 
-                                  src={item.imageUrl} 
-                                  alt={item.title} 
-                                  style={{ maxWidth: '100%', maxHeight: '520px', borderRadius: '12px', objectFit: 'contain' }} 
-                                />
-                                <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                                  {item.description}
-                                </p>
-                              </div>
-                            )
-                          })}
-                          className="pub-visual-btn"
-                        >
-                          <ExternalLink size={13} />
-                          <span>View Trophy & Award Crest</span>
-                        </button>
-                      )}
-                    </div>
-                  </div>
-
-                  {isExpanded && (
-                    <div className="pub-expanded-body">
-                      <div className="pub-detail-section">
-                        <h4 className="pub-detail-heading">Presentation Details</h4>
-                        <p className="pub-abstract-text">
-                          {item.description}
-                        </p>
-                      </div>
-
-                      {item.imageUrl && (
-                        <div className="pub-detail-section">
-                          <h4 className="pub-detail-heading">Award Trophy / Crest</h4>
-                          <div style={{ maxWidth: '420px', borderRadius: '10px', overflow: 'hidden', border: '1px solid var(--border-subtle)', marginTop: '6px' }}>
-                            <img
-                              src={item.imageUrl}
-                              alt={item.title}
-                              style={{ width: '100%', height: 'auto', display: 'block' }}
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </article>
-              );
-            })}
+            {(awardsData?.posters || awardsData?.posterPresentations || []).map((item, idx) => (
+              <AwardCard
+                key={item.id}
+                item={item}
+                itemIndex={idx + 1}
+                isExpanded={Boolean(expandedAwards[item.id])}
+                onToggle={toggleAward}
+                onOpenModal={handleOpenModal}
+                badgeClass="presentation"
+                badgeLabel="Research Poster"
+                statusLabel="Exposition"
+                title={item.title}
+                authorLabel={item.event}
+                venueLabel={item.venue}
+                tags={['Poster Presentation', 'Research Exhibit', 'CUET']}
+                expandOpenText="View Presentation Details"
+                expandCloseText="Hide Abstract & Details"
+                visualBtnText="View Trophy & Award Crest"
+                detailHeading="Presentation Details"
+              />
+            ))}
           </div>
         </section>
       )}
@@ -321,106 +318,27 @@ export const AwardsPage = () => {
           </div>
 
           <div className="pub-grid-2col">
-            {(awardsData?.hultPrize || []).map((item, idx) => {
-              const itemIndex = idx + 1;
-              const isExpanded = Boolean(expandedAwards[item.id]);
-              return (
-                <article key={item.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
-                  <div className="pub-card-main">
-                    <div className="pub-header-row">
-                      <div className="pub-meta-left">
-                        <span className="pub-number">0{itemIndex}</span>
-                        <span className="pub-category-badge manuscript">
-                          Global Challenge
-                        </span>
-                        <span className="pub-status-badge">Impact Venture</span>
-                      </div>
-                      <span className="pub-year">{item.year}</span>
-                    </div>
-
-                    <h3 className="pub-title">
-                      {item.title}
-                    </h3>
-
-                    <div className="pub-citation">
-                      <span className="pub-author highlight">Hult Prize Foundation</span>
-                      {item.cohort && (
-                        <>
-                          <span className="pub-sep">•</span>
-                          <span className="pub-venue">{item.cohort}</span>
-                        </>
-                      )}
-                    </div>
-
-                    <div className="pub-tags-row">
-                      {['Social Entrepreneurship', 'Hult Prize', 'Impact Innovation'].map((tag, tIdx) => (
-                        <span key={tIdx} className="pub-tag-pill">{tag}</span>
-                      ))}
-                    </div>
-
-                    <div className="pub-actions-row">
-                      <button
-                        onClick={() => toggleAward(item.id)}
-                        className="pub-expand-btn"
-                        aria-expanded={isExpanded}
-                      >
-                        <span>{isExpanded ? 'Hide Details' : 'View Impact & Contributions'}</span>
-                        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                      </button>
-
-                      {item.imageUrl && (
-                        <button
-                          onClick={() => setActiveModalData({
-                            title: item.title,
-                            subtitle: `${item.cohort || 'Hult Prize'} (${item.year})`,
-                            content: (
-                              <div style={{ textAlign: 'center' }}>
-                                <img 
-                                  src={item.imageUrl} 
-                                  alt={item.title} 
-                                  style={{ maxWidth: '100%', maxHeight: '520px', borderRadius: '12px', objectFit: 'contain' }} 
-                                />
-                                <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                                  {item.description}
-                                </p>
-                              </div>
-                            )
-                          })}
-                          className="pub-visual-btn"
-                        >
-                          <ExternalLink size={13} />
-                          <span>View Certificate</span>
-                        </button>
-                      )}
-                    </div>
-                  </div>
-
-                  {isExpanded && (
-                    <div className="pub-expanded-body">
-                      <div className="pub-detail-section">
-                        <h4 className="pub-detail-heading">Impact & Contributions</h4>
-                        <p className="pub-abstract-text">
-                          {item.description}
-                        </p>
-                      </div>
-
-                      {item.imageUrl && (
-                        <div className="pub-detail-section">
-                          <h4 className="pub-detail-heading">Official Certificate</h4>
-                          <div style={{ maxWidth: '420px', borderRadius: '10px', overflow: 'hidden', border: '1px solid var(--border-subtle)', marginTop: '6px' }}>
-                            <img
-                              src={item.imageUrl}
-                              alt={item.title}
-                              style={{ width: '100%', height: 'auto', display: 'block' }}
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </article>
-              );
-            })}
+            {(awardsData?.hultPrize || []).map((item, idx) => (
+              <AwardCard
+                key={item.id}
+                item={item}
+                itemIndex={idx + 1}
+                isExpanded={Boolean(expandedAwards[item.id])}
+                onToggle={toggleAward}
+                onOpenModal={handleOpenModal}
+                badgeClass="manuscript"
+                badgeLabel="Global Challenge"
+                statusLabel="Impact Venture"
+                title={item.title}
+                authorLabel="Hult Prize Foundation"
+                venueLabel={item.cohort}
+                tags={['Social Entrepreneurship', 'Hult Prize', 'Impact Innovation']}
+                expandOpenText="View Impact & Contributions"
+                expandCloseText="Hide Details"
+                visualBtnText="View Certificate"
+                detailHeading="Impact & Contributions"
+              />
+            ))}
           </div>
         </section>
       )}
@@ -443,68 +361,27 @@ export const AwardsPage = () => {
           </div>
 
           <div className="pub-grid-2col">
-            {(awardsData?.eventOrganization || []).map((item, idx) => {
-              const itemIndex = idx + 1;
-              const isExpanded = Boolean(expandedAwards[item.id]);
-              return (
-                <article key={item.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
-                  <div className="pub-card-main">
-                    <div className="pub-header-row">
-                      <div className="pub-meta-left">
-                        <span className="pub-number">0{itemIndex}</span>
-                        <span className="pub-category-badge presentation">
-                          Leadership
-                        </span>
-                        <span className="pub-status-badge">Lead Organizer</span>
-                      </div>
-                      <span className="pub-year">{item.year}</span>
-                    </div>
-
-                    <h3 className="pub-title">
-                      {item.title}
-                    </h3>
-
-                    <div className="pub-citation">
-                      <span className="pub-author highlight">{item.event}</span>
-                      {item.venue && (
-                        <>
-                          <span className="pub-sep">•</span>
-                          <span className="pub-venue">{item.venue}</span>
-                        </>
-                      )}
-                    </div>
-
-                    <div className="pub-tags-row">
-                      {['Executive Leadership', 'Event Directorship', 'Team Management'].map((tag, tIdx) => (
-                        <span key={tIdx} className="pub-tag-pill">{tag}</span>
-                      ))}
-                    </div>
-
-                    <div className="pub-actions-row">
-                      <button
-                        onClick={() => toggleAward(item.id)}
-                        className="pub-expand-btn"
-                        aria-expanded={isExpanded}
-                      >
-                        <span>{isExpanded ? 'Hide Details' : 'View Responsibilities & Scale'}</span>
-                        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                      </button>
-                    </div>
-                  </div>
-
-                  {isExpanded && (
-                    <div className="pub-expanded-body">
-                      <div className="pub-detail-section">
-                        <h4 className="pub-detail-heading">Scope & Leadership Responsibilities</h4>
-                        <p className="pub-abstract-text">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </article>
-              );
-            })}
+            {(awardsData?.eventOrganization || []).map((item, idx) => (
+              <AwardCard
+                key={item.id}
+                item={item}
+                itemIndex={idx + 1}
+                isExpanded={Boolean(expandedAwards[item.id])}
+                onToggle={toggleAward}
+                onOpenModal={handleOpenModal}
+                badgeClass="presentation"
+                badgeLabel="Leadership"
+                statusLabel="Lead Organizer"
+                title={item.title}
+                authorLabel={item.event}
+                venueLabel={item.venue}
+                tags={['Executive Leadership', 'Event Directorship', 'Team Management']}
+                expandOpenText="View Responsibilities & Scale"
+                expandCloseText="Hide Details"
+                visualBtnText="View Summit Credential"
+                detailHeading="Scope & Leadership Responsibilities"
+              />
+            ))}
           </div>
         </section>
       )}
@@ -527,106 +404,28 @@ export const AwardsPage = () => {
           </div>
 
           <div className="pub-grid-2col">
-            {(awardsData?.certifications || []).map((item, idx) => {
-              const itemIndex = idx + 1;
-              const isExpanded = Boolean(expandedAwards[item.id]);
-              return (
-                <article key={item.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
-                  <div className="pub-card-main">
-                    <div className="pub-header-row">
-                      <div className="pub-meta-left">
-                        <span className="pub-number">0{itemIndex}</span>
-                        <span className="pub-category-badge verified">
-                          Verified Credential
-                        </span>
-                        <span className="pub-status-badge">Accredited</span>
-                      </div>
-                      <span className="pub-year">Certified</span>
-                    </div>
-
-                    <h3 className="pub-title">
-                      {item.title}
-                    </h3>
-
-                    <div className="pub-citation">
-                      <span className="pub-author highlight">{item.issuer}</span>
-                      {item.field && (
-                        <>
-                          <span className="pub-sep">•</span>
-                          <span className="pub-venue">{item.field}</span>
-                        </>
-                      )}
-                    </div>
-
-                    <div className="pub-tags-row">
-                      {['Accredited Course', item.field, 'Engineering Design'].filter(Boolean).map((tag, tIdx) => (
-                        <span key={tIdx} className="pub-tag-pill">{tag}</span>
-                      ))}
-                    </div>
-
-                    <div className="pub-actions-row">
-                      <button
-                        onClick={() => toggleAward(item.id)}
-                        className="pub-expand-btn"
-                        aria-expanded={isExpanded}
-                      >
-                        <span>{isExpanded ? 'Hide Details' : 'View Syllabus & Verification'}</span>
-                        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                      </button>
-
-                      {item.imageUrl && (
-                        <button
-                          onClick={() => setActiveModalData({
-                            title: item.title,
-                            subtitle: `Issuer: ${item.issuer} • ${item.field}`,
-                            content: (
-                              <div style={{ textAlign: 'center' }}>
-                                <img 
-                                  src={item.imageUrl} 
-                                  alt={item.title} 
-                                  style={{ maxWidth: '100%', maxHeight: '520px', borderRadius: '12px', objectFit: 'contain' }} 
-                                />
-                                <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                                  {item.description}
-                                </p>
-                              </div>
-                            )
-                          })}
-                          className="pub-visual-btn"
-                        >
-                          <ExternalLink size={13} />
-                          <span>View Certificate</span>
-                        </button>
-                      )}
-                    </div>
-                  </div>
-
-                  {isExpanded && (
-                    <div className="pub-expanded-body">
-                      <div className="pub-detail-section">
-                        <h4 className="pub-detail-heading">Certification Syllabus & Competencies</h4>
-                        <p className="pub-abstract-text">
-                          {item.description}
-                        </p>
-                      </div>
-
-                      {item.imageUrl && (
-                        <div className="pub-detail-section">
-                          <h4 className="pub-detail-heading">Official Credential</h4>
-                          <div style={{ maxWidth: '420px', borderRadius: '10px', overflow: 'hidden', border: '1px solid var(--border-subtle)', marginTop: '6px' }}>
-                            <img
-                              src={item.imageUrl}
-                              alt={item.title}
-                              style={{ width: '100%', height: 'auto', display: 'block' }}
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </article>
-              );
-            })}
+            {(awardsData?.certifications || []).map((item, idx) => (
+              <AwardCard
+                key={item.id}
+                item={item}
+                itemIndex={idx + 1}
+                isExpanded={Boolean(expandedAwards[item.id])}
+                onToggle={toggleAward}
+                onOpenModal={handleOpenModal}
+                badgeClass="verified"
+                badgeLabel="Verified Credential"
+                statusLabel="Accredited"
+                yearLabel="Certified"
+                title={item.title}
+                authorLabel={item.issuer}
+                venueLabel={item.field}
+                tags={['Accredited Course', item.field, 'Engineering Design'].filter(Boolean)}
+                expandOpenText="View Syllabus & Verification"
+                expandCloseText="Hide Details"
+                visualBtnText="View Certificate"
+                detailHeading="Certification Syllabus & Competencies"
+              />
+            ))}
           </div>
         </section>
       )}
