@@ -292,18 +292,6 @@ export const researchData = {
       certificateUrl: "/images/real/mimec_certificate.jpg",
       tags: ["VAWT", "Aerodynamics", "Sliding Mesh", "RUET"],
       description: "Presented numerical investigation on aerodynamic self-starting capability and power coefficients across symmetrical and cambered NACA airfoil profiles."
-    },
-    {
-      id: "pres-3",
-      title: "Poster & Oral Presentation: Formula One 2022 Venturi Ground Effect CFD Investigation",
-      event: "Annual Mechanical Engineering Research Exposition",
-      venue: "CUET, Chittagong, Bangladesh",
-      date: "2023 – 2024",
-      type: "Technical Presentation",
-      imageUrl: "/images/presentation_placeholder.jpg",
-      certificateUrl: "/images/award_placeholder.jpg",
-      tags: ["Ground Effect", "Formula 1", "CFD", "CUET"],
-      description: "Delivered oral and poster defense of ground-effect venturi underfloor aerodynamics under FIA 2022 regulation geometries."
     }
   ],
 
