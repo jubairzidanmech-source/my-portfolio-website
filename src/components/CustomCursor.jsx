@@ -84,11 +84,13 @@ export const CustomCursor = () => {
         target.closest('textarea') ||
         target.closest('select') ||
         target.closest('.card-interactive') ||
-        target.closest('.conf-paper-card') ||
-        target.closest('.conf-pres-card') ||
-        target.closest('.stat-card-image4') ||
-        target.closest('.leadership-card') ||
         target.closest('[role="button"]') ||
+        target.closest('.pub-expand-btn') ||
+        target.closest('.pub-visual-btn') ||
+        target.closest('.pub-action-btn') ||
+        target.closest('.filter-pill') ||
+        target.closest('.contact-copy-btn') ||
+        target.closest('.contact-quiet-cv-btn') ||
         target.closest('.thesis-action-cta-full') ||
         target.closest('.research-slider-arrow-btn') ||
         target.closest('.research-slider-dot') ||

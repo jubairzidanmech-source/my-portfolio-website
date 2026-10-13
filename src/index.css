@@ -56,6 +56,10 @@
   --bg-card: #FFFFFF;
   --bg-card-subtle: #F8FAFC;
   --bg-card-hover: linear-gradient(135deg, #1D4ED8 0%, #2563EB 35%, #38BDF8 70%, #93C5FD 100%);
+  --bg-card-hover-tint: #F4F8FE;
+  --border-card-hover: rgba(37, 99, 235, 0.45);
+  --shadow-card-hover: 0 8px 24px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(37, 99, 235, 0.09);
+  --card-transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 
   /* Image 01 & Image 02 Reference: Strategic Cobalt Blue, Midnight Navy & Electric Azure */
   --blue-midnight: #0B132B;
@@ -157,6 +161,9 @@
   --bg-card: rgba(15, 23, 42, 0.78);
   --bg-card-subtle: rgba(22, 30, 49, 0.88);
   --bg-card-hover: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 35%, #2563EB 70%, #60A5FA 100%);
+  --bg-card-hover-tint: rgba(30, 58, 138, 0.28);
+  --border-card-hover: rgba(96, 165, 250, 0.45);
+  --shadow-card-hover: 0 10px 28px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(37, 99, 235, 0.2);
 
   /* Primary Accent & Luminous Electric Azure */
   --blue-midnight: #F8FAFC;
@@ -1537,7 +1544,7 @@ img {
   border-radius: var(--radius-lg);
   padding: 28px;
   box-shadow: var(--glass-shadow);
-  transition: all var(--transition-normal);
+  transition: var(--card-transition);
   position: relative;
   overflow: hidden;
 }
@@ -1547,13 +1554,16 @@ img {
 .stat-card-image4,
 .project-card,
 .pub-item,
+.pub-list-card,
 .exp-card,
 .award-card,
 .leadership-card,
+.skill-tech-card,
+.competency-card,
 .timeline-academic-card {
   position: relative;
   overflow: hidden;
-  transition: all 550ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--card-transition);
 }
 
 .card-interactive::before,
@@ -1987,11 +1997,68 @@ img {
 .thesis-hero-card:hover,
 .timeline-academic-card:hover,
 .project-card:hover,
-.ongoing-research-card:hover {
-  background: rgba(255, 255, 255, 0.98) !important;
-  border-color: rgba(37, 99, 235, 0.35) !important;
-  transform: translateY(-4px) !important;
-  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.08), 0 2px 8px rgba(11, 19, 43, 0.04) !important;
+.ongoing-research-card:hover,
+.pub-list-card:hover,
+.skill-tech-card:hover,
+.competency-card:hover {
+  background: var(--bg-card-hover-tint) !important;
+  border-color: var(--border-card-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-card-hover) !important;
+}
+
+/* Cursor rule: ONLY use pointer where the whole card is clickable (.card-interactive). All other cards use cursor: default */
+.card-interactive,
+.card-interactive:hover {
+  cursor: pointer;
+}
+
+.card:not(.card-interactive),
+.card:not(.card-interactive):hover,
+.pub-list-card,
+.pub-list-card:hover,
+.timeline-academic-card,
+.timeline-academic-card:hover,
+.project-card,
+.project-card:hover,
+.exp-card,
+.exp-card:hover,
+.leadership-card,
+.leadership-card:hover,
+.award-card,
+.award-card:hover,
+.skill-tech-card,
+.skill-tech-card:hover,
+.competency-card,
+.competency-card:hover,
+.hero-intro-card,
+.hero-intro-card:hover,
+.thesis-hero-card,
+.thesis-hero-card:hover,
+.ongoing-research-card,
+.ongoing-research-card:hover,
+.stat-card-image4,
+.stat-card-image4:hover {
+  cursor: default;
+}
+
+/* Buttons and interactive controls inside cards always retain pointer cursor */
+.pub-list-card button,
+.pub-list-card a,
+.timeline-academic-card button,
+.timeline-academic-card a,
+.project-card button,
+.project-card a,
+.exp-card button,
+.exp-card a,
+.leadership-card button,
+.leadership-card a,
+.skill-tech-card button,
+.skill-tech-card a,
+.competency-card button,
+.competency-card a,
+.card button,
+.card a {
   cursor: pointer;
 }
 
@@ -2017,20 +2084,22 @@ img {
 }
 
 .ongoing-research-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  transition: var(--card-transition);
 }
 
 .ongoing-research-card:hover {
-  background: rgba(255, 255, 255, 0.98) !important;
-  border-color: rgba(37, 99, 235, 0.35) !important;
-  transform: translateY(-4px) !important;
-  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.08), 0 2px 8px rgba(11, 19, 43, 0.04) !important;
+  background: var(--bg-card-hover-tint) !important;
+  border-color: var(--border-card-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-card-hover) !important;
+  cursor: default;
 }
 
 [data-theme="dark"] .ongoing-research-card:hover {
-  background: rgba(30, 41, 59, 0.85) !important;
-  border-color: rgba(96, 165, 250, 0.45) !important;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 24px rgba(37, 99, 235, 0.15) !important;
+  background: var(--bg-card-hover-tint) !important;
+  border-color: var(--border-card-hover) !important;
+  box-shadow: var(--shadow-card-hover) !important;
+  cursor: default;
 }
 
 
@@ -2122,6 +2191,8 @@ img {
   padding: 28px 30px;
   box-shadow: 0 4px 20px rgba(15, 23, 42, 0.07), 0 1px 3px rgba(15, 23, 42, 0.04);
   position: relative;
+  transition: var(--card-transition);
+  cursor: default;
 }
 
 .hero-badge {
@@ -2762,22 +2833,18 @@ img {
   min-height: 128px;
   position: relative;
   overflow: hidden;
-  transition: transform var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
-  cursor: pointer;
+  transition: var(--card-transition);
+  cursor: default;
   z-index: 1;
 }
 
-/* User Request: Whichever card is hovered must turn dynamic saturated royal blue gradient! */
 .stat-card-image4:hover {
-  background: #143F9B !important;
+  background: rgba(255, 255, 255, 0.16) !important;
   border-color: rgba(147, 197, 253, 0.6) !important;
-  transform: translateY(-4px) !important;
-  box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.45),
-    0 16px 36px rgba(16, 48, 128, 0.45),
-    0 0 24px rgba(37, 99, 235, 0.3) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(16, 48, 128, 0.3), 0 2px 8px rgba(37, 99, 235, 0.2) !important;
   z-index: 2;
-  cursor: pointer;
+  cursor: default;
 }
 
 .stat-card-image4:hover .stat-card-image4-label {
@@ -2921,17 +2988,16 @@ img {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: 
-    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1), 
-    box-shadow 0.65s cubic-bezier(0.4, 0, 0.2, 1), 
-    border-color 0.65s cubic-bezier(0.4, 0, 0.2, 1),
-    background 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--card-transition);
+  cursor: default;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 40px rgba(12, 38, 105, 0.25), 0 0 24px rgba(37, 99, 235, 0.2);
-  border-color: rgba(96, 165, 250, 0.5);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--border-card-hover);
+  background: var(--bg-card-hover-tint);
+  cursor: default;
 }
 
 .project-thumb-wrapper {
@@ -3190,10 +3256,11 @@ img {
   border: 1px solid rgba(15, 23, 42, 0.11);
   border-radius: 16px;
   padding: 24px 28px;
-  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
   position: relative;
   overflow: hidden;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: var(--card-transition);
+  cursor: default;
 }
 
 /* Current Degree: Subtle blue border & distinct elevation */
@@ -3204,9 +3271,11 @@ img {
 }
 
 .timeline-academic-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.09), 0 2px 8px rgba(37, 99, 235, 0.08);
-  border-color: rgba(37, 99, 235, 0.4);
+  transform: translateY(-2px);
+  background: var(--bg-card-hover-tint);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--border-card-hover);
+  cursor: default;
 }
 
 .timeline-card-header {
@@ -3574,17 +3643,20 @@ img {
   border: 1px solid rgba(15, 23, 42, 0.11);
   border-radius: 12px;
   padding: 14px 16px;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: var(--card-transition);
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
   position: relative;
   display: flex;
   flex-direction: column;
+  cursor: default;
 }
 
 .pub-list-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(37, 99, 235, 0.4);
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.09), 0 2px 6px rgba(37, 99, 235, 0.08);
+  background: var(--bg-card-hover-tint);
+  border-color: var(--border-card-hover);
+  box-shadow: var(--shadow-card-hover);
+  cursor: default;
 }
 
 .pub-list-card.is-expanded {
@@ -3853,14 +3925,17 @@ img {
   border: 1px solid rgba(15, 23, 42, 0.11);
   border-radius: 16px;
   overflow: hidden;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  transition: var(--card-transition);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  cursor: default;
 }
 
 .project-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(37, 99, 235, 0.4);
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1), 0 2px 8px rgba(37, 99, 235, 0.08);
+  transform: translateY(-2px);
+  background: var(--bg-card-hover-tint);
+  border-color: var(--border-card-hover);
+  box-shadow: var(--shadow-card-hover);
+  cursor: default;
 }
 
 .project-thumb-wrapper {
@@ -4006,8 +4081,10 @@ img {
 
 [data-theme="dark"] .pub-list-card:hover,
 [data-theme="dark"] .project-card:hover {
-  border-color: rgba(56, 189, 248, 0.35) !important;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45) !important;
+  background: var(--bg-card-hover-tint) !important;
+  border-color: var(--border-card-hover) !important;
+  box-shadow: var(--shadow-card-hover) !important;
+  cursor: default;
 }
 
 [data-theme="dark"] .pub-tag-pill {
@@ -4780,15 +4857,18 @@ img {
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  transition: var(--card-transition);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  cursor: default;
 }
 
 .exp-card:hover,
 .leadership-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(37, 99, 235, 0.4);
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.09), 0 2px 6px rgba(37, 99, 235, 0.08);
+  transform: translateY(-2px);
+  background: var(--bg-card-hover-tint);
+  border-color: var(--border-card-hover);
+  box-shadow: var(--shadow-card-hover);
+  cursor: default;
 }
 
 .exp-card:hover .exp-role-title,
@@ -5103,13 +5183,16 @@ img {
   display: flex;
   flex-direction: column;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: var(--card-transition);
+  cursor: default;
 }
 
 .skill-tech-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(37, 99, 235, 0.4);
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.09), 0 2px 6px rgba(37, 99, 235, 0.08);
+  background: var(--bg-card-hover-tint);
+  border-color: var(--border-card-hover);
+  box-shadow: var(--shadow-card-hover);
+  cursor: default;
 }
 
 /* Unified Category Icon Box (Small, Consistent Size: 34px x 34px) */
@@ -5209,13 +5292,16 @@ img {
   gap: 14px;
   align-items: flex-start;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: var(--card-transition);
+  cursor: default;
 }
 
 .competency-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(37, 99, 235, 0.4);
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.09), 0 2px 6px rgba(37, 99, 235, 0.08);
+  background: var(--bg-card-hover-tint);
+  border-color: var(--border-card-hover);
+  box-shadow: var(--shadow-card-hover);
+  cursor: default;
 }
 
 .competency-content {
@@ -6982,12 +7068,13 @@ img {
 [data-theme="dark"] .thesis-hero-card:hover,
 [data-theme="dark"] .timeline-academic-card:hover,
 [data-theme="dark"] .stat-card-image4:hover {
-  background: linear-gradient(135deg, #091c49 0%, #0e2f7b 50%, #1a49be 100%) !important;
-  border-color: rgba(147, 197, 253, 0.55) !important;
-  box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.45),
-    0 20px 48px rgba(5, 18, 55, 0.75),
-    0 0 32px rgba(37, 99, 235, 0.35) !important;
+  background: var(--bg-card-hover-tint) !important;
+  border-color: var(--border-card-hover) !important;
+  box-shadow: var(--shadow-card-hover) !important;
+  cursor: default;
+}
+
+[data-theme="dark"] .card-interactive:hover {
   cursor: pointer;
 }
 

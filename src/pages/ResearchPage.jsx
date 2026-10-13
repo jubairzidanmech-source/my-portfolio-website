@@ -605,7 +605,7 @@ export const ResearchPage = () => {
           {getFilteredProjects().map((project) => {
             const isProjectExpanded = Boolean(expandedItems[project.id]);
             return (
-              <div key={project.id} className="project-card card-interactive">
+              <div key={project.id} className="project-card">
                 <div className="project-thumb-wrapper">
                   <img src={project.imageUrl} alt={project.title} className="project-thumb" />
                   <span className="project-field-badge">{project.field}</span>
