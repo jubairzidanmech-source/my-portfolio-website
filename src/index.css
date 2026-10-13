@@ -3664,6 +3664,17 @@ img {
   color: #7C3AED;
 }
 
+.pub-category-badge.champion,
+.pub-category-badge.award {
+  background: rgba(234, 88, 12, 0.12);
+  color: #EA580C;
+}
+
+.pub-category-badge.verified {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+}
+
 .pub-status-badge {
   font-size: 0.68rem;
   font-weight: 600;
