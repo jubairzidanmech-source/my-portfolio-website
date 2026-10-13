@@ -11,7 +11,6 @@ import {
   Eye, 
   FileText, 
   ExternalLink, 
-  Download, 
   X 
 } from 'lucide-react';
 
@@ -38,13 +37,13 @@ const CgpaStatNumber = ({ value, max, label, sublabel, badge }) => {
 
 export const AcademicsPage = () => {
   const [expandedSections, setExpandedSections] = useState({});
-  const [isCertModalOpen, setIsCertModalOpen] = useState(false);
+  const [activeDocModal, setActiveDocModal] = useState(null);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') setIsCertModalOpen(false);
+      if (e.key === 'Escape') setActiveDocModal(null);
     };
-    if (isCertModalOpen) {
+    if (activeDocModal) {
       document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleKeyDown);
     } else {
@@ -54,7 +53,7 @@ export const AcademicsPage = () => {
       document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isCertModalOpen]);
+  }, [activeDocModal]);
 
   const toggleSection = (id) => {
     setExpandedSections(prev => ({
@@ -246,62 +245,119 @@ export const AcademicsPage = () => {
               </div>
             )}
 
-            {/* Official Academic Certificate Verification Box */}
-            <div className="academic-cert-box">
-              <div className="academic-cert-content">
-                <div className="academic-cert-header-row">
-                  <div className="academic-cert-icon-badge">
-                    <Award size={18} />
-                  </div>
-                  <div className="academic-cert-title-col">
-                    <div className="academic-cert-tag-row">
-                      <span className="academic-cert-tag">Official Degree Credential</span>
-                      <span className="academic-cert-status-badge">
-                        <CheckCircle2 size={12} />
-                        <span>Conferred & Verified (2024)</span>
-                      </span>
+            {/* Official Academic Documents for Faculty Review */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '22px' }}>
+              {/* 1. Official Degree Certificate Box */}
+              <div className="academic-cert-box" style={{ marginTop: 0 }}>
+                <div className="academic-cert-content">
+                  <div className="academic-cert-header-row">
+                    <div className="academic-cert-icon-badge">
+                      <Award size={18} />
                     </div>
-                    <h4 className="academic-cert-heading">
-                      Official B.Sc. Degree Certificate
-                    </h4>
+                    <div className="academic-cert-title-col">
+                      <div className="academic-cert-tag-row">
+                        <span className="academic-cert-tag">Official Degree Credential</span>
+                        <span className="academic-cert-status-badge">
+                          <CheckCircle2 size={12} />
+                          <span>Conferred & Verified (2024)</span>
+                        </span>
+                      </div>
+                      <h4 className="academic-cert-heading">
+                        Official B.Sc. Degree Certificate
+                      </h4>
+                    </div>
+                  </div>
+
+                  <p className="academic-cert-desc">
+                    Official certificate issued by Chittagong University of Engineering and Technology (CUET), certifying graduation with First Class Standing in Mechanical Engineering. Available for prospective graduate faculty advisors and admissions committees.
+                  </p>
+
+                  <div className="academic-cert-actions">
+                    <button
+                      onClick={() => setActiveDocModal({
+                        title: "Bachelor of Science in Mechanical Engineering — Degree Certificate",
+                        subtitle: "Chittagong University of Engineering and Technology (CUET) · Conferred 2024",
+                        pdfUrl: "/docs/CUET_BSc_Mechanical_Engineering_Certificate.pdf",
+                        filename: "CUET_BSc_Mechanical_Engineering_Certificate.pdf",
+                        tag: "Official Degree Credential",
+                        note: "Certified academic degree record of Md. Jubair Uddin Zidan • Department of Mechanical Engineering"
+                      })}
+                      className="btn btn-primary academic-cert-btn-primary"
+                      title="View official degree certificate"
+                    >
+                      <Eye size={15} />
+                      <span>View Official Certificate</span>
+                    </button>
+
+                    <a
+                      href="/docs/CUET_BSc_Mechanical_Engineering_Certificate.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary academic-cert-btn-secondary"
+                      title="Open Certificate PDF in new browser tab"
+                    >
+                      <FileText size={14} />
+                      <span>Open in New Tab</span>
+                      <ExternalLink size={13} />
+                    </a>
                   </div>
                 </div>
+              </div>
 
-                <p className="academic-cert-desc">
-                  Official certificate issued by Chittagong University of Engineering and Technology (CUET). Available in official document PDF format for prospective faculty advisors, admissions committees, and academic verification.
-                </p>
+              {/* 2. Official Academic Transcript Box */}
+              <div className="academic-cert-box" style={{ marginTop: 0 }}>
+                <div className="academic-cert-content">
+                  <div className="academic-cert-header-row">
+                    <div className="academic-cert-icon-badge">
+                      <FileText size={18} />
+                    </div>
+                    <div className="academic-cert-title-col">
+                      <div className="academic-cert-tag-row">
+                        <span className="academic-cert-tag">Official Academic Transcript</span>
+                        <span className="academic-cert-status-badge">
+                          <CheckCircle2 size={12} />
+                          <span>Complete 8-Semester Record</span>
+                        </span>
+                      </div>
+                      <h4 className="academic-cert-heading">
+                        Official Undergraduate Academic Transcript
+                      </h4>
+                    </div>
+                  </div>
 
-                <div className="academic-cert-actions">
-                  <button
-                    onClick={() => setIsCertModalOpen(true)}
-                    className="btn btn-primary academic-cert-btn-primary"
-                    title="View official degree certificate"
-                  >
-                    <Eye size={15} />
-                    <span>View Official Certificate</span>
-                  </button>
+                  <p className="academic-cert-desc">
+                    Official 8-semester academic transcript issued by Chittagong University of Engineering and Technology (CUET), detailing all completed lecture and laboratory coursework, letter grades, credit hours (160+), and semester GPAs.
+                  </p>
 
-                  <a
-                    href="/docs/CUET_BSc_Mechanical_Engineering_Certificate.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-secondary academic-cert-btn-secondary"
-                    title="Open Certificate PDF in new browser tab"
-                  >
-                    <FileText size={14} />
-                    <span>Open PDF</span>
-                    <ExternalLink size={13} />
-                  </a>
+                  <div className="academic-cert-actions">
+                    <button
+                      onClick={() => setActiveDocModal({
+                        title: "Bachelor of Science in Mechanical Engineering — Official Transcript",
+                        subtitle: "Chittagong University of Engineering and Technology (CUET) · Complete 8-Semester Record",
+                        pdfUrl: "/docs/CUET_BSc_Mechanical_Engineering_Transcript.pdf",
+                        filename: "CUET_BSc_Mechanical_Engineering_Transcript.pdf",
+                        tag: "Official Academic Transcript",
+                        note: "Certified official transcript of Md. Jubair Uddin Zidan • Department of Mechanical Engineering (CUET)"
+                      })}
+                      className="btn btn-primary academic-cert-btn-primary"
+                      title="View official academic transcript"
+                    >
+                      <Eye size={15} />
+                      <span>View Official Transcript</span>
+                    </button>
 
-                  <a
-                    href="/docs/CUET_BSc_Mechanical_Engineering_Certificate.pdf"
-                    download="CUET_BSc_Mechanical_Engineering_Certificate.pdf"
-                    className="academic-cert-btn-download"
-                    title="Download Official Certificate PDF"
-                  >
-                    <Download size={14} />
-                    <span>Download PDF</span>
-                  </a>
+                    <a
+                      href="/docs/CUET_BSc_Mechanical_Engineering_Transcript.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary academic-cert-btn-secondary"
+                      title="Open Transcript PDF in new browser tab"
+                    >
+                      <FileText size={14} />
+                      <span>Open in New Tab</span>
+                      <ExternalLink size={13} />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -377,11 +433,11 @@ export const AcademicsPage = () => {
         </div>
       </div>
 
-      {/* Official Certificate Document Modal */}
-      {isCertModalOpen && (
+      {/* Official Academic Document Modal (Viewer Only - No Download) */}
+      {activeDocModal && (
         <div 
           className="cert-modal-overlay"
-          onClick={() => setIsCertModalOpen(false)}
+          onClick={() => setActiveDocModal(null)}
         >
           <div 
             className="cert-modal-card"
@@ -390,39 +446,30 @@ export const AcademicsPage = () => {
             {/* Header */}
             <div className="cert-modal-header">
               <div className="cert-modal-title-col">
-                <span className="cert-modal-tag">Official Degree Document</span>
+                <span className="cert-modal-tag">{activeDocModal.tag}</span>
                 <h3 className="cert-modal-title">
-                  Bachelor of Science in Mechanical Engineering — Certificate
+                  {activeDocModal.title}
                 </h3>
                 <div className="cert-modal-sub">
-                  Chittagong University of Engineering and Technology (CUET) · Conferred 2024
+                  {activeDocModal.subtitle}
                 </div>
               </div>
 
               <div className="cert-modal-actions">
                 <a
-                  href="/docs/CUET_BSc_Mechanical_Engineering_Certificate.pdf"
+                  href={activeDocModal.pdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="cert-modal-btn"
-                  title="Open in new window"
+                  title="Open document in new browser tab"
                 >
                   <ExternalLink size={14} />
                   <span>Open Tab</span>
                 </a>
-                <a
-                  href="/docs/CUET_BSc_Mechanical_Engineering_Certificate.pdf"
-                  download="CUET_BSc_Mechanical_Engineering_Certificate.pdf"
-                  className="cert-modal-btn"
-                  title="Download Certificate PDF"
-                >
-                  <Download size={14} />
-                  <span>Download</span>
-                </a>
                 <button
-                  onClick={() => setIsCertModalOpen(false)}
+                  onClick={() => setActiveDocModal(null)}
                   className="cert-modal-close"
-                  aria-label="Close certificate viewer"
+                  aria-label="Close document viewer"
                 >
                   <X size={18} />
                 </button>
@@ -432,9 +479,9 @@ export const AcademicsPage = () => {
             {/* Stage */}
             <div className="cert-modal-stage">
               <iframe
-                src="/docs/CUET_BSc_Mechanical_Engineering_Certificate.pdf#toolbar=1"
+                src={`${activeDocModal.pdfUrl}#toolbar=1`}
                 className="cert-pdf-iframe"
-                title="Official B.Sc. Certificate PDF"
+                title={activeDocModal.title}
               />
             </div>
 
@@ -442,9 +489,9 @@ export const AcademicsPage = () => {
             <div className="cert-modal-footer">
               <div className="cert-modal-verify-text">
                 <CheckCircle2 size={14} color="#10b981" />
-                <span>Certified academic degree record of Md. Jubair Uddin Zidan • Department of Mechanical Engineering</span>
+                <span>{activeDocModal.note}</span>
               </div>
-              <span className="cert-modal-filename">CUET_BSc_Mechanical_Engineering_Certificate.pdf</span>
+              <span className="cert-modal-filename">{activeDocModal.filename}</span>
             </div>
           </div>
         </div>
