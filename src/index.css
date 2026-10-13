@@ -9007,4 +9007,55 @@ img {
   color: var(--text-tertiary);
 }
 
+/* ==========================================================================
+   M.Sc. Direct Status & Progress Milestones Grid (Open Display)
+   ========================================================================== */
+.msc-status-block {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.msc-status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.msc-milestones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.msc-milestone-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.msc-milestone-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.msc-milestone-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.msc-milestone-desc {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
 

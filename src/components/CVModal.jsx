@@ -123,12 +123,12 @@ export const CVModal = ({ isOpen, onClose }) => {
                     <h3 className="cv-item-title">Master of Science (M.Sc.) in Mechanical Engineering</h3>
                     <div className="cv-item-subtitle">Chittagong University of Engineering and Technology (CUET)</div>
                   </div>
-                  <div className="cv-item-date">2025 – 2026 (Ongoing)</div>
+                  <div className="cv-item-date">2025 – 2027 (Ongoing)</div>
                 </div>
                 <ul className="cv-item-bullets">
                   <li>Theory Coursework Cumulative CGPA: <strong>3.90 / 4.00</strong></li>
                   <li>Specialized coursework in Advanced Computational Fluid Dynamics, Turbulence Modeling, and Metamaterials.</li>
-                  <li>Master's Thesis Research in progress; tentative defence scheduled for August–September 2026.</li>
+                  <li>Master's Thesis Research in progress; tentative defence scheduled for January 2027.</li>
                 </ul>
               </div>
 

@@ -83,7 +83,7 @@ export const AcademicsPage = () => {
             <div className="timeline-node-circle">
               <div className="timeline-node-inner-dot" />
             </div>
-            <span className="timeline-year-text">2025 – 2026</span>
+            <span className="timeline-year-text">2025 – 2027</span>
           </div>
 
           <div className="timeline-academic-card is-current">
@@ -113,69 +113,55 @@ export const AcademicsPage = () => {
               />
             </div>
 
-            {/* Expandable Action Button */}
-            <div style={{ marginTop: '16px' }}>
-              <button
-                onClick={() => toggleSection('msc-milestones')}
-                className="pub-expand-btn"
-                aria-expanded={Boolean(expandedSections['msc-milestones'])}
-              >
-                <span>{expandedSections['msc-milestones'] ? 'Hide Progress Milestones & Curriculum' : 'View Progress Milestones & Curriculum'}</span>
-                {expandedSections['msc-milestones'] ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-              </button>
-            </div>
+            {/* Current Status & Progress Milestones: Open Display (No dropdown) */}
+            <div className="msc-status-block">
+              <div className="msc-status-header">
+                <span className="milestones-label">
+                  Current Status & Progress Milestones
+                </span>
+                <span className="milestones-badge">
+                  Active Postgraduate Standing
+                </span>
+              </div>
 
-            {/* M.Sc. Expandable Details - Clean List without Nested Box-in-Box styling */}
-            {expandedSections['msc-milestones'] && (
-              <div style={{ marginTop: '18px', paddingTop: '18px', borderTop: '1px solid var(--border-subtle)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', marginBottom: '14px' }}>
-                  <span className="milestones-label">
-                    Progress & Milestones Completed
-                  </span>
-                  <span className="milestones-badge">
-                    Active Postgraduate Standing
-                  </span>
+              <div className="msc-milestones-grid">
+                <div className="msc-milestone-item">
+                  <CheckCircle2 size={16} color="#10B981" className="msc-milestone-icon" />
+                  <div>
+                    <div className="msc-milestone-title">
+                      Theory Coursework: Finished
+                    </div>
+                    <p className="msc-milestone-desc">
+                      Successfully completed all advanced postgraduate theory credit courses with CGPA 3.90 / 4.00.
+                    </p>
+                  </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
-                  <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                    <CheckCircle2 size={16} color="#10B981" style={{ flexShrink: 0, marginTop: '2px' }} />
-                    <div>
-                      <div style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '2px' }}>
-                        Theory Coursework: Finished
-                      </div>
-                      <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
-                        Successfully completed all advanced postgraduate theory credit courses with CGPA 3.90/4.00.
-                      </p>
+                <div className="msc-milestone-item">
+                  <Clock size={16} color="#817CB8" className="msc-milestone-icon" />
+                  <div>
+                    <div className="msc-milestone-title">
+                      Master's Thesis: Ongoing
                     </div>
+                    <p className="msc-milestone-desc">
+                      Active computational simulation, high-fidelity modeling, and numerical investigations in mechanical metamaterials.
+                    </p>
                   </div>
+                </div>
 
-                  <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                    <Clock size={16} color="#817CB8" style={{ flexShrink: 0, marginTop: '2px' }} />
-                    <div>
-                      <div style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '2px' }}>
-                        Master's Thesis: Ongoing
-                      </div>
-                      <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
-                        Active computational simulation, manuscript drafting, and defense preparation in mechanical metamaterials.
-                      </p>
+                <div className="msc-milestone-item">
+                  <Sparkles size={16} color="#3B82F6" className="msc-milestone-icon" />
+                  <div>
+                    <div className="msc-milestone-title">
+                      Thesis Defence: January 2027 (Tentative)
                     </div>
-                  </div>
-
-                  <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                    <Sparkles size={16} color="#817CB8" style={{ flexShrink: 0, marginTop: '2px' }} />
-                    <div>
-                      <div style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '2px' }}>
-                        Conferral: Aug – Sept 2026
-                      </div>
-                      <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
-                        Tentative target completion for formal thesis defence and degree conferral.
-                      </p>
-                    </div>
+                    <p className="msc-milestone-desc">
+                      Tentative target schedule for formal thesis defence, final committee examination, and degree conferral.
+                    </p>
                   </div>
                 </div>
               </div>
-            )}
+            </div>
           </div>
         </div>
 

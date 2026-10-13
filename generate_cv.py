@@ -119,10 +119,10 @@ def generate_cv():
     edu_data = [
         [
             Paragraph("<b>Master of Science (M.Sc.) in Mechanical Engineering</b><br/>Chittagong University of Engineering and Technology (CUET)", item_title_style),
-            Paragraph("<b>2025 – 2026</b><br/><i>Ongoing Postgraduate</i>", item_meta_style)
+            Paragraph("<b>2025 – 2027</b><br/><i>Ongoing Postgraduate</i>", item_meta_style)
         ],
         [
-            Paragraph("• Theory Coursework Cumulative CGPA: <b>3.90 / 4.00</b><br/>• Focus: Advanced Computational Fluid Dynamics, Turbulence Modeling, and Metamaterials", bullet_style),
+            Paragraph("• Theory Coursework Cumulative CGPA: <b>3.90 / 4.00</b><br/>• Master's Thesis Research in Progress (Tentative Defence: January 2027)", bullet_style),
             ""
         ],
         [

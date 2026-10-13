@@ -38,7 +38,7 @@ export const academicsData = [
     field: "Mechanical Engineering",
     institution: "Chittagong University of Engineering and Technology (CUET)",
     logoUrl: "/images/real/cuet_logo.png",
-    period: "2025 – 2026",
+    period: "2025 – 2027",
     status: "Ongoing Graduate Program",
     isOngoing: true,
     cgpa: "3.90",
@@ -47,7 +47,7 @@ export const academicsData = [
       "Completed Theory Coursework CGPA: 3.90 / 4.00",
       "Completed: Advanced postgraduate theory courses",
       "Remaining: Master's Thesis & Formal Thesis Defence",
-      "Tentative Completion: August – September 2026",
+      "Tentative Completion: January 2027",
       "Focus: Computational Fluid Dynamics, Advanced Turbulence Modelling, and Metamaterials"
     ],
     highlight: "Advanced Research Track"
@@ -854,7 +854,7 @@ export const upcomingAnnouncements = [
   {
     id: 1,
     tag: "Milestone",
-    text: "Thesis Defense : December",
+    text: "Thesis Defence : January 2027 (Tentative)",
     highlight: true,
     emoji: "🎓"
   },
