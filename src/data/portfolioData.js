@@ -396,131 +396,150 @@ export const awardsData = {
     {
       id: "comp-1",
       title: "Champion",
-      event: "Climate Justice Idea Competition (Season 2, 2023)",
-      organizer: "Powered by The Daily Star & ActionAid Bangladesh",
+      event: "Climate Justice idea Competition 2023, Season 2 - Powered by The Daily Star and Actionaid",
+      organizer: "The Daily Star & ActionAid Bangladesh",
       year: "2023",
       category: "Innovation & Climate Action",
-      imageUrl: "/images/award_placeholder.jpg",
-      description: "Secured 1st place nationally for proposing innovative engineering and community-level mitigation solutions addressing climate vulnerability and sustainable clean energy adoption."
+      imageUrl: "/images/real_awards/award_climate_justice_champion.png",
+      description: "Secured National Champion award in Season 2 of the Climate Justice Idea Competition 2023, organized and powered by The Daily Star and ActionAid Bangladesh for proposing innovative climate mitigation solutions."
     },
     {
       id: "comp-2",
-      title: "1st Runner Up",
-      event: "Face the Case — National Business Case Competition 2021",
-      organizer: "Chittagong University of Engineering and Technology (CUET)",
+      title: "1st Runner up",
+      event: "Face the case, Case Competition 2021",
+      organizer: "IEEE CUET Student Branch",
       year: "2021",
       category: "Case Competition",
-      imageUrl: "/images/award_placeholder.jpg",
-      description: "Awarded 1st Runner Up for strategic problem-solving, financial viability modeling, and innovative technical supply-chain case analysis."
+      imageUrl: "/images/real_awards/award_face_the_case_2021.png",
+      description: "Awarded 1st Runner Up in 'Face the Case' Case Competition 2021 by IEEE CUET Student Branch for strategic business problem-solving, financial modeling, and innovative execution."
     },
     {
       id: "comp-3",
       title: "2nd Runner Up",
-      event: "National Earth Olympiad (Barishal Region)",
+      event: "National Earth Olympiad Barishal Region 2014",
       organizer: "Bangladesh Youth Environmental Initiative (BYEI)",
       year: "2014",
       category: "Earth & Environmental Sciences",
-      imageUrl: "/images/real/award_neo_2014.jpg",
-      description: "Recognized among top regional candidates in environmental science, geosciences, and sustainability challenges."
+      imageUrl: "/images/real_awards/award_earth_olympiad_2014.png",
+      description: "Awarded 2nd Runner Up in the Divisional Round of National Earth Olympiad 2014 (NEO 2014), Barishal Region, recognized for excellence in Earth and Environmental Sciences."
     },
     {
       id: "comp-4",
-      title: "Regional Participant & Finalist",
-      event: "National Math Olympiad (Barishal Region)",
+      title: "Champion",
+      event: "National Math Olympiad Barishal Region 2011",
       organizer: "Bangladesh Mathematical Olympiad Committee",
       year: "2011",
       category: "Mathematics",
-      imageUrl: "/images/real/award_math_2011.jpg",
-      description: "Selected through competitive mathematics examinations demonstrating problem-solving acumen and mathematical rigor."
+      imageUrl: "/images/real_awards/award_math_olympiad_champion_2011.png",
+      description: "Awarded Champion in the Barishal Region of the National Math Olympiad (Bangladesh Mathematical Olympiad 2011) demonstrating mathematical problem-solving acumen."
     }
   ],
 
   posterPresentations: [
     {
       id: "post-1",
-      title: "Research Poster Presentation: 1st National Research Fair 2023",
+      title: "Poster Presentation 1",
       event: "Research Fair 2023",
       venue: "Chittagong University of Engineering & Technology (CUET)",
       year: "2023",
-      imageUrl: "/images/real/award_research_fair.jpg",
-      description: "Received Appreciation Trophy from the Directorate of Research and Extension, CUET for outstanding technical poster presentation."
+      imageUrl: "/images/real_awards/award_cuet_research_fair_2023_poster1.png",
+      description: "Presented research poster at the 1st National Research Fair 2023 ('Knowledge Exploration for Smart Bangladesh') organized by Chittagong University of Engineering & Technology (CUET)."
     },
     {
       id: "post-2",
-      title: "Research Poster Presentation 2nd Prize Crest",
-      event: "Research Fair 2023 Poster Presentation",
+      title: "Poster Presentation 2 (2nd Prize)",
+      event: "Research Fair 2023",
       venue: "Chittagong University of Engineering & Technology (CUET)",
       year: "2023",
-      imageUrl: "/images/real/award_poster_2nd.jpg",
-      description: "Awarded 2nd Prize Crest by the Directorate of Research and Extension at CUET for research poster presentation."
+      imageUrl: "/images/real_awards/award_cuet_research_fair_2023_poster2nd.png",
+      description: "Awarded 2nd Prize for Research Poster Presentation organized by the Directorate of Research and Extension, Chittagong University of Engineering & Technology (CUET)."
     }
   ],
 
   posters: [
     {
       id: "post-1",
-      title: "Research Poster Presentation: 1st National Research Fair 2023",
+      title: "Poster Presentation 1",
       event: "Research Fair 2023",
       venue: "Chittagong University of Engineering & Technology (CUET)",
       year: "2023",
-      imageUrl: "/images/real/award_research_fair.jpg",
-      description: "Received Appreciation Trophy from the Directorate of Research and Extension, CUET for outstanding technical poster presentation."
+      imageUrl: "/images/real_awards/award_cuet_research_fair_2023_poster1.png",
+      description: "Presented research poster at the 1st National Research Fair 2023 ('Knowledge Exploration for Smart Bangladesh') organized by Chittagong University of Engineering & Technology (CUET)."
     },
     {
       id: "post-2",
-      title: "Research Poster Presentation 2nd Prize Crest",
-      event: "Research Fair 2023 Poster Presentation",
+      title: "Poster Presentation 2 (2nd Prize)",
+      event: "Research Fair 2023",
       venue: "Chittagong University of Engineering & Technology (CUET)",
       year: "2023",
-      imageUrl: "/images/real/award_poster_2nd.jpg",
-      description: "Awarded 2nd Prize Crest by the Directorate of Research and Extension at CUET for research poster presentation."
+      imageUrl: "/images/real_awards/award_cuet_research_fair_2023_poster2nd.png",
+      description: "Awarded 2nd Prize for Research Poster Presentation organized by the Directorate of Research and Extension, Chittagong University of Engineering & Technology (CUET)."
     }
   ],
 
   hultPrize: [
     {
       id: "hult-1",
-      title: "On-Campus Semifinalist & Competitor",
+      title: "Reached Semifinal round of on campus Hult Prize CUET cohort 2020-2021",
       cohort: "Hult Prize CUET Cohort 2020 – 2021",
       year: "2020 – 2021",
-      imageUrl: "/images/real/cert_hult_prize.jpg",
-      description: "Official competitor certificate recognized for advancing to the semifinal round presenting sustainable social business models."
+      imageUrl: "/images/real_awards/cert_hult_prize_cuet_2021.png",
+      description: "Official certificate recognizing reaching the semifinal round in the on-campus Hult Prize CUET cohort (2020-2021), presenting sustainable social business models."
     },
     {
       id: "hult-2",
-      title: "Volunteer Graphic Designer & Brand Lead",
+      title: "Reached Semifinal round of on campus Hult Prize CUET cohort 2019-2020",
+      cohort: "Bottle Green House Team, Hult Prize CUET Cohort",
+      year: "2019 – 2020",
+      imageUrl: "/images/real_awards/cert_hult_prize_cuet_2020.png",
+      description: "Official certificate conferred to 'Bottle Green House' team for advancing to the semifinal round in the on-campus Hult Prize CUET cohort (2019-2020)."
+    },
+    {
+      id: "hult-3",
+      title: "Volunteer Graphic Designer, HULT Prize Bangladesh Team",
       cohort: "HULT Prize Bangladesh National Team",
       year: "2020 – 2021",
-      imageUrl: "/images/real/cert_hult_bottlegreen.jpg",
-      description: "Led visual identity, event branding, and promotional collateral for nationwide university cohorts (Bottle Green House cohort)."
+      imageUrl: "/images/real_awards/cert_hult_prize_bd_volunteer.png",
+      description: "Volunteer Graphic Designer contributing visual identity, event branding, and promotional collateral for HULT Prize Bangladesh national organizing team."
     }
   ],
 
   eventOrganization: [
     {
       id: "evt-1",
-      title: "Design Lead & Executive Organizer",
+      title: "Design Lead, Organizer for Hult Prize Dhaka Impact Summit 2021",
       event: "Hult Prize Dhaka Impact Summit 2021",
+      venue: "Dhaka Impact Summit",
       year: "2021",
-      imageUrl: "/images/award_placeholder.jpg",
-      description: "Organized international impact summit coordinating delegate communications, sponsor branding, and stage design."
+      imageUrl: "/images/real_awards/cert_hult_prize_dhaka_summit_2021.png",
+      description: "Served as Design Lead & Organizer for the Hult Prize Dhaka Impact Summit 2021, coordinating design materials, delegate communications, and summit branding."
     },
     {
       id: "evt-2",
-      title: "Event Organizing Team Member",
-      event: "Hult Prize Kuala Lumpur & Chittagong Impact Summits 2021",
+      title: "Design Lead, Organizer for Hult Prize Kuala Lumpur Impact Summit 2021",
+      event: "Hult Prize Kuala Lumpur Impact Summit 2021",
+      venue: "Kuala Lumpur Impact Summit",
       year: "2021",
-      imageUrl: "/images/award_placeholder.jpg",
-      description: "Supported international cohort logistics and media management across regional chapters."
+      imageUrl: "/images/real_awards/cert_hult_prize_kl_summit_2021.png",
+      description: "Design Lead and Organizer for the international Hult Prize Kuala Lumpur Impact Summit 2021, managing creative collateral and summit operations."
     },
     {
       id: "evt-3",
-      title: "Organizer & Session Manager",
-      event: "Autodesk Academic Event: Introduction to Autodesk Fusion 360",
+      title: "Design Lead, Organizer for Hult Prize Chittagong Impact Summit 2021",
+      event: "Hult Prize Chittagong Impact Summit 2021",
+      venue: "Chittagong Impact Summit",
+      year: "2021",
+      imageUrl: "/images/real_awards/cert_hult_prize_chittagong_summit_2021.png",
+      description: "Design Lead and Organizer for the Hult Prize Chittagong Impact Summit 2021, orchestrating regional event marketing and summit logistics."
+    },
+    {
+      id: "evt-4",
+      title: "Successfully arranged Autodesk Academic Event: Introduction to Autodesk Fusion 360",
+      event: "Introduction to Autodesk Fusion 360 (Autodesk Academic Partner)",
       venue: "CUET Campus",
       year: "2022",
-      imageUrl: "/images/award_placeholder.jpg",
-      description: "Successfully arranged and coordinated a university-wide Autodesk 3D modeling and generative design hands-on workshop for engineering undergraduates."
+      imageUrl: "/images/real_awards/cert_autodesk_fusion360_organizer.png",
+      description: "Awarded Certificate of Appreciation as Organizer for successfully arranging the Autodesk Academic Event: Introduction to Autodesk Fusion 360 at CUET."
     }
   ],
 
@@ -530,24 +549,24 @@ export const awardsData = {
       title: "Certified SolidWorks Associate (CSWA)",
       issuer: "Dassault Systèmes",
       field: "Mechanical Design & 3D Parametric CAD",
-      imageUrl: "/images/award_placeholder.jpg",
-      description: "Official certification proving proficiency in parts, assemblies, engineering drawings, and design validation."
+      imageUrl: "/images/real_awards/cert_cswa_solidworks.png",
+      description: "Official Dassault Systèmes Certified SOLIDWORKS Associate (CSWA) credential in mechanical engineering design, assembly modeling, and engineering drawings."
     },
     {
       id: "cert-2",
       title: "Engineering Simulations (FEA & CFD)",
-      issuer: "Advanced Simulation Training / Ansys Academic",
-      field: "Finite Element & Computational Fluid Dynamics",
-      imageUrl: "/images/award_placeholder.jpg",
-      description: "Comprehensive coursework on mesh generation, boundary conditions, turbulence models, and post-processing."
+      issuer: "Cornell University / edX (CornellX)",
+      field: "A Hands-on Introduction to Engineering Simulations",
+      imageUrl: "/images/real_awards/cert_edx_cornell_simulation.png",
+      description: "Verified certificate from CornellX (Cornell University) for successfully completing 'A Hands-on Introduction to Engineering Simulations' covering FEA, CFD, and numerical modeling."
     },
     {
       id: "cert-3",
       title: "MATLAB for Engineers & Numerical Computation",
-      issuer: "MathWorks Academic Training",
-      field: "Scientific Computing & Algorithm Development",
-      imageUrl: "/images/award_placeholder.jpg",
-      description: "Numerical differentiation, matrix mathematics, ODE solvers, and graphical data visualization."
+      issuer: "MathWorks Training Services",
+      field: "MATLAB Scientific Computing & Algorithm Development",
+      imageUrl: "/images/real_awards/cert_matlab_mathworks.png",
+      description: "MathWorks Training Services official training and progress report in MATLAB for numerical analysis, matrix mathematics, and technical programming."
     }
   ]
 };
