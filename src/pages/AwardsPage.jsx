@@ -147,7 +147,7 @@ export const AwardsPage = () => {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
-            {awardsData.posters.map((item) => {
+            {(awardsData.posters || awardsData.posterPresentations || []).map((item) => {
               const isExpanded = Boolean(expandedAwards[item.id]);
               return (
                 <div key={item.id} className="award-card card-interactive">

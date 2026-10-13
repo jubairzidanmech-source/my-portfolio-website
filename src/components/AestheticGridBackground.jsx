@@ -175,16 +175,6 @@ export const AestheticGridBackground = () => {
 
       {/* 6. Technical side accents (Editorial Swiss aesthetic) */}
       <div className="grid-technical-stripe-right" />
-      
-      <div className="grid-technical-tag tag-top-left">
-        <span>CUET // MECHANICAL ENG</span>
-      </div>
-      <div className="grid-technical-tag tag-mid-left">
-        <span>CFD // NUMERICAL SIMULATION</span>
-      </div>
-      <div className="grid-technical-tag tag-bottom-left">
-        <span>RESEARCH // ADVANCED MATERIALS</span>
-      </div>
     </div>
   );
 };

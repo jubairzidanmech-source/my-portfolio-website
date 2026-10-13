@@ -408,7 +408,7 @@ export const ResearchPage = () => {
                   </div>
 
                   <div className="pub-tags-row">
-                    {pres.tags.map((tag, tIdx) => (
+                    {(pres.tags || []).map((tag, tIdx) => (
                       <span key={tIdx} className="pub-tag-pill">{tag}</span>
                     ))}
                   </div>

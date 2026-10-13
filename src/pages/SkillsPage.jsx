@@ -6,31 +6,74 @@ import {
   FileSpreadsheet, 
   Palette, 
   Terminal, 
-  UserCheck, 
-  Heart, 
-  Sparkles,
   Layers,
-  CheckCircle2
+  Users,
+  Mic,
+  Calendar,
+  Layout,
+  Globe,
+  Compass,
+  CheckCircle2,
+  Camera,
+  Wind,
+  BookOpen
 } from 'lucide-react';
 import { skillsData } from '../data/portfolioData';
 
 export const SkillsPage = () => {
+  // Category Icons: strictly identical size (17px) & stroke width (2)
   const getCategoryIcon = (category) => {
     switch (category) {
       case 'Design & Simulation':
-        return <Cpu size={18} color="var(--purple-accent)" />;
+        return <Cpu size={17} strokeWidth={2} />;
       case 'Programming & Computation':
-        return <Code2 size={18} color="var(--purple-accent)" />;
+        return <Code2 size={17} strokeWidth={2} />;
       case 'Data Analysis & Visualization':
-        return <LineChart size={18} color="var(--purple-accent)" />;
+        return <LineChart size={17} strokeWidth={2} />;
       case 'Office & Documentation':
-        return <FileSpreadsheet size={18} color="var(--purple-accent)" />;
+        return <FileSpreadsheet size={17} strokeWidth={2} />;
       case 'Presentation & Graphic Design':
-        return <Palette size={18} color="var(--purple-accent)" />;
+        return <Palette size={17} strokeWidth={2} />;
       case 'Operating Systems & Environments':
-        return <Terminal size={18} color="var(--purple-accent)" />;
+        return <Terminal size={17} strokeWidth={2} />;
       default:
-        return <Layers size={18} color="var(--purple-accent)" />;
+        return <Layers size={17} strokeWidth={2} />;
+    }
+  };
+
+  // Professional Competency Icons: strictly identical container & size (17px)
+  const getCompetencyIcon = (idx) => {
+    switch (idx) {
+      case 0:
+        return <Users size={17} strokeWidth={2} />;
+      case 1:
+        return <Mic size={17} strokeWidth={2} />;
+      case 2:
+        return <Calendar size={17} strokeWidth={2} />;
+      case 3:
+        return <Layout size={17} strokeWidth={2} />;
+      case 4:
+        return <Globe size={17} strokeWidth={2} />;
+      case 5:
+        return <Compass size={17} strokeWidth={2} />;
+      default:
+        return <CheckCircle2 size={17} strokeWidth={2} />;
+    }
+  };
+
+  // Interests Icons: visually lighter, compact monochrome (15px)
+  const getHobbyIcon = (idx) => {
+    switch (idx) {
+      case 0:
+        return <Palette size={15} strokeWidth={1.8} />;
+      case 1:
+        return <Camera size={15} strokeWidth={1.8} />;
+      case 2:
+        return <Wind size={15} strokeWidth={1.8} />;
+      case 3:
+        return <BookOpen size={15} strokeWidth={1.8} />;
+      default:
+        return <Compass size={15} strokeWidth={1.8} />;
     }
   };
 
@@ -38,7 +81,7 @@ export const SkillsPage = () => {
     <div className="container animate-fade-in">
       {/* Editorial Page Header */}
       <div className="page-intro">
-        <span className="section-label">Technical Competencies</span>
+        <span className="section-label">TECHNICAL COMPETENCIES</span>
         <h1 className="page-title">
           Skills & <span className="header-badge">Proficiencies</span>
         </h1>
@@ -47,57 +90,40 @@ export const SkillsPage = () => {
         </p>
       </div>
 
-      {/* 1. SOFTWARE SKILLS */}
-      <section style={{ marginBottom: '56px' }}>
-        <div style={{ marginBottom: '24px' }}>
-          <h2 style={{ fontSize: '1.6rem', color: 'var(--text-primary)' }}>
-            Software Skills
-          </h2>
+      {/* 1. TECHNICAL SKILLS & SOFTWARE TOOLKITS */}
+      <section className="section-spacing">
+        <div className="section-heading-row">
+          <div>
+            <div className="section-eyebrow">COMPUTATIONAL & ENGINEERING TOOLKITS</div>
+            <h2 className="section-main-heading">
+              Technical Skills & Software Systems
+            </h2>
+          </div>
+          <span className="section-count-badge">
+            6 Domains · 24+ Tools
+          </span>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '24px' }}>
+        <div className="skills-tech-grid">
           {skillsData.softwareSkills.map((cat, idx) => (
-            <div key={idx} className="card card-interactive" style={{ padding: '26px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-                <div style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '10px',
-                  background: 'var(--lavender-soft)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid var(--border-accent)'
-                }}>
+            <div key={idx} className="card skill-tech-card">
+              <div className="skill-card-header">
+                <div className="skill-cat-icon-box">
                   {getCategoryIcon(cat.category)}
                 </div>
-                <h3 style={{ fontSize: '1.18rem', color: 'var(--text-primary)' }}>
+                <h3 className="skill-cat-title">
                   {cat.category}
                 </h3>
               </div>
 
-              <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: 1.55 }}>
+              <p className="skill-cat-desc">
                 {cat.description}
               </p>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              <div className="skill-tools-wrap">
                 {cat.skills.map((skill, sIdx) => (
-                  <span
-                    key={sIdx}
-                    style={{
-                      background: 'var(--bg-card-subtle)',
-                      border: '1px solid var(--border-subtle)',
-                      color: 'var(--text-secondary)',
-                      fontSize: '0.82rem',
-                      fontWeight: 500,
-                      padding: '5px 12px',
-                      borderRadius: '8px',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '5px'
-                    }}
-                  >
-                    <span style={{ color: 'var(--text-faint)', fontSize: '0.9rem' }}>•</span>
+                  <span key={sIdx} className="skill-tool-pill">
+                    <span className="skill-tool-dot" />
                     <span>{skill}</span>
                   </span>
                 ))}
@@ -107,48 +133,65 @@ export const SkillsPage = () => {
         </div>
       </section>
 
-      {/* 2. PERSONAL SKILLS */}
-      <section style={{ marginBottom: '56px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
-          <span className="section-label">Soft Skills</span>
-          <h2 style={{ fontSize: '1.6rem', color: 'var(--text-primary)' }}>
-            Personal & Professional Competencies
-          </h2>
+      {/* 2. PROFESSIONAL & INTERPERSONAL COMPETENCIES */}
+      <section className="section-spacing">
+        <div className="section-heading-row">
+          <div>
+            <div className="section-eyebrow">ACADEMIC & COLLABORATIVE EXCELLENCE</div>
+            <h2 className="section-main-heading">
+              Professional Competencies
+            </h2>
+          </div>
+          <span className="section-count-badge">
+            6 Core Competencies
+          </span>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px' }}>
+        <div className="competencies-grid">
           {skillsData.personalSkills.map((skill, idx) => (
-            <div key={idx} className="card card-interactive" style={{ padding: '24px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <CheckCircle2 size={16} color="var(--purple-accent)" />
-                <h3 style={{ fontSize: '1.1rem', color: 'var(--text-primary)' }}>
+            <div key={idx} className="card competency-card">
+              <div className="skill-cat-icon-box">
+                {getCompetencyIcon(idx)}
+              </div>
+              <div className="competency-content">
+                <h3 className="competency-title">
                   {skill.title}
                 </h3>
+                <p className="competency-desc">
+                  {skill.desc}
+                </p>
               </div>
-              <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                {skill.desc}
-              </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 3. HOBBIES & INTERESTS */}
-      <section style={{ marginBottom: '40px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
-          <span className="section-label">Beyond Engineering</span>
-          <h2 style={{ fontSize: '1.6rem', color: 'var(--text-primary)' }}>
-            Personal Interests & Hobbies
-          </h2>
+      {/* 3. PERSONAL INTERESTS & EXPLORATIONS (Visually Lighter) */}
+      <section className="section-spacing" style={{ marginBottom: '64px' }}>
+        <div className="section-heading-row">
+          <div>
+            <div className="section-eyebrow" style={{ color: '#64748B' }}>BEYOND THE LAB</div>
+            <h2 className="section-main-heading" style={{ fontSize: '1.35rem', color: 'var(--text-secondary)' }}>
+              Personal Interests & Explorations
+            </h2>
+          </div>
+          <span className="section-count-badge" style={{ fontSize: '0.78rem' }}>
+            Creative Pursuits
+          </span>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
+        <div className="interests-grid">
           {skillsData.hobbies.map((hobby, idx) => (
-            <div key={idx} className="card card-interactive card-subtle" style={{ padding: '24px' }}>
-              <h3 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '8px' }}>
-                {hobby.name}
-              </h3>
-              <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+            <div key={idx} className="interest-card-light">
+              <div className="interest-header">
+                <span className="interest-icon-light">
+                  {getHobbyIcon(idx)}
+                </span>
+                <h3 className="interest-title-light">
+                  {hobby.name}
+                </h3>
+              </div>
+              <p className="interest-desc-light">
                 {hobby.desc}
               </p>
             </div>

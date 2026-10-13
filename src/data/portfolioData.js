@@ -213,7 +213,9 @@ export const researchData = {
       date: "December 2024",
       type: "Oral Technical Presentation",
       imageUrl: "/images/real/bsme_presentation.jpg",
-      certificateUrl: "/images/real/bsme_certificate.jpg"
+      certificateUrl: "/images/real/bsme_certificate.jpg",
+      tags: ["Aeroacoustics", "Jet Noise", "CFD", "BUET"],
+      description: "Delivered technical oral podium presentation detailing serrated chevron nozzle acoustics, compressible Navier-Stokes computations, and FW-H acoustic analogies."
     },
     {
       id: "pres-2",
@@ -223,7 +225,9 @@ export const researchData = {
       date: "December 2024",
       type: "Podium Presentation",
       imageUrl: "/images/real/mimec_presentation.jpg",
-      certificateUrl: "/images/real/mimec_certificate.jpg"
+      certificateUrl: "/images/real/mimec_certificate.jpg",
+      tags: ["VAWT", "Aerodynamics", "Sliding Mesh", "RUET"],
+      description: "Presented numerical investigation on aerodynamic self-starting capability and power coefficients across symmetrical and cambered NACA airfoil profiles."
     },
     {
       id: "pres-3",
@@ -231,7 +235,9 @@ export const researchData = {
       event: "Annual Mechanical Engineering Research Exposition",
       venue: "CUET, Chittagong, Bangladesh",
       date: "2023 – 2024",
-      type: "Technical Presentation"
+      type: "Technical Presentation",
+      tags: ["Ground Effect", "Formula 1", "CFD", "CUET"],
+      description: "Delivered oral and poster defense of ground-effect venturi underfloor aerodynamics under FIA 2022 regulation geometries."
     }
   ],
 
@@ -391,6 +397,10 @@ export const awardsData = {
       description: "Awarded 2nd Prize Crest by the Directorate of Research and Extension at CUET for research poster presentation."
     }
   ],
+
+  get posters() {
+    return this.posterPresentations;
+  },
 
   hultPrize: [
     {
