@@ -8,6 +8,7 @@ import {
   Clock, 
   Globe, 
   FileText, 
+  Download,
   Send,
   GraduationCap,
   Layers,
@@ -107,7 +108,7 @@ export const ContactPage = () => {
                 <span>{copied ? 'Copied!' : 'Copy Email'}</span>
               </button>
 
-              {/* Quieter CV Action */}
+              {/* CV Actions */}
               <button
                 onClick={() => setIsCvModalOpen(true)}
                 className="contact-quiet-cv-btn"
@@ -116,6 +117,16 @@ export const ContactPage = () => {
                 <FileText size={14} />
                 <span>View Academic CV</span>
               </button>
+
+              <a
+                href={personalData.cvUrl || '/Md_Jubair_Uddin_Zidan_CV.pdf'}
+                download="Md_Jubair_Uddin_Zidan_CV.pdf"
+                className="contact-quiet-cv-btn"
+                title="Download Official Curriculum Vitae Attachment (PDF)"
+              >
+                <Download size={14} />
+                <span>Download CV</span>
+              </a>
             </div>
           </div>
 
