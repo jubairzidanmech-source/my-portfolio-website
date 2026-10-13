@@ -61,11 +61,12 @@ export function App() {
 
     const element = document.getElementById(sectionId);
     if (element) {
-      const navOffset = 84; // Navbar height + breathing room
+      // Dynamic header offset accounting for fixed announcement bar + sticky navbar
+      const navOffset = announcementVisible ? 128 : 94;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - navOffset;
       window.scrollTo({
-        top: offsetPosition,
+        top: Math.max(0, offsetPosition),
         behavior: smooth ? 'smooth' : 'auto'
       });
       try {
@@ -116,12 +117,15 @@ export function App() {
         return;
       }
 
+      // Dynamic offset matching header height + breathing room
+      const headerOffset = announcementVisible ? 138 : 104;
+
       // Scan through sections from bottom to top to identify which one is in view
       for (let i = SECTIONS.length - 1; i >= 0; i--) {
         const id = SECTIONS[i];
         const el = document.getElementById(id);
         if (el) {
-          const top = el.offsetTop - 140;
+          const top = el.offsetTop - headerOffset;
           if (window.scrollY >= top) {
             setActivePage(id);
             break;

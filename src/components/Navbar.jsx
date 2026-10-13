@@ -51,7 +51,6 @@ export const Navbar = ({ activePage, setActivePage, theme, toggleTheme, hasAnnou
   const handleNavClick = (pageId) => {
     setActivePage(pageId);
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (

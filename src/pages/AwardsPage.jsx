@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
-import { Award, Trophy, BookmarkCheck, Users, Calendar, Sparkles, CheckCircle2, ChevronRight, FileBadge } from 'lucide-react';
+import { Trophy, CheckCircle2, ChevronDown, ChevronUp, FileBadge, ArrowUpRight, Award } from 'lucide-react';
 import { awardsData } from '../data/portfolioData';
+import { InteractiveModal } from '../components/InteractiveModal';
 
 export const AwardsPage = () => {
   const [activeCategory, setActiveCategory] = useState('all');
+  const [expandedAwards, setExpandedAwards] = useState({});
+  const [activeModalData, setActiveModalData] = useState(null);
+
+  const toggleAward = (id) => {
+    setExpandedAwards(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
 
   const categories = [
     { id: 'all', label: 'All Honors' },
@@ -41,273 +51,357 @@ export const AwardsPage = () => {
 
       {/* 1. COMPETITIONS & ACHIEVEMENTS */}
       {(activeCategory === 'all' || activeCategory === 'competitions') && (
-        <section style={{ marginBottom: '56px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '22px' }}>
-            <Trophy size={20} color="var(--purple-accent)" />
-            <h2 style={{ fontSize: '1.45rem', color: 'var(--text-primary)' }}>
-              Competitions & Achievements
-            </h2>
+        <section className="section-spacing">
+          <div className="section-heading-row">
+            <div>
+              <div className="section-eyebrow">HONORS</div>
+              <h2 className="section-main-heading">
+                Competitions & Achievements
+              </h2>
+            </div>
+            <span className="section-count-badge">
+              {awardsData.competitions.length} Accolades
+            </span>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '22px' }}>
-            {awardsData.competitions.map((item) => (
-              <div key={item.id} className="card card-interactive" style={{ padding: '24px' }}>
-                {/* Image / Certificate Placeholder Slot */}
-                <div className="award-thumb-box">
-                  {item.imageUrl ? (
-                    <img 
-                      src={item.imageUrl} 
-                      alt={item.event} 
-                      className="award-thumb-img" 
-                    />
-                  ) : (
-                    <div className="award-placeholder-inner">
-                      <Trophy size={32} color="#817CB8" />
-                      <span>Award / Crest Placeholder</span>
-                      <span style={{ fontSize: '0.72rem', color: '#9D97B8' }}>Slot ready for photo upload</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
+            {awardsData.competitions.map((item) => {
+              const isExpanded = Boolean(expandedAwards[item.id]);
+              return (
+                <div key={item.id} className="award-card card-interactive">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '10px' }}>
+                    <span className={`award-badge ${item.title.toLowerCase().includes('champion') ? 'champion' : ''}`}>
+                      {item.title}
+                    </span>
+                    <span className="award-card-year">
+                      {item.year}
+                    </span>
+                  </div>
+
+                  <h3 className="award-card-title">
+                    {item.event}
+                  </h3>
+
+                  <p className="award-card-org">
+                    {item.organizer}
+                  </p>
+
+                  <div className="pub-actions-row" style={{ marginTop: '14px' }}>
+                    <button
+                      onClick={() => toggleAward(item.id)}
+                      className="pub-expand-btn"
+                      aria-expanded={isExpanded}
+                    >
+                      <span>{isExpanded ? 'Hide Details' : 'View Description & Details'}</span>
+                      {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                    </button>
+
+                    {item.imageUrl && (
+                      <button
+                        onClick={() => setActiveModalData({
+                          title: item.event,
+                          subtitle: `${item.title} • ${item.organizer} (${item.year})`,
+                          content: (
+                            <div style={{ textAlign: 'center' }}>
+                              <img 
+                                src={item.imageUrl} 
+                                alt={item.event} 
+                                style={{ maxWidth: '100%', maxHeight: '520px', borderRadius: '12px', objectFit: 'contain' }} 
+                              />
+                            </div>
+                          )
+                        })}
+                        className="pub-visual-btn"
+                      >
+                        <Award size={14} />
+                        <span>View Award Image</span>
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Expandable Details */}
+                  {isExpanded && (
+                    <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid var(--border-subtle)' }}>
+                      <p className="award-card-desc" style={{ marginBottom: 0 }}>
+                        {item.description}
+                      </p>
                     </div>
                   )}
                 </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
-                  <span className={`award-badge ${item.title === 'Champion' ? 'champion' : ''}`}>
-                    {item.title}
-                  </span>
-                  <span className="award-card-year">
-                    {item.year}
-                  </span>
-                </div>
-
-                <h3 className="award-card-title">
-                  {item.event}
-                </h3>
-
-                <p className="award-card-org">
-                  {item.organizer}
-                </p>
-
-                <p className="award-card-desc">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}
 
       {/* 2. RESEARCH POSTER PRESENTATIONS */}
       {(activeCategory === 'all' || activeCategory === 'posters') && (
-        <section style={{ marginBottom: '56px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '22px' }}>
-            <Award size={20} color="var(--purple-accent)" />
-            <h2 style={{ fontSize: '1.45rem', color: 'var(--text-primary)' }}>
-              Research Poster Presentations
-            </h2>
+        <section className="section-spacing">
+          <div className="section-heading-row">
+            <div>
+              <div className="section-eyebrow">RESEARCH EXHIBITS</div>
+              <h2 className="section-main-heading">
+                Poster Presentations
+              </h2>
+            </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '22px' }}>
-            {awardsData.posterPresentations.map((item) => (
-              <div key={item.id} className="card card-interactive" style={{ padding: '24px' }}>
-                {/* Image / Certificate Placeholder Slot */}
-                <div className="award-thumb-box">
-                  {item.imageUrl ? (
-                    <img 
-                      src={item.imageUrl} 
-                      alt={item.title} 
-                      className="award-thumb-img" 
-                    />
-                  ) : (
-                    <div className="award-placeholder-inner">
-                      <Award size={32} color="#817CB8" />
-                      <span>Poster Symposium Trophy Placeholder</span>
-                      <span style={{ fontSize: '0.72rem', color: '#9D97B8' }}>Slot ready for photo upload</span>
-                    </div>
-                  )}
-                </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
+            {awardsData.posters.map((item) => {
+              const isExpanded = Boolean(expandedAwards[item.id]);
+              return (
+                <div key={item.id} className="award-card card-interactive">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '10px' }}>
+                    <span className="award-badge champion">
+                      {item.title}
+                    </span>
+                    <span className="award-card-year">
+                      {item.year}
+                    </span>
+                  </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                  <span className="award-badge">
+                  <h3 className="award-card-title">
                     {item.event}
-                  </span>
-                  <span className="award-card-year">
-                    {item.year}
-                  </span>
+                  </h3>
+
+                  <p className="award-card-org">
+                    {item.organizer}
+                  </p>
+
+                  <div className="pub-actions-row" style={{ marginTop: '14px' }}>
+                    <button
+                      onClick={() => toggleAward(item.id)}
+                      className="pub-expand-btn"
+                      aria-expanded={isExpanded}
+                    >
+                      <span>{isExpanded ? 'Hide Abstract & Details' : 'View Presentation Details'}</span>
+                      {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                    </button>
+                  </div>
+
+                  {isExpanded && (
+                    <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid var(--border-subtle)' }}>
+                      <p className="award-card-desc" style={{ marginBottom: 0 }}>
+                        {item.description}
+                      </p>
+                    </div>
+                  )}
                 </div>
-
-                <h3 className="award-card-title">
-                  {item.title}
-                </h3>
-
-                <p className="award-card-org">
-                  {item.venue}
-                </p>
-
-                <p className="award-card-desc">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}
 
-      {/* 3. HULT PRIZE PARTICIPATION & ACTIVITIES */}
+      {/* 3. HULT PRIZE ACTIVITIES */}
       {(activeCategory === 'all' || activeCategory === 'hult') && (
-        <section style={{ marginBottom: '56px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '22px' }}>
-            <Sparkles size={20} color="var(--purple-accent)" />
-            <h2 style={{ fontSize: '1.45rem', color: 'var(--text-primary)' }}>
-              Hult Prize Participation & Activities
-            </h2>
+        <section className="section-spacing">
+          <div className="section-heading-row">
+            <div>
+              <div className="section-eyebrow">SOCIAL ENTREPRENEURSHIP</div>
+              <h2 className="section-main-heading">
+                Hult Prize Global Challenges
+              </h2>
+            </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '22px' }}>
-            {awardsData.hultPrize.map((item) => (
-              <div key={item.id} className="card card-interactive" style={{ padding: '24px' }}>
-                {/* Image / Certificate Placeholder Slot */}
-                <div className="award-thumb-box">
-                  {item.imageUrl ? (
-                    <img 
-                      src={item.imageUrl} 
-                      alt={item.title} 
-                      className="award-thumb-img" 
-                    />
-                  ) : (
-                    <div className="award-placeholder-inner">
-                      <Sparkles size={32} color="#817CB8" />
-                      <span>Hult Prize Certificate Placeholder</span>
-                      <span style={{ fontSize: '0.72rem', color: '#9D97B8' }}>Slot ready for photo upload</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
+            {awardsData.hultPrize.map((item) => {
+              const isExpanded = Boolean(expandedAwards[item.id]);
+              return (
+                <div key={item.id} className="award-card card-interactive">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '10px' }}>
+                    <span className="award-badge verified">
+                      {item.role}
+                    </span>
+                    <span className="award-card-year">
+                      {item.year}
+                    </span>
+                  </div>
+
+                  <h3 className="award-card-title">
+                    {item.title}
+                  </h3>
+
+                  <p className="award-card-org">
+                    {item.organization}
+                  </p>
+
+                  <div className="pub-actions-row" style={{ marginTop: '14px' }}>
+                    <button
+                      onClick={() => toggleAward(item.id)}
+                      className="pub-expand-btn"
+                      aria-expanded={isExpanded}
+                    >
+                      <span>{isExpanded ? 'Hide Details' : 'View Impact & Contributions'}</span>
+                      {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                    </button>
+                  </div>
+
+                  {isExpanded && (
+                    <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid var(--border-subtle)' }}>
+                      <p className="award-card-desc" style={{ marginBottom: 0 }}>
+                        {item.description}
+                      </p>
                     </div>
                   )}
                 </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                  <span className="award-badge">
-                    {item.title}
-                  </span>
-                  <span className="award-card-year">{item.year}</span>
-                </div>
-
-                <h3 className="award-card-title">
-                  {item.cohort}
-                </h3>
-
-                <p className="award-card-desc">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}
 
-      {/* 4. EVENT PARTICIPATION & ORGANIZATION */}
+      {/* 4. EVENT ORGANIZATION */}
       {(activeCategory === 'all' || activeCategory === 'events') && (
-        <section style={{ marginBottom: '56px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '22px' }}>
-            <Users size={20} color="var(--purple-accent)" />
-            <h2 style={{ fontSize: '1.45rem', color: 'var(--text-primary)' }}>
-              Event Participation & Organization
-            </h2>
+        <section className="section-spacing">
+          <div className="section-heading-row">
+            <div>
+              <div className="section-eyebrow">LEADERSHIP</div>
+              <h2 className="section-main-heading">
+                Event Organization & Directorship
+              </h2>
+            </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '22px' }}>
-            {awardsData.eventOrganization.map((item) => (
-              <div key={item.id} className="card card-interactive" style={{ padding: '24px' }}>
-                {/* Image / Certificate Placeholder Slot */}
-                <div className="award-thumb-box">
-                  {item.imageUrl ? (
-                    <img 
-                      src={item.imageUrl} 
-                      alt={item.title} 
-                      className="award-thumb-img" 
-                    />
-                  ) : (
-                    <div className="award-placeholder-inner">
-                      <Users size={32} color="#817CB8" />
-                      <span>Event Certificate / Photo Placeholder</span>
-                      <span style={{ fontSize: '0.72rem', color: '#9D97B8' }}>Slot ready for photo upload</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
+            {awardsData.eventOrganization.map((item) => {
+              const isExpanded = Boolean(expandedAwards[item.id]);
+              return (
+                <div key={item.id} className="award-card card-interactive">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '10px' }}>
+                    <span className="award-badge verified">
+                      Lead Organizer
+                    </span>
+                    <span className="award-card-year">
+                      {item.year}
+                    </span>
+                  </div>
+
+                  <h3 className="award-card-title">
+                    {item.title}
+                  </h3>
+
+                  <p className="award-card-org">
+                    {item.event} {item.venue ? `• ${item.venue}` : ''}
+                  </p>
+
+                  <div className="pub-actions-row" style={{ marginTop: '14px' }}>
+                    <button
+                      onClick={() => toggleAward(item.id)}
+                      className="pub-expand-btn"
+                      aria-expanded={isExpanded}
+                    >
+                      <span>{isExpanded ? 'Hide Details' : 'View Responsibilities & Scale'}</span>
+                      {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                    </button>
+                  </div>
+
+                  {isExpanded && (
+                    <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid var(--border-subtle)' }}>
+                      <p className="award-card-desc" style={{ marginBottom: 0 }}>
+                        {item.description}
+                      </p>
                     </div>
                   )}
                 </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                  <span className="award-badge">
-                    Leadership & Management
-                  </span>
-                  <span className="award-card-year">{item.year}</span>
-                </div>
-
-                <h3 className="award-card-title">
-                  {item.title}
-                </h3>
-
-                <p className="award-card-org">
-                  {item.event} {item.venue ? `• ${item.venue}` : ''}
-                </p>
-
-                <p className="award-card-desc">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}
 
       {/* 5. COURSE CERTIFICATIONS */}
       {(activeCategory === 'all' || activeCategory === 'certs') && (
-        <section style={{ marginBottom: '40px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '22px' }}>
-            <FileBadge size={20} color="var(--purple-accent)" />
-            <h2 style={{ fontSize: '1.45rem', color: 'var(--text-primary)' }}>
-              Course Certifications
-            </h2>
+        <section className="section-spacing">
+          <div className="section-heading-row">
+            <div>
+              <div className="section-eyebrow">ACCREDITATIONS</div>
+              <h2 className="section-main-heading">
+                Professional Engineering Certifications
+              </h2>
+            </div>
+            <span className="section-count-badge">
+              {awardsData.certifications.length} Credentials
+            </span>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '22px' }}>
-            {awardsData.certifications.map((item) => (
-              <div key={item.id} className="card card-interactive card-subtle" style={{ padding: '24px' }}>
-                {/* Image / Certificate Placeholder Slot */}
-                <div className="award-thumb-box">
-                  {item.imageUrl ? (
-                    <img 
-                      src={item.imageUrl} 
-                      alt={item.title} 
-                      className="award-thumb-img" 
-                    />
-                  ) : (
-                    <div className="award-placeholder-inner">
-                      <FileBadge size={32} color="#817CB8" />
-                      <span>Accredited Certification Placeholder</span>
-                      <span style={{ fontSize: '0.72rem', color: '#9D97B8' }}>Slot ready for credential certificate</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
+            {awardsData.certifications.map((item) => {
+              const isExpanded = Boolean(expandedAwards[item.id]);
+              return (
+                <div key={item.id} className="award-card card-interactive card-subtle">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                    <span className="award-badge verified">
+                      Verified Credential
+                    </span>
+                    <CheckCircle2 size={16} color="#10B981" />
+                  </div>
+
+                  <h3 className="award-card-title">
+                    {item.title}
+                  </h3>
+
+                  <div className="award-card-org">
+                    Issuer: {item.issuer} • {item.field}
+                  </div>
+
+                  <div className="pub-actions-row" style={{ marginTop: '14px' }}>
+                    <button
+                      onClick={() => toggleAward(item.id)}
+                      className="pub-expand-btn"
+                      aria-expanded={isExpanded}
+                    >
+                      <span>{isExpanded ? 'Hide Details' : 'View Syllabus & Verification'}</span>
+                      {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                    </button>
+
+                    {item.imageUrl && (
+                      <button
+                        onClick={() => setActiveModalData({
+                          title: item.title,
+                          subtitle: `Issuer: ${item.issuer} • ${item.field}`,
+                          content: (
+                            <div style={{ textAlign: 'center' }}>
+                              <img 
+                                src={item.imageUrl} 
+                                alt={item.title} 
+                                style={{ maxWidth: '100%', maxHeight: '520px', borderRadius: '12px', objectFit: 'contain' }} 
+                              />
+                            </div>
+                          )
+                        })}
+                        className="pub-visual-btn"
+                      >
+                        <Award size={14} />
+                        <span>View Certificate Image</span>
+                      </button>
+                    )}
+                  </div>
+
+                  {isExpanded && (
+                    <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid var(--border-subtle)' }}>
+                      <p className="award-card-desc" style={{ marginBottom: 0 }}>
+                        {item.description}
+                      </p>
                     </div>
                   )}
                 </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                  <span className="award-badge verified">
-                    Verified Credential
-                  </span>
-                  <CheckCircle2 size={16} color="#10B981" />
-                </div>
-
-                <h3 className="award-card-title">
-                  {item.title}
-                </h3>
-
-                <div className="award-card-org">
-                  Issuer: {item.issuer} • {item.field}
-                </div>
-
-                <p className="award-card-desc">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}
+
+      {/* Global Interactive Modal for Fullscreen Certificates */}
+      <InteractiveModal
+        isOpen={Boolean(activeModalData)}
+        onClose={() => setActiveModalData(null)}
+        title={activeModalData?.title}
+        subtitle={activeModalData?.subtitle}
+      >
+        {activeModalData?.content}
+      </InteractiveModal>
     </div>
   );
 };

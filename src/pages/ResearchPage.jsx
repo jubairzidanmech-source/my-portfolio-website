@@ -1,147 +1,36 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { 
   Award,
   BookOpen,
   ChevronDown, 
   ChevronUp, 
-  ChevronLeft,
-  ChevronRight,
-  Users, 
   ArrowUpRight,
   Presentation,
-  Wind
+  Wind,
+  Layers,
+  Sparkles,
+  ExternalLink,
+  CheckCircle2,
+  FileText
 } from 'lucide-react';
 import { researchData } from '../data/portfolioData';
 import { InteractiveModal } from '../components/InteractiveModal';
 
 export const ResearchPage = () => {
-  // Active category filter for Projects (D)
+  // Active category filter for Projects
   const [selectedField, setSelectedField] = useState('All');
   
-  // Interactive Modal state for detailed paper/project view
+  // Interactive Modal state for viewing images/certificates full size
   const [activeModalData, setActiveModalData] = useState(null);
 
-  // Horizontal active card sliders state
-  const [activePaperIndex, setActivePaperIndex] = useState(0);
-  const [activePresIndex, setActivePresIndex] = useState(0);
+  // Expanded publication IDs state (for inline accordion disclosure)
+  const [expandedItems, setExpandedItems] = useState({});
 
-  const paperTrackRef = useRef(null);
-  const presTrackRef = useRef(null);
-  const paperCardRefs = useRef([]);
-  const presCardRefs = useRef([]);
-  const paperHoverTimer = useRef(null);
-  const presHoverTimer = useRef(null);
-
-  const handleSelectPaper = (idx) => {
-    if (paperHoverTimer.current) clearTimeout(paperHoverTimer.current);
-    setActivePaperIndex(idx);
-    if (paperCardRefs.current[idx]) {
-      paperCardRefs.current[idx].scrollIntoView({
-        behavior: 'smooth',
-        inline: 'center',
-        block: 'nearest'
-      });
-    }
-  };
-
-  const handleHoverPaper = (idx) => {
-    if (paperHoverTimer.current) clearTimeout(paperHoverTimer.current);
-    paperHoverTimer.current = setTimeout(() => {
-      setActivePaperIndex(idx);
-    }, 130);
-  };
-
-  const handleLeavePaper = () => {
-    if (paperHoverTimer.current) clearTimeout(paperHoverTimer.current);
-  };
-
-  const handleNextPaper = () => {
-    const nextIdx = (activePaperIndex + 1) % researchData.conferencePapers.length;
-    handleSelectPaper(nextIdx);
-  };
-
-  const handlePrevPaper = () => {
-    const prevIdx = (activePaperIndex - 1 + researchData.conferencePapers.length) % researchData.conferencePapers.length;
-    handleSelectPaper(prevIdx);
-  };
-
-  const handleSelectPres = (idx) => {
-    if (presHoverTimer.current) clearTimeout(presHoverTimer.current);
-    setActivePresIndex(idx);
-    if (presCardRefs.current[idx]) {
-      presCardRefs.current[idx].scrollIntoView({
-        behavior: 'smooth',
-        inline: 'center',
-        block: 'nearest'
-      });
-    }
-  };
-
-  const handleHoverPres = (idx) => {
-    if (presHoverTimer.current) clearTimeout(presHoverTimer.current);
-    presHoverTimer.current = setTimeout(() => {
-      setActivePresIndex(idx);
-    }, 130);
-  };
-
-  const handleLeavePres = () => {
-    if (presHoverTimer.current) clearTimeout(presHoverTimer.current);
-  };
-
-  const handleNextPres = () => {
-    const nextIdx = (activePresIndex + 1) % researchData.conferencePresentations.length;
-    handleSelectPres(nextIdx);
-  };
-
-  const handlePrevPres = () => {
-    const prevIdx = (activePresIndex - 1 + researchData.conferencePresentations.length) % researchData.conferencePresentations.length;
-    handleSelectPres(prevIdx);
-  };
-
-  const openThesisModal = () => {
-    setActiveModalData({
-      title: researchData.undergradThesis.title,
-      subtitle: `${researchData.undergradThesis.type} • ${researchData.undergradThesis.institution} (${researchData.undergradThesis.year})`,
-      content: (
-        <div>
-          <div style={{ marginBottom: '20px', borderRadius: '14px', overflow: 'hidden', border: '1px solid var(--border-subtle)', background: '#000' }}>
-            <img
-              src={researchData.undergradThesis.imageUrl}
-              alt={researchData.undergradThesis.title}
-              style={{ width: '100%', maxHeight: '340px', objectFit: 'cover' }}
-            />
-          </div>
-          <div style={{ marginBottom: '20px' }}>
-            <h4 style={{ color: 'var(--blue-royal)', fontSize: '1.05rem', marginBottom: '8px', fontWeight: 600 }}>
-              Full Thesis Abstract
-            </h4>
-            <p style={{ lineHeight: '1.75', fontSize: '0.94rem', color: 'var(--text-secondary)' }}>
-              {researchData.undergradThesis.abstract}
-            </p>
-          </div>
-          <div style={{ marginBottom: '20px' }}>
-            <h4 style={{ color: 'var(--blue-royal)', fontSize: '1.05rem', margin: '20px 0 10px', fontWeight: 600 }}>
-              Computational Setup & Verification Methodology
-            </h4>
-            <ul style={{ paddingLeft: '20px', lineHeight: '1.7', fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
-              {researchData.undergradThesis.methodology.map((m, i) => (
-                <li key={i} style={{ marginBottom: '6px' }}>{m}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 style={{ color: 'var(--blue-royal)', fontSize: '1.05rem', margin: '20px 0 10px', fontWeight: 600 }}>
-              Key Validated Findings
-            </h4>
-            <ul style={{ paddingLeft: '20px', lineHeight: '1.7', fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
-              {researchData.undergradThesis.keyResults.map((r, i) => (
-                <li key={i} style={{ marginBottom: '6px' }}>{r}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )
-    });
+  const toggleExpand = (id) => {
+    setExpandedItems(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
   };
 
   const projectFields = ['All', 'Fluid Mechanics', 'Materials Science'];
@@ -159,26 +48,17 @@ export const ResearchPage = () => {
   return (
     <div className="container animate-fade-in">
       {/* =========================================================================
-          PAGE TITLE + RESEARCH EXPERIENCE OVERVIEW + RESEARCH INTERESTS (Image 01)
+          PAGE HEADER: Research Focus & Academic Interests
           ========================================================================= */}
-      <div className="research-intro-box">
-        <h1 className="research-main-title">
-          <span className="header-badge">Research</span>
+      <div className="page-intro">
+        <h1 className="page-title">
+          Research & <span className="header-badge">Publications</span>
         </h1>
-        
-        <p className="research-narrative-p">
-          My research experience at Chittagong University of Engineering and Technology (CUET) centres on computational fluid dynamics and its application to real engineering problems — from the aerodynamics of ground-effect race cars and chevron nozzles for jet noise reduction, to the performance of vertical axis wind turbines.
+        <p className="page-subtitle">
+          Computational fluid dynamics, aeroacoustics, aerodynamic optimization, and architected mechanical metamaterials for energy absorption and advanced structural performance.
         </p>
 
-        <p className="research-narrative-p">
-          More recently, my work has extended into advanced materials, with an ongoing review on architected auxetic mechanical metamaterials for energy absorption.
-        </p>
-
-        <div className="interests-label-tag">
-          Research Interests
-        </div>
-
-        <div className="interests-pills-wrap">
+        <div className="interests-pills-wrap" style={{ marginTop: '18px' }}>
           {researchData.interests.map((interest, idx) => (
             <span key={idx} className="interest-capsule">
               {interest}
@@ -188,674 +68,397 @@ export const ResearchPage = () => {
       </div>
 
       {/* =========================================================================
-          C. RESEARCH (Organized into 4 Subsections)
-          1. Undergraduate Thesis
-          2. Conference Papers & Proceedings
-          3. Conference Presentations
-          4. Ongoing Research
+          1. PUBLICATIONS (Clean, Readable List — No Carousels)
           ========================================================================= */}
-      <section style={{ marginBottom: '64px' }}>
-        <div style={{ marginBottom: '28px' }}>
-          <h2 style={{ fontSize: '1.9rem', color: 'var(--purple-deep)' }}>
-            Publications
-          </h2>
+      <section className="section-spacing">
+        <div className="section-heading-row">
+          <div>
+            <div className="section-eyebrow">SCHOLARLY WORKS</div>
+            <h2 className="section-main-heading">
+              Publications & Conference Proceedings
+            </h2>
+          </div>
+          <span className="section-count-badge">
+            {1 + researchData.conferencePapers.length + researchData.conferencePresentations.length + researchData.ongoingResearch.length} Entries
+          </span>
         </div>
 
-        {/* 1. UNDERGRADUATE THESIS (Abstract hidden on card face; click opens full modal) */}
-        <div style={{ marginBottom: '44px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-            <span style={{
-              fontSize: '0.75rem',
-              fontWeight: 600,
-              color: '#FFFFFF',
-              background: 'var(--blue-royal)',
-              padding: '4px 12px',
-              borderRadius: '6px',
-              textTransform: 'uppercase',
-              boxShadow: '0 2px 8px rgba(37, 99, 235, 0.25)'
-            }}>
-              1. Undergraduate Thesis
-            </span>
-            <h3 style={{ fontSize: '1.3rem', color: 'var(--purple-deep)' }}>
-              Bachelor’s Degree Thesis Investigation
-            </h3>
-          </div>
-
-          <div 
-            className="card card-interactive thesis-hero-card"
-            onClick={openThesisModal}
-            style={{ cursor: 'pointer' }}
-          >
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1.4fr) 1fr', gap: '32px', alignItems: 'start' }}>
-              <div>
-                {/* Image 2 Top-Row: Squircle Icon + Index/Overline */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
-                  <div className="thesis-icon-squircle">
-                    <Wind size={20} />
-                  </div>
-                  <div>
-                    <span className="thesis-meta-number">01</span>
-                    <span className="thesis-meta-pipe">•</span>
-                    <span className="thesis-meta-badge">UNDERGRADUATE BACHELOR THESIS • 2024</span>
-                  </div>
-                </div>
-
-                {/* Card Title */}
-                <h4 className="thesis-title-heading">
-                  {researchData.undergradThesis.title}
-                </h4>
-
-                <div className="thesis-institution-sub">
-                  Department of Mechanical Engineering, CUET
-                </div>
-
-                {/* Fine Subtle Hairline Divider */}
-                <div className="thesis-hairline-divider" />
-
-                {/* Scope Headline Note (Notice: Abstract is completely hidden from card face!) */}
-                <p className="thesis-narrative-text" style={{ fontSize: '0.94rem', lineHeight: '1.65', marginBottom: '16px' }}>
-                  High-fidelity 3D computational fluid dynamics investigation analyzing Venturi tunnel ground effect reintroduction and floor-generated aerodynamic downforce under modern FIA Formula One technical regulations.
-                </p>
-
-                {/* Pill Tags */}
-                <div className="thesis-tags-row">
-                  {['Aerodynamics & CFD', 'Ground Effect', 'Venturi Tunnel', 'ANSYS Fluent', 'F1 Regulations'].map((tag, tIdx) => (
-                    <span key={tIdx} className="thesis-pill-tag">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Action CTA Button: Click to Open Full Abstract & Methodology */}
-                <div style={{ marginTop: '22px' }}>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      openThesisModal();
-                    }}
-                    className="thesis-action-cta-full"
-                  >
-                    <span className="thesis-cta-dot" />
-                    <span>Click to View Full Abstract, Methodology & Findings</span>
-                    <ArrowUpRight size={16} />
-                  </button>
-                </div>
-              </div>
-
-              {/* F1 CFD Simulation Diagram Frame */}
-              <div 
-                className="thesis-image-frame"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  openThesisModal();
-                }}
-              >
-                <img
-                  src={researchData.undergradThesis.imageUrl}
-                  alt={researchData.undergradThesis.title}
-                  className="thesis-image-content"
-                />
-                <span className="thesis-image-overlay-badge">
-                  <span>Inspect CFD Visuals</span>
-                  <ArrowUpRight size={13} />
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 2. CONFERENCE PAPERS & PROCEEDINGS (Horizontal Sliding Active Card Deck) */}
-        <div style={{ marginBottom: '56px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '14px', marginBottom: '20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                color: '#FFFFFF',
-                background: '#1D4ED8',
-                padding: '4px 12px',
-                borderRadius: '6px',
-                textTransform: 'uppercase',
-                boxShadow: '0 2px 8px rgba(37, 99, 235, 0.25)'
-              }}>
-                2. Conference Papers & Proceedings
-              </span>
-              <h3 style={{ fontSize: '1.3rem', color: 'var(--purple-deep)' }}>
-                Peer-Reviewed Publications & Proceedings
-              </h3>
-            </div>
-
-            {/* Controls: Counter, Dot Indicators & Arrow Buttons */}
-            <div className="research-slider-controls-wrap">
-              <span className="research-slider-counter-tag">
-                {activePaperIndex + 1} / {researchData.conferencePapers.length}
-              </span>
-              <div className="research-slider-dots">
-                {researchData.conferencePapers.map((_, pDotIdx) => (
-                  <button
-                    key={pDotIdx}
-                    onClick={() => handleSelectPaper(pDotIdx)}
-                    className={`research-slider-dot ${pDotIdx === activePaperIndex ? 'is-active' : ''}`}
-                    aria-label={`Go to Paper ${pDotIdx + 1}`}
-                  />
-                ))}
-              </div>
-              <div className="research-slider-nav-btns">
-                <button
-                  onClick={handlePrevPaper}
-                  className="research-slider-arrow-btn"
-                  aria-label="Previous Conference Paper"
-                >
-                  <ChevronLeft size={18} />
-                </button>
-                <button
-                  onClick={handleNextPaper}
-                  className="research-slider-arrow-btn"
-                  aria-label="Next Conference Paper"
-                >
-                  <ChevronRight size={18} />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Horizontal Slider Track */}
-          <div className="research-slider-track" ref={paperTrackRef}>
-            {researchData.conferencePapers.map((paper, idx) => {
-              const isActive = idx === activePaperIndex;
-              return (
-                <div
-                  key={paper.id}
-                  ref={(el) => (paperCardRefs.current[idx] = el)}
-                  onMouseEnter={() => !isActive && handleHoverPaper(idx)}
-                  onMouseLeave={handleLeavePaper}
-                  onClick={() => handleSelectPaper(idx)}
-                  className={`conf-paper-card ${isActive ? 'is-active' : 'is-compact'}`}
-                >
-                  {/* COMPACT VIEW (Inactive / Contracting) */}
-                  {!isActive && (
-                    <div className="conf-paper-compact-view">
-                      <div className="conf-paper-compact-thumb-wrap">
-                        {paper.imageUrl ? (
-                          <img src={paper.imageUrl} alt={paper.title} className="conf-paper-compact-thumb" />
-                        ) : (
-                          <div className="conf-paper-compact-placeholder">
-                            <Award size={22} color="#60A5FA" />
-                          </div>
-                        )}
-                        <span className="conf-paper-compact-badge">
-                          0{idx + 1}
-                        </span>
-                      </div>
-                      <div className="conf-paper-compact-body">
-                        <div className="conf-paper-compact-org">{paper.organizer}</div>
-                        <h4 className="conf-paper-compact-title">{paper.title}</h4>
-                        <div className="conf-paper-compact-date">{paper.date}</div>
-                        <div className="conf-paper-compact-cta">
-                          <span>Hover or click to expand</span>
-                          <ChevronRight size={14} />
-                        </div>
-                      </div>
+        <div className="publication-list-container">
+          {/* --- Item 1: Undergraduate Bachelor Thesis --- */}
+          {(() => {
+            const thesis = researchData.undergradThesis;
+            const isExpanded = Boolean(expandedItems['thesis']);
+            return (
+              <article className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
+                <div className="pub-card-main">
+                  <div className="pub-header-row">
+                    <div className="pub-meta-left">
+                      <span className="pub-number">01</span>
+                      <span className="pub-category-badge thesis">Bachelor Thesis</span>
+                      <span className="pub-status-badge">Completed & Defended</span>
                     </div>
-                  )}
+                    <span className="pub-year">{thesis.year}</span>
+                  </div>
 
-                  {/* ACTIVE VIEW (Expanded with Image/Manuscript, Details & Actions - Matches Section 3) */}
-                  {isActive && (
-                    <div className="conf-paper-active-view conf-paper-reveal-content">
-                      <div className="conf-paper-active-header">
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <span className="conf-paper-active-index-pill">
-                            PUBLICATION 0{idx + 1} • ACTIVE
-                          </span>
-                          <span className="conf-paper-status-badge">
-                            {paper.status}
-                          </span>
-                        </div>
-                        <span className="conf-paper-date">
-                          {paper.date}
+                  <h3 className="pub-title">
+                    {thesis.title}
+                  </h3>
+
+                  <div className="pub-citation">
+                    <span className="pub-author highlight">Md. Jubair Uddin Zidan</span>
+                    <span className="pub-sep">•</span>
+                    <span className="pub-venue">{thesis.institution}</span>
+                  </div>
+
+                  <div className="pub-tags-row">
+                    {['Aerodynamics & CFD', 'Ground Effect', 'Venturi Tunnel', 'ANSYS Fluent', 'FIA Regulations'].map((tag, tIdx) => (
+                      <span key={tIdx} className="pub-tag-pill">{tag}</span>
+                    ))}
+                  </div>
+
+                  {/* Expand / Collapse Disclosure Button */}
+                  <div className="pub-actions-row">
+                    <button
+                      onClick={() => toggleExpand('thesis')}
+                      className="pub-expand-btn"
+                      aria-expanded={isExpanded}
+                    >
+                      <span>{isExpanded ? 'Hide Abstract & Methodology' : 'Read Abstract, Methodology & Findings'}</span>
+                      {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                    </button>
+
+                    <button
+                      onClick={() => setActiveModalData({
+                        title: thesis.title,
+                        subtitle: `${thesis.type} • ${thesis.institution} (${thesis.year})`,
+                        content: (
+                          <div style={{ textAlign: 'center' }}>
+                            <img
+                              src={thesis.imageUrl}
+                              alt={thesis.title}
+                              style={{ width: '100%', maxHeight: '480px', objectFit: 'contain', borderRadius: '12px' }}
+                            />
+                            <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+                              High-fidelity 3D aerodynamic domain with polyhedral unstructured meshing and underfloor pressure mapping.
+                            </p>
+                          </div>
+                        )
+                      })}
+                      className="pub-visual-btn"
+                    >
+                      <ExternalLink size={13} />
+                      <span>View CFD Simulation Visuals</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* EXPANDABLE DETAILS ACCORDION */}
+                {isExpanded && (
+                  <div className="pub-expanded-body">
+                    <div className="pub-detail-section">
+                      <h4 className="pub-detail-heading">Abstract</h4>
+                      <p className="pub-abstract-text">
+                        {thesis.abstract}
+                      </p>
+                    </div>
+
+                    <div className="pub-detail-section">
+                      <h4 className="pub-detail-heading">Computational Setup & Methodology</h4>
+                      <ul className="pub-checklist">
+                        {thesis.methodology.map((m, mIdx) => (
+                          <li key={mIdx}>
+                            <CheckCircle2 size={15} className="pub-check-icon" />
+                            <span>{m}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="pub-detail-section">
+                      <h4 className="pub-detail-heading">Key Validated Findings</h4>
+                      <ul className="pub-checklist">
+                        {thesis.keyResults.map((r, rIdx) => (
+                          <li key={rIdx}>
+                            <CheckCircle2 size={15} className="pub-check-icon" />
+                            <span>{r}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </article>
+            );
+          })()}
+
+          {/* --- Items 2 to 5: Conference Papers & Proceedings --- */}
+          {researchData.conferencePapers.map((paper, idx) => {
+            const paperIndex = idx + 2;
+            const isExpanded = Boolean(expandedItems[paper.id]);
+            return (
+              <article key={paper.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
+                <div className="pub-card-main">
+                  <div className="pub-header-row">
+                    <div className="pub-meta-left">
+                      <span className="pub-number">0{paperIndex}</span>
+                      <span className="pub-category-badge conference">Conference Paper</span>
+                      <span className="pub-status-badge">{paper.status}</span>
+                    </div>
+                    <span className="pub-year">{paper.date}</span>
+                  </div>
+
+                  <h3 className="pub-title">
+                    {paper.title}
+                  </h3>
+
+                  <div className="pub-citation">
+                    <span className="pub-authors">
+                      {paper.authors.map((author, aIdx) => (
+                        <span key={aIdx} className={author.includes('Zidan') ? 'pub-author highlight' : 'pub-author'}>
+                          {author}{aIdx < paper.authors.length - 1 ? ', ' : ''}
                         </span>
-                      </div>
+                      ))}
+                    </span>
+                    <span className="pub-sep">•</span>
+                    <span className="pub-venue">{paper.conference}</span>
+                  </div>
 
-                      <div className="conf-paper-active-grid">
-                        {/* Left Column: Certificate Image or Manuscript Badge Slot */}
-                        <div style={{ height: '210px', borderRadius: '14px', overflow: 'hidden', position: 'relative', background: '#000' }}>
-                          {paper.imageUrl ? (
-                            <>
+                  <div className="pub-organizer-info">
+                    <strong>Organizer:</strong> {paper.organizer} ({paper.location})
+                  </div>
+
+                  <div className="pub-tags-row">
+                    {paper.keywords.map((kw, kwIdx) => (
+                      <span key={kwIdx} className="pub-tag-pill">{kw}</span>
+                    ))}
+                  </div>
+
+                  {/* Actions Row */}
+                  <div className="pub-actions-row">
+                    <button
+                      onClick={() => toggleExpand(paper.id)}
+                      className="pub-expand-btn"
+                      aria-expanded={isExpanded}
+                    >
+                      <span>{isExpanded ? 'Hide Abstract & Details' : 'Read Abstract & Methodology'}</span>
+                      {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                    </button>
+
+                    {paper.imageUrl && (
+                      <button
+                        onClick={() => setActiveModalData({
+                          title: paper.title,
+                          subtitle: `${paper.conference} • Official Certificate`,
+                          content: (
+                            <div style={{ textAlign: 'center' }}>
                               <img
                                 src={paper.imageUrl}
-                                alt={paper.title}
-                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                alt={`${paper.title} Certificate`}
+                                style={{ width: '100%', maxHeight: '520px', objectFit: 'contain', borderRadius: '12px' }}
                               />
-                              <span style={{
-                                position: 'absolute',
-                                bottom: '10px',
-                                right: '10px',
-                                background: 'rgba(15, 23, 42, 0.88)',
-                                backdropFilter: 'blur(4px)',
-                                color: '#FFFFFF',
-                                fontSize: '0.72rem',
-                                fontWeight: 600,
-                                padding: '4px 10px',
-                                borderRadius: '6px'
-                              }}>
-                                Official Certificate
-                              </span>
-                            </>
-                          ) : (
-                            <div style={{
-                              width: '100%',
-                              height: '100%',
-                              display: 'flex',
-                              flexDirection: 'column',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 58, 138, 0.85) 100%)',
-                              padding: '16px',
-                              textAlign: 'center',
-                              boxSizing: 'border-box'
-                            }}>
-                              <BookOpen size={36} color="#60A5FA" style={{ marginBottom: '8px' }} />
-                              <span style={{ fontSize: '0.86rem', fontWeight: 600, color: '#93C5FD', marginBottom: '4px' }}>
-                                Peer-Reviewed Manuscript
-                              </span>
-                              <span style={{ fontSize: '0.72rem', color: '#BFDBFE', lineHeight: '1.4' }}>
-                                Official conference proceedings record
-                              </span>
                             </div>
-                          )}
-                        </div>
-
-                        {/* Right Column: Title, Conference, Authors & Action Buttons */}
-                        <div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                            <BookOpen size={16} color="#60A5FA" />
-                            <span style={{ fontSize: '0.76rem', fontWeight: 600, color: '#BFDBFE', textTransform: 'uppercase' }}>
-                              {paper.organizer}
-                            </span>
-                          </div>
-
-                          <h4 style={{ fontSize: '1.2rem', color: '#FFFFFF', lineHeight: 1.35, marginBottom: '10px', fontWeight: 700 }}>
-                            {paper.title}
-                          </h4>
-
-                          <p style={{ fontSize: '0.88rem', color: '#E2E8F0', marginBottom: '8px', lineHeight: 1.5 }}>
-                            <strong style={{ color: '#BFDBFE' }}>Conference:</strong> {paper.conference} • {paper.location}
-                          </p>
-
-                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', color: '#BFDBFE', marginBottom: '16px' }}>
-                            <span><strong>Authors:</strong> {paper.authors.join(', ')}</span>
-                            <span>{paper.date}</span>
-                          </div>
-
-                          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                            {paper.imageUrl && (
-                              <button
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setActiveModalData({
-                                    title: paper.title,
-                                    subtitle: `${paper.conference} • Official Certificate`,
-                                    content: (
-                                      <div style={{ textAlign: 'center' }}>
-                                        <img
-                                          src={paper.imageUrl}
-                                          alt={`${paper.title} Certificate`}
-                                          style={{ maxWidth: '100%', borderRadius: '12px', boxShadow: 'var(--shadow-md)', margin: '0 auto' }}
-                                        />
-                                      </div>
-                                    )
-                                  });
-                                }}
-                                className="conf-paper-btn"
-                                style={{ background: 'rgba(255, 255, 255, 0.15)', color: '#FFFFFF', borderColor: 'rgba(255, 255, 255, 0.3)', display: 'inline-flex' }}
-                              >
-                                <span>View Certificate</span>
-                                <ArrowUpRight size={14} />
-                              </button>
-                            )}
-
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setActiveModalData({
-                                  title: paper.title,
-                                  subtitle: `${paper.conference} • Full Details & Abstract`,
-                                  content: (
-                                    <div>
-                                      <div style={{ marginBottom: '16px' }}>
-                                        <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--blue-royal)', textTransform: 'uppercase' }}>
-                                          {paper.organizer} • {paper.date}
-                                        </span>
-                                        <h4 style={{ fontSize: '1.2rem', color: 'var(--purple-deep)', margin: '6px 0' }}>
-                                          {paper.title}
-                                        </h4>
-                                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                                          <em>{paper.conference}</em> • {paper.location}
-                                        </p>
-                                        <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)' }}>
-                                          Authors: {paper.authors.join(', ')}
-                                        </p>
-                                      </div>
-                                      {paper.imageUrl && (
-                                        <div style={{ textAlign: 'center', marginBottom: '16px' }}>
-                                          <img src={paper.imageUrl} alt={paper.title} style={{ maxWidth: '100%', borderRadius: '12px' }} />
-                                        </div>
-                                      )}
-                                      <h4 style={{ color: 'var(--blue-royal)', marginBottom: '6px' }}>Abstract</h4>
-                                      <p style={{ lineHeight: '1.7', fontSize: '0.92rem', color: 'var(--text-primary)' }}>
-                                        {paper.abstract}
-                                      </p>
-                                      <div style={{ marginTop: '16px', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-                                        {paper.keywords.map((kw, i) => (
-                                          <span key={i} className="tool-chip" style={{ fontSize: '0.75rem' }}>
-                                            {kw}
-                                          </span>
-                                        ))}
-                                      </div>
-                                    </div>
-                                  )
-                                });
-                              }}
-                              className="conf-paper-btn"
-                              style={{ background: 'rgba(255, 255, 255, 0.15)', color: '#FFFFFF', borderColor: 'rgba(255, 255, 255, 0.3)', display: 'inline-flex' }}
-                            >
-                              <span>Read Abstract</span>
-                              <ArrowUpRight size={14} />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                          )
+                        })}
+                        className="pub-visual-btn"
+                      >
+                        <Award size={14} />
+                        <span>View Official Certificate</span>
+                      </button>
+                    )}
+                  </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
 
-        {/* 3. CONFERENCE PRESENTATIONS (Horizontal Sliding Active Card Deck) */}
-        <div style={{ marginBottom: '44px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '14px', marginBottom: '20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                color: '#FFFFFF',
-                background: 'var(--blue-royal)',
-                padding: '4px 12px',
-                borderRadius: '6px',
-                textTransform: 'uppercase',
-                boxShadow: '0 2px 8px rgba(37, 99, 235, 0.25)'
-              }}>
-                3. Conference Presentations
-              </span>
-              <h3 style={{ fontSize: '1.3rem', color: 'var(--purple-deep)' }}>
-                Individual Conference Podium Presentations
-              </h3>
-            </div>
+                {/* EXPANDABLE DETAILS */}
+                {isExpanded && (
+                  <div className="pub-expanded-body">
+                    <div className="pub-detail-section">
+                      <h4 className="pub-detail-heading">Abstract</h4>
+                      <p className="pub-abstract-text">
+                        {paper.abstract}
+                      </p>
+                    </div>
 
-            {/* Controls */}
-            <div className="research-slider-controls-wrap">
-              <span className="research-slider-counter-tag">
-                {activePresIndex + 1} / {researchData.conferencePresentations.length}
-              </span>
-              <div className="research-slider-dots">
-                {researchData.conferencePresentations.map((_, pDotIdx) => (
-                  <button
-                    key={pDotIdx}
-                    onClick={() => handleSelectPres(pDotIdx)}
-                    className={`research-slider-dot ${pDotIdx === activePresIndex ? 'is-active' : ''}`}
-                    aria-label={`Go to Presentation ${pDotIdx + 1}`}
-                  />
-                ))}
-              </div>
-              <div className="research-slider-nav-btns">
-                <button
-                  onClick={handlePrevPres}
-                  className="research-slider-arrow-btn"
-                  aria-label="Previous Presentation"
-                >
-                  <ChevronLeft size={18} />
-                </button>
-                <button
-                  onClick={handleNextPres}
-                  className="research-slider-arrow-btn"
-                  aria-label="Next Presentation"
-                >
-                  <ChevronRight size={18} />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Horizontal Track */}
-          <div className="research-slider-track" ref={presTrackRef}>
-            {researchData.conferencePresentations.map((pres, idx) => {
-              const isActive = idx === activePresIndex;
-              return (
-                <div
-                  key={pres.id}
-                  ref={(el) => (presCardRefs.current[idx] = el)}
-                  onMouseEnter={() => !isActive && handleHoverPres(idx)}
-                  onMouseLeave={handleLeavePres}
-                  onClick={() => handleSelectPres(idx)}
-                  className={`conf-pres-card ${isActive ? 'is-active' : 'is-compact'}`}
-                >
-                  {/* COMPACT VIEW */}
-                  {!isActive && (
-                    <div className="conf-paper-compact-view">
-                      {pres.imageUrl && (
-                        <div className="conf-paper-compact-thumb-wrap">
-                          <img src={pres.imageUrl} alt={pres.title} className="conf-paper-compact-thumb" />
-                          <span className="conf-paper-compact-badge">
-                            0{idx + 1}
-                          </span>
+                    <div className="pub-detail-section">
+                      <h4 className="pub-detail-heading">Conference Details & Presentation</h4>
+                      <div className="pub-meta-grid">
+                        <div>
+                          <strong>Conference Venue:</strong> {paper.location}
                         </div>
-                      )}
-                      <div className="conf-paper-compact-body">
-                        <div className="conf-paper-compact-org">{pres.type}</div>
-                        <h4 className="conf-paper-compact-title">{pres.title}</h4>
-                        <div className="conf-paper-compact-date">{pres.date}</div>
-                        <div className="conf-paper-compact-cta">
-                          <span>Hover or click to expand</span>
-                          <ChevronRight size={14} />
+                        <div>
+                          <strong>Organizing Institution:</strong> {paper.organizer}
+                        </div>
+                        <div>
+                          <strong>Session Date:</strong> {paper.date}
+                        </div>
+                        <div>
+                          <strong>Current Status:</strong> {paper.status}
                         </div>
                       </div>
                     </div>
-                  )}
+                  </div>
+                )}
+              </article>
+            );
+          })}
 
-                  {/* ACTIVE EXPANDED VIEW */}
-                  {isActive && (
-                    <div className="conf-paper-active-view conf-paper-reveal-content">
-                      <div className="conf-paper-active-header">
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <span className="conf-paper-active-index-pill">
-                            PRESENTATION 0{idx + 1} • ACTIVE
-                          </span>
-                          <span className="conf-paper-status-badge">
-                            Live Podium
-                          </span>
-                        </div>
-                        <span className="conf-paper-date">
-                          {pres.date}
+          {/* --- Items: Conference Presentations & Talks --- */}
+          {researchData.conferencePresentations.map((pres, idx) => {
+            const presIndex = idx + 2 + researchData.conferencePapers.length;
+            const isExpanded = Boolean(expandedItems[pres.id]);
+            return (
+              <article key={pres.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
+                <div className="pub-card-main">
+                  <div className="pub-header-row">
+                    <div className="pub-meta-left">
+                      <span className="pub-number">0{presIndex}</span>
+                      <span className="pub-category-badge presentation">
+                        <Presentation size={12} style={{ display: 'inline', marginRight: 4 }} />
+                        {pres.type}
+                      </span>
+                      <span className="pub-status-badge">Live Podium</span>
+                    </div>
+                    <span className="pub-year">{pres.date}</span>
+                  </div>
+
+                  <h3 className="pub-title">
+                    {pres.title}
+                  </h3>
+
+                  <div className="pub-citation">
+                    <span className="pub-venue">{pres.event}</span>
+                    <span className="pub-sep">•</span>
+                    <span className="pub-location">{pres.venue}</span>
+                  </div>
+
+                  {/* Actions Row */}
+                  <div className="pub-actions-row">
+                    {pres.certificateUrl && (
+                      <button
+                        onClick={() => toggleExpand(pres.id)}
+                        className="pub-expand-btn"
+                        aria-expanded={isExpanded}
+                      >
+                        <span>{isExpanded ? 'Hide Presentation Certificate' : 'View Presentation Certificate & Details'}</span>
+                        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                      </button>
+                    )}
+
+                    {pres.certificateUrl && (
+                      <button
+                        onClick={() => setActiveModalData({
+                          title: pres.title,
+                          subtitle: `${pres.event} • Official Certificate`,
+                          content: (
+                            <div style={{ textAlign: 'center' }}>
+                              <img
+                                src={pres.certificateUrl}
+                                alt={`${pres.title} Certificate`}
+                                style={{ width: '100%', maxHeight: '520px', objectFit: 'contain', borderRadius: '12px' }}
+                              />
+                            </div>
+                          )
+                        })}
+                        className="pub-visual-btn"
+                      >
+                        <Award size={14} />
+                        <span>Open Certificate Fullscreen</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {isExpanded && pres.certificateUrl && (
+                  <div className="pub-expanded-body">
+                    <div className="pub-cert-preview-box">
+                      <img
+                        src={pres.certificateUrl}
+                        alt={`${pres.title} Certificate`}
+                        className="pub-cert-preview-img"
+                      />
+                    </div>
+                  </div>
+                )}
+              </article>
+            );
+          })}
+
+          {/* --- Ongoing Research Manuscripts --- */}
+          {researchData.ongoingResearch.map((work) => {
+            const isExpanded = Boolean(expandedItems[work.id]);
+            return (
+              <article key={work.id} className={`pub-list-card ongoing ${isExpanded ? 'is-expanded' : ''}`}>
+                <div className="pub-card-main">
+                  <div className="pub-header-row">
+                    <div className="pub-meta-left">
+                      <span className="pub-category-badge ongoing">Ongoing Manuscript</span>
+                      <span className="pub-status-badge">{work.badge}: {work.status}</span>
+                    </div>
+                    <span className="pub-year">In Preparation</span>
+                  </div>
+
+                  <h3 className="pub-title">
+                    {work.title}
+                  </h3>
+
+                  <div className="pub-citation">
+                    <span className="pub-authors">
+                      {work.authors.map((author, aIdx) => (
+                        <span key={aIdx} className={author.includes('Zidan') ? 'pub-author highlight' : 'pub-author'}>
+                          {author}{aIdx < work.authors.length - 1 ? ', ' : ''}
                         </span>
-                      </div>
+                      ))}
+                    </span>
+                    <span className="pub-sep">•</span>
+                    <span className="pub-venue">Supervisor: {work.supervisor} ({work.supervisorAffiliation})</span>
+                  </div>
 
-                      <div className="conf-pres-active-grid">
-                        {pres.imageUrl && (
-                          <div style={{ height: '210px', borderRadius: '14px', overflow: 'hidden', position: 'relative', background: '#000' }}>
-                            <img
-                              src={pres.imageUrl}
-                              alt={pres.title}
-                              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                            />
-                            <span style={{
-                              position: 'absolute',
-                              bottom: '10px',
-                              right: '10px',
-                              background: 'rgba(15, 23, 42, 0.88)',
-                              backdropFilter: 'blur(4px)',
-                              color: '#FFFFFF',
-                              fontSize: '0.72rem',
-                              fontWeight: 600,
-                              padding: '4px 10px',
-                              borderRadius: '6px'
-                            }}>
-                              Live Presentation
-                            </span>
-                          </div>
-                        )}
-
-                        <div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                            <Presentation size={16} color="#60A5FA" />
-                            <span style={{ fontSize: '0.76rem', fontWeight: 600, color: '#BFDBFE', textTransform: 'uppercase' }}>
-                              {pres.type}
-                            </span>
-                          </div>
-
-                          <h4 style={{ fontSize: '1.2rem', color: '#FFFFFF', lineHeight: 1.35, marginBottom: '10px', fontWeight: 700 }}>
-                            {pres.title}
-                          </h4>
-
-                          <p style={{ fontSize: '0.88rem', color: '#E2E8F0', marginBottom: '8px', lineHeight: 1.5 }}>
-                            <strong style={{ color: '#BFDBFE' }}>Event:</strong> {pres.event}
-                          </p>
-
-                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', color: '#BFDBFE', marginBottom: '16px' }}>
-                            <span><strong>Venue:</strong> {pres.venue}</span>
-                            <span>{pres.date}</span>
-                          </div>
-
-                          {pres.certificateUrl && (
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setActiveModalData({
-                                  title: pres.title,
-                                  subtitle: `${pres.event} • Official Certificate`,
-                                  content: (
-                                    <div style={{ textAlign: 'center' }}>
-                                      <img 
-                                        src={pres.certificateUrl} 
-                                        alt={`${pres.title} Certificate`} 
-                                        style={{ maxWidth: '100%', borderRadius: '12px', boxShadow: 'var(--shadow-md)', margin: '0 auto' }} 
-                                      />
-                                    </div>
-                                  )
-                                });
-                              }}
-                              className="conf-paper-btn"
-                              style={{ background: 'rgba(255, 255, 255, 0.15)', color: '#FFFFFF', borderColor: 'rgba(255, 255, 255, 0.3)', display: 'inline-flex' }}
-                            >
-                              <span>View Official Certificate</span>
-                              <ArrowUpRight size={14} />
-                            </button>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  <div className="pub-actions-row">
+                    <button
+                      onClick={() => toggleExpand(work.id)}
+                      className="pub-expand-btn"
+                      aria-expanded={isExpanded}
+                    >
+                      <span>{isExpanded ? 'Hide Manuscript Overview & Deliverables' : 'Read Overview & Manuscript Deliverables'}</span>
+                      {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                    </button>
+                  </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
 
-        {/* 4. ONGOING RESEARCH */}
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-            <span style={{
-              fontSize: '0.75rem',
-              fontWeight: 600,
-              color: '#FFFFFF',
-              background: 'var(--blue-royal)',
-              padding: '4px 12px',
-              borderRadius: '6px',
-              textTransform: 'uppercase',
-              boxShadow: '0 2px 8px rgba(37, 99, 235, 0.25)'
-            }}>
-              4. Ongoing Research
-            </span>
-            <h3 style={{ fontSize: '1.3rem', color: 'var(--purple-deep)' }}>
-              Current Research Works & Manuscripts in Progress
-            </h3>
-          </div>
+                {isExpanded && (
+                  <div className="pub-expanded-body">
+                    <div className="pub-detail-section">
+                      <h4 className="pub-detail-heading">Research Overview</h4>
+                      <p className="pub-abstract-text">{work.overview}</p>
+                    </div>
 
-          {researchData.ongoingResearch.map((work) => (
-            <div key={work.id} className="card card-interactive ongoing-research-card" style={{ padding: '32px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '12px', marginBottom: '12px' }}>
-                <span className="ongoing-status-badge" style={{
-                  background: 'var(--blue-royal)',
-                  color: '#FFFFFF',
-                  padding: '4px 12px',
-                  borderRadius: '9999px',
-                  fontSize: '0.76rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.04em',
-                  boxShadow: '0 2px 8px rgba(37, 99, 235, 0.25)'
-                }}>
-                  {work.badge}: {work.status}
-                </span>
-                <span className="ongoing-type-tag" style={{ fontSize: '0.82rem', color: 'var(--purple-deep)', fontWeight: 500 }}>
-                  Review Paper Investigation
-                </span>
-              </div>
-
-              <h4 className="ongoing-title" style={{ fontSize: '1.4rem', color: 'var(--purple-deep)', lineHeight: 1.3, marginBottom: '10px' }}>
-                {work.title}
-              </h4>
-
-              <div className="ongoing-meta" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '14px', lineHeight: 1.6 }}>
-                <strong>Authors:</strong> {work.authors.join(', ')} <br />
-                <strong>Supervisor:</strong> {work.supervisor} ({work.supervisorAffiliation})
-              </div>
-
-              <p className="ongoing-overview" style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: 1.65, marginBottom: '18px' }}>
-                {work.overview}
-              </p>
-
-              <div className="ongoing-deliverables-box" style={{
-                background: 'var(--bg-card-subtle)',
-                padding: '18px 22px',
-                borderRadius: '14px',
-                border: '1px solid var(--border-subtle)',
-                boxShadow: '0 2px 8px rgba(11, 19, 43, 0.04)'
-              }}>
-                <span className="ongoing-deliverables-title" style={{
-                  fontSize: '0.8rem',
-                  fontWeight: 600,
-                  color: 'var(--blue-royal)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em',
-                  display: 'block',
-                  marginBottom: '10px'
-                }}>
-                  Core Manuscript Deliverables
-                </span>
-                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  {work.deliverables.map((del, i) => (
-                    <li key={i} className="ongoing-deliverable-item" style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', display: 'flex', gap: '10px', alignItems: 'baseline' }}>
-                      <span className="ongoing-check-icon" style={{ color: 'var(--blue-royal)', fontWeight: 700 }}>✓</span>
-                      <span>{del}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
+                    <div className="pub-detail-section">
+                      <h4 className="pub-detail-heading">Core Manuscript Deliverables</h4>
+                      <ul className="pub-checklist">
+                        {work.deliverables.map((del, dIdx) => (
+                          <li key={dIdx}>
+                            <CheckCircle2 size={15} className="pub-check-icon" />
+                            <span>{del}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </article>
+            );
+          })}
         </div>
       </section>
 
       {/* =========================================================================
-          D. PROJECTS (Organized under Research Fields: Fluid Mechanics, Materials Science)
-          Inspired by Reference 03
+          2. PROJECTS (Structured Responsive Grid — No Carousels)
           ========================================================================= */}
-      <section style={{ marginBottom: '40px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '16px', marginBottom: '24px' }}>
+      <section className="section-spacing">
+        <div className="section-heading-row">
           <div>
-            <h2 style={{ fontSize: '1.9rem', color: 'var(--purple-deep)' }}>
-              Project Repository
+            <div className="section-eyebrow">PORTFOLIO</div>
+            <h2 className="section-main-heading">
+              Project Repository & Technical Simulations
             </h2>
           </div>
 
@@ -873,63 +476,94 @@ export const ResearchPage = () => {
           </div>
         </div>
 
+        {/* Responsive Grid Layout for Projects */}
         <div className="projects-grid">
-          {getFilteredProjects().map((project) => (
-            <div key={project.id} className="project-card card-interactive">
-              <div className="project-thumb-wrapper">
-                <img src={project.imageUrl} alt={project.title} className="project-thumb" />
-                <span className="project-field-badge">{project.field}</span>
-              </div>
-              <div className="project-body">
-                <div>
+          {getFilteredProjects().map((project) => {
+            const isProjectExpanded = Boolean(expandedItems[project.id]);
+            return (
+              <div key={project.id} className="project-card card-interactive">
+                <div className="project-thumb-wrapper">
+                  <img src={project.imageUrl} alt={project.title} className="project-thumb" />
+                  <span className="project-field-badge">{project.field}</span>
+                </div>
+
+                <div className="project-body">
                   <div className="project-meta">
                     <span>{project.category}</span>
                     <span>{project.year}</span>
                   </div>
-                  <h3 className="project-title" style={{ marginTop: '8px', marginBottom: '10px' }}>
+
+                  <h3 className="project-title">
                     {project.title}
                   </h3>
-                  <p className="project-desc">{project.description}</p>
-                </div>
-                <div>
-                  <div className="project-tools" style={{ marginBottom: '16px' }}>
+
+                  <p className="project-desc">
+                    {project.description}
+                  </p>
+
+                  <div className="project-tools">
                     {project.tools.map((tool, i) => (
                       <span key={i} className="tool-chip">{tool}</span>
                     ))}
                   </div>
-                  <button
-                    onClick={() => setActiveModalData({
-                      title: project.title,
-                      subtitle: `${project.field} • ${project.category}`,
-                      content: (
-                        <div>
-                          <p style={{ lineHeight: '1.7', marginBottom: '16px' }}>{project.description}</p>
-                          <div style={{ background: 'var(--lavender-soft)', padding: '16px', borderRadius: '12px', marginBottom: '16px' }}>
-                            <strong style={{ color: 'var(--purple-deep)' }}>Key Quantitative Metrics: </strong>
-                            <p style={{ marginTop: '4px' }}>{project.metrics}</p>
+
+                  <div className="project-card-footer">
+                    <button
+                      onClick={() => toggleExpand(project.id)}
+                      className="project-action-btn"
+                      aria-expanded={isProjectExpanded}
+                    >
+                      <span>{isProjectExpanded ? 'Hide Specifications' : 'Technical Specifications'}</span>
+                      {isProjectExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                    </button>
+
+                    <button
+                      onClick={() => setActiveModalData({
+                        title: project.title,
+                        subtitle: `${project.field} • ${project.category} (${project.year})`,
+                        content: (
+                          <div>
+                            <div style={{ marginBottom: '16px', borderRadius: '12px', overflow: 'hidden' }}>
+                              <img src={project.imageUrl} alt={project.title} style={{ width: '100%', maxHeight: '340px', objectFit: 'cover' }} />
+                            </div>
+                            <p style={{ lineHeight: '1.7', marginBottom: '16px' }}>{project.description}</p>
+                            <div style={{ background: 'var(--bg-card-subtle)', padding: '16px', borderRadius: '12px', marginBottom: '16px', border: '1px solid var(--border-subtle)' }}>
+                              <strong style={{ color: 'var(--blue-royal)' }}>Key Quantitative Metrics: </strong>
+                              <p style={{ marginTop: '4px' }}>{project.metrics}</p>
+                            </div>
+                            <h4 style={{ color: 'var(--text-primary)', marginBottom: '8px' }}>Simulation & Computational Tools</h4>
+                            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                              {project.tools.map((t, i) => (
+                                <span key={i} className="tool-chip" style={{ padding: '6px 12px' }}>{t}</span>
+                              ))}
+                            </div>
                           </div>
-                          <h4 style={{ color: 'var(--purple-deep)', marginBottom: '8px' }}>Simulation & Computational Tools</h4>
-                          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                            {project.tools.map((t, i) => (
-                              <span key={i} className="tool-chip" style={{ padding: '6px 12px' }}>{t}</span>
-                            ))}
-                          </div>
-                        </div>
-                      )
-                    })}
-                    className="project-action-btn"
-                  >
-                    <span>View Technical Specifications</span>
-                    <ArrowUpRight size={14} />
-                  </button>
+                        )
+                      })}
+                      className="project-inspect-btn"
+                      title="Inspect in full modal"
+                    >
+                      <ArrowUpRight size={14} />
+                    </button>
+                  </div>
+
+                  {/* Inline Expandable Specifications */}
+                  {isProjectExpanded && (
+                    <div className="project-specs-expanded">
+                      <div className="project-spec-item">
+                        <strong className="project-spec-label">Key Metrics:</strong>
+                        <p className="project-spec-value">{project.metrics}</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
-      {/* Global Interactive Modal for Abstracts & Project Details */}
+      {/* Global Interactive Modal for Fullscreen Visuals */}
       <InteractiveModal
         isOpen={Boolean(activeModalData)}
         onClose={() => setActiveModalData(null)}

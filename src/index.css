@@ -679,9 +679,13 @@ img {
 }
 
 .page-section {
-  scroll-margin-top: calc(var(--header-height, 76px) + 20px);
+  scroll-margin-top: 136px;
   position: relative;
-  padding-bottom: 72px;
+  padding-bottom: 64px;
+}
+
+.site-main.with-announcement .page-section {
+  scroll-margin-top: 148px;
 }
 
 #home.page-section {
@@ -702,8 +706,8 @@ img {
 }
 
 .section-spacing {
-  margin-top: 56px;
-  margin-bottom: 56px;
+  margin-top: 48px;
+  margin-bottom: 48px;
 }
 
 /* Page Header Editorial Style */
@@ -1179,15 +1183,16 @@ img {
 
 .nav-plain-link,
 .nav-pill-btn {
-  padding: 6px 0;
-  font-size: 0.92rem;
+  padding: 6px 14px;
+  font-size: 0.9rem;
   font-weight: 500;
-  color: #334155; /* High-contrast slate for light frosted capsule */
-  transition: color var(--transition-fast), font-weight var(--transition-fast);
+  color: #334155; /* High-contrast slate */
+  border-radius: 9999px;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
   position: relative;
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
   letter-spacing: -0.01em;
 }
@@ -1195,15 +1200,16 @@ img {
 .nav-plain-link:hover,
 .nav-pill-btn:hover {
   color: #0F172A;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .nav-plain-link.active,
 .nav-pill-btn.active {
-  background: transparent !important;
-  color: #2563EB !important; /* Royal blue active indicator */
+  background: rgba(37, 99, 235, 0.1) !important;
+  color: #1D4ED8 !important; /* Royal blue active highlight */
+  border-color: rgba(37, 99, 235, 0.2) !important;
   font-weight: 600 !important;
-  box-shadow: none !important;
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.1) !important;
 }
 
 .nav-actions {
@@ -3782,6 +3788,482 @@ img {
 }
 
 /* ==========================================================================
+   RESEARCH & SCHOLARLY WORKS: READABLE PUBLICATION LIST & PROJECTS GRID
+   Readable list for publications (no hidden carousels) & grid for projects
+   with on-click expandable details (abstracts, methodologies, specifications)
+   ========================================================================== */
+
+.publication-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.pub-list-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 24px 28px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 10px rgba(11, 19, 43, 0.04);
+  position: relative;
+}
+
+.pub-list-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.1);
+}
+
+.pub-list-card.is-expanded {
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.12);
+}
+
+.pub-card-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pub-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pub-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pub-number {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--blue-royal);
+  background: rgba(37, 99, 235, 0.08);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.pub-category-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 9999px;
+}
+
+.pub-category-badge.thesis {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+}
+
+.pub-category-badge.conference {
+  background: rgba(37, 99, 235, 0.12);
+  color: #2563EB;
+}
+
+.pub-category-badge.presentation {
+  background: rgba(217, 119, 6, 0.12);
+  color: #D97706;
+}
+
+.pub-category-badge.manuscript {
+  background: rgba(139, 92, 246, 0.12);
+  color: #7C3AED;
+}
+
+.pub-status-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: rgba(100, 116, 139, 0.1);
+  color: var(--text-secondary);
+}
+
+.pub-year {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.pub-title {
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin: 6px 0 2px;
+  letter-spacing: -0.01em;
+}
+
+.pub-citation {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pub-author {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.pub-author.highlight {
+  color: var(--blue-royal);
+  font-weight: 600;
+}
+
+.pub-sep {
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.pub-venue {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.pub-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.pub-tag-pill {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 2px 10px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-secondary);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.pub-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.pub-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--blue-royal);
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pub-expand-btn:hover {
+  background: rgba(37, 99, 235, 0.15);
+  border-color: rgba(37, 99, 235, 0.4);
+  transform: translateY(-1px);
+}
+
+.pub-visual-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border-subtle);
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pub-visual-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Expandable Disclosure Body (Clean, unboxed styling) */
+.pub-expanded-body {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.pub-detail-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pub-detail-heading {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--blue-royal);
+}
+
+.pub-abstract-text {
+  font-size: 0.9rem;
+  line-height: 1.68;
+  color: var(--text-secondary);
+}
+
+.pub-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pub-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   PROJECTS: RESPONSIVE GRID (No carousels, 16px tight card gaps)
+   ========================================================================== */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 10px rgba(11, 19, 43, 0.04);
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.12);
+}
+
+.project-thumb-wrapper {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: #0B132B;
+}
+
+.project-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-thumb {
+  transform: scale(1.04);
+}
+
+.project-field-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(6px);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 9999px;
+}
+
+.project-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--blue-royal);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.project-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.project-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 14px;
+  flex: 1;
+}
+
+.project-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.tool-chip {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--blue-royal);
+}
+
+.project-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.project-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--blue-royal);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.2s ease;
+}
+
+.project-action-btn:hover {
+  color: #1D4ED8;
+}
+
+.project-modal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.2s ease;
+}
+
+.project-modal-btn:hover {
+  color: var(--text-primary);
+}
+
+.project-specs-expanded {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border-subtle);
+  animation: fadeIn 0.2s ease;
+}
+
+/* Dark Mode Overrides for Research & Publications */
+[data-theme="dark"] .pub-list-card,
+[data-theme="dark"] .project-card {
+  background: rgba(15, 23, 42, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .pub-list-card:hover,
+[data-theme="dark"] .project-card:hover {
+  border-color: rgba(56, 189, 248, 0.35) !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45) !important;
+}
+
+[data-theme="dark"] .pub-tag-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #CBD5E1;
+}
+
+[data-theme="dark"] .pub-number {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38BDF8;
+}
+
+[data-theme="dark"] .pub-expand-btn {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.25);
+  color: #38BDF8;
+}
+
+[data-theme="dark"] .pub-expand-btn:hover {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: rgba(56, 189, 248, 0.45);
+}
+
+[data-theme="dark"] .pub-visual-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #E2E8F0;
+}
+
+[data-theme="dark"] .pub-visual-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .tool-chip {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38BDF8;
+}
+
+/* ==========================================================================
    RESEARCH HORIZONTAL SLIDING ACTIVE CARD SHOWCASE
    Fluid continuous sliding, active card horizontal expansion with reveal,
    and previous card contraction with clean easing.
@@ -5352,12 +5834,16 @@ img {
 [data-theme="dark"] .nav-plain-link:hover,
 [data-theme="dark"] .nav-pill-btn:hover {
   color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 [data-theme="dark"] .nav-plain-link.active,
 [data-theme="dark"] .nav-pill-btn.active {
+  background: rgba(56, 189, 248, 0.15) !important;
   color: #38BDF8 !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
   font-weight: 600 !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.2) !important;
 }
 
 [data-theme="dark"] .cv-button {
