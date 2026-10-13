@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+  <rect width="200" height="120" rx="20" fill="#0d1127"/>
+  <!-- Green Lead 'g' logo with white dot -->
+  <g transform="translate(100, 60)">
+    <!-- White dot top right -->
+    <circle cx="24" cy="-24" r="5" fill="#ffffff"/>
+    <!-- Bold green 'g' outline/fill -->
+    <path d="M 0 -22 C 14 -22 24 -12 24 2 C 24 16 14 26 0 26 C -14 26 -24 16 -24 2 C -24 -12 -14 -22 0 -22 Z M 0 -10 C -8 -10 -13 -4 -13 2 C -13 8 -8 14 0 14 C 8 14 13 8 13 2 C 13 -4 8 -10 0 -10 Z" fill="#22c55e"/>
+    <path d="M 13 2 L 13 24 C 13 36 3 44 -12 44 C -20 44 -26 41 -29 37 L -24 27 C -21 30 -17 32 -11 32 C -2 32 2 28 2 21 L 2 2" fill="none" stroke="#22c55e" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

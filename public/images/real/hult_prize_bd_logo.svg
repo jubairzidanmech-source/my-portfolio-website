@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+  <rect width="200" height="120" rx="20" fill="#e8185c"/>
+  <g transform="translate(100, 42) scale(0.68)">
+    <!-- Starburst circle -->
+    <circle cx="0" cy="-14" r="3" fill="#ffffff"/>
+    <circle cx="10" cy="-10" r="3" fill="#ffffff"/>
+    <circle cx="14" cy="0" r="3" fill="#ffffff"/>
+    <circle cx="10" cy="10" r="3" fill="#ffffff"/>
+    <circle cx="0" cy="14" r="3" fill="#ffffff"/>
+    <circle cx="-10" cy="10" r="3" fill="#ffffff"/>
+    <circle cx="-14" cy="0" r="3" fill="#ffffff"/>
+    <circle cx="-10" cy="-10" r="3" fill="#ffffff"/>
+    <circle cx="0" cy="-22" r="2.2" fill="#ffffff"/>
+    <circle cx="15.5" cy="-15.5" r="2.2" fill="#ffffff"/>
+    <circle cx="22" cy="0" r="2.2" fill="#ffffff"/>
+    <circle cx="15.5" cy="15.5" r="2.2" fill="#ffffff"/>
+    <circle cx="0" cy="22" r="2.2" fill="#ffffff"/>
+    <circle cx="-15.5" cy="15.5" r="2.2" fill="#ffffff"/>
+    <circle cx="-22" cy="0" r="2.2" fill="#ffffff"/>
+    <circle cx="-15.5" cy="-15.5" r="2.2" fill="#ffffff"/>
+    <circle cx="0" cy="0" r="3" fill="#ffffff"/>
+  </g>
+  <text x="100" y="76" font-family="'Inter', -apple-system, sans-serif" font-size="16" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="3">HULT</text>
+  <text x="100" y="94" font-family="'Inter', -apple-system, sans-serif" font-size="16" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="3">PRIZE</text>
+</svg>

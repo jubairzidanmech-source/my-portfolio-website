@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Factory, GraduationCap, Users, MapPin, ChevronDown, ChevronUp, CheckCircle2, ArrowUpRight, BookOpen, Wrench, Leaf, ExternalLink } from 'lucide-react';
+import { Factory, GraduationCap, Users, MapPin, ChevronDown, ChevronUp, CheckCircle2, ArrowUpRight, BookOpen, Wrench, Leaf, ExternalLink, Heart } from 'lucide-react';
 import { experienceData } from '../data/portfolioData';
 import { InteractiveModal, ImageLightboxModal } from '../components/InteractiveModal';
 
@@ -21,7 +21,8 @@ export const ExperiencePage = () => {
     { id: 'all', label: 'All Experience' },
     { id: 'internship', label: 'Industrial Attachment' },
     { id: 'tutoring', label: 'Teaching & Instructorship' },
-    { id: 'extracurricular', label: 'Leadership & Extracurricular' }
+    { id: 'extracurricular', label: 'University Clubs' },
+    { id: 'volunteering', label: 'Volunteering Work' }
   ];
 
   return (
@@ -332,6 +333,103 @@ export const ExperiencePage = () => {
                           </div>
                         </div>
                       ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* 4. VOLUNTEERING WORK */}
+      {(activeTab === 'all' || activeTab === 'volunteering') && (
+        <section className="section-spacing">
+          <div className="section-heading-row">
+            <div>
+              <div className="section-eyebrow">COMMUNITY & SOCIAL ENTERPRISE</div>
+              <h2 className="section-main-heading">
+                Volunteering Work
+              </h2>
+            </div>
+            <span className="section-count-badge">
+              {(experienceData.volunteering || []).length} Organizations
+            </span>
+          </div>
+
+          <div className="leadership-grid">
+            {(experienceData.volunteering || []).map((item) => {
+              const isExpanded = Boolean(expandedSections[`vol-${item.id}`]);
+              return (
+                <div key={item.id} className="card exp-card leadership-card">
+                  {/* Header: Organization first, Role, Dates & Location */}
+                  <div className="exp-card-header">
+                    <div className="exp-org-logo-box">
+                      {item.logoUrl ? (
+                        <img 
+                          src={item.logoUrl} 
+                          alt={item.organization} 
+                        />
+                      ) : (
+                        <Heart size={18} className="exp-logo-icon" />
+                      )}
+                    </div>
+                    <div className="exp-header-text">
+                      <div className="exp-header-top">
+                        <h3 className="exp-role-title">{item.organization}</h3>
+                        <span className="exp-category-pill category-volunteering" style={{ background: 'rgba(168, 85, 247, 0.1)', color: '#a855f7', borderColor: 'rgba(168, 85, 247, 0.25)' }}>
+                          Volunteering
+                        </span>
+                      </div>
+                      <div className="exp-org-name">{item.role}</div>
+                      {item.tagline && (
+                        <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+                          {item.tagline}
+                        </div>
+                      )}
+                      <div className="exp-meta-row">
+                        <span className="exp-meta-period">Duration : {item.period}</span>
+                        <span className="exp-meta-dot">·</span>
+                        <span className="exp-meta-location">
+                          <MapPin size={13} /> Bangladesh
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="exp-divider" />
+
+                  {item.description && (
+                    <p className="exp-overview-text" style={{ marginBottom: '14px', fontSize: '0.88rem' }}>
+                      {item.description}
+                    </p>
+                  )}
+
+                  {/* Expandable Key Initiatives Toggle */}
+                  {item.highlights && item.highlights.length > 0 && (
+                    <div>
+                      <button
+                        onClick={() => toggleSection(`vol-${item.id}`)}
+                        className="pub-expand-btn"
+                        style={{ width: '100%', justifyContent: 'space-between' }}
+                        aria-expanded={isExpanded}
+                      >
+                        <span>{isExpanded ? 'Hide Key Initiatives' : `View Key Initiatives (${item.highlights.length})`}</span>
+                        {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                      </button>
+
+                      {isExpanded && (
+                        <div className="exp-divided-list" style={{ marginTop: '12px' }}>
+                          {item.highlights.map((hl, hIdx) => (
+                            <div key={hIdx} className="exp-divided-item">
+                              <div className="exp-item-point">
+                                <span className="exp-item-bullet" />
+                                <span className="exp-item-desc" style={{ color: 'var(--text-secondary)' }}>{hl}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>

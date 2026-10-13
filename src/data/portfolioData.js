@@ -807,6 +807,39 @@ export const experienceData = {
         "Cultural promotion & outreach"
       ]
     }
+  ],
+
+  volunteering: [
+    {
+      id: "hult-bd",
+      organization: "Hult Prize BD",
+      role: "Operations & Youth Leadership Volunteer",
+      period: "2021 – 2022",
+      logoUrl: "/images/real/hult_prize_bd_logo.svg",
+      tagline: "Social entrepreneurship platform empowering student ventures",
+      highlights: [
+        "Social entrepreneurship initiatives",
+        "Workshop & training coordination",
+        "Outreach & participant engagement",
+        "Event planning & execution",
+        "Business proposal development",
+        "Hult Prize presentation support"
+      ]
+    },
+    {
+      id: "green-lead",
+      organization: "Green Lead",
+      role: "Sustainability & Climate Action Volunteer",
+      period: "2020 – 2022",
+      logoUrl: "/images/real/green_lead_logo.svg",
+      tagline: "Nonprofit social enterprise developing green leaders",
+      description: "Green Lead is a nonprofit social enterprise that develops green leaders through sustainability, entrepreneurship, and climate action initiatives.",
+      highlights: [
+        "Youth leadership development & environmental stewardship",
+        "Community workshops & climate action initiatives",
+        "Sustainable entrepreneurship ideation sessions"
+      ]
+    }
   ]
 };
 
