@@ -144,7 +144,6 @@ export function App() {
       <AestheticGridBackground />
       <AnnouncementBar 
         isVisible={announcementVisible} 
-        onDismiss={() => setAnnouncementVisible(false)} 
       />
       <Navbar 
         activePage={activePage} 

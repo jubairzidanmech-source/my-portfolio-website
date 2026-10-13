@@ -1,8 +1,7 @@
 import React from 'react';
-import { X, Sparkles, Calendar, Globe, GraduationCap } from 'lucide-react';
 import { upcomingAnnouncements } from '../data/portfolioData';
 
-export const AnnouncementBar = ({ onDismiss, isVisible = true }) => {
+export const AnnouncementBar = ({ isVisible = true }) => {
   if (!isVisible) return null;
 
   // We duplicate the list to ensure seamless 100% infinite marquee loop
@@ -49,18 +48,6 @@ export const AnnouncementBar = ({ onDismiss, isVisible = true }) => {
             ))}
           </div>
         </div>
-
-        {/* Right Close / Dismiss button */}
-        {onDismiss && (
-          <button
-            onClick={onDismiss}
-            className="announcement-close-btn"
-            aria-label="Dismiss announcement bar"
-            title="Dismiss announcement bar"
-          >
-            <X size={14} />
-          </button>
-        )}
       </div>
     </div>
   );
