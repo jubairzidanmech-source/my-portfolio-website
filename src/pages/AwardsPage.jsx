@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { 
   ChevronDown, 
   ChevronUp, 
-  ExternalLink
+  ExternalLink,
+  FileText
 } from 'lucide-react';
 import { awardsData } from '../data/portfolioData';
 import { InteractiveModal, ImageLightboxModal } from '../components/InteractiveModal';
@@ -88,6 +89,12 @@ const AwardCard = ({
           )}
         </div>
 
+        {item.certId && (
+          <div style={{ marginTop: '4px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+            <span style={{ fontWeight: 600 }}>Credential ID:</span> <span style={{ fontFamily: 'var(--font-mono, monospace)', color: 'var(--accent-teal)' }}>{item.certId}</span>
+          </div>
+        )}
+
         {tags && tags.length > 0 && (
           <div className="pub-tags-row">
             {tags.map((tag, tIdx) => (
@@ -97,7 +104,7 @@ const AwardCard = ({
         )}
 
         {/* 3. Action Buttons Row */}
-        <div className="pub-actions-row">
+        <div className="pub-actions-row" style={{ flexWrap: 'wrap', gap: '8px' }}>
           <button
             onClick={() => onToggle(item.id)}
             className="pub-expand-btn"
@@ -119,6 +126,34 @@ const AwardCard = ({
             <ExternalLink size={13} />
             <span>{visualBtnText}</span>
           </button>
+
+          {item.verificationUrl && (
+            <a
+              href={item.verificationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pub-visual-btn"
+              style={{ textDecoration: 'none' }}
+              title="Verify credential on official issuing platform"
+            >
+              <ExternalLink size={13} />
+              <span>Verify Online</span>
+            </a>
+          )}
+
+          {item.pdfUrl && (
+            <a
+              href={item.pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pub-visual-btn"
+              style={{ textDecoration: 'none' }}
+              title="View / Download Official Certificate PDF"
+            >
+              <FileText size={13} />
+              <span>Official PDF</span>
+            </a>
+          )}
         </div>
       </div>
       </div>
@@ -191,7 +226,7 @@ export const AwardsPage = () => {
     { id: 'posters', label: 'Poster Presentations' },
     { id: 'hult', label: 'Hult Prize Activities' },
     { id: 'events', label: 'Event Organization' },
-    { id: 'certs', label: 'Course Certifications' }
+    { id: 'certs', label: 'Engineering Certifications' }
   ];
 
   return (
@@ -421,7 +456,7 @@ export const AwardsPage = () => {
                 badgeClass="verified"
                 badgeLabel="Verified Credential"
                 statusLabel="Accredited"
-                yearLabel="Certified"
+                yearLabel={item.year || "Certified"}
                 title={item.title}
                 authorLabel={item.issuer}
                 venueLabel={item.field}
