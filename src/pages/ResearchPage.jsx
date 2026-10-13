@@ -37,10 +37,11 @@ export const ResearchPage = () => {
   const projectFields = ['All', 'Fluid Mechanics', 'Materials Science'];
 
   const getFilteredProjects = () => {
+    if (!researchData?.projectsByField) return [];
     if (selectedField === 'All') {
       return [
-        ...researchData.projectsByField["Fluid Mechanics"],
-        ...researchData.projectsByField["Materials Science"]
+        ...(researchData.projectsByField["Fluid Mechanics"] || []),
+        ...(researchData.projectsByField["Materials Science"] || [])
       ];
     }
     return researchData.projectsByField[selectedField] || [];
@@ -74,7 +75,7 @@ export const ResearchPage = () => {
         </p>
 
         <div className="interests-pills-wrap" style={{ marginTop: '18px' }}>
-          {researchData.interests.map((interest, idx) => (
+          {(researchData?.interests || []).map((interest, idx) => (
             <span key={idx} className="interest-capsule">
               {interest}
             </span>
@@ -94,7 +95,7 @@ export const ResearchPage = () => {
               title="Jump to Peer-Reviewed Publications & Thesis"
             >
               <span>Publications</span>
-              <span className="subnav-count">{1 + researchData.conferencePapers.length}</span>
+              <span className="subnav-count">{1 + (researchData?.conferencePapers?.length || 0)}</span>
             </button>
             <span className="subnav-sep">·</span>
             <button 
@@ -103,7 +104,7 @@ export const ResearchPage = () => {
               title="Jump to Conference Podium Presentations"
             >
               <span>Presentations</span>
-              <span className="subnav-count">{researchData.conferencePresentations.length}</span>
+              <span className="subnav-count">{researchData?.conferencePresentations?.length || 0}</span>
             </button>
             <span className="subnav-sep">·</span>
             <button 
@@ -112,7 +113,7 @@ export const ResearchPage = () => {
               title="Jump to Ongoing Research Manuscripts"
             >
               <span>Ongoing Work</span>
-              <span className="subnav-count">{researchData.ongoingResearch.length}</span>
+              <span className="subnav-count">{researchData?.ongoingResearch?.length || 0}</span>
             </button>
             <span className="subnav-sep">·</span>
             <button 
@@ -139,14 +140,14 @@ export const ResearchPage = () => {
             </h2>
           </div>
           <span className="section-count-badge">
-            {1 + researchData.conferencePapers.length} Publications
+            {1 + (researchData?.conferencePapers?.length || 0)} Publications
           </span>
         </div>
 
         <div className="pub-grid-2col">
           {/* --- Item 1: Undergraduate Bachelor Thesis --- */}
           {(() => {
-            const thesis = researchData.undergradThesis;
+            const thesis = researchData?.undergradThesis || {};
             const isExpanded = Boolean(expandedItems['thesis']);
             return (
               <article className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
@@ -225,7 +226,7 @@ export const ResearchPage = () => {
                     <div className="pub-detail-section">
                       <h4 className="pub-detail-heading">Numerical Methodology & Modeling</h4>
                       <ul className="pub-checklist">
-                        {thesis.methodology.map((m, mIdx) => (
+                        {(thesis.methodology || []).map((m, mIdx) => (
                           <li key={mIdx}>
                             <CheckCircle2 size={15} color="var(--blue-royal)" style={{ flexShrink: 0, marginTop: '2px' }} />
                             <span>{m}</span>
@@ -237,7 +238,7 @@ export const ResearchPage = () => {
                     <div className="pub-detail-section">
                       <h4 className="pub-detail-heading">Key Aerodynamic Findings</h4>
                       <ul className="pub-checklist">
-                        {thesis.keyResults.map((r, rIdx) => (
+                        {(thesis.keyResults || []).map((r, rIdx) => (
                           <li key={rIdx}>
                             <CheckCircle2 size={15} color="var(--blue-royal)" style={{ flexShrink: 0, marginTop: '2px' }} />
                             <span>{r}</span>
@@ -252,7 +253,7 @@ export const ResearchPage = () => {
           })()}
 
           {/* --- Items 2 to 3: Peer-Reviewed Conference Papers --- */}
-          {researchData.conferencePapers.map((paper, idx) => {
+          {(researchData?.conferencePapers || []).map((paper, idx) => {
             const paperIndex = idx + 2;
             const isExpanded = Boolean(expandedItems[paper.id]);
             return (
@@ -374,12 +375,12 @@ export const ResearchPage = () => {
             </h2>
           </div>
           <span className="section-count-badge">
-            {researchData.conferencePresentations.length} Presentations
+            {(researchData?.conferencePresentations?.length || 0)} Presentations
           </span>
         </div>
 
         <div className="pub-grid-2col">
-          {researchData.conferencePresentations.map((pres, idx) => {
+          {(researchData?.conferencePresentations || []).map((pres, idx) => {
             const presIndex = idx + 1;
             const isExpanded = Boolean(expandedItems[pres.id]);
             return (
@@ -493,12 +494,12 @@ export const ResearchPage = () => {
             </h2>
           </div>
           <span className="section-count-badge">
-            {researchData.ongoingResearch.length} Manuscripts
+            {(researchData?.ongoingResearch?.length || 0)} Manuscripts
           </span>
         </div>
 
         <div className="publication-list-container">
-          {researchData.ongoingResearch.map((work) => {
+          {(researchData?.ongoingResearch || []).map((work) => {
             const isExpanded = Boolean(expandedItems[work.id]);
             return (
               <article key={work.id} className={`pub-list-card ongoing ${isExpanded ? 'is-expanded' : ''}`}>
@@ -625,7 +626,7 @@ export const ResearchPage = () => {
                   </p>
 
                   <div className="project-tools">
-                    {project.tools.map((tool, i) => (
+                    {(project.tools || []).map((tool, i) => (
                       <span key={i} className="tool-chip">{tool}</span>
                     ))}
                   </div>
@@ -643,7 +644,7 @@ export const ResearchPage = () => {
                     <button
                       onClick={() => setActiveModalData({
                         title: project.title,
-                        subtitle: `${project.category} (${project.year}) • Tools: ${project.tools.join(', ')}`,
+                        subtitle: `${project.category} (${project.year}) • Tools: ${(project.tools || []).join(', ')}`,
                         content: (
                           <div style={{ textAlign: 'center' }}>
                             <img

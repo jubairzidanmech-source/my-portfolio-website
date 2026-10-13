@@ -60,12 +60,12 @@ export const AwardsPage = () => {
               </h2>
             </div>
             <span className="section-count-badge">
-              {awardsData.competitions.length} Accolades
+              {(awardsData?.competitions || []).length} Accolades
             </span>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
-            {awardsData.competitions.map((item) => {
+            {(awardsData?.competitions || []).map((item) => {
               const isExpanded = Boolean(expandedAwards[item.id]);
               return (
                 <div key={item.id} className="award-card card-interactive">
@@ -206,7 +206,7 @@ export const AwardsPage = () => {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
-            {awardsData.hultPrize.map((item) => {
+            {(awardsData?.hultPrize || []).map((item) => {
               const isExpanded = Boolean(expandedAwards[item.id]);
               return (
                 <div key={item.id} className="award-card card-interactive">
@@ -265,7 +265,7 @@ export const AwardsPage = () => {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
-            {awardsData.eventOrganization.map((item) => {
+            {(awardsData?.eventOrganization || []).map((item) => {
               const isExpanded = Boolean(expandedAwards[item.id]);
               return (
                 <div key={item.id} className="award-card card-interactive">
@@ -322,12 +322,12 @@ export const AwardsPage = () => {
               </h2>
             </div>
             <span className="section-count-badge">
-              {awardsData.certifications.length} Credentials
+              {(awardsData?.certifications || []).length} Credentials
             </span>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
-            {awardsData.certifications.map((item) => {
+            {(awardsData?.certifications || []).map((item) => {
               const isExpanded = Boolean(expandedAwards[item.id]);
               return (
                 <div key={item.id} className="award-card card-interactive card-subtle">

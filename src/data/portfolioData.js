@@ -402,9 +402,26 @@ export const awardsData = {
     }
   ],
 
-  get posters() {
-    return this.posterPresentations;
-  },
+  posters: [
+    {
+      id: "post-1",
+      title: "Research Poster Presentation: 1st National Research Fair 2023",
+      event: "Research Fair 2023",
+      venue: "Chittagong University of Engineering & Technology (CUET)",
+      year: "2023",
+      imageUrl: "/images/real/award_research_fair.jpg",
+      description: "Received Appreciation Trophy from the Directorate of Research and Extension, CUET for outstanding technical poster presentation."
+    },
+    {
+      id: "post-2",
+      title: "Research Poster Presentation 2nd Prize Crest",
+      event: "Research Fair 2023 Poster Presentation",
+      venue: "Chittagong University of Engineering & Technology (CUET)",
+      year: "2023",
+      imageUrl: "/images/real/award_poster_2nd.jpg",
+      description: "Awarded 2nd Prize Crest by the Directorate of Research and Extension at CUET for research poster presentation."
+    }
+  ],
 
   hultPrize: [
     {
