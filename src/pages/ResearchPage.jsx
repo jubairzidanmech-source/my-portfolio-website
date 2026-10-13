@@ -194,10 +194,31 @@ export const ResearchPage = () => {
                     </h3>
 
                     <div className="pub-citation">
-                      <span className="pub-author highlight">{thesis.author}</span>
+                      {Array.isArray(thesis.authors) ? (
+                        <span className="pub-authors">
+                          {thesis.authors.map((author, aIdx) => (
+                            <span key={aIdx} className={author.includes('Zidan') ? 'pub-author highlight' : 'pub-author'}>
+                              {author}{aIdx < thesis.authors.length - 1 ? ', ' : ''}
+                            </span>
+                          ))}
+                        </span>
+                      ) : (
+                        <span className="pub-author highlight">{thesis.author}</span>
+                      )}
                       <span className="pub-sep">•</span>
                       <span className="pub-venue">{thesis.institution}</span>
                     </div>
+
+                    {thesis.supervisor && (
+                      <div className="pub-supervisor-block" style={{ marginTop: '6px', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
+                        <div><strong style={{ color: 'var(--text-primary)' }}>Supervisor:</strong> {thesis.supervisor}</div>
+                        {thesis.supervisorAffiliation && (
+                          <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '1px' }}>
+                            {thesis.supervisorAffiliation}
+                          </div>
+                        )}
+                      </div>
+                    )}
 
                     <div className="pub-tags-row">
                       {(thesis.tags || []).map((tag, tIdx) => (
@@ -676,10 +697,10 @@ export const ResearchPage = () => {
                 <div className="pub-card-main">
                   <div className="pub-header-row">
                     <div className="pub-meta-left">
-                      <span className="pub-category-badge manuscript">Ongoing Manuscript</span>
-                      <span className="pub-status-badge">{work.badge}: {work.status}</span>
+                      <span className="pub-category-badge manuscript">{work.badge || work.type || 'Review paper'}</span>
+                      <span className="pub-status-badge">{work.status}</span>
                     </div>
-                    <span className="pub-year">In Preparation</span>
+                    <span className="pub-year">In Review</span>
                   </div>
 
                   <h3 className="pub-title">
@@ -694,9 +715,25 @@ export const ResearchPage = () => {
                         </span>
                       ))}
                     </span>
+                    <span className="pub-sep">•</span>
+                    <span className="pub-venue">{work.institution}</span>
                   </div>
 
-                  <div className="pub-tags-row">
+                  {work.supervisor && (
+                    <div className="pub-supervisor-block" style={{ marginTop: '8px', padding: '10px 14px', background: 'rgba(59, 130, 246, 0.05)', borderRadius: '8px', border: '1px solid rgba(59, 130, 246, 0.16)' }}>
+                      <div style={{ fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
+                        <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--blue-royal)', fontWeight: 700, display: 'block', marginBottom: '2px' }}>Supervisor</span>
+                        <strong style={{ color: 'var(--text-primary)', fontSize: '0.94rem' }}>{work.supervisor}</strong>
+                      </div>
+                      {work.supervisorAffiliation && (
+                        <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '3px', lineHeight: 1.45 }}>
+                          {work.supervisorAffiliation}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  <div className="pub-tags-row" style={{ marginTop: '10px' }}>
                     {work.deliverables.map((del, dIdx) => (
                       <span key={dIdx} className="pub-tag-pill">{del}</span>
                     ))}

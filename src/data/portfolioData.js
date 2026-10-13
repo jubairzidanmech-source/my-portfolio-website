@@ -158,28 +158,30 @@ export const researchData = {
     {
       id: "thesis-msc",
       number: "02",
-      degree: "Master of Science (M.Sc.) Thesis",
-      categoryBadge: "Current M.Sc. Thesis",
-      status: "Ongoing Graduate Research",
+      degree: "Master of Science (M.Sc.) Research / Review Paper",
+      categoryBadge: "Current M.Sc. / Review Paper",
+      status: "Currently in review by Supervisor",
       year: "2025 – 2026",
-      title: "Numerical Investigation of Computational Aeroacoustics and Energy Dissipation in Architected Mechanical Metamaterials",
-      author: "Md. Jubair Uddin Zidan",
-      institution: "Department of Mechanical Engineering, CUET",
-      supervisor: "Postgraduate Academic Committee & Faculty Advisors, CUET",
-      imageUrl: "/images/project_chevron_cfd.jpg",
-      tags: ["Computational Aeroacoustics", "Auxetic Metamaterials", "Turbulent Shear Flow", "Lattice Architectures", "OpenFOAM & FEA"],
-      abstract: "This ongoing master's thesis investigates the fluid-structure and aeroacoustic interactions governing turbulent shear layer noise emission coupled with architected energy-absorbing metamaterial cellular structures. Utilizing high-resolution compressible Navier-Stokes formulations, acoustic perturbation equations, and finite element elastodynamic modeling, the research explores passive acoustic damping and enhanced structural resilience across aerospace, turbomachinery, and transport applications.",
+      title: "Architected Auxetic Mechanical Metamaterials for Energy Absorption: Design, Fabrication, and Characterization",
+      author: "Jubair Zidan",
+      authors: ["Jubair Zidan", "Wakil Ahmed", "Dibosh Das"],
+      institution: "Chittagong University of Engineering and Technology, CUET",
+      supervisor: "Kazi Zahir Uddin",
+      supervisorAffiliation: "Postdoctoral Research Associate at Beckman Institute-University of Illinois Urbana-Champaign",
+      imageUrl: "/images/project_auxetic.jpg",
+      tags: ["Auxetic Metamaterials", "Energy Absorption", "Lattice Fabrication", "Mechanical Characterization", "CUET"],
+      abstract: "Comprehensive state-of-the-art review and computational investigation into architected auxetic (negative Poisson's ratio) cellular mechanical metamaterials. Explores 2D re-entrant, chiral, and 3D rotational lattice unit cells engineered for superior specific energy absorption (SEA), dynamic impact mitigation, and crush-resistance across aerospace and protective structures.",
       methodology: [
-        "High-fidelity compressible Large Eddy Simulation (LES) for resolving unsteady turbulent vortex shedding and shear layer instabilities",
-        "Acoustic analogy formulations (Ffowcs Williams-Hawkings) predicting far-field sound pressure levels and directivity spectra",
-        "Parametric unit cell geometric generation of negative Poisson's ratio (auxetic) and chiral cellular mechanical lattices",
-        "Coupled dynamic elastodynamic finite element analysis evaluating specific energy absorption under high-strain-rate impact"
+        "In-depth synthesis of additive manufacturing constraints (SLS, SLA, LPBF) for micro-architected metamaterials",
+        "Nonlinear dynamic finite element crashworthiness simulations comparing plateau stress and densification strains",
+        "Multi-objective topological optimization frameworks for tailoring Poisson's ratio and energy absorption profiles",
+        "Spatial discretization mesh convergence and benchmarked energy dissipation against empirical literature"
       ],
       keyResults: [
-        "Postgraduate theory coursework completed with a 3.90 / 4.00 CGPA across advanced engineering mathematics and CFD",
-        "Verified spatial discretization mesh convergence and benchmarked acoustic perturbation baseline against literature datasets",
-        "Auxetic re-entrant honeycomb geometries demonstrate enhanced specific energy absorption and vibration damping characteristics",
-        "Formal Master's Thesis defense anticipated upon completion of experimental and computational validation: Late 2026"
+        "Supervised by Kazi Zahir Uddin (Postdoctoral Research Associate at Beckman Institute-University of Illinois Urbana-Champaign)",
+        "Co-authored with Wakil Ahmed and Dibosh Das at Chittagong University of Engineering and Technology, CUET",
+        "Postgraduate theory coursework completed with a 3.90 / 4.00 CGPA across advanced solid mechanics and finite element modeling",
+        "Currently in review by Supervisor prior to formal publication submission and master's evaluation"
       ]
     }
   ],
@@ -299,13 +301,13 @@ export const researchData = {
     {
       id: "ong-1",
       title: "Architected Auxetic Mechanical Metamaterials for Energy Absorption: Design, Fabrication, and Characterization",
-      type: "Comprehensive Review & Computational Investigation",
-      status: "Currently in Review by Supervisor",
-      badge: "In Review",
+      type: "Review paper",
+      status: "Currently in review by Supervisor",
+      badge: "Review paper",
       authors: ["Jubair Zidan", "Wakil Ahmed", "Dibosh Das"],
       supervisor: "Kazi Zahir Uddin",
-      supervisorAffiliation: "Postdoctoral Research Associate at Beckman Institute, University of Illinois Urbana-Champaign; Assistant Professor, CUET",
-      institution: "Chittagong University of Engineering and Technology (CUET)",
+      supervisorAffiliation: "Postdoctoral Research Associate at Beckman Institute-University of Illinois Urbana-Champaign",
+      institution: "Chittagong University of Engineering and Technology, CUET",
       overview: "Comprehensive state-of-the-art review and numerical characterization of auxetic (negative Poisson's ratio) architected cellular metamaterials. Explores 2D re-entrant, chiral, and 3D rotational lattice unit cells engineered for superior specific energy absorption (SEA), dynamic impact mitigation, and crush-resistance across aerospace and protective structures.",
       deliverables: [
         "In-depth synthesis of additive manufacturing constraints (SLS, SLA, LPBF) for micro-architected metamaterials",
