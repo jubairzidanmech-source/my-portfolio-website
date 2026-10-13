@@ -694,59 +694,78 @@ export const experienceData = {
   extracurricular: [
     {
       id: "asme",
-      organization: "American Society of Mechanical Engineers (ASME) — CUET Student Branch",
-      role: "President • Former General Secretary • Joint Publication Secretary",
+      organization: "American Society Of Mechanical Engineers CUET student Branch",
+      role: "Treasurer",
+      tagline: "Core mechanical engineering dedicated club",
       logoUrl: "/images/real/asme_logo.png",
       period: "2020 – 2024",
       highlights: [
-        "Elected President of ASME CUET Student Branch, directing executive committees and student technical workshops",
-        "Key Organizer of EFX Bangladesh 2024 — flagship national engineering and technology festival",
-        "Coordinated technical sessions, industry keynote lectures, and design-build competitions",
-        "Editorial Board Member for ASME Asia Pacific Region publications, authoring technical newsletters and event archives"
-      ]
-    },
-    {
-      id: "cams",
-      organization: "CUET Automotive and Mobility Society (CAMS)",
-      role: "Vehicle R&D Contributor & Core Member",
-      period: "2021 – 2024",
-      highlights: [
-        "Contributed to research, chassis modeling, and aerodynamic optimization for small-range student automobile prototypes",
-        "Assisted in technical troubleshooting, telemetry logging, and test-track vehicle validation",
-        "Fostered automotive engineering culture through hands-on vehicle design and machining sessions"
+        "Organized EFX Bangladesh 2024",
+        "Engineering session coordination",
+        "Editorial Board (Asia Pacific Region)",
+        "Budget & financial management",
+        "Fundraising & sponsorships",
+        "Event funding allocation",
+        "Membership finance administration",
+        "Executive financial collaboration",
+        "Cost optimization & resource management",
+        "Financial planning & club sustainability"
       ]
     },
     {
       id: "scba",
-      organization: "Supply Chain & Business Alliance (SCBA) CUET",
-      role: "Treasurer & Executive Committee Member",
+      organization: "Supply Chain & Business Alliance CUET",
+      role: "President",
+      tagline: "Club dedicated to leadership, entrepreneurship and skill building",
       logoUrl: "/images/real/scba_logo.png",
-      period: "2021 – 2023",
+      period: "2021 – 2024",
       highlights: [
-        "Managed annual treasury budgets, event financing, audits, and corporate sponsorship allocations",
-        "Facilitated corporate partnerships and nationwide business case competitions",
-        "Introduced structured cost tracking ensuring financial transparency and club sustainability"
+        "Entrepreneurship & leadership workshops",
+        "Guest lecture coordination",
+        "Industry partnerships & mentorships",
+        "Corporate networking events",
+        "Case competition management",
+        "Business competition promotion",
+        "Membership growth & engagement",
+        "Industry networking initiatives",
+        "Event logistics & sponsorships",
+        "University liaison & approvals"
+      ]
+    },
+    {
+      id: "cams",
+      organization: "CUET Automotive and Mobility Society",
+      role: "Joint Publication Secretary",
+      tagline: "Club dedicated to developing small ranged automobiles",
+      logoUrl: "/images/real/cams_logo.png",
+      period: "2021 – 2024",
+      highlights: [
+        "Content creation & publication",
+        "Promotional material design",
+        "Report & article writing",
+        "Documentation & record management",
+        "Workshop & recruitment support",
+        "Vehicle R&D contribution",
+        "Technical troubleshooting",
+        "Vehicle testing & optimization"
       ]
     },
     {
       id: "joyoddhoney",
-      organization: "Joyoddhoney — The Cultural Organization of CUET",
+      organization: "Joyoddhoney, CUET",
       role: "Joint General Secretary",
+      tagline: "The cultural organization of Cuet",
       logoUrl: "/images/real/joyoddhoney_logo.png",
       period: "2020 – 2023",
       highlights: [
-        "Coordinated university-wide cultural festivals, stage productions, and inter-departmental collaborations",
-        "Supervised public relations, university administration liaison, and executive committee operations"
-      ]
-    },
-    {
-      id: "greenlead",
-      organization: "Green Lead Bangladesh",
-      role: "Youth Sustainability Coordinator",
-      period: "2020 – 2022",
-      highlights: [
-        "Nonprofit social enterprise focused on youth leadership, environmental stewardship, and green enterprise initiatives",
-        "Organized community workshops and sustainable entrepreneurship ideation sessions"
+        "Club administration & operations",
+        "Event planning & coordination",
+        "Cultural event management",
+        "Official communications & partnerships",
+        "Task delegation & team leadership",
+        "Documentation & record keeping",
+        "Member–administration liaison",
+        "Cultural promotion & outreach"
       ]
     }
   ]

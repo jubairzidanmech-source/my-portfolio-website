@@ -240,84 +240,48 @@ export const ExperiencePage = () => {
         <section className="section-spacing">
           <div className="section-heading-row">
             <div>
-              <div className="section-eyebrow">EXECUTIVE ROLES</div>
+              <div className="section-eyebrow" style={{ color: '#a855f7' }}>University Clubs</div>
               <h2 className="section-main-heading">
                 Extracurricular Activities & Leadership
               </h2>
             </div>
             <span className="section-count-badge">
-              {experienceData.extracurricular.length} Organizations
+              {experienceData.extracurricular.length} Clubs
             </span>
           </div>
 
-          <div className="leadership-grid">
-            {experienceData.extracurricular.map((item) => {
-              const isExpanded = Boolean(expandedSections[`lead-${item.id}`]);
-              return (
-                <div key={item.id} className="card exp-card leadership-card">
-                  {/* Header: Role first, Organization second, Dates & Location third */}
-                  <div className="exp-card-header">
-                    <div className="exp-org-logo-box">
-                      {item.logoUrl ? (
-                        <img 
-                          src={item.logoUrl} 
-                          alt={item.organization} 
-                        />
-                      ) : item.id === 'cams' ? (
-                        <Wrench size={18} className="exp-logo-icon" />
-                      ) : item.id === 'greenlead' ? (
-                        <Leaf size={18} className="exp-logo-icon" />
-                      ) : (
-                        <Users size={18} className="exp-logo-icon" />
-                      )}
-                    </div>
-                    <div className="exp-header-text">
-                      <div className="exp-header-top">
-                        <h3 className="exp-role-title">{item.role}</h3>
-                        <span className="exp-category-pill category-leadership">Leadership</span>
-                      </div>
-                      <div className="exp-org-name">{item.organization}</div>
-                      <div className="exp-meta-row">
-                        <span className="exp-meta-period">{item.period}</span>
-                        <span className="exp-meta-dot">·</span>
-                        <span className="exp-meta-location">
-                          <MapPin size={13} /> CUET / Bangladesh
-                        </span>
-                      </div>
-                    </div>
+          <div className="university-clubs-grid">
+            {experienceData.extracurricular.map((item) => (
+              <div key={item.id} className="card club-card">
+                <div className="club-card-header">
+                  <div className="club-logo-box">
+                    <img 
+                      src={item.logoUrl} 
+                      alt={item.organization} 
+                      className="club-logo-img"
+                    />
                   </div>
-
-                  <div className="exp-divider" />
-
-                  {/* Expandable Responsibilities Inline Toggle */}
-                  <div>
-                    <button
-                      onClick={() => toggleSection(`lead-${item.id}`)}
-                      className="pub-expand-btn"
-                      style={{ width: '100%', justifyContent: 'space-between' }}
-                      aria-expanded={isExpanded}
-                    >
-                      <span>{isExpanded ? 'Hide Core Responsibilities' : `View Core Responsibilities (${item.highlights.length})`}</span>
-                      {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-                    </button>
+                  <div className="club-header-info">
+                    <h3 className="club-role-title">{item.role}</h3>
+                    <div className="club-org-name">{item.organization}</div>
+                    {item.tagline && (
+                      <div className="club-tagline">{item.tagline}</div>
+                    )}
                   </div>
-
-                  {/* Responsibilities list with Thin Dividers */}
-                  {isExpanded && (
-                    <div className="exp-divided-list" style={{ marginTop: '12px' }}>
-                      {item.highlights.map((hl, hIdx) => (
-                        <div key={hIdx} className="exp-divided-item">
-                          <div className="exp-item-point">
-                            <span className="exp-item-bullet" />
-                            <span className="exp-item-desc" style={{ color: 'var(--text-secondary)' }}>{hl}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
                 </div>
-              );
-            })}
+
+                <div className="club-responsibilities-block">
+                  <h4 className="club-resp-title">Core Responsibilities</h4>
+                  <ul className="club-resp-list">
+                    {item.highlights.map((hl, hIdx) => (
+                      <li key={hIdx} className="club-resp-item">
+                        {hl}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       )}
