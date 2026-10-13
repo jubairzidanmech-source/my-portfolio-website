@@ -82,12 +82,21 @@ export const ResearchPage = () => {
           </div>
           <div className="research-subnav-links">
             <button 
+              onClick={() => jumpToSubSection('research-theses')}
+              className="research-subnav-btn"
+              title="Jump to B.Sc. and M.Sc. Theses"
+            >
+              <span>Thesis</span>
+              <span className="subnav-count">{(researchData?.theses || []).length}</span>
+            </button>
+            <span className="subnav-sep">·</span>
+            <button 
               onClick={() => jumpToSubSection('research-publications')}
               className="research-subnav-btn"
-              title="Jump to Peer-Reviewed Publications & Thesis"
+              title="Jump to Peer-Reviewed Conference Papers"
             >
               <span>Publications</span>
-              <span className="subnav-count">{1 + (researchData?.conferencePapers?.length || 0)}</span>
+              <span className="subnav-count">{(researchData?.conferencePapers || []).length}</span>
             </button>
             <span className="subnav-sep">·</span>
             <button 
@@ -121,34 +130,34 @@ export const ResearchPage = () => {
       </div>
 
       {/* =========================================================================
-          1. PUBLICATIONS (Thesis & Peer-Reviewed Conference Papers)
+          1. THESIS (B.Sc. Completed & Defended, Current M.Sc. Ongoing)
           ========================================================================= */}
-      <section id="research-publications" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
+      <section id="research-theses" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">SCHOLARLY WORKS</div>
+            <div className="section-eyebrow">ACADEMIC DISSERTATIONS</div>
             <h2 className="section-main-heading">
-              Publications
+              Thesis
             </h2>
           </div>
           <span className="section-count-badge">
-            {1 + (researchData?.conferencePapers?.length || 0)} Publications
+            {(researchData?.theses || []).length} Theses (1 Defended, 1 Ongoing)
           </span>
         </div>
 
         <div className="pub-grid-2col">
-          {/* --- Item 1: Undergraduate Bachelor Thesis --- */}
-          {(() => {
-            const thesis = researchData?.undergradThesis || {};
-            const isExpanded = Boolean(expandedItems['thesis']);
+          {(researchData?.theses || []).map((thesis, idx) => {
+            const isExpanded = Boolean(expandedItems[thesis.id]);
             return (
-              <article className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
+              <article key={thesis.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
                 <div className="pub-card-main">
                   <div className="pub-header-row">
                     <div className="pub-meta-left">
-                      <span className="pub-number">01</span>
-                      <span className="pub-category-badge thesis">Bachelor Thesis</span>
-                      <span className="pub-status-badge">Completed & Defended</span>
+                      <span className="pub-number">{thesis.number || `0${idx + 1}`}</span>
+                      <span className={`pub-category-badge ${thesis.id === 'thesis-msc' ? 'manuscript' : 'thesis'}`}>
+                        {thesis.categoryBadge}
+                      </span>
+                      <span className="pub-status-badge">{thesis.status}</span>
                     </div>
                     <span className="pub-year">{thesis.year}</span>
                   </div>
@@ -158,13 +167,13 @@ export const ResearchPage = () => {
                   </h3>
 
                   <div className="pub-citation">
-                    <span className="pub-author highlight">Md. Jubair Uddin Zidan</span>
+                    <span className="pub-author highlight">{thesis.author}</span>
                     <span className="pub-sep">•</span>
                     <span className="pub-venue">{thesis.institution}</span>
                   </div>
 
                   <div className="pub-tags-row">
-                    {['Aerodynamics & CFD', 'Ground Effect', 'Venturi Tunnel', 'ANSYS Fluent', 'FIA Regulations'].map((tag, tIdx) => (
+                    {(thesis.tags || []).map((tag, tIdx) => (
                       <span key={tIdx} className="pub-tag-pill">{tag}</span>
                     ))}
                   </div>
@@ -172,7 +181,7 @@ export const ResearchPage = () => {
                   {/* Expand / Collapse Disclosure Button */}
                   <div className="pub-actions-row">
                     <button
-                      onClick={() => toggleExpand('thesis')}
+                      onClick={() => toggleExpand(thesis.id)}
                       className="pub-expand-btn"
                       aria-expanded={isExpanded}
                     >
@@ -183,19 +192,9 @@ export const ResearchPage = () => {
                     <button
                       onClick={() => setActiveModalData({
                         title: thesis.title,
-                        subtitle: `${thesis.type} • ${thesis.institution} (${thesis.year})`,
-                        content: (
-                          <div style={{ textAlign: 'center' }}>
-                            <img
-                              src={thesis.imageUrl}
-                              alt={thesis.title}
-                              style={{ width: '100%', maxHeight: '480px', objectFit: 'contain', borderRadius: '12px' }}
-                            />
-                            <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                              High-fidelity 3D aerodynamic domain with polyhedral unstructured meshing and underfloor pressure mapping.
-                            </p>
-                          </div>
-                        )
+                        subtitle: `${thesis.degree} • ${thesis.institution} (${thesis.year})`,
+                        imageUrl: thesis.imageUrl,
+                        description: thesis.abstract
                       })}
                       className="pub-visual-btn"
                     >
@@ -228,7 +227,7 @@ export const ResearchPage = () => {
                     </div>
 
                     <div className="pub-detail-section">
-                      <h4 className="pub-detail-heading">Key Aerodynamic Findings</h4>
+                      <h4 className="pub-detail-heading">Key Research Findings & Milestones</h4>
                       <ul className="pub-checklist">
                         {(thesis.keyResults || []).map((r, rIdx) => (
                           <li key={rIdx}>
@@ -242,11 +241,30 @@ export const ResearchPage = () => {
                 )}
               </article>
             );
-          })()}
+          })}
+        </div>
+      </section>
 
-          {/* --- Items 2 to 3: Peer-Reviewed Conference Papers --- */}
+      {/* =========================================================================
+          2. PUBLICATIONS (Peer-Reviewed Conference Papers)
+          ========================================================================= */}
+      <section id="research-publications" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
+        <div className="section-heading-row">
+          <div>
+            <div className="section-eyebrow">SCHOLARLY WORKS</div>
+            <h2 className="section-main-heading">
+              Publications
+            </h2>
+          </div>
+          <span className="section-count-badge">
+            {(researchData?.conferencePapers || []).length} Publications
+          </span>
+        </div>
+
+        <div className="pub-grid-2col">
+          {/* --- Peer-Reviewed Conference Papers --- */}
           {(researchData?.conferencePapers || []).map((paper, idx) => {
-            const paperIndex = idx + 2;
+            const paperIndex = idx + 1;
             const isExpanded = Boolean(expandedItems[paper.id]);
             return (
               <article key={paper.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>

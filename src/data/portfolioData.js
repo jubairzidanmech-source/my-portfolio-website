@@ -128,6 +128,62 @@ export const researchData = {
     "Advanced Manufacturing & Additive Design"
   ],
 
+  theses: [
+    {
+      id: "thesis-bsc",
+      number: "01",
+      degree: "Bachelor of Science (B.Sc.) Thesis",
+      categoryBadge: "B.Sc. Thesis",
+      status: "Completed & Defended",
+      year: "2024",
+      title: "A CFD Analysis of Ground Effect with Venturi Tunnel Activated on Newer Formula One Cars",
+      author: "Md. Jubair Uddin Zidan",
+      institution: "Department of Mechanical Engineering, CUET",
+      supervisor: "Faculty of Mechanical Engineering, CUET",
+      imageUrl: "/images/project_f1_cfd.jpg",
+      tags: ["Aerodynamics & CFD", "Ground Effect", "Venturi Tunnel", "ANSYS Fluent", "FIA Regulations"],
+      abstract: "The 2022 Formula One (F1) regulation overhaul marked the reintroduction of ground effect, a concept that had been absent from the sport since 1978, with the primary objective of enhancing overtaking opportunities and improving overall race dynamics. This thesis delves into the integration of ground effect within the context of advanced simulation research, focusing on its critical role in advancing car design, enhancing vehicular stability, and optimizing performance, which has collectively contributed to a significant reshaping of the sport's competitive landscape. The central aim of this study is to assess the impact of the Venturi tunnel's implementation on key aerodynamic parameters, specifically the drag coefficient and negative lift. By employing computational fluid dynamics (CFD) simulations, the research meticulously compares two distinct models: one representing the pre-2022 design and the other embodying the 2022 regulations. The results of this comparative analysis demonstrate a substantial reduction in the drag coefficient and a notable increase in negative lift in the 2022 model, thereby validating the aerodynamic advancements and the overall effectiveness of these regulatory changes in achieving their intended outcomes.",
+      methodology: [
+        "Full 3D aerodynamic domain with polyhedral unstructured meshing and boundary layer inflation (y+ ≈ 1)",
+        "Steady-state Reynolds-Averaged Navier-Stokes (RANS) with k-omega Shear Stress Transport (SST) turbulence formulation",
+        "Underfloor pressure coefficient distribution mapped along longitudinal Venturi throat sections",
+        "Comparative quantification of downforce/negative lift and induced drag between pre-2022 flat floor and 2022 contoured tunnels"
+      ],
+      keyResults: [
+        "Substantial increase in floor-generated negative lift without proportional induced drag penalties",
+        "Mitigated wake turbulence disruption downstream, confirming improved wake profile for close-following vehicles",
+        "Validated the aerodynamic rationale of modern Formula One regulatory frameworks"
+      ]
+    },
+    {
+      id: "thesis-msc",
+      number: "02",
+      degree: "Master of Science (M.Sc.) Thesis",
+      categoryBadge: "Current M.Sc. Thesis",
+      status: "Ongoing Graduate Research",
+      year: "2025 – 2026",
+      title: "Numerical Investigation of Computational Aeroacoustics and Energy Dissipation in Architected Mechanical Metamaterials",
+      author: "Md. Jubair Uddin Zidan",
+      institution: "Department of Mechanical Engineering, CUET",
+      supervisor: "Postgraduate Academic Committee & Faculty Advisors, CUET",
+      imageUrl: "/images/project_chevron_cfd.jpg",
+      tags: ["Computational Aeroacoustics", "Auxetic Metamaterials", "Turbulent Shear Flow", "Lattice Architectures", "OpenFOAM & FEA"],
+      abstract: "This ongoing master's thesis investigates the fluid-structure and aeroacoustic interactions governing turbulent shear layer noise emission coupled with architected energy-absorbing metamaterial cellular structures. Utilizing high-resolution compressible Navier-Stokes formulations, acoustic perturbation equations, and finite element elastodynamic modeling, the research explores passive acoustic damping and enhanced structural resilience across aerospace, turbomachinery, and transport applications.",
+      methodology: [
+        "High-fidelity compressible Large Eddy Simulation (LES) for resolving unsteady turbulent vortex shedding and shear layer instabilities",
+        "Acoustic analogy formulations (Ffowcs Williams-Hawkings) predicting far-field sound pressure levels and directivity spectra",
+        "Parametric unit cell geometric generation of negative Poisson's ratio (auxetic) and chiral cellular mechanical lattices",
+        "Coupled dynamic elastodynamic finite element analysis evaluating specific energy absorption under high-strain-rate impact"
+      ],
+      keyResults: [
+        "Postgraduate theory coursework completed with a 3.90 / 4.00 CGPA across advanced engineering mathematics and CFD",
+        "Verified spatial discretization mesh convergence and benchmarked acoustic perturbation baseline against literature datasets",
+        "Auxetic re-entrant honeycomb geometries demonstrate enhanced specific energy absorption and vibration damping characteristics",
+        "Formal Master's Thesis defense anticipated upon completion of experimental and computational validation: Late 2026"
+      ]
+    }
+  ],
+
   undergradThesis: {
     title: "A CFD Analysis of Ground Effect with Venturi Tunnel Activated on Newer Formula One Cars",
     type: "Undergraduate Bachelor Thesis",
