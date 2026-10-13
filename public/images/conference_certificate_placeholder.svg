@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B" />
+      <stop offset="50%" stop-color="#111C3A" />
+      <stop offset="100%" stop-color="#0B132B" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" />
+      <stop offset="50%" stop-color="#F3E5AB" />
+      <stop offset="100%" stop-color="#AA771C" />
+    </linearGradient>
+    <linearGradient id="sealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="50%" stop-color="#FDE68A" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+    <radialGradient id="meshCenter" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="560" fill="url(#bgGrad)" />
+  <circle cx="400" cy="280" r="320" fill="url(#meshCenter)" />
+
+  <!-- Outer Double Border -->
+  <rect x="24" y="24" width="752" height="512" rx="10" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" opacity="0.85" />
+  <rect x="36" y="36" width="728" height="488" rx="6" fill="none" stroke="#3B82F6" stroke-width="1" stroke-dasharray="6,4" opacity="0.45" />
+
+  <!-- Corner Ornaments -->
+  <g stroke="url(#goldGrad)" stroke-width="2" fill="none" opacity="0.9">
+    <!-- Top Left -->
+    <path d="M 46 64 L 46 46 L 64 46" />
+    <circle cx="54" cy="54" r="3" fill="#D4AF37" />
+    <!-- Top Right -->
+    <path d="M 754 64 L 754 46 L 736 46" />
+    <circle cx="746" cy="54" r="3" fill="#D4AF37" />
+    <!-- Bottom Left -->
+    <path d="M 46 496 L 46 514 L 64 514" />
+    <circle cx="54" cy="506" r="3" fill="#D4AF37" />
+    <!-- Bottom Right -->
+    <path d="M 754 496 L 754 514 L 736 514" />
+    <circle cx="746" cy="506" r="3" fill="#D4AF37" />
+  </g>
+
+  <!-- Watermark Crest / Emblem in Center Background -->
+  <g opacity="0.08" stroke="#FFFFFF" stroke-width="2" fill="none" transform="translate(400, 280) scale(1.6)">
+    <circle cx="0" cy="0" r="70" />
+    <circle cx="0" cy="0" r="54" stroke-dasharray="4,4" />
+    <polygon points="0,-40 38,22 -38,22" />
+    <polygon points="0,40 38,-22 -38,-22" />
+  </g>
+
+  <!-- Top Category Eyebrow -->
+  <text x="400" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" letter-spacing="4" fill="#93C5FD" text-anchor="middle" opacity="0.95">
+    INTERNATIONAL PEER-REVIEWED CONFERENCE
+  </text>
+
+  <!-- Main Certificate Title -->
+  <text x="400" y="140" font-family="'Times New Roman', Times, Georgia, serif" font-size="34" font-weight="bold" letter-spacing="2" fill="url(#goldGrad)" text-anchor="middle">
+    CERTIFICATE OF PRESENTATION
+  </text>
+  <text x="400" y="170" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" letter-spacing="3" fill="#E2E8F0" text-anchor="middle" opacity="0.85">
+    AND RESEARCH AUTHORSHIP
+  </text>
+
+  <!-- Decorative Separator -->
+  <g transform="translate(400, 195)">
+    <line x1="-140" y1="0" x2="-25" y2="0" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.7" />
+    <polygon points="0,-4 5,0 0,4 -5,0" fill="#D4AF37" />
+    <line x1="25" y1="0" x2="140" y2="0" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.7" />
+  </g>
+
+  <!-- Body Text -->
+  <text x="400" y="240" font-family="'Times New Roman', Times, Georgia, serif" font-style="italic" font-size="16" fill="#94A3B8" text-anchor="middle">
+    This credential certifies that the peer-reviewed scholarly paper has been
+  </text>
+  <text x="400" y="268" font-family="'Times New Roman', Times, Georgia, serif" font-style="italic" font-size="16" fill="#94A3B8" text-anchor="middle">
+    formally accepted into the conference proceedings and scheduled for oral presentation.
+  </text>
+
+  <!-- Recipient / Author Highlight Box -->
+  <rect x="180" y="300" width="440" height="48" rx="8" fill="#1E293B" fill-opacity="0.6" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.4" />
+  <text x="400" y="332" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" letter-spacing="1.5" fill="#FFFFFF" text-anchor="middle">
+    MD. JUBAIR UDDIN ZIDAN
+  </text>
+
+  <!-- Conference Proceedings Status Badge -->
+  <rect x="290" y="375" width="220" height="28" rx="14" fill="#0284C7" fill-opacity="0.25" stroke="#38BDF8" stroke-width="1.2" />
+  <text x="400" y="394" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" letter-spacing="1" fill="#7DD3FC" text-anchor="middle">
+    OFFICIAL CERTIFICATE ON FILE
+  </text>
+
+  <!-- Seal Emblem on Left -->
+  <g transform="translate(140, 430)">
+    <!-- Ribbons -->
+    <path d="M -10 20 L -18 65 L 0 52 L 18 65 L 10 20 Z" fill="#92400E" opacity="0.85" />
+    <path d="M -8 20 L -14 60 L 0 48 L 14 60 L 8 20 Z" fill="#D97706" />
+    <!-- Seal Star/Circle -->
+    <circle cx="0" cy="0" r="32" fill="url(#sealGrad)" filter="drop-shadow(0 4px 8px rgba(0,0,0,0.4))" />
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#78350F" stroke-width="1.5" stroke-dasharray="3,2" />
+    <!-- Center Medal Icon -->
+    <polygon points="0,-14 4,-4 14,-4 6,3 9,13 0,7 -9,13 -6,3 -14,-4 -4,-4" fill="#78350F" />
+  </g>
+
+  <!-- Signatures on Right -->
+  <g transform="translate(560, 440)">
+    <line x1="-100" y1="0" x2="100" y2="0" stroke="#64748B" stroke-width="1.5" />
+    <!-- Simulated Signature Curve -->
+    <path d="M -70 -12 Q -50 -32 -30 -10 T 10 -20 T 50 -10 T 70 -18" fill="none" stroke="#93C5FD" stroke-width="1.8" opacity="0.8" />
+    <text x="0" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0" text-anchor="middle">
+      Conference Chair &amp; Technical Committee
+    </text>
+    <text x="0" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">
+      Proceedings of the International Conference
+    </text>
+  </g>
+
+  <!-- Bottom Certificate ID -->
+  <text x="400" y="515" font-family="monospace" font-size="10" fill="#64748B" text-anchor="middle" letter-spacing="1.5">
+    CONF-CERT-VERIFIED • ACADEMIC PROCEEDINGS ARCHIVE
+  </text>
+</svg>

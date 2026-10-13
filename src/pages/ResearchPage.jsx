@@ -150,57 +150,85 @@ export const ResearchPage = () => {
             const isExpanded = Boolean(expandedItems[thesis.id]);
             return (
               <article key={thesis.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
-                <div className="pub-card-main">
-                  <div className="pub-header-row">
-                    <div className="pub-meta-left">
-                      <span className="pub-number">{thesis.number || `0${idx + 1}`}</span>
-                      <span className={`pub-category-badge ${thesis.id === 'thesis-msc' ? 'manuscript' : 'thesis'}`}>
-                        {thesis.categoryBadge}
+                <div className="pub-card-split-row">
+                  {/* Left: Simulation Visual Thumbnail */}
+                  <div 
+                    className="award-card-media-side"
+                    onClick={() => setActiveModalData({
+                      title: thesis.title,
+                      subtitle: `${thesis.degree} • ${thesis.institution} (${thesis.year})`,
+                      imageUrl: thesis.imageUrl,
+                      description: thesis.abstract
+                    })}
+                    title="Click to view full CFD simulation visual"
+                  >
+                    <img 
+                      src={thesis.imageUrl} 
+                      alt={thesis.title} 
+                      className="award-side-img" 
+                      loading="lazy" 
+                    />
+                    <div className="award-side-overlay">
+                      <span className="award-thumb-zoom-badge">
+                        <ExternalLink size={12} />
+                        <span>Enlarge</span>
                       </span>
-                      <span className="pub-status-badge">{thesis.status}</span>
                     </div>
-                    <span className="pub-year">{thesis.year}</span>
                   </div>
 
-                  <h3 className="pub-title">
-                    {thesis.title}
-                  </h3>
+                  {/* Right: Thesis Scholarly Details */}
+                  <div className="pub-card-main">
+                    <div className="pub-header-row">
+                      <div className="pub-meta-left">
+                        <span className="pub-number">{thesis.number || `0${idx + 1}`}</span>
+                        <span className={`pub-category-badge ${thesis.id === 'thesis-msc' ? 'manuscript' : 'thesis'}`}>
+                          {thesis.categoryBadge}
+                        </span>
+                        <span className="pub-status-badge">{thesis.status}</span>
+                      </div>
+                      <span className="pub-year">{thesis.year}</span>
+                    </div>
 
-                  <div className="pub-citation">
-                    <span className="pub-author highlight">{thesis.author}</span>
-                    <span className="pub-sep">•</span>
-                    <span className="pub-venue">{thesis.institution}</span>
-                  </div>
+                    <h3 className="pub-title">
+                      {thesis.title}
+                    </h3>
 
-                  <div className="pub-tags-row">
-                    {(thesis.tags || []).map((tag, tIdx) => (
-                      <span key={tIdx} className="pub-tag-pill">{tag}</span>
-                    ))}
-                  </div>
+                    <div className="pub-citation">
+                      <span className="pub-author highlight">{thesis.author}</span>
+                      <span className="pub-sep">•</span>
+                      <span className="pub-venue">{thesis.institution}</span>
+                    </div>
 
-                  {/* Expand / Collapse Disclosure Button */}
-                  <div className="pub-actions-row">
-                    <button
-                      onClick={() => toggleExpand(thesis.id)}
-                      className="pub-expand-btn"
-                      aria-expanded={isExpanded}
-                    >
-                      <span>{isExpanded ? 'Hide Abstract & Methodology' : 'Read Abstract, Methodology & Findings'}</span>
-                      {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                    </button>
+                    <div className="pub-tags-row">
+                      {(thesis.tags || []).map((tag, tIdx) => (
+                        <span key={tIdx} className="pub-tag-pill">{tag}</span>
+                      ))}
+                    </div>
 
-                    <button
-                      onClick={() => setActiveModalData({
-                        title: thesis.title,
-                        subtitle: `${thesis.degree} • ${thesis.institution} (${thesis.year})`,
-                        imageUrl: thesis.imageUrl,
-                        description: thesis.abstract
-                      })}
-                      className="pub-visual-btn"
-                    >
-                      <ExternalLink size={13} />
-                      <span>View CFD Simulation Visuals</span>
-                    </button>
+                    {/* Expand / Collapse Disclosure Button */}
+                    <div className="pub-actions-row">
+                      <button
+                        onClick={() => toggleExpand(thesis.id)}
+                        className="pub-expand-btn"
+                        aria-expanded={isExpanded}
+                      >
+                        <span>{isExpanded ? 'Hide Abstract & Methodology' : 'Read Abstract, Methodology & Findings'}</span>
+                        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                      </button>
+
+                      <button
+                        onClick={() => setActiveModalData({
+                          title: thesis.title,
+                          subtitle: `${thesis.degree} • ${thesis.institution} (${thesis.year})`,
+                          imageUrl: thesis.imageUrl,
+                          description: thesis.abstract
+                        })}
+                        className="pub-visual-btn"
+                      >
+                        <ExternalLink size={13} />
+                        <span>View CFD Visuals</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -237,6 +265,32 @@ export const ResearchPage = () => {
                         ))}
                       </ul>
                     </div>
+
+                    <div className="pub-detail-section">
+                      <h4 className="pub-detail-heading">Simulation Artifact & Visuals (Click to Enlarge)</h4>
+                      <div 
+                        className="award-expanded-img-box"
+                        onClick={() => setActiveModalData({
+                          title: `${thesis.title} - CFD Simulation`,
+                          subtitle: `${thesis.degree} • ${thesis.institution}`,
+                          imageUrl: thesis.imageUrl,
+                          description: thesis.abstract
+                        })}
+                        title="Click to view full simulation visual"
+                      >
+                        <img
+                          src={thesis.imageUrl}
+                          alt={`${thesis.title} Visual`}
+                          className="award-expanded-img"
+                        />
+                        <div className="award-side-overlay">
+                          <span className="award-thumb-zoom-badge">
+                            <ExternalLink size={12} />
+                            <span>View Full Simulation</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 )}
               </article>
@@ -266,65 +320,93 @@ export const ResearchPage = () => {
           {(researchData?.conferencePapers || []).map((paper, idx) => {
             const paperIndex = idx + 1;
             const isExpanded = Boolean(expandedItems[paper.id]);
+            const certImg = paper.certificateUrl || paper.imageUrl || '/images/conference_certificate_placeholder.svg';
             return (
               <article key={paper.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
-                <div className="pub-card-main">
-                  <div className="pub-header-row">
-                    <div className="pub-meta-left">
-                      <span className="pub-number">0{paperIndex}</span>
-                      <span className="pub-category-badge conference">Conference Paper</span>
-                      <span className="pub-status-badge">{paper.status}</span>
+                {/* Side-by-Side Row: Certificate Image on Left, Text & Details on Right */}
+                <div className="pub-card-split-row">
+                  {/* Left: Certificate Thumbnail / Placeholder */}
+                  <div 
+                    className="award-card-media-side"
+                    onClick={() => setActiveModalData({
+                      title: `${paper.title} - Conference Certificate`,
+                      subtitle: `${paper.conference} • ${paper.date}`,
+                      imageUrl: certImg,
+                      description: paper.abstract
+                    })}
+                    title="Click to view full conference certificate"
+                  >
+                    <img 
+                      src={certImg} 
+                      alt={`${paper.title} Certificate`} 
+                      className="award-side-img" 
+                      loading="lazy" 
+                    />
+                    <div className="award-side-overlay">
+                      <span className="award-thumb-zoom-badge">
+                        <ExternalLink size={12} />
+                        <span>Enlarge</span>
+                      </span>
                     </div>
-                    <span className="pub-year">{paper.date}</span>
                   </div>
 
-                  <h3 className="pub-title">
-                    {paper.title}
-                  </h3>
+                  {/* Right: Text & Scholarly Details */}
+                  <div className="pub-card-main">
+                    <div className="pub-header-row">
+                      <div className="pub-meta-left">
+                        <span className="pub-number">0{paperIndex}</span>
+                        <span className="pub-category-badge conference">Conference Paper</span>
+                        <span className="pub-status-badge">{paper.status}</span>
+                      </div>
+                      <span className="pub-year">{paper.date}</span>
+                    </div>
 
-                  <div className="pub-citation">
-                    <span className="pub-authors">
-                      {paper.authors.map((author, aIdx) => (
-                        <span key={aIdx} className={author.includes('Zidan') ? 'pub-author highlight' : 'pub-author'}>
-                          {author}{aIdx < paper.authors.length - 1 ? ', ' : ''}
-                        </span>
+                    <h3 className="pub-title">
+                      {paper.title}
+                    </h3>
+
+                    <div className="pub-citation">
+                      <span className="pub-authors">
+                        {paper.authors.map((author, aIdx) => (
+                          <span key={aIdx} className={author.includes('Zidan') ? 'pub-author highlight' : 'pub-author'}>
+                            {author}{aIdx < paper.authors.length - 1 ? ', ' : ''}
+                          </span>
+                        ))}
+                      </span>
+                      <span className="pub-sep">•</span>
+                      <span className="pub-venue">{paper.conference}</span>
+                    </div>
+
+                    <div className="pub-tags-row">
+                      {(paper.tags || paper.keywords || []).map((tag, tIdx) => (
+                        <span key={tIdx} className="pub-tag-pill">{tag}</span>
                       ))}
-                    </span>
-                    <span className="pub-sep">•</span>
-                    <span className="pub-venue">{paper.conference}</span>
-                  </div>
+                    </div>
 
-                  <div className="pub-tags-row">
-                    {(paper.tags || paper.keywords || []).map((tag, tIdx) => (
-                      <span key={tIdx} className="pub-tag-pill">{tag}</span>
-                    ))}
-                  </div>
+                    {/* Expand / Collapse & Visual Disclosure Buttons */}
+                    <div className="pub-actions-row">
+                      <button
+                        onClick={() => toggleExpand(paper.id)}
+                        className="pub-expand-btn"
+                        aria-expanded={isExpanded}
+                      >
+                        <span>{isExpanded ? 'Hide Abstract & Methods' : 'Read Abstract & Methodology'}</span>
+                        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                      </button>
 
-                  {/* Expand / Collapse Disclosure Button */}
-                  <div className="pub-actions-row">
-                    <button
-                      onClick={() => toggleExpand(paper.id)}
-                      className="pub-expand-btn"
-                      aria-expanded={isExpanded}
-                    >
-                      <span>{isExpanded ? 'Hide Abstract & Methods' : 'Read Abstract & Methodology'}</span>
-                      {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                    </button>
-
-                    {paper.imageUrl && (
                       <button
                         onClick={() => setActiveModalData({
-                          title: paper.title,
+                          title: `${paper.title} - Conference Certificate`,
                           subtitle: `${paper.conference} • ${paper.date}`,
-                          imageUrl: paper.imageUrl,
+                          imageUrl: certImg,
                           description: paper.abstract
                         })}
                         className="pub-visual-btn"
                       >
                         <ExternalLink size={13} />
-                        <span>View Figures & Simulation</span>
+                        <span>View Certificate</span>
                       </button>
-                    )}
+                    </div>
                   </div>
                 </div>
 
@@ -345,13 +427,42 @@ export const ResearchPage = () => {
                           <strong>Conference:</strong> {paper.conference}
                         </div>
                         <div>
-                          <strong>Location / Venue:</strong> {paper.venue || 'International Conference'}
+                          <strong>Organizer:</strong> {paper.organizer || 'Academic Conference Committee'}
+                        </div>
+                        <div>
+                          <strong>Location / Venue:</strong> {paper.location || 'International Conference'}
                         </div>
                         <div>
                           <strong>Session Date:</strong> {paper.date}
                         </div>
                         <div>
                           <strong>Current Status:</strong> {paper.status}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="pub-detail-section">
+                      <h4 className="pub-detail-heading">Conference Certificate &amp; Author Credential (Click to Enlarge)</h4>
+                      <div 
+                        className="award-expanded-img-box"
+                        onClick={() => setActiveModalData({
+                          title: `${paper.title} - Conference Certificate`,
+                          subtitle: `${paper.conference} • ${paper.date}`,
+                          imageUrl: certImg,
+                          description: paper.abstract
+                        })}
+                        title="Click to view full certificate"
+                      >
+                        <img
+                          src={certImg}
+                          alt={`${paper.title} Certificate`}
+                          className="award-expanded-img"
+                        />
+                        <div className="award-side-overlay">
+                          <span className="award-thumb-zoom-badge">
+                            <ExternalLink size={12} />
+                            <span>View Full Certificate</span>
+                          </span>
                         </div>
                       </div>
                     </div>
