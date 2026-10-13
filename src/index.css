@@ -56,10 +56,11 @@
   --bg-card: #FFFFFF;
   --bg-card-subtle: #F8FAFC;
   --bg-card-hover: linear-gradient(135deg, #1D4ED8 0%, #2563EB 35%, #38BDF8 70%, #93C5FD 100%);
-  --bg-card-hover-tint: #F4F8FE;
-  --border-card-hover: rgba(37, 99, 235, 0.45);
-  --shadow-card-hover: 0 8px 24px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(37, 99, 235, 0.09);
-  --card-transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  --bg-card-hover-tint: #2563EB;
+  --bg-card-hover-gradient: linear-gradient(135deg, #1D4ED8 0%, #2563EB 55%, #3B82F6 100%);
+  --border-card-hover: rgba(147, 197, 253, 0.55);
+  --shadow-card-hover: 0 16px 36px rgba(29, 78, 216, 0.35), 0 4px 14px rgba(37, 99, 235, 0.22);
+  --card-transition: background 200ms ease, border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease, color 200ms ease;
 
   /* Image 01 & Image 02 Reference: Strategic Cobalt Blue, Midnight Navy & Electric Azure */
   --blue-midnight: #0B132B;
@@ -160,10 +161,10 @@
   --bg-canvas-subtle: #0B1120;
   --bg-card: rgba(15, 23, 42, 0.78);
   --bg-card-subtle: rgba(22, 30, 49, 0.88);
-  --bg-card-hover: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 35%, #2563EB 70%, #60A5FA 100%);
-  --bg-card-hover-tint: rgba(30, 58, 138, 0.28);
-  --border-card-hover: rgba(96, 165, 250, 0.45);
-  --shadow-card-hover: 0 10px 28px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(37, 99, 235, 0.2);
+  --bg-card-hover-tint: #1D4ED8;
+  --bg-card-hover-gradient: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 55%, #2563EB 100%);
+  --border-card-hover: rgba(147, 197, 253, 0.65);
+  --shadow-card-hover: 0 20px 48px rgba(5, 18, 55, 0.8), 0 0 32px rgba(37, 99, 235, 0.35);
 
   /* Primary Accent & Luminous Electric Azure */
   --blue-midnight: #F8FAFC;
@@ -1989,6 +1990,12 @@ img {
    Soft elevation, refined border accent, pristine content readability
    ========================================================================== */
 
+/* ==========================================================================
+   VIBRANT ROYAL BLUE CARD HOVER TRANSFORMATION (Image Reference Style)
+   When hovered: Card turns solid saturated royal blue with crisp white typography,
+   white icons, translucent white pills/badges, and glowing blue shadow.
+   ========================================================================== */
+
 .card-interactive:hover,
 .card:hover,
 .award-card:hover,
@@ -2001,10 +2008,11 @@ img {
 .pub-list-card:hover,
 .skill-tech-card:hover,
 .competency-card:hover {
-  background: var(--bg-card-hover-tint) !important;
+  background: var(--bg-card-hover-gradient) !important;
   border-color: var(--border-card-hover) !important;
-  transform: translateY(-2px) !important;
+  transform: translateY(-3px) !important;
   box-shadow: var(--shadow-card-hover) !important;
+  color: #FFFFFF !important;
 }
 
 /* Cursor rule: ONLY use pointer where the whole card is clickable (.card-interactive). All other cards use cursor: default */
@@ -2042,45 +2050,156 @@ img {
   cursor: default;
 }
 
-/* Buttons and interactive controls inside cards always retain pointer cursor */
-.pub-list-card button,
-.pub-list-card a,
-.timeline-academic-card button,
-.timeline-academic-card a,
-.project-card button,
-.project-card a,
-.exp-card button,
-.exp-card a,
-.leadership-card button,
-.leadership-card a,
-.skill-tech-card button,
-.skill-tech-card a,
-.competency-card button,
-.competency-card a,
-.card button,
-.card a {
-  cursor: pointer;
+/* Headings & Titles inside hovered cards turn crisp white */
+.card-interactive:hover h1, .card:hover h1, .pub-list-card:hover h1, .timeline-academic-card:hover h1, .project-card:hover h1, .exp-card:hover h1, .leadership-card:hover h1, .skill-tech-card:hover h1, .competency-card:hover h1,
+.card-interactive:hover h2, .card:hover h2, .pub-list-card:hover h2, .timeline-academic-card:hover h2, .project-card:hover h2, .exp-card:hover h2, .leadership-card:hover h2, .skill-tech-card:hover h2, .competency-card:hover h2,
+.card-interactive:hover h3, .card:hover h3, .pub-list-card:hover h3, .timeline-academic-card:hover h3, .project-card:hover h3, .exp-card:hover h3, .leadership-card:hover h3, .skill-tech-card:hover h3, .competency-card:hover h3,
+.card-interactive:hover h4, .card:hover h4, .pub-list-card:hover h4, .timeline-academic-card:hover h4, .project-card:hover h4, .exp-card:hover h4, .leadership-card:hover h4, .skill-tech-card:hover h4, .competency-card:hover h4,
+.card-interactive:hover .preview-card-title,
+.pub-list-card:hover .pub-title,
+.timeline-academic-card:hover .timeline-card-heading,
+.project-card:hover .project-title,
+.exp-card:hover .exp-role-title,
+.leadership-card:hover .exp-role-title,
+.skill-tech-card:hover .skill-cat-title,
+.competency-card:hover .competency-title,
+.ongoing-research-card:hover .ongoing-title {
+  color: #FFFFFF !important;
 }
 
-.card-interactive:hover .preview-card-title {
-  color: var(--blue-royal);
+/* Descriptions, Subtitles & Paragraphs inside hovered cards */
+.card-interactive:hover p, .card:hover p, .pub-list-card:hover p, .timeline-academic-card:hover p, .project-card:hover p, .exp-card:hover p, .leadership-card:hover p, .skill-tech-card:hover p, .competency-card:hover p,
+.card-interactive:hover .preview-card-desc,
+.pub-list-card:hover .pub-desc,
+.pub-list-card:hover .pub-authors,
+.pub-list-card:hover .pub-venue,
+.timeline-academic-card:hover .timeline-card-institution,
+.timeline-academic-card:hover .timeline-card-sub,
+.timeline-academic-card:hover .timeline-institution,
+.project-card:hover .project-desc,
+.project-card:hover .project-meta span,
+.exp-card:hover .exp-overview-text,
+.exp-card:hover .exp-org-name,
+.exp-card:hover .exp-meta-row,
+.exp-card:hover .exp-meta-period,
+.exp-card:hover .exp-meta-location,
+.leadership-card:hover .exp-overview-text,
+.leadership-card:hover .exp-org-name,
+.leadership-card:hover .exp-meta-row,
+.leadership-card:hover .exp-meta-period,
+.leadership-card:hover .exp-meta-location,
+.skill-tech-card:hover .skill-cat-desc,
+.competency-card:hover .competency-desc {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* Category & subtext accents */
+.card-interactive:hover .preview-card-category,
+.pub-list-card:hover .pub-meta-left span,
+.pub-list-card:hover .pub-status-badge,
+.timeline-academic-card:hover .timeline-meta-label,
+.timeline-academic-card:hover .timeline-card-meta {
+  color: #DBEAFE !important;
+}
+
+/* Action Links and Arrow (Reference Image: "Learn more" in white) */
+.card-interactive:hover .preview-card-action-text,
+.card-interactive:hover .preview-card-action-arrow,
+.card-interactive:hover .preview-card-action {
+  color: #FFFFFF !important;
 }
 
 .card-interactive:hover .preview-card-action-arrow {
   transform: translateX(4px);
-  color: var(--blue-royal);
 }
 
-.card-interactive:hover .preview-card-icon-box {
-  background: rgba(37, 99, 235, 0.12);
-  color: #1D4ED8;
-  transform: scale(1.05);
+/* Icon Containers & SVGs */
+.card-interactive:hover .preview-card-icon-box,
+.skill-tech-card:hover .skill-cat-icon-box {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  color: #FFFFFF !important;
 }
 
-/* Card interactive hover refinements (clean elevation, crisp dark typography) */
-.card-interactive:hover .preview-card-title,
-.ongoing-research-card:hover .ongoing-title {
-  color: var(--blue-royal) !important;
+.card-interactive:hover svg,
+.pub-list-card:hover svg,
+.timeline-academic-card:hover svg,
+.project-card:hover svg,
+.exp-card:hover svg,
+.leadership-card:hover svg,
+.skill-tech-card:hover svg,
+.competency-card:hover svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+/* Badges, Pills, Chips & Numbers */
+.pub-list-card:hover .pub-number,
+.pub-list-card:hover .pub-tag-pill,
+.pub-list-card:hover .pub-year-badge,
+.pub-list-card:hover .pub-type-badge,
+.pub-list-card:hover .category-pill,
+.project-card:hover .tool-chip,
+.project-card:hover .project-field-badge,
+.skill-tech-card:hover .skill-tool-pill,
+.timeline-academic-card:hover .timeline-current-pill,
+.timeline-academic-card:hover .milestones-badge,
+.exp-card:hover .exp-category-pill,
+.leadership-card:hover .exp-category-pill {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: #FFFFFF !important;
+}
+
+.skill-tech-card:hover .skill-tool-dot {
+  background: #FFFFFF !important;
+}
+
+/* Buttons inside cards */
+.pub-list-card:hover .pub-expand-btn,
+.pub-list-card:hover .pub-visual-btn,
+.pub-list-card:hover .pub-action-btn,
+.project-card:hover .project-action-btn,
+.timeline-academic-card:hover .pub-expand-btn,
+.exp-card:hover .pub-expand-btn {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.38) !important;
+  color: #FFFFFF !important;
+  cursor: pointer;
+}
+
+.pub-list-card:hover .pub-expand-btn:hover,
+.pub-list-card:hover .pub-visual-btn:hover,
+.pub-list-card:hover .pub-action-btn:hover,
+.project-card:hover .project-action-btn:hover,
+.timeline-academic-card:hover .pub-expand-btn:hover,
+.exp-card:hover .pub-expand-btn:hover {
+  background: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  color: #1D4ED8 !important;
+}
+
+.pub-list-card:hover button:hover svg,
+.timeline-academic-card:hover button:hover svg,
+.project-card:hover button:hover svg,
+.exp-card:hover button:hover svg {
+  color: #1D4ED8 !important;
+  stroke: #1D4ED8 !important;
+}
+
+/* Dividers & Borders inside cards */
+.pub-list-card:hover .pub-card-footer,
+.exp-card:hover .exp-divider,
+.leadership-card:hover .exp-divider,
+.timeline-academic-card:hover [style*="borderTop"],
+.exp-card:hover [style*="borderTop"] {
+  border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+/* Experience Org Logo Box keeps clean white surface */
+.exp-card:hover .exp-org-logo-box {
+  background: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .ongoing-research-card {
@@ -3296,7 +3415,7 @@ img {
 }
 
 .timeline-academic-card:hover .timeline-card-heading {
-  color: var(--blue-royal);
+  color: #FFFFFF !important;
 }
 
 /* Current Degree subtle pill */
@@ -4873,7 +4992,7 @@ img {
 
 .exp-card:hover .exp-role-title,
 .leadership-card:hover .exp-role-title {
-  color: var(--blue-royal);
+  color: #FFFFFF !important;
 }
 
 /* Card Header: Logo + Title Column */
