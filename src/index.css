@@ -234,12 +234,12 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #F4F8FE;
+  background-color: #F8FAFD;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: #F4F8FE;
+  background-color: #F8FAFD;
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
@@ -374,132 +374,127 @@ img {
   overflow: hidden;
   background-image: 
     /* Ultra-fine frosted glass texture preventing color banding */
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E"),
-    /* Foundational ambient sky blue luminescence from the palette (#cadbfd & #90b8f8) */
-    radial-gradient(ellipse 95% 85% at 50% 50%, rgba(144, 184, 248, 0.45) 0%, rgba(202, 219, 253, 0.32) 45%, rgba(240, 246, 255, 0.15) 75%, transparent 100%);
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E"),
+    /* Soft, ethereal sky luminescence concentrated specifically behind the hero */
+    radial-gradient(ellipse 90% 50% at 50% 14%, rgba(191, 219, 254, 0.28) 0%, rgba(224, 242, 254, 0.14) 45%, rgba(248, 250, 253, 0.02) 80%, transparent 100%);
 }
 
-/* Individual organic liquid light pools in rich, high-contrast blue palette shades */
+/* Individual organic liquid light pools in soft, low-contrast, harmonious pale blue tones */
 .liquid-light-pool {
   position: absolute;
   pointer-events: none;
   will-change: transform, border-radius;
-  opacity: 0.96;
+  opacity: 0.58;
 }
 
-/* Pool 1: Vivid Electric Blue & Royal Blue (#005ae6 & #1e6ff0) (Top-Left) */
+/* Pool 1: Subtle cerulean blue glow behind the hero left */
 .liquid-light-pool-1 {
-  top: -10%;
-  left: -10%;
-  width: 1450px;
-  height: 1350px;
+  top: -8%;
+  left: -6%;
+  width: 1300px;
+  height: 1050px;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   background: radial-gradient(
     ellipse 70% 65% at 45% 45%,
-    rgba(0, 90, 230, 0.72) 0%,
-    rgba(30, 111, 240, 0.55) 35%,
-    rgba(80, 144, 244, 0.36) 62%,
-    rgba(202, 219, 253, 0.12) 80%,
-    transparent 88%
+    rgba(59, 130, 246, 0.22) 0%,
+    rgba(96, 165, 250, 0.15) 35%,
+    rgba(191, 219, 254, 0.08) 65%,
+    transparent 85%
   );
-  filter: blur(68px);
-  animation: liquidMorphOne 20s ease-in-out infinite alternate;
+  filter: blur(105px);
+  animation: liquidMorphOne 24s ease-in-out infinite alternate;
 }
 
-/* Pool 2: Bright Cerulean & Sky Blue Wave (#5090f4 & #90b8f8) (Top-Right) */
+/* Pool 2: Gentle sky blue glow framing the hero right and portrait */
 .liquid-light-pool-2 {
   top: -4%;
-  right: -10%;
-  width: 1400px;
-  height: 1300px;
+  right: -6%;
+  width: 1250px;
+  height: 1000px;
   border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
   background: radial-gradient(
     ellipse 65% 60% at 42% 42%,
-    rgba(30, 111, 240, 0.68) 0%,
-    rgba(80, 144, 244, 0.55) 32%,
-    rgba(144, 184, 248, 0.35) 62%,
-    rgba(202, 219, 253, 0.12) 80%,
-    transparent 88%
+    rgba(96, 165, 250, 0.19) 0%,
+    rgba(147, 197, 253, 0.13) 35%,
+    rgba(219, 234, 254, 0.06) 65%,
+    transparent 85%
   );
-  filter: blur(65px);
-  animation: liquidMorphTwo 23s ease-in-out infinite alternate;
+  filter: blur(105px);
+  animation: liquidMorphTwo 26s ease-in-out infinite alternate;
 }
 
-/* Pool 3: Deep Anchor Navy & Cobalt Abyss (#0a2973 & #003db3) (Bottom-Left) */
+/* Pool 3: Pale blue whisper for lower section (No dark navy, low contrast) */
 .liquid-light-pool-3 {
   bottom: -15%;
   left: 5%;
-  width: 1550px;
-  height: 1450px;
+  width: 1350px;
+  height: 1150px;
   border-radius: 50% 50% 30% 70% / 50% 50% 70% 30%;
   background: radial-gradient(
     ellipse 75% 70% at 50% 50%,
-    rgba(10, 41, 115, 0.70) 0%,
-    rgba(0, 61, 179, 0.56) 35%,
-    rgba(30, 111, 240, 0.38) 60%,
-    rgba(144, 184, 248, 0.15) 80%,
-    transparent 90%
+    rgba(191, 219, 254, 0.10) 0%,
+    rgba(224, 242, 254, 0.06) 45%,
+    rgba(248, 250, 253, 0.02) 75%,
+    transparent 88%
   );
-  filter: blur(72px);
-  animation: liquidMorphThree 26s ease-in-out infinite alternate;
+  filter: blur(120px);
+  animation: liquidMorphThree 28s ease-in-out infinite alternate;
 }
 
-/* Pool 4: Vivid Cobalt & Azure Surge (#005ae6 & #5090f4) (Center-Right) */
+/* Pool 4: Faint sky tint for middle flow (Clean, non-competing) */
 .liquid-light-pool-4 {
-  top: 32%;
-  right: -2%;
-  width: 1380px;
-  height: 1300px;
+  top: 36%;
+  right: -4%;
+  width: 1150px;
+  height: 950px;
   border-radius: 60% 40% 50% 50% / 40% 60% 40% 60%;
   background: radial-gradient(
     ellipse 65% 60% at 50% 50%,
-    rgba(0, 90, 230, 0.66) 0%,
-    rgba(80, 144, 244, 0.52) 34%,
-    rgba(144, 184, 248, 0.30) 65%,
-    transparent 85%
+    rgba(191, 219, 254, 0.09) 0%,
+    rgba(224, 242, 254, 0.05) 45%,
+    transparent 80%
   );
-  filter: blur(66px);
-  animation: liquidMorphOne 22s ease-in-out infinite alternate-reverse;
+  filter: blur(120px);
+  animation: liquidMorphOne 25s ease-in-out infinite alternate-reverse;
 }
 
-/* Pool 5: Glowing Cerulean & Powder Ice Blossom (#5090f4 & #cadbfd) (Center Core) */
+/* Pool 5: Soft off-white / light cerulean blossom */
 .liquid-light-pool-5 {
-  top: 18%;
-  left: 22%;
-  width: 1300px;
-  height: 1250px;
+  top: 24%;
+  left: 25%;
+  width: 1050px;
+  height: 900px;
   border-radius: 45% 55% 65% 35% / 55% 45% 35% 65%;
   background: radial-gradient(
     ellipse 60% 60% at 50% 50%,
-    rgba(80, 144, 244, 0.65) 0%,
-    rgba(144, 184, 248, 0.50) 35%,
-    rgba(202, 219, 253, 0.28) 65%,
-    transparent 85%
+    rgba(191, 219, 254, 0.10) 0%,
+    rgba(239, 246, 255, 0.06) 45%,
+    transparent 78%
   );
-  filter: blur(64px);
-  animation: liquidMorphTwo 25s ease-in-out infinite alternate-reverse;
+  filter: blur(110px);
+  animation: liquidMorphTwo 28s ease-in-out infinite alternate-reverse;
 }
 
-/* Noticeable Cursor Spotlight Aura */
+/* Soft, Non-Distracting Cursor Spotlight Aura */
 .liquid-light-cursor-aura {
   position: absolute;
   top: 0;
   left: 0;
-  width: 950px;
-  height: 950px;
+  width: 750px;
+  height: 750px;
   border-radius: 50%;
   pointer-events: none;
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(30, 111, 240, 0.55) 0%,
-    rgba(80, 144, 244, 0.40) 28%,
-    rgba(144, 184, 248, 0.22) 55%,
-    transparent 78%
+    rgba(147, 197, 253, 0.12) 0%,
+    rgba(191, 219, 254, 0.06) 35%,
+    transparent 70%
   );
-  filter: blur(50px);
+  filter: blur(65px);
   will-change: transform;
-  opacity: 0.95;
+  opacity: 0.55;
 }
+
 
 
 /* Smooth, Flowing Organic Morphing Keyframes (Liquid Geometry) */
@@ -1534,7 +1529,7 @@ img {
   z-index: 1;
 }
 
-/* Luminous Frosted Blue Fluid Gradient Mesh on cards (Calibrated for high content contrast) */
+/* Cards maintain clean, pristine surface without competing dark gradient overlays */
 .card-interactive::after,
 .card::after,
 .project-card::after,
@@ -1544,45 +1539,8 @@ img {
 .thesis-hero-card::after,
 .timeline-academic-card::after,
 .stat-card-image4::after {
-  content: '';
-  position: absolute;
-  inset: -60%;
-  width: 220%;
-  height: 220%;
-  background-image:
-    /* Fine frosted glass grain texture */
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E"),
-    /* Frosted cyan glow core (calibrated slightly darker for high text contrast) */
-    radial-gradient(ellipse 55% 50% at 45% 65%, rgba(186, 230, 253, 0.65) 0%, rgba(96, 165, 250, 0.5) 25%, rgba(37, 99, 235, 0.35) 50%, transparent 75%),
-    /* Radiant sky blue highlight at top-right */
-    radial-gradient(ellipse 60% 55% at 85% 18%, rgba(147, 197, 253, 0.7) 0%, rgba(59, 130, 246, 0.55) 35%, transparent 70%),
-    /* Electric azure fluid orb at top-left */
-    radial-gradient(ellipse 65% 60% at 15% 22%, rgba(59, 130, 246, 0.75) 0%, rgba(29, 78, 216, 0.6) 45%, transparent 75%),
-    /* Saturated royal blue mid-tone */
-    radial-gradient(ellipse 70% 65% at 50% 35%, rgba(29, 78, 216, 0.85) 0%, rgba(30, 64, 175, 0.7) 50%, transparent 80%),
-    /* Ocean sapphire base depth */
-    radial-gradient(ellipse 60% 55% at 15% 85%, rgba(23, 52, 148, 0.9) 0%, rgba(18, 42, 122, 0.65) 55%, transparent 75%),
-    /* Rich royal-cobalt foundation */
-    linear-gradient(135deg, #13398B 0%, #1745A8 50%, #2055CB 100%);
-  opacity: 0;
-  pointer-events: none;
-  filter: blur(24px);
-  z-index: 0;
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  animation: fluidBlueMeshFloat 14s ease-in-out infinite alternate;
-  will-change: transform;
-}
-
-.card-interactive:hover::after,
-.card:hover::after,
-.project-card:hover::after,
-.award-card:hover::after,
-.exp-card:hover::after,
-.leadership-card:hover::after,
-.thesis-hero-card:hover::after,
-.timeline-academic-card:hover::after,
-.stat-card-image4:hover::after {
-  opacity: 1;
+  display: none !important;
+  content: none !important;
 }
 
 @keyframes fluidBlueMeshFloat {
@@ -1965,8 +1923,8 @@ img {
 }
 
 /* ==========================================================================
-   CARD HOVER / DARK CARD: SLIGHTLY DARK BLUE (Reference Image Aesthetic)
-   A rich, luxurious shade of slightly dark blue (#0C286E / #0A225D)
+   CLEAN, SUBTLE, PREMIUM CARD HOVER MICRO-INTERACTIONS
+   Soft elevation, refined border accent, pristine content readability
    ========================================================================== */
 
 .card-interactive:hover,
@@ -1975,335 +1933,54 @@ img {
 .exp-card:hover,
 .leadership-card:hover,
 .thesis-hero-card:hover,
-.timeline-academic-card:hover {
-  background: linear-gradient(135deg, #0d2b6b 0%, #17429e 50%, #1e52c9 100%) !important;
-  border-color: rgba(147, 197, 253, 0.6) !important;
-  transform: translateY(-5px) !important;
-  box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.45),
-    0 20px 48px rgba(16, 48, 128, 0.45),
-    0 0 28px rgba(37, 99, 235, 0.3) !important;
+.timeline-academic-card:hover,
+.project-card:hover,
+.ongoing-research-card:hover {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(37, 99, 235, 0.35) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.08), 0 2px 8px rgba(11, 19, 43, 0.04) !important;
   cursor: pointer;
 }
 
-/* Specific Dark Hover Adaptations for Thesis Hero Card (Image 2 style) */
-.card-interactive:hover .thesis-icon-squircle {
-  background: rgba(255, 255, 255, 0.14) !important;
-  border-color: rgba(147, 197, 253, 0.35) !important;
-  color: #FFFFFF !important;
-}
-
-.card-interactive:hover .thesis-icon-squircle svg {
-  color: #FFFFFF !important;
-  stroke: #FFFFFF !important;
-}
-
-.card-interactive:hover .thesis-meta-number {
-  color: #93C5FD !important;
-}
-
-.card-interactive:hover .thesis-meta-pipe {
-  color: rgba(255, 255, 255, 0.3) !important;
-}
-
-.card-interactive:hover .thesis-meta-badge {
-  color: #93C5FD !important;
-}
-
-.card-interactive:hover .thesis-title-heading {
-  color: #FFFFFF !important;
-}
-
-.card-interactive:hover .thesis-institution-sub {
-  color: #BFDBFE !important;
-}
-
-.card-interactive:hover .thesis-hairline-divider {
-  background: rgba(255, 255, 255, 0.14) !important;
-}
-
-.card-interactive:hover .thesis-narrative-text {
-  color: #DCE9FD !important;
-}
-
-.card-interactive:hover .thesis-pill-tag {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-color: rgba(147, 197, 253, 0.3) !important;
-  color: #E8F2FF !important;
-}
-
-.card-interactive:hover .thesis-action-cta {
-  color: #FFFFFF !important;
-}
-
-.card-interactive:hover .thesis-action-cta svg {
-  color: #38BDF8 !important;
-}
-
-.card-interactive:hover .thesis-image-frame {
-  border-color: rgba(147, 197, 253, 0.25) !important;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* Headings / Titles: Tack-sharp 100% Pure White (#FFFFFF) - Zero Drop Shadows */
-.card-interactive:hover h1,
-.card-interactive:hover h2,
-.card-interactive:hover h3,
-.card-interactive:hover h4,
-.card-interactive:hover h5,
-.card-interactive:hover h6,
-.card-interactive:hover strong,
-.card:hover h1,
-.card:hover h2,
-.card:hover h3,
-.card:hover h4,
-.card:hover h5,
-.card:hover h6,
-.card:hover strong,
-.card-interactive:hover .preview-card-title,
-.stat-card-image4:hover .stat-card-image4-value,
-.stat-card-image4:hover .stat-card-image4-value span,
-.conf-paper-card.is-active h3,
-.conf-paper-card.is-active h4,
-.conf-paper-card.is-active strong,
-.conf-paper-card.is-active .conf-paper-title,
-.conf-paper-card.is-active .conf-paper-abstract-box strong,
-.award-card:hover h3,
-.award-card:hover strong,
-.award-card:hover .award-card-title,
-.exp-card:hover h3,
-.exp-card:hover h4,
-.leadership-card:hover .leadership-designation {
-  color: #FFFFFF !important;
-  text-shadow: none !important;
-}
-
-/* Body / Descriptions / Paragraphs: Crystal-clear Luminous Silver (#F1F6FE) - Zero Drop Shadows */
-.card-interactive:hover p,
-.card-interactive:hover li,
-.card:hover p,
-.card:hover li,
-.card-interactive:hover .preview-card-desc,
-.stat-card-image4:hover .stat-card-image4-sub,
-.conf-paper-card.is-active p,
-.conf-paper-card.is-active .conf-paper-venue,
-.conf-paper-card.is-active .conf-paper-abstract-box,
-.award-card:hover p,
-.award-card:hover .award-card-desc,
-.exp-card:hover p,
-.leadership-card:hover .leadership-club-name {
-  color: #F1F6FE !important;
-  text-shadow: none !important;
-}
-
-/* Metadata / Overlines / Categories: Clean Readable Sky/Slate (#BFDBFE / #E2E8F0) - Zero Drop Shadows */
-.card-interactive:hover .preview-card-category,
-.stat-card-image4:hover .stat-card-image4-label,
-.conf-paper-card.is-active .conf-paper-org,
-.conf-paper-card.is-active .conf-paper-date,
-.conf-paper-card.is-active .conf-paper-authors,
-.conf-paper-card.is-active .conf-paper-authors span,
-.award-card:hover .award-card-org,
-.award-card:hover .award-card-year,
-.leadership-card:hover .leadership-period,
-.leadership-card:hover .leadership-meta span {
-  color: #BFDBFE !important;
-  text-shadow: none !important;
-}
-
-.card-interactive:hover .preview-card-category,
-.conf-paper-card.is-active .conf-paper-org {
-  color: #BAE6FD !important;
-  text-shadow: none !important;
-}
-
-/* In stats cards, the '+' sign glows with electric cyan - Zero Drop Shadows */
-.stat-card-image4:hover .stat-card-image4-plus {
-  color: #38BDF8 !important;
-  text-shadow: none !important;
-}
-
-/* Icons inside dark hover turn crisp white */
-.card-interactive:hover svg,
-.stat-card-image4:hover svg,
-.stat-card-image4:hover .stat-card-image4-icon,
-.conf-paper-card.is-active svg,
-.award-card:hover svg,
-.exp-card:hover svg,
-.leadership-card:hover svg {
-  color: #FFFFFF !important;
-  stroke: #FFFFFF !important;
-}
-
-/* Icon Container inside preview cards: turns into translucent white glass */
-.card-interactive:hover .preview-card-icon-box,
-.card-interactive:hover [style*="background: var(--blue-soft)"],
-.card-interactive:hover [style*="background:var(--blue-soft)"] {
-  background: rgba(255, 255, 255, 0.12) !important;
-  border-color: rgba(255, 255, 255, 0.25) !important;
-  color: #FFFFFF !important;
-}
-
-/* Hairline dividers turn subtle translucent white lines */
-.card-interactive:hover .preview-card-action,
-.card-interactive:hover [style*="border-top"],
-.conf-paper-card.is-active .conf-paper-footer,
-.conf-paper-card.is-active [style*="border-top"],
-.leadership-card:hover [style*="border-top"],
-.leadership-card:hover .leadership-meta {
-  border-color: rgba(255, 255, 255, 0.12) !important;
-}
-
-/* Bottom action link text and arrow */
-.card-interactive:hover .preview-card-action-text,
-.card-interactive:hover [style*="color: var(--blue-royal)"],
-.card-interactive:hover [style*="color:var(--blue-royal)"] {
-  color: #FFFFFF !important;
+.card-interactive:hover .preview-card-title {
+  color: var(--blue-royal);
 }
 
 .card-interactive:hover .preview-card-action-arrow {
-  color: #FFFFFF !important;
-  transform: translateX(4px) !important;
+  transform: translateX(4px);
+  color: var(--blue-royal);
 }
 
-/* Inner abstract boxes, skill chips, and callouts inside dark cards turn into translucent dark glass */
-.card-interactive:hover [style*="background: var(--bg-card-subtle)"],
-.card-interactive:hover [style*="background:var(--bg-card-subtle)"] {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  color: #E2E8F0 !important;
+.card-interactive:hover .preview-card-icon-box {
+  background: rgba(37, 99, 235, 0.12);
+  color: #1D4ED8;
+  transform: scale(1.05);
 }
 
-.card-interactive:hover [style*="background: var(--lavender-soft)"],
-.card-interactive:hover [style*="background:var(--lavender-soft)"] {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-color: rgba(255, 255, 255, 0.22) !important;
-  color: #FFFFFF !important;
+/* Card interactive hover refinements (clean elevation, crisp dark typography) */
+.card-interactive:hover .preview-card-title,
+.ongoing-research-card:hover .ongoing-title {
+  color: var(--blue-royal) !important;
 }
 
-.card-interactive:hover [style*="background: #fffbf0"],
-.card-interactive:hover [style*="background:#fffbf0"],
-.card-interactive:hover [style*="background: #F6F5FC"],
-.conf-paper-card.is-active .conf-paper-abstract-box {
-  background: rgba(255, 255, 255, 0.06) !important;
-  border-color: rgba(255, 255, 255, 0.14) !important;
-}
-
-.card-interactive:hover [style*="background: var(--bg-card-subtle)"] span,
-.card-interactive:hover [style*="background: var(--bg-card-subtle)"] p,
-.conf-paper-card.is-active .conf-paper-abstract-box {
-  color: #E2E8F0 !important;
-}
-
-.card-interactive:hover [style*="background: var(--bg-card-subtle)"] strong,
-.card-interactive:hover [style*="background: var(--bg-card-subtle)"] h4,
-.conf-paper-card.is-active .conf-paper-abstract-box strong {
-  color: #FFFFFF !important;
-}
-
-/* Buttons & Chips inside dark hover */
-.conf-paper-card.is-active .conf-paper-btn,
-.leadership-card:hover .btn-view-details {
-  background: rgba(255, 255, 255, 0.12) !important;
-  border-color: rgba(255, 255, 255, 0.25) !important;
-  color: #FFFFFF !important;
-}
-
-.conf-paper-card.is-active .tool-chip {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  color: #FFFFFF !important;
-}
-
-.conf-paper-card.is-active .conf-paper-status-badge {
-  background: rgba(11, 19, 43, 0.88) !important;
-  color: #FFFFFF !important;
-  border-color: rgba(255, 255, 255, 0.25) !important;
-}
-
-/* Fallback for generic card-interactive children */
-.card-interactive:hover span:not(.pulse-dot):not([class*="badge"]),
-.card:hover span:not(.pulse-dot):not([class*="badge"]) {
-  color: #E2E8F0;
-}
-
-/* ==========================================================================
-   ONGOING RESEARCH CARD HOVER CONTRAST (Light & Dark Mode)
-   ========================================================================== */
 .ongoing-research-card {
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 }
 
-.ongoing-research-card:hover,
-.card-interactive:hover.ongoing-research-card {
-  background: linear-gradient(135deg, #0d2b6b 0%, #17429e 50%, #1e52c9 100%) !important;
-  border-color: rgba(147, 197, 253, 0.6) !important;
+.ongoing-research-card:hover {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(37, 99, 235, 0.35) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.08), 0 2px 8px rgba(11, 19, 43, 0.04) !important;
 }
 
-.ongoing-research-card:hover .ongoing-status-badge {
-  background: rgba(255, 255, 255, 0.2) !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+[data-theme="dark"] .ongoing-research-card:hover {
+  background: rgba(30, 41, 59, 0.85) !important;
+  border-color: rgba(96, 165, 250, 0.45) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 24px rgba(37, 99, 235, 0.15) !important;
 }
 
-.ongoing-research-card:hover .ongoing-type-tag {
-  color: #BAE6FD !important;
-}
-
-.ongoing-research-card:hover .ongoing-title {
-  color: #FFFFFF !important;
-}
-
-.ongoing-research-card:hover .ongoing-meta {
-  color: #E2E8F0 !important;
-}
-
-.ongoing-research-card:hover .ongoing-meta strong {
-  color: #FFFFFF !important;
-}
-
-.ongoing-research-card:hover .ongoing-overview {
-  color: #F1F6FE !important;
-}
-
-.ongoing-research-card:hover .ongoing-deliverables-box {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
-}
-
-.ongoing-research-card:hover .ongoing-deliverables-title {
-  color: #67E8F9 !important;
-}
-
-.ongoing-research-card:hover .ongoing-deliverable-item {
-  color: #F8FAFC !important;
-}
-
-.ongoing-research-card:hover .ongoing-check-icon {
-  color: #38BDF8 !important;
-}
-
-/* Universal text contrast for hovered cards with inline purple/secondary text */
-.card-interactive:hover [style*="color: var(--purple-deep)"],
-.card-interactive:hover [style*="color:var(--purple-deep)"],
-.card:hover [style*="color: var(--purple-deep)"],
-.card:hover [style*="color:var(--purple-deep)"] {
-  color: #FFFFFF !important;
-}
-
-.card-interactive:hover [style*="color: var(--text-secondary)"],
-.card-interactive:hover [style*="color:var(--text-secondary)"],
-.card:hover [style*="color: var(--text-secondary)"],
-.card:hover [style*="color:var(--text-secondary)"] {
-  color: #F1F6FE !important;
-}
-
-.card-interactive:hover strong,
-.card:hover strong {
-  color: #FFFFFF !important;
-}
 
 .card-active {
   border-color: var(--blue-royal);
