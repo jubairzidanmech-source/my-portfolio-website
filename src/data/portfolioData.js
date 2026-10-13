@@ -24,10 +24,10 @@ export const personalData = {
     { label: "Email", url: "mailto:jubairzidan99@gmail.com", icon: "email" }
   ],
   stats: [
-    { label: "Research Papers", value: "4+", detail: "Conferences & Manuscripts" },
-    { label: "Upper Sem. CGPA", value: "3.41", detail: "Last 4 Semesters" },
-    { label: "Awards & Honors", value: "8+", detail: "Competitions & Olympiads" },
-    { label: "Leadership Roles", value: "5+", detail: "ASME, CAMS, SCBA" }
+    { label: "Peer-Reviewed Works", value: "4", detail: "Published & Conference Papers" },
+    { label: "Current CGPA", value: "3.90", detail: "M.Sc. Theory Coursework" },
+    { label: "International Forums", value: "2", detail: "BSME 2023 & MIMEC 2024" },
+    { label: "Awards & Honors", value: "4", detail: "National & Regional Accolades" }
   ]
 };
 

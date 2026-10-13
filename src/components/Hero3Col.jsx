@@ -39,28 +39,28 @@ export const Hero3Col = ({ setActivePage }) => {
     {
       topLabel: "PEER-REVIEWED WORKS",
       value: "4",
-      hasPlus: true,
+      hasPlus: false,
       subtext: "Published & Conference Papers",
       icon: BookOpen
     },
     {
-      topLabel: "CUET DEGREE CGPA",
-      value: "3.41",
+      topLabel: "CURRENT CGPA",
+      value: "3.90",
       hasPlus: false,
-      subtext: "Upper Semesters Cumulative GPA",
+      subtext: "M.Sc. Theory Coursework",
       icon: GraduationCap
     },
     {
       topLabel: "INTERNATIONAL FORUMS",
       value: "2",
-      hasPlus: true,
+      hasPlus: false,
       subtext: "BSME 2023 & MIMEC 2024",
       icon: Globe
     },
     {
       topLabel: "AWARDS & HONORS",
-      value: "8",
-      hasPlus: true,
+      value: "4",
+      hasPlus: false,
       subtext: "National & Regional Accolades",
       icon: Award
     }
