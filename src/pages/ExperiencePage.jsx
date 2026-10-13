@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Factory, GraduationCap, Users, MapPin, ChevronDown, ChevronUp, CheckCircle2, ArrowUpRight } from 'lucide-react';
+import { Factory, GraduationCap, Users, MapPin, ChevronDown, ChevronUp, CheckCircle2, ArrowUpRight, BookOpen, Wrench, Leaf } from 'lucide-react';
 import { experienceData } from '../data/portfolioData';
 import { InteractiveModal } from '../components/InteractiveModal';
 
@@ -60,28 +60,34 @@ export const ExperiencePage = () => {
             </div>
           </div>
 
-          <div className="card card-interactive" style={{ padding: '32px' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1.4fr) 1fr', gap: '28px', alignItems: 'start' }}>
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-                  <span className="pub-status-badge">
-                    {experienceData.internship.role}
-                  </span>
-                  <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 500 }}>
-                    {experienceData.internship.period}
+          <div className="card exp-card">
+            {/* Header: Role first, Organization second, Dates & Location third */}
+            <div className="exp-card-header">
+              <div className="exp-org-logo-box">
+                <Factory size={18} className="exp-logo-icon" />
+              </div>
+              <div className="exp-header-text">
+                <div className="exp-header-top">
+                  <h3 className="exp-role-title">{experienceData.internship.role}</h3>
+                  <span className="exp-category-pill category-industrial">Industrial Attachment</span>
+                </div>
+                <div className="exp-org-name">{experienceData.internship.company}</div>
+                <div className="exp-meta-row">
+                  <span className="exp-meta-period">{experienceData.internship.period}</span>
+                  <span className="exp-meta-dot">·</span>
+                  <span className="exp-meta-location">
+                    <MapPin size={13} /> {experienceData.internship.location}
                   </span>
                 </div>
+              </div>
+            </div>
 
-                <h3 style={{ fontSize: '1.4rem', color: 'var(--text-primary)', lineHeight: 1.3, marginBottom: '6px' }}>
-                  {experienceData.internship.company}
-                </h3>
+            <div className="exp-divider" />
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.86rem', color: 'var(--blue-royal)', fontWeight: 500, marginBottom: '16px' }}>
-                  <MapPin size={14} />
-                  <span>{experienceData.internship.location}</span>
-                </div>
-
-                <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: 1.68, marginBottom: '20px' }}>
+            {/* Body: Overview + Contained Supporting Image */}
+            <div className="exp-body-row">
+              <div className="exp-overview-col">
+                <p className="exp-overview-text">
                   {experienceData.internship.overview}
                 </p>
 
@@ -91,38 +97,39 @@ export const ExperiencePage = () => {
                   className="pub-expand-btn"
                   aria-expanded={Boolean(expandedSections['internship-learnings'])}
                 >
-                  <span>{expandedSections['internship-learnings'] ? 'Hide Technical Responsibilities & Learnings' : 'View Key Technical Responsibilities & Learnings (6)'}</span>
+                  <span>{expandedSections['internship-learnings'] ? 'Hide Technical Responsibilities & Systems' : `View Key Technical Responsibilities & Learnings (${experienceData.internship.keyLearnings.length})`}</span>
                   {expandedSections['internship-learnings'] ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
                 </button>
               </div>
 
-              <div style={{ borderRadius: '14px', overflow: 'hidden', height: '230px', boxShadow: 'var(--shadow-sm)' }}>
+              {/* Contained supporting image (doesn't overpower role details) */}
+              <div className="exp-contained-image-box">
                 <img
                   src={experienceData.internship.imageUrl}
                   alt={experienceData.internship.company}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  className="exp-contained-image"
                 />
+                <span className="exp-image-caption">RPCL Raozan Facility</span>
               </div>
             </div>
 
-            {/* EXPANDABLE RESPONSIBILITIES & LEARNINGS (Without Nested Boxes!) */}
+            {/* Responsibilities & Technical Learning Points with Thin Dividers */}
             {expandedSections['internship-learnings'] && (
-              <div style={{ marginTop: '24px', paddingTop: '20px', borderTop: '1px solid var(--border-subtle)' }}>
-                <h4 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '14px' }}>
+              <div className="exp-learnings-section">
+                <div className="exp-divider" />
+                <h4 className="exp-section-title">
                   Key Engineering Responsibilities & Systems Investigated
                 </h4>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+                <div className="exp-divided-list">
                   {experienceData.internship.keyLearnings.map((learning, idx) => (
-                    <div key={idx} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                      <CheckCircle2 size={16} color="var(--blue-royal)" style={{ flexShrink: 0, marginTop: '3px' }} />
-                      <div>
-                        <div style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '2px' }}>
-                          {learning.title}
+                    <div key={idx} className="exp-divided-item">
+                      <div className="exp-item-point">
+                        <span className="exp-item-bullet" />
+                        <div className="exp-item-content">
+                          <span className="exp-item-title">{learning.title}</span>
+                          <p className="exp-item-desc">{learning.desc}</p>
                         </div>
-                        <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
-                          {learning.desc}
-                        </p>
                       </div>
                     </div>
                   ))}
@@ -145,36 +152,53 @@ export const ExperiencePage = () => {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+          <div className="exp-grid">
             {experienceData.instructorship.roles.map((role, idx) => (
-              <div key={idx} className="card card-interactive" style={{ padding: '24px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                  <span className="pub-tag-pill">
-                    {role.type}
-                  </span>
-                  <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 500 }}>{role.period}</span>
+              <div key={idx} className="card exp-card">
+                <div className="exp-card-header">
+                  <div className="exp-org-logo-box">
+                    {idx === 0 ? (
+                      <GraduationCap size={18} className="exp-logo-icon" />
+                    ) : (
+                      <BookOpen size={18} className="exp-logo-icon" />
+                    )}
+                  </div>
+                  <div className="exp-header-text">
+                    <div className="exp-header-top">
+                      <h3 className="exp-role-title">{role.title}</h3>
+                      <span className="exp-category-pill category-teaching">Teaching</span>
+                    </div>
+                    <div className="exp-org-name">{role.type}</div>
+                    <div className="exp-meta-row">
+                      <span className="exp-meta-period">{role.period}</span>
+                      <span className="exp-meta-dot">·</span>
+                      <span className="exp-meta-location">
+                        <MapPin size={13} /> {role.location}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <h3 style={{ fontSize: '1.2rem', color: 'var(--text-primary)', lineHeight: 1.35, marginBottom: '6px' }}>
-                  {role.title}
-                </h3>
-                <div style={{ fontSize: '0.84rem', color: 'var(--blue-royal)', fontWeight: 500, marginBottom: '12px' }}>
-                  {role.location}
-                </div>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+
+                <div className="exp-divider" />
+
+                <p className="exp-overview-text" style={{ marginBottom: 0 }}>
                   {role.description}
                 </p>
               </div>
             ))}
           </div>
 
-          {/* Expandable Syllabus Section */}
-          <div className="card" style={{ padding: '24px' }}>
+          {/* Expandable Syllabus Section with Thin Dividers */}
+          <div className="card exp-card" style={{ marginTop: '20px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
               <div>
-                <span className="section-eyebrow">TEACHING COVERAGE</span>
-                <h3 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', marginTop: '2px' }}>
-                  Physics & Mathematics Syllabi Delivered
+                <span className="section-eyebrow">CURRICULUM DELIVERED</span>
+                <h3 className="exp-role-title" style={{ marginTop: '2px' }}>
+                  Physics & Mathematics Syllabi Instruction
                 </h3>
+                <div className="exp-meta-row" style={{ marginTop: '2px' }}>
+                  <span>Comprehensive national curriculum coverage for Higher Secondary Certificate (HSC) candidates</span>
+                </div>
               </div>
 
               <button
@@ -188,8 +212,9 @@ export const ExperiencePage = () => {
             </div>
 
             {expandedSections['syllabus-coverage'] && (
-              <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid var(--border-subtle)' }}>
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '18px' }}>
+              <div style={{ marginTop: '16px' }}>
+                <div className="exp-divider" />
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
                   {experienceData.instructorship.curriculumCovered.map((curr, idx) => (
                     <button
                       key={idx}
@@ -201,11 +226,13 @@ export const ExperiencePage = () => {
                   ))}
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '10px' }}>
+                <div className="exp-divided-list">
                   {experienceData.instructorship.curriculumCovered[activeSubject].topics.map((topic, tIdx) => (
-                    <div key={tIdx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
-                      <span style={{ color: 'var(--blue-royal)', fontWeight: 700 }}>•</span>
-                      <span>{topic}</span>
+                    <div key={tIdx} className="exp-divided-item" style={{ padding: '8px 0' }}>
+                      <div className="exp-item-point">
+                        <span className="exp-item-bullet" />
+                        <span className="exp-item-desc" style={{ color: 'var(--text-secondary)' }}>{topic}</span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -230,63 +257,69 @@ export const ExperiencePage = () => {
             </span>
           </div>
 
-          <div className="leadership-grid" style={{ gap: '16px' }}>
+          <div className="leadership-grid">
             {experienceData.extracurricular.map((item) => {
               const isExpanded = Boolean(expandedSections[`lead-${item.id}`]);
               return (
-                <div key={item.id} className="leadership-card">
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
-                    {item.logoUrl ? (
-                      <div className="leadership-logo-box">
+                <div key={item.id} className="card exp-card leadership-card">
+                  {/* Header: Role first, Organization second, Dates & Location third */}
+                  <div className="exp-card-header">
+                    <div className="exp-org-logo-box">
+                      {item.logoUrl ? (
                         <img 
                           src={item.logoUrl} 
                           alt={item.organization} 
-                          style={{ width: '100%', height: '100%', objectFit: 'contain' }} 
                         />
+                      ) : item.id === 'cams' ? (
+                        <Wrench size={18} className="exp-logo-icon" />
+                      ) : item.id === 'greenlead' ? (
+                        <Leaf size={18} className="exp-logo-icon" />
+                      ) : (
+                        <Users size={18} className="exp-logo-icon" />
+                      )}
+                    </div>
+                    <div className="exp-header-text">
+                      <div className="exp-header-top">
+                        <h3 className="exp-role-title">{item.role}</h3>
+                        <span className="exp-category-pill category-leadership">Leadership</span>
                       </div>
-                    ) : (
-                      <div className="leadership-logo-placeholder">
-                        <Users size={20} />
+                      <div className="exp-org-name">{item.organization}</div>
+                      <div className="exp-meta-row">
+                        <span className="exp-meta-period">{item.period}</span>
+                        <span className="exp-meta-dot">·</span>
+                        <span className="exp-meta-location">
+                          <MapPin size={13} /> CUET / Bangladesh
+                        </span>
                       </div>
-                    )}
-
-                    <span className="leadership-period">
-                      {item.period}
-                    </span>
+                    </div>
                   </div>
 
-                  <h3 className="leadership-designation">
-                    {item.role}
-                  </h3>
-
-                  <div className="leadership-club-name">
-                    {item.organization}
-                  </div>
+                  <div className="exp-divider" />
 
                   {/* Expandable Responsibilities Inline Toggle */}
-                  <div style={{ marginTop: '16px' }}>
+                  <div>
                     <button
                       onClick={() => toggleSection(`lead-${item.id}`)}
                       className="pub-expand-btn"
                       style={{ width: '100%', justifyContent: 'space-between' }}
                       aria-expanded={isExpanded}
                     >
-                      <span>{isExpanded ? 'Hide Responsibilities' : `View Core Responsibilities (${item.highlights.length})`}</span>
+                      <span>{isExpanded ? 'Hide Core Responsibilities' : `View Core Responsibilities (${item.highlights.length})`}</span>
                       {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                     </button>
                   </div>
 
-                  {/* EXPANDABLE RESPONSIBILITIES LIST */}
+                  {/* Responsibilities list with Thin Dividers */}
                   {isExpanded && (
-                    <div style={{ marginTop: '14px', paddingTop: '14px', borderTop: '1px solid var(--border-subtle)' }}>
-                      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                        {item.highlights.map((hl, hIdx) => (
-                          <li key={hIdx} style={{ display: 'flex', gap: '8px', alignItems: 'baseline', fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-                            <span style={{ color: 'var(--blue-royal)', fontWeight: 700 }}>•</span>
-                            <span>{hl}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="exp-divided-list" style={{ marginTop: '12px' }}>
+                      {item.highlights.map((hl, hIdx) => (
+                        <div key={hIdx} className="exp-divided-item">
+                          <div className="exp-item-point">
+                            <span className="exp-item-bullet" />
+                            <span className="exp-item-desc" style={{ color: 'var(--text-secondary)' }}>{hl}</span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   )}
                 </div>
