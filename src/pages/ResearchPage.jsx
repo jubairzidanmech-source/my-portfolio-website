@@ -74,14 +74,6 @@ export const ResearchPage = () => {
           Computational fluid dynamics, aeroacoustics, aerodynamic optimization, and architected mechanical metamaterials for energy absorption and advanced structural performance.
         </p>
 
-        <div className="interests-pills-wrap" style={{ marginTop: '18px' }}>
-          {(researchData?.interests || []).map((interest, idx) => (
-            <span key={idx} className="interest-capsule">
-              {interest}
-            </span>
-          ))}
-        </div>
-
         {/* Slim Section Sub-Index Bar for Academic Reviewers & Professors */}
         <nav className="research-subnav-bar" aria-label="Research Subsections">
           <div className="research-subnav-label">
