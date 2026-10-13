@@ -32,33 +32,35 @@ const AwardCard = ({
 
   return (
     <article className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
-      {/* 1. Visual Card Thumbnail (Shows real image or placeholder, click to inspect in full modal) */}
-      <div 
-        className="award-card-thumb-wrap"
-        onClick={() => onOpenModal({
-          title: title,
-          subtitle: `${authorLabel || ''} ${venueLabel ? `• ${venueLabel}` : ''} ${displayYear ? `(${displayYear})` : ''}`,
-          imageUrl: imageUrl,
-          description: item.description
-        })}
-        title="Click to view full award artifact"
-      >
-        <img 
-          src={imageUrl} 
-          alt={title} 
-          className="award-card-thumb-img" 
-          loading="lazy" 
-        />
-        <div className="award-card-thumb-overlay">
-          <span className="award-thumb-zoom-badge">
-            <ExternalLink size={12} />
-            <span>View Artifact</span>
-          </span>
+      {/* Side-by-Side Row: Image on the Left, Text on the Right */}
+      <div className="pub-card-split-row">
+        {/* Left: Full-Visible Visual Thumbnail */}
+        <div 
+          className="award-card-media-side"
+          onClick={() => onOpenModal({
+            title: title,
+            subtitle: `${authorLabel || ''} ${venueLabel ? `• ${venueLabel}` : ''} ${displayYear ? `(${displayYear})` : ''}`,
+            imageUrl: imageUrl,
+            description: item.description
+          })}
+          title="Click to view full award artifact"
+        >
+          <img 
+            src={imageUrl} 
+            alt={title} 
+            className="award-side-img" 
+            loading="lazy" 
+          />
+          <div className="award-side-overlay">
+            <span className="award-thumb-zoom-badge">
+              <ExternalLink size={12} />
+              <span>Enlarge</span>
+            </span>
+          </div>
         </div>
-      </div>
 
-      {/* 2. Main Card Content */}
-      <div className="pub-card-main">
+        {/* Right: Text & Details Content */}
+        <div className="pub-card-main">
         <div className="pub-header-row">
           <div className="pub-meta-left">
             <span className="pub-number">0{itemIndex}</span>
@@ -118,6 +120,7 @@ const AwardCard = ({
             <span>{visualBtnText}</span>
           </button>
         </div>
+      </div>
       </div>
 
       {/* 4. Expandable Accordion Body */}

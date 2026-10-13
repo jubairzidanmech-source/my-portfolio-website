@@ -3976,48 +3976,58 @@ img {
   grid-column: 1 / -1;
 }
 
-/* Award & Certificate Card Visual Thumbnail */
-.award-card-thumb-wrap {
+/* Award & Certificate & Presentation Side-by-Side Card Layout */
+.pub-card-split-row {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
   width: 100%;
-  height: 165px;
-  border-radius: 9px;
+}
+
+.award-card-media-side {
+  width: 175px;
+  min-height: 160px;
+  flex-shrink: 0;
+  border-radius: 8px;
   overflow: hidden;
   position: relative;
   background: #0B132B;
   border: 1px solid rgba(15, 23, 42, 0.1);
-  margin-bottom: 12px;
   cursor: pointer;
-  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.award-card-thumb-img {
+.award-side-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
+  object-fit: contain;
+  padding: 4px;
   display: block;
   transition: transform 0.35s ease;
 }
 
-.award-card-thumb-wrap:hover .award-card-thumb-img,
-.pub-list-card:hover .award-card-thumb-img {
+.award-card-media-side:hover .award-side-img,
+.pub-list-card:hover .award-side-img {
   transform: scale(1.04);
 }
 
-.award-card-thumb-overlay {
+.award-side-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 45%, rgba(15, 23, 42, 0.72) 100%);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 50%, rgba(15, 23, 42, 0.72) 100%);
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
-  padding: 8px 10px;
-  opacity: 0.85;
+  justify-content: center;
+  padding: 6px;
+  opacity: 0;
   transition: opacity 0.25s ease;
 }
 
-.pub-list-card:hover .award-card-thumb-overlay {
+.award-card-media-side:hover .award-side-overlay,
+.pub-list-card:hover .award-side-overlay {
   opacity: 1;
 }
 
@@ -4037,14 +4047,26 @@ img {
   letter-spacing: 0.01em;
 }
 
-.pub-list-card:hover .award-card-thumb-wrap {
+.pub-list-card:hover .award-card-media-side {
   border-color: rgba(255, 255, 255, 0.4) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
-[data-theme="dark"] .award-card-thumb-wrap {
+[data-theme="dark"] .award-card-media-side {
   border-color: rgba(255, 255, 255, 0.12);
   background: #0F172A;
+}
+
+@media (max-width: 640px) {
+  .pub-card-split-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .award-card-media-side {
+    width: 100%;
+    height: 175px;
+    min-height: 175px;
+  }
 }
 
 .pub-card-main {

@@ -386,103 +386,107 @@ export const ResearchPage = () => {
             const presImg = pres.imageUrl || pres.certificateUrl || '/images/presentation_placeholder.jpg';
             return (
               <article key={pres.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
-                {/* 1. Visual Card Thumbnail */}
-                <div 
-                  className="award-card-thumb-wrap"
-                  onClick={() => setActiveModalData({
-                    title: pres.title,
-                    subtitle: `${pres.event} • ${pres.venue} (${pres.date})`,
-                    content: (
-                      <div style={{ textAlign: 'center' }}>
-                        <img 
-                          src={presImg} 
-                          alt={pres.title} 
-                          style={{ width: '100%', maxHeight: '520px', borderRadius: '12px', objectFit: 'contain' }} 
-                        />
-                        <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                          {pres.description}
-                        </p>
-                      </div>
-                    )
-                  })}
-                  title="Click to view presentation artifact"
-                >
-                  <img 
-                    src={presImg} 
-                    alt={pres.title} 
-                    className="award-card-thumb-img" 
-                    loading="lazy" 
-                  />
-                  <div className="award-card-thumb-overlay">
-                    <span className="award-thumb-zoom-badge">
-                      <ExternalLink size={12} />
-                      <span>View Presentation</span>
-                    </span>
-                  </div>
-                </div>
-
-                <div className="pub-card-main">
-                  <div className="pub-header-row">
-                    <div className="pub-meta-left">
-                      <span className="pub-number">0{presIndex}</span>
-                      <span className="pub-category-badge presentation">
-                        <Presentation size={12} style={{ display: 'inline', marginRight: 4 }} />
-                        {pres.type}
+                {/* Side-by-Side Row: Image on the Left, Text on the Right */}
+                <div className="pub-card-split-row">
+                  {/* Left: Full-Visible Visual Thumbnail */}
+                  <div 
+                    className="award-card-media-side"
+                    onClick={() => setActiveModalData({
+                      title: pres.title,
+                      subtitle: `${pres.event} • ${pres.venue} (${pres.date})`,
+                      content: (
+                        <div style={{ textAlign: 'center' }}>
+                          <img 
+                            src={presImg} 
+                            alt={pres.title} 
+                            style={{ width: '100%', maxHeight: '520px', borderRadius: '12px', objectFit: 'contain' }} 
+                          />
+                          <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+                            {pres.description}
+                          </p>
+                        </div>
+                      )
+                    })}
+                    title="Click to view presentation artifact"
+                  >
+                    <img 
+                      src={presImg} 
+                      alt={pres.title} 
+                      className="award-side-img" 
+                      loading="lazy" 
+                    />
+                    <div className="award-side-overlay">
+                      <span className="award-thumb-zoom-badge">
+                        <ExternalLink size={12} />
+                        <span>Enlarge</span>
                       </span>
-                      <span className="pub-status-badge">Live Podium</span>
                     </div>
-                    <span className="pub-year">{pres.date}</span>
                   </div>
 
-                  <h3 className="pub-title">
-                    {pres.title}
-                  </h3>
+                  {/* Right: Text & Details Content */}
+                  <div className="pub-card-main">
+                    <div className="pub-header-row">
+                      <div className="pub-meta-left">
+                        <span className="pub-number">0{presIndex}</span>
+                        <span className="pub-category-badge presentation">
+                          <Presentation size={12} style={{ display: 'inline', marginRight: 4 }} />
+                          {pres.type}
+                        </span>
+                        <span className="pub-status-badge">Live Podium</span>
+                      </div>
+                      <span className="pub-year">{pres.date}</span>
+                    </div>
 
-                  <div className="pub-citation">
-                    <span className="pub-venue">{pres.event}</span>
-                    <span className="pub-sep">•</span>
-                    <span className="pub-location">{pres.venue}</span>
-                  </div>
+                    <h3 className="pub-title">
+                      {pres.title}
+                    </h3>
 
-                  <div className="pub-tags-row">
-                    {(pres.tags || []).map((tag, tIdx) => (
-                      <span key={tIdx} className="pub-tag-pill">{tag}</span>
-                    ))}
-                  </div>
+                    <div className="pub-citation">
+                      <span className="pub-venue">{pres.event}</span>
+                      <span className="pub-sep">•</span>
+                      <span className="pub-location">{pres.venue}</span>
+                    </div>
 
-                  {/* Expand / Collapse Disclosure Button */}
-                  <div className="pub-actions-row">
-                    <button
-                      onClick={() => toggleExpand(pres.id)}
-                      className="pub-expand-btn"
-                      aria-expanded={isExpanded}
-                    >
-                      <span>{isExpanded ? 'Hide Abstract & Details' : 'Read Abstract & View Credentials'}</span>
-                      {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                    </button>
+                    <div className="pub-tags-row">
+                      {(pres.tags || []).map((tag, tIdx) => (
+                        <span key={tIdx} className="pub-tag-pill">{tag}</span>
+                      ))}
+                    </div>
 
-                    <button
-                      onClick={() => setActiveModalData({
-                        title: pres.title,
-                        subtitle: `${pres.event} (${pres.date})`,
-                        content: (
-                          <div style={{ textAlign: 'center' }}>
-                            <img
-                              src={pres.certificateUrl || presImg}
-                              alt={`${pres.title} Artifact`}
-                              style={{ width: '100%', maxHeight: '480px', objectFit: 'contain', borderRadius: '12px' }}
-                            />
-                            <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                              {pres.description}
-                            </p>
-                          </div>
-                        )
-                      })}
-                      className="pub-visual-btn"
-                    >
-                      <ExternalLink size={13} />
-                      <span>View Presentation Visuals</span>
-                    </button>
+                    {/* Expand / Collapse Disclosure Button */}
+                    <div className="pub-actions-row">
+                      <button
+                        onClick={() => toggleExpand(pres.id)}
+                        className="pub-expand-btn"
+                        aria-expanded={isExpanded}
+                      >
+                        <span>{isExpanded ? 'Hide Abstract & Details' : 'Read Abstract & View Credentials'}</span>
+                        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                      </button>
+
+                      <button
+                        onClick={() => setActiveModalData({
+                          title: pres.title,
+                          subtitle: `${pres.event} (${pres.date})`,
+                          content: (
+                            <div style={{ textAlign: 'center' }}>
+                              <img
+                                src={pres.certificateUrl || presImg}
+                                alt={`${pres.title} Artifact`}
+                                style={{ width: '100%', maxHeight: '480px', objectFit: 'contain', borderRadius: '12px' }}
+                              />
+                              <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+                                {pres.description}
+                              </p>
+                            </div>
+                          )
+                        })}
+                        className="pub-visual-btn"
+                      >
+                        <ExternalLink size={13} />
+                        <span>View Presentation Visuals</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
 
