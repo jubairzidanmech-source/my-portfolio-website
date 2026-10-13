@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Factory, GraduationCap, Users, MapPin, ChevronDown, ChevronUp, CheckCircle2, ArrowUpRight, BookOpen, Wrench, Leaf } from 'lucide-react';
+import { Factory, GraduationCap, Users, MapPin, ChevronDown, ChevronUp, CheckCircle2, ArrowUpRight, BookOpen, Wrench, Leaf, ExternalLink } from 'lucide-react';
 import { experienceData } from '../data/portfolioData';
 import { InteractiveModal } from '../components/InteractiveModal';
 
@@ -7,6 +7,7 @@ export const ExperiencePage = () => {
   const [activeSubject, setActiveSubject] = useState(0);
   const [activeTab, setActiveTab] = useState('all');
   const [selectedClub, setSelectedClub] = useState(null);
+  const [activeImageModal, setActiveImageModal] = useState(null);
   const [expandedSections, setExpandedSections] = useState({});
 
   const toggleSection = (id) => {
@@ -103,13 +104,23 @@ export const ExperiencePage = () => {
               </div>
 
               {/* Contained supporting image (doesn't overpower role details) */}
-              <div className="exp-contained-image-box">
+              <div 
+                className="exp-contained-image-box"
+                style={{ cursor: 'zoom-in', position: 'relative' }}
+                onClick={() => setActiveImageModal({
+                  title: `${experienceData.internship.company} — Facility`,
+                  subtitle: `${experienceData.internship.role} (${experienceData.internship.period})`,
+                  imageUrl: experienceData.internship.imageUrl,
+                  description: "Industrial Attachment Training Facility: RPCL 210 MW Combined Cycle Power Plant (CCPP) in Raozan, Chattogram — visual reference of heavy gas turbine, balance-of-plant, and heat recovery steam generator (HRSG) installations."
+                })}
+                title="Click to view full image"
+              >
                 <img
                   src={experienceData.internship.imageUrl}
                   alt={experienceData.internship.company}
                   className="exp-contained-image"
                 />
-                <span className="exp-image-caption">RPCL Raozan Facility</span>
+                <span className="exp-image-caption">RPCL Raozan Facility (Click to Enlarge)</span>
               </div>
             </div>
 
@@ -359,6 +370,68 @@ export const ExperiencePage = () => {
                 </li>
               ))}
             </ul>
+          </div>
+        </InteractiveModal>
+      )}
+
+      {/* Interactive Modal for Facility Image Inspection */}
+      {activeImageModal && (
+        <InteractiveModal
+          isOpen={Boolean(activeImageModal)}
+          onClose={() => setActiveImageModal(null)}
+          title={activeImageModal.title}
+          subtitle={activeImageModal.subtitle}
+          maxWidth="1040px"
+        >
+          <div style={{ textAlign: 'center' }}>
+            <div 
+              style={{
+                position: 'relative',
+                background: '#0B132B',
+                borderRadius: '16px',
+                padding: '16px',
+                border: '1px solid var(--border-subtle)',
+                boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '340px',
+                overflow: 'hidden'
+              }}
+            >
+              <img 
+                src={activeImageModal.imageUrl} 
+                alt={activeImageModal.title} 
+                style={{ 
+                  maxWidth: '100%', 
+                  maxHeight: '74vh', 
+                  borderRadius: '8px', 
+                  objectFit: 'contain',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                  display: 'block'
+                }} 
+              />
+            </div>
+            
+            <div style={{ marginTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'gap', gap: '12px' }}>
+              {activeImageModal.description && (
+                <p style={{ fontSize: '0.90rem', color: 'var(--text-secondary)', textAlign: 'left', flex: '1 1 300px', margin: 0, lineHeight: 1.55 }}>
+                  {activeImageModal.description}
+                </p>
+              )}
+              {activeImageModal.imageUrl && (
+                <a
+                  href={activeImageModal.imageUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pub-visual-btn"
+                  style={{ textDecoration: 'none', marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                >
+                  <ExternalLink size={14} />
+                  <span>Open Full Resolution in New Tab</span>
+                </a>
+              )}
+            </div>
           </div>
         </InteractiveModal>
       )}

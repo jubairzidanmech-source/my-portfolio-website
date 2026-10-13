@@ -4069,6 +4069,41 @@ img {
   }
 }
 
+.award-expanded-img-box {
+  max-width: 480px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  margin-top: 8px;
+  cursor: zoom-in;
+  position: relative;
+  background: #0B132B;
+  display: block;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.award-expanded-img-box:hover {
+  transform: translateY(-2px);
+  border-color: var(--blue-royal);
+  box-shadow: 0 8px 24px rgba(11, 19, 43, 0.22);
+}
+
+.award-expanded-img-box .award-expanded-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.award-expanded-img-box:hover .award-expanded-img {
+  transform: scale(1.02);
+}
+
+.award-expanded-img-box:hover .award-side-overlay {
+  opacity: 1;
+}
+
 .pub-card-main {
   display: flex;
   flex-direction: column;

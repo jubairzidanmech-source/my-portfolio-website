@@ -394,20 +394,10 @@ export const ResearchPage = () => {
                     onClick={() => setActiveModalData({
                       title: pres.title,
                       subtitle: `${pres.event} • ${pres.venue} (${pres.date})`,
-                      content: (
-                        <div style={{ textAlign: 'center' }}>
-                          <img 
-                            src={presImg} 
-                            alt={pres.title} 
-                            style={{ width: '100%', maxHeight: '520px', borderRadius: '12px', objectFit: 'contain' }} 
-                          />
-                          <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                            {pres.description}
-                          </p>
-                        </div>
-                      )
+                      imageUrl: presImg,
+                      description: pres.description
                     })}
-                    title="Click to view presentation artifact"
+                    title="Click to view full presentation artifact"
                   >
                     <img 
                       src={presImg} 
@@ -468,18 +458,8 @@ export const ResearchPage = () => {
                         onClick={() => setActiveModalData({
                           title: pres.title,
                           subtitle: `${pres.event} (${pres.date})`,
-                          content: (
-                            <div style={{ textAlign: 'center' }}>
-                              <img
-                                src={pres.certificateUrl || presImg}
-                                alt={`${pres.title} Artifact`}
-                                style={{ width: '100%', maxHeight: '480px', objectFit: 'contain', borderRadius: '12px' }}
-                              />
-                              <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                                {pres.description}
-                              </p>
-                            </div>
-                          )
+                          imageUrl: pres.certificateUrl || presImg,
+                          description: pres.description
                         })}
                         className="pub-visual-btn"
                       >
@@ -501,25 +481,55 @@ export const ResearchPage = () => {
                     </div>
 
                     <div className="pub-detail-section">
-                      <h4 className="pub-detail-heading">Presentation Stage & Artifact</h4>
-                      <div style={{ maxWidth: '420px', borderRadius: '10px', overflow: 'hidden', border: '1px solid var(--border-subtle)', marginTop: '6px' }}>
+                      <h4 className="pub-detail-heading">Presentation Stage & Artifact (Click to Enlarge)</h4>
+                      <div 
+                        className="award-expanded-img-box"
+                        onClick={() => setActiveModalData({
+                          title: `${pres.title} - Presentation Artifact`,
+                          subtitle: `${pres.event} • ${pres.venue} (${pres.date})`,
+                          imageUrl: presImg,
+                          description: pres.description
+                        })}
+                        title="Click to view full image"
+                      >
                         <img
                           src={presImg}
                           alt={pres.title}
-                          style={{ width: '100%', height: 'auto', display: 'block' }}
+                          className="award-expanded-img"
                         />
+                        <div className="award-side-overlay">
+                          <span className="award-thumb-zoom-badge">
+                            <ExternalLink size={12} />
+                            <span>View Full Image</span>
+                          </span>
+                        </div>
                       </div>
                     </div>
 
                     {pres.certificateUrl && pres.certificateUrl !== presImg && (
                       <div className="pub-detail-section">
-                        <h4 className="pub-detail-heading">Official Presentation Credential</h4>
-                        <div style={{ maxWidth: '420px', borderRadius: '10px', overflow: 'hidden', border: '1px solid var(--border-subtle)', marginTop: '6px' }}>
+                        <h4 className="pub-detail-heading">Official Presentation Credential (Click to Enlarge)</h4>
+                        <div 
+                          className="award-expanded-img-box"
+                          onClick={() => setActiveModalData({
+                            title: `${pres.title} - Official Certificate`,
+                            subtitle: `${pres.event} (${pres.date})`,
+                            imageUrl: pres.certificateUrl,
+                            description: pres.description
+                          })}
+                          title="Click to view full certificate"
+                        >
                           <img
                             src={pres.certificateUrl}
                             alt={`${pres.title} Certificate`}
-                            style={{ width: '100%', height: 'auto', display: 'block' }}
+                            className="award-expanded-img"
                           />
+                          <div className="award-side-overlay">
+                            <span className="award-thumb-zoom-badge">
+                              <ExternalLink size={12} />
+                              <span>View Full Certificate</span>
+                            </span>
+                          </div>
                         </div>
                       </div>
                     )}
@@ -739,8 +749,60 @@ export const ResearchPage = () => {
           onClose={() => setActiveModalData(null)}
           title={activeModalData.title}
           subtitle={activeModalData.subtitle}
+          maxWidth={activeModalData.imageUrl ? "1040px" : "720px"}
         >
-          {activeModalData.content}
+          {activeModalData.imageUrl ? (
+            <div style={{ textAlign: 'center' }}>
+              <div 
+                style={{
+                  position: 'relative',
+                  background: '#0B132B',
+                  borderRadius: '16px',
+                  padding: '16px',
+                  border: '1px solid var(--border-subtle)',
+                  boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minHeight: '340px',
+                  overflow: 'hidden'
+                }}
+              >
+                <img 
+                  src={activeModalData.imageUrl} 
+                  alt={activeModalData.title} 
+                  style={{ 
+                    maxWidth: '100%', 
+                    maxHeight: '74vh', 
+                    borderRadius: '8px', 
+                    objectFit: 'contain',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                    display: 'block'
+                  }} 
+                />
+              </div>
+              
+              <div style={{ marginTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+                {activeModalData.description && (
+                  <p style={{ fontSize: '0.90rem', color: 'var(--text-secondary)', textAlign: 'left', flex: '1 1 300px', margin: 0, lineHeight: 1.55 }}>
+                    {activeModalData.description}
+                  </p>
+                )}
+                <a
+                  href={activeModalData.imageUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pub-visual-btn"
+                  style={{ textDecoration: 'none', marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                >
+                  <ExternalLink size={14} />
+                  <span>Open Full Resolution in New Tab</span>
+                </a>
+              </div>
+            </div>
+          ) : (
+            activeModalData.content
+          )}
         </InteractiveModal>
       )}
     </div>

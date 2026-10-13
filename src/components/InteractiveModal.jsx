@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
 
-export const InteractiveModal = ({ isOpen, onClose, title, subtitle, children }) => {
+export const InteractiveModal = ({ isOpen, onClose, title, subtitle, children, maxWidth = '720px' }) => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
@@ -28,14 +28,14 @@ export const InteractiveModal = ({ isOpen, onClose, title, subtitle, children })
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: 'rgba(21, 21, 29, 0.65)',
+        backgroundColor: 'rgba(21, 21, 29, 0.75)',
         backdropFilter: 'blur(8px)',
         WebkitBackdropFilter: 'blur(8px)',
         zIndex: 2000,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '24px'
+        padding: '20px'
       }}
       onClick={onClose}
     >
@@ -45,12 +45,12 @@ export const InteractiveModal = ({ isOpen, onClose, title, subtitle, children })
           background: 'var(--bg-card)',
           borderRadius: '24px',
           width: '100%',
-          maxWidth: '720px',
-          maxHeight: '88vh',
+          maxWidth: maxWidth || '720px',
+          maxHeight: '92vh',
           overflowY: 'auto',
           border: '1px solid var(--border-card)',
           boxShadow: 'var(--shadow-elevated)',
-          padding: '36px',
+          padding: '28px',
           position: 'relative',
           animation: 'fadeIn 250ms cubic-bezier(0.16, 1, 0.3, 1)',
           color: 'var(--text-primary)'

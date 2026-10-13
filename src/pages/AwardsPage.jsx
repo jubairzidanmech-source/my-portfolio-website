@@ -134,13 +134,28 @@ const AwardCard = ({
           </div>
 
           <div className="pub-detail-section">
-            <h4 className="pub-detail-heading">Award Image Artifact</h4>
-            <div style={{ maxWidth: '420px', borderRadius: '10px', overflow: 'hidden', border: '1px solid var(--border-subtle)', marginTop: '6px' }}>
+            <h4 className="pub-detail-heading">Award Image Artifact (Click to Enlarge)</h4>
+            <div 
+              className="award-expanded-img-box"
+              onClick={() => onOpenModal({
+                title: title,
+                subtitle: `${authorLabel || ''} ${venueLabel ? `• ${venueLabel}` : ''} ${displayYear ? `(${displayYear})` : ''}`,
+                imageUrl: imageUrl,
+                description: item.description
+              })}
+              title="Click to view full image"
+            >
               <img
                 src={imageUrl}
                 alt={title}
-                style={{ width: '100%', height: 'auto', display: 'block' }}
+                className="award-expanded-img"
               />
+              <div className="award-side-overlay">
+                <span className="award-thumb-zoom-badge">
+                  <ExternalLink size={12} />
+                  <span>View Full Image</span>
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -165,20 +180,8 @@ export const AwardsPage = () => {
     setActiveModalData({
       title,
       subtitle,
-      content: (
-        <div style={{ textAlign: 'center' }}>
-          <img 
-            src={imageUrl} 
-            alt={title} 
-            style={{ maxWidth: '100%', maxHeight: '520px', borderRadius: '12px', objectFit: 'contain' }} 
-          />
-          {description && (
-            <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-              {description}
-            </p>
-          )}
-        </div>
-      )
+      imageUrl,
+      description
     });
   };
 
@@ -440,8 +443,58 @@ export const AwardsPage = () => {
           onClose={() => setActiveModalData(null)}
           title={activeModalData.title}
           subtitle={activeModalData.subtitle}
+          maxWidth="1040px"
         >
-          {activeModalData.content}
+          <div style={{ textAlign: 'center' }}>
+            <div 
+              style={{
+                position: 'relative',
+                background: '#0B132B',
+                borderRadius: '16px',
+                padding: '16px',
+                border: '1px solid var(--border-subtle)',
+                boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '340px',
+                overflow: 'hidden'
+              }}
+            >
+              <img 
+                src={activeModalData.imageUrl} 
+                alt={activeModalData.title} 
+                style={{ 
+                  maxWidth: '100%', 
+                  maxHeight: '74vh', 
+                  borderRadius: '8px', 
+                  objectFit: 'contain',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                  display: 'block'
+                }} 
+              />
+            </div>
+            
+            <div style={{ marginTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+              {activeModalData.description && (
+                <p style={{ fontSize: '0.90rem', color: 'var(--text-secondary)', textAlign: 'left', flex: '1 1 300px', margin: 0, lineHeight: 1.55 }}>
+                  {activeModalData.description}
+                </p>
+              )}
+              {activeModalData.imageUrl && (
+                <a
+                  href={activeModalData.imageUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pub-visual-btn"
+                  style={{ textDecoration: 'none', marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                >
+                  <ExternalLink size={14} />
+                  <span>Open Full Resolution in New Tab</span>
+                </a>
+              )}
+            </div>
+          </div>
         </InteractiveModal>
       )}
     </div>
