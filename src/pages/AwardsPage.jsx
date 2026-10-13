@@ -21,7 +21,6 @@ const AwardCard = ({
   title, 
   authorLabel, 
   venueLabel, 
-  tags, 
   yearLabel,
   expandOpenText = 'View Description & Details',
   expandCloseText = 'Hide Details',
@@ -92,14 +91,6 @@ const AwardCard = ({
         {item.certId && (
           <div style={{ marginTop: '4px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
             <span style={{ fontWeight: 600 }}>Credential ID:</span> <span style={{ fontFamily: 'var(--font-mono, monospace)', color: 'var(--accent-teal)' }}>{item.certId}</span>
-          </div>
-        )}
-
-        {tags && tags.length > 0 && (
-          <div className="pub-tags-row">
-            {tags.map((tag, tIdx) => (
-              <span key={tIdx} className="pub-tag-pill">{tag}</span>
-            ))}
           </div>
         )}
 
@@ -288,7 +279,6 @@ export const AwardsPage = () => {
                   title={item.event}
                   authorLabel={item.organizer}
                   venueLabel={item.category}
-                  tags={[item.category, item.title, 'National Competition'].filter(Boolean)}
                   visualBtnText="View Award Artifact"
                   detailHeading="Recognition & Description"
                 />
@@ -330,7 +320,6 @@ export const AwardsPage = () => {
                 title={item.title}
                 authorLabel={item.event}
                 venueLabel={item.venue}
-                tags={['Poster Presentation', 'Research Exhibit', 'CUET']}
                 expandOpenText="View Presentation Details"
                 expandCloseText="Hide Abstract & Details"
                 visualBtnText="View Trophy & Award Crest"
@@ -373,7 +362,6 @@ export const AwardsPage = () => {
                 title={item.title}
                 authorLabel="Hult Prize Foundation"
                 venueLabel={item.cohort}
-                tags={['Social Entrepreneurship', 'Hult Prize', 'Impact Innovation']}
                 expandOpenText="View Impact & Contributions"
                 expandCloseText="Hide Details"
                 visualBtnText="View Certificate"
@@ -416,7 +404,6 @@ export const AwardsPage = () => {
                 title={item.title}
                 authorLabel={item.event}
                 venueLabel={item.venue}
-                tags={['Executive Leadership', 'Event Directorship', 'Team Management']}
                 expandOpenText="View Responsibilities & Scale"
                 expandCloseText="Hide Details"
                 visualBtnText="View Summit Credential"
@@ -460,7 +447,6 @@ export const AwardsPage = () => {
                 title={item.title}
                 authorLabel={item.issuer}
                 venueLabel={item.field}
-                tags={['Accredited Course', item.field, 'Engineering Design'].filter(Boolean)}
                 expandOpenText="View Syllabus & Verification"
                 expandCloseText="Hide Details"
                 visualBtnText="View Certificate"
