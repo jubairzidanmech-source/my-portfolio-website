@@ -240,6 +240,8 @@ export const researchData = {
       venue: "CUET, Chittagong, Bangladesh",
       date: "2023 – 2024",
       type: "Technical Presentation",
+      imageUrl: "/images/presentation_placeholder.jpg",
+      certificateUrl: "/images/award_placeholder.jpg",
       tags: ["Ground Effect", "Formula 1", "CFD", "CUET"],
       description: "Delivered oral and poster defense of ground-effect venturi underfloor aerodynamics under FIA 2022 regulation geometries."
     }

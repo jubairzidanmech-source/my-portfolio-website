@@ -383,8 +383,44 @@ export const ResearchPage = () => {
           {(researchData?.conferencePresentations || []).map((pres, idx) => {
             const presIndex = idx + 1;
             const isExpanded = Boolean(expandedItems[pres.id]);
+            const presImg = pres.imageUrl || pres.certificateUrl || '/images/presentation_placeholder.jpg';
             return (
               <article key={pres.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
+                {/* 1. Visual Card Thumbnail */}
+                <div 
+                  className="award-card-thumb-wrap"
+                  onClick={() => setActiveModalData({
+                    title: pres.title,
+                    subtitle: `${pres.event} • ${pres.venue} (${pres.date})`,
+                    content: (
+                      <div style={{ textAlign: 'center' }}>
+                        <img 
+                          src={presImg} 
+                          alt={pres.title} 
+                          style={{ width: '100%', maxHeight: '520px', borderRadius: '12px', objectFit: 'contain' }} 
+                        />
+                        <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+                          {pres.description}
+                        </p>
+                      </div>
+                    )
+                  })}
+                  title="Click to view presentation artifact"
+                >
+                  <img 
+                    src={presImg} 
+                    alt={pres.title} 
+                    className="award-card-thumb-img" 
+                    loading="lazy" 
+                  />
+                  <div className="award-card-thumb-overlay">
+                    <span className="award-thumb-zoom-badge">
+                      <ExternalLink size={12} />
+                      <span>View Presentation</span>
+                    </span>
+                  </div>
+                </div>
+
                 <div className="pub-card-main">
                   <div className="pub-header-row">
                     <div className="pub-meta-left">
@@ -421,34 +457,32 @@ export const ResearchPage = () => {
                       className="pub-expand-btn"
                       aria-expanded={isExpanded}
                     >
-                      <span>{isExpanded ? 'Hide Abstract & Certificate' : 'Read Abstract & View Certificate'}</span>
+                      <span>{isExpanded ? 'Hide Abstract & Details' : 'Read Abstract & View Credentials'}</span>
                       {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
                     </button>
 
-                    {pres.certificateUrl && (
-                      <button
-                        onClick={() => setActiveModalData({
-                          title: pres.title,
-                          subtitle: `${pres.event} (${pres.date})`,
-                          content: (
-                            <div style={{ textAlign: 'center' }}>
-                              <img
-                                src={pres.certificateUrl}
-                                alt={`${pres.title} Certificate`}
-                                style={{ width: '100%', maxHeight: '480px', objectFit: 'contain', borderRadius: '12px' }}
-                              />
-                              <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                                Official Certificate of Oral Presentation conferred by {pres.event}.
-                              </p>
-                            </div>
-                          )
-                        })}
-                        className="pub-visual-btn"
-                      >
-                        <ExternalLink size={13} />
-                        <span>Enlarge Certificate</span>
-                      </button>
-                    )}
+                    <button
+                      onClick={() => setActiveModalData({
+                        title: pres.title,
+                        subtitle: `${pres.event} (${pres.date})`,
+                        content: (
+                          <div style={{ textAlign: 'center' }}>
+                            <img
+                              src={pres.certificateUrl || presImg}
+                              alt={`${pres.title} Artifact`}
+                              style={{ width: '100%', maxHeight: '480px', objectFit: 'contain', borderRadius: '12px' }}
+                            />
+                            <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+                              {pres.description}
+                            </p>
+                          </div>
+                        )
+                      })}
+                      className="pub-visual-btn"
+                    >
+                      <ExternalLink size={13} />
+                      <span>View Presentation Visuals</span>
+                    </button>
                   </div>
                 </div>
 
@@ -462,9 +496,20 @@ export const ResearchPage = () => {
                       </p>
                     </div>
 
-                    {pres.certificateUrl && (
+                    <div className="pub-detail-section">
+                      <h4 className="pub-detail-heading">Presentation Stage & Artifact</h4>
+                      <div style={{ maxWidth: '420px', borderRadius: '10px', overflow: 'hidden', border: '1px solid var(--border-subtle)', marginTop: '6px' }}>
+                        <img
+                          src={presImg}
+                          alt={pres.title}
+                          style={{ width: '100%', height: 'auto', display: 'block' }}
+                        />
+                      </div>
+                    </div>
+
+                    {pres.certificateUrl && pres.certificateUrl !== presImg && (
                       <div className="pub-detail-section">
-                        <h4 className="pub-detail-heading">Presentation Credential</h4>
+                        <h4 className="pub-detail-heading">Official Presentation Credential</h4>
                         <div style={{ maxWidth: '420px', borderRadius: '10px', overflow: 'hidden', border: '1px solid var(--border-subtle)', marginTop: '6px' }}>
                           <img
                             src={pres.certificateUrl}
