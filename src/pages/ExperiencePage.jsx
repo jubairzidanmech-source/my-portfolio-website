@@ -199,38 +199,56 @@ export const ExperiencePage = () => {
             ))}
           </div>
 
-          {/* Complete 4-Column Instructorship Curriculum Board */}
-          <div className="card exp-card" style={{ marginTop: '24px' }}>
-            <div style={{ marginBottom: '16px' }}>
-              <span className="section-eyebrow">CURRICULUM DELIVERED</span>
-              <h3 className="exp-role-title" style={{ marginTop: '2px', fontSize: '1.25rem' }}>
-                HSC Physics & Mathematics Syllabi Instruction
-              </h3>
-              <div className="exp-meta-row" style={{ marginTop: '4px' }}>
-                <span>Comprehensive national curriculum coverage across 38 foundational and advanced topics</span>
-              </div>
-            </div>
-
-            <div className="exp-divider" style={{ margin: '14px 0 20px 0' }} />
-
-            <div className="curriculum-grid-4col">
-              {experienceData.instructorship.curriculumCovered.map((curr, idx) => (
-                <div key={idx} className="curriculum-subject-col">
-                  <div className="curriculum-col-header">
-                    <span>{curr.subject}</span>
-                    <span className="curriculum-count-badge">{curr.topics.length} Topics</span>
-                  </div>
-
-                  <ul className="curriculum-topics-list">
-                    {curr.topics.map((topic, tIdx) => (
-                      <li key={tIdx} className="curriculum-topic-item">
-                        {topic}
-                      </li>
-                    ))}
-                  </ul>
+          {/* Expandable Syllabus Section with Thin Dividers */}
+          <div className="card exp-card" style={{ marginTop: '20px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+              <div>
+                <span className="section-eyebrow">CURRICULUM DELIVERED</span>
+                <h3 className="exp-role-title" style={{ marginTop: '2px' }}>
+                  Physics & Mathematics Syllabi Instruction
+                </h3>
+                <div className="exp-meta-row" style={{ marginTop: '2px' }}>
+                  <span>Comprehensive national curriculum coverage across 38 foundational and advanced topics</span>
                 </div>
-              ))}
+              </div>
+
+              <button
+                onClick={() => toggleSection('syllabus-coverage')}
+                className="pub-expand-btn"
+                aria-expanded={Boolean(expandedSections['syllabus-coverage'])}
+              >
+                <span>{expandedSections['syllabus-coverage'] ? 'Hide Curriculum Topics' : 'Explore Detailed Topics Covered'}</span>
+                {expandedSections['syllabus-coverage'] ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+              </button>
             </div>
+
+            {expandedSections['syllabus-coverage'] && (
+              <div style={{ marginTop: '16px' }}>
+                <div className="exp-divider" />
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
+                  {experienceData.instructorship.curriculumCovered.map((curr, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveSubject(idx)}
+                      className={`filter-pill ${activeSubject === idx ? 'active' : ''}`}
+                    >
+                      {curr.subject} ({curr.topics.length})
+                    </button>
+                  ))}
+                </div>
+
+                <div className="exp-divided-list">
+                  {experienceData.instructorship.curriculumCovered[activeSubject].topics.map((topic, tIdx) => (
+                    <div key={tIdx} className="exp-divided-item" style={{ padding: '8px 0' }}>
+                      <div className="exp-item-point">
+                        <span className="exp-item-bullet" />
+                        <span className="exp-item-desc" style={{ color: 'var(--text-secondary)' }}>{topic}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </section>
       )}
@@ -240,48 +258,85 @@ export const ExperiencePage = () => {
         <section className="section-spacing">
           <div className="section-heading-row">
             <div>
-              <div className="section-eyebrow" style={{ color: '#a855f7' }}>University Clubs</div>
+              <div className="section-eyebrow">EXECUTIVE ROLES</div>
               <h2 className="section-main-heading">
                 Extracurricular Activities & Leadership
               </h2>
             </div>
             <span className="section-count-badge">
-              {experienceData.extracurricular.length} Clubs
+              {experienceData.extracurricular.length} Organizations
             </span>
           </div>
 
-          <div className="university-clubs-grid">
-            {experienceData.extracurricular.map((item) => (
-              <div key={item.id} className="card club-card">
-                <div className="club-card-header">
-                  <div className="club-logo-box">
-                    <img 
-                      src={item.logoUrl} 
-                      alt={item.organization} 
-                      className="club-logo-img"
-                    />
+          <div className="leadership-grid">
+            {experienceData.extracurricular.map((item) => {
+              const isExpanded = Boolean(expandedSections[`lead-${item.id}`]);
+              return (
+                <div key={item.id} className="card exp-card leadership-card">
+                  {/* Header: Role first, Organization second, Dates & Location third */}
+                  <div className="exp-card-header">
+                    <div className="exp-org-logo-box">
+                      {item.logoUrl ? (
+                        <img 
+                          src={item.logoUrl} 
+                          alt={item.organization} 
+                        />
+                      ) : (
+                        <Users size={18} className="exp-logo-icon" />
+                      )}
+                    </div>
+                    <div className="exp-header-text">
+                      <div className="exp-header-top">
+                        <h3 className="exp-role-title">{item.role}</h3>
+                        <span className="exp-category-pill category-leadership">Leadership</span>
+                      </div>
+                      <div className="exp-org-name">{item.organization}</div>
+                      {item.tagline && (
+                        <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+                          {item.tagline}
+                        </div>
+                      )}
+                      <div className="exp-meta-row">
+                        <span className="exp-meta-period">{item.period}</span>
+                        <span className="exp-meta-dot">·</span>
+                        <span className="exp-meta-location">
+                          <MapPin size={13} /> CUET / Bangladesh
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="club-header-info">
-                    <h3 className="club-role-title">{item.role}</h3>
-                    <div className="club-org-name">{item.organization}</div>
-                    {item.tagline && (
-                      <div className="club-tagline">{item.tagline}</div>
-                    )}
-                  </div>
-                </div>
 
-                <div className="club-responsibilities-block">
-                  <h4 className="club-resp-title">Core Responsibilities</h4>
-                  <ul className="club-resp-list">
-                    {item.highlights.map((hl, hIdx) => (
-                      <li key={hIdx} className="club-resp-item">
-                        {hl}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="exp-divider" />
+
+                  {/* Expandable Responsibilities Inline Toggle */}
+                  <div>
+                    <button
+                      onClick={() => toggleSection(`lead-${item.id}`)}
+                      className="pub-expand-btn"
+                      style={{ width: '100%', justifyContent: 'space-between' }}
+                      aria-expanded={isExpanded}
+                    >
+                      <span>{isExpanded ? 'Hide Core Responsibilities' : `View Core Responsibilities (${item.highlights.length})`}</span>
+                      {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                    </button>
+                  </div>
+
+                  {/* Responsibilities list with Thin Dividers */}
+                  {isExpanded && (
+                    <div className="exp-divided-list" style={{ marginTop: '12px' }}>
+                      {item.highlights.map((hl, hIdx) => (
+                        <div key={hIdx} className="exp-divided-item">
+                          <div className="exp-item-point">
+                            <span className="exp-item-bullet" />
+                            <span className="exp-item-desc" style={{ color: 'var(--text-secondary)' }}>{hl}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}
