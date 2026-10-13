@@ -16,7 +16,8 @@ import {
   CheckCircle2,
   Camera,
   Wind,
-  BookOpen
+  BookOpen,
+  GitBranch
 } from 'lucide-react';
 import { skillsData } from '../data/portfolioData';
 
@@ -24,20 +25,24 @@ export const SkillsPage = () => {
   // Category Icons: strictly identical size (17px) & stroke width (2)
   const getCategoryIcon = (category) => {
     switch (category) {
-      case 'Design & Simulation':
-        return <Cpu size={17} strokeWidth={2} />;
-      case 'Programming & Computation':
+      case 'CAD & Design':
+        return <Layers size={17} strokeWidth={2} />;
+      case 'Simulation & CFD':
+        return <Wind size={17} strokeWidth={2} />;
+      case 'Programming':
         return <Code2 size={17} strokeWidth={2} />;
-      case 'Data Analysis & Visualization':
+      case 'Scientific Computing & Data Analysis':
         return <LineChart size={17} strokeWidth={2} />;
-      case 'Office & Documentation':
+      case 'Version Control':
+        return <GitBranch size={17} strokeWidth={2} />;
+      case 'Scientific Documentation & Research':
         return <FileSpreadsheet size={17} strokeWidth={2} />;
-      case 'Presentation & Graphic Design':
+      case 'Graphic Design & Visualization':
         return <Palette size={17} strokeWidth={2} />;
-      case 'Operating Systems & Environments':
+      case 'Operating Systems':
         return <Terminal size={17} strokeWidth={2} />;
       default:
-        return <Layers size={17} strokeWidth={2} />;
+        return <Cpu size={17} strokeWidth={2} />;
     }
   };
 
@@ -100,7 +105,7 @@ export const SkillsPage = () => {
             </h2>
           </div>
           <span className="section-count-badge">
-            6 Domains · 24+ Tools
+            {skillsData.softwareSkills.length} Domains · {skillsData.softwareSkills.reduce((acc, c) => acc + c.skills.length, 0)} Tools
           </span>
         </div>
 

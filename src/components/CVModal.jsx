@@ -205,20 +205,28 @@ export const CVModal = ({ isOpen, onClose }) => {
 
               <div className="cv-skills-grid">
                 <div className="cv-skill-row">
-                  <span className="cv-skill-category">CFD & FEA Toolkits:</span>
-                  <span className="cv-skill-items">ANSYS Fluent, ANSYS Workbench, OpenFOAM, COMSOL Multiphysics, Abaqus</span>
+                  <span className="cv-skill-category">CAD & Design:</span>
+                  <span className="cv-skill-items">SolidWorks (CSWA Certified)</span>
                 </div>
                 <div className="cv-skill-row">
-                  <span className="cv-skill-category">CAD & Geometry:</span>
-                  <span className="cv-skill-items">SolidWorks, Autodesk Fusion 360, AutoCAD, SpaceClaim</span>
+                  <span className="cv-skill-category">Simulation & CFD:</span>
+                  <span className="cv-skill-items">ANSYS Fluent, ANSYS LS-DYNA, OpenFOAM (Foundational Knowledge), COMSOL Multiphysics (Foundational Knowledge)</span>
                 </div>
                 <div className="cv-skill-row">
-                  <span className="cv-skill-category">Programming & Data:</span>
-                  <span className="cv-skill-items">MATLAB, Python (NumPy, SciPy, Matplotlib), C++, LaTeX</span>
+                  <span className="cv-skill-category">Programming:</span>
+                  <span className="cv-skill-items">MATLAB, Python, C (Coursework), Fortran (Coursework)</span>
                 </div>
                 <div className="cv-skill-row">
-                  <span className="cv-skill-category">Specialized Domains:</span>
-                  <span className="cv-skill-items">Aerodynamics, Aeroacoustics, Turbulence Modeling, Metamaterials, Topology Optimization</span>
+                  <span className="cv-skill-category">Scientific Computing & Data:</span>
+                  <span className="cv-skill-items">NumPy, Pandas, Jupyter Notebook, OriginPro, MS Excel</span>
+                </div>
+                <div className="cv-skill-row">
+                  <span className="cv-skill-category">Documentation, Version Control & Graphics:</span>
+                  <span className="cv-skill-items">Git & GitHub, LaTeX, Mendeley, MS Office, Adobe Illustrator, Adobe Photoshop, Figma</span>
+                </div>
+                <div className="cv-skill-row">
+                  <span className="cv-skill-category">Operating Systems:</span>
+                  <span className="cv-skill-items">macOS, Windows</span>
                 </div>
               </div>
             </section>

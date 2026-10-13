@@ -169,15 +169,17 @@ def generate_cv():
     story.append(HRFlowable(width="100%", thickness=0.5, color=border_blue, spaceAfter=6, spaceBefore=0))
 
     skills_data = [
-        [Paragraph("<b>CFD & FEA Toolkits:</b>", item_title_style), Paragraph("ANSYS Fluent, ANSYS Workbench, OpenFOAM, COMSOL Multiphysics, Abaqus", body_style)],
-        [Paragraph("<b>CAD & Design:</b>", item_title_style), Paragraph("SolidWorks, Autodesk Fusion 360, AutoCAD, SpaceClaim", body_style)],
-        [Paragraph("<b>Programming & Math:</b>", item_title_style), Paragraph("MATLAB, Python (NumPy, SciPy, Matplotlib), C++, LaTeX", body_style)],
-        [Paragraph("<b>Specialized Domains:</b>", item_title_style), Paragraph("Aerodynamics, Aeroacoustics, Turbulence Modeling, Metamaterials, Topology Optimization", body_style)],
+        [Paragraph("<b>CAD & Design:</b>", item_title_style), Paragraph("SolidWorks", body_style)],
+        [Paragraph("<b>Simulation & CFD:</b>", item_title_style), Paragraph("ANSYS Fluent, ANSYS LS-DYNA, OpenFOAM (Foundational Knowledge), COMSOL Multiphysics (Foundational Knowledge)", body_style)],
+        [Paragraph("<b>Programming:</b>", item_title_style), Paragraph("MATLAB, Python, C (Coursework), Fortran (Coursework)", body_style)],
+        [Paragraph("<b>Data Analysis & Computing:</b>", item_title_style), Paragraph("NumPy, Pandas, Jupyter Notebook, OriginPro, MS Excel", body_style)],
+        [Paragraph("<b>Documentation & Graphics:</b>", item_title_style), Paragraph("Git & GitHub, LaTeX, Mendeley, MS Office, Google Suite, Adobe Suite, Figma", body_style)],
+        [Paragraph("<b>Operating Systems:</b>", item_title_style), Paragraph("macOS, Windows", body_style)],
     ]
-    t_skills = Table(skills_data, colWidths=[140, 400])
+    t_skills = Table(skills_data, colWidths=[150, 390])
     t_skills.setStyle(TableStyle([
         ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 1.5),
         ('TOPPADDING', (0,0), (-1,-1), 1),
     ]))
     story.append(t_skills)

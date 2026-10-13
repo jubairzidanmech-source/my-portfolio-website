@@ -774,34 +774,44 @@ export const experienceData = {
 export const skillsData = {
   softwareSkills: [
     {
-      category: "Design & Simulation",
-      skills: ["ANSYS (Fluent / FEA / Workbench)", "SolidWorks (CSWA)", "OpenFOAM (Foundations)", "Autodesk Fusion 360", "SpaceClaim"],
-      description: "Parametric 3D solid modeling, finite volume computational fluid dynamics, structural finite element analysis, and computational meshing."
+      category: "CAD & Design",
+      skills: ["SolidWorks"],
+      description: "Parametric 3D solid modeling, mechanical drafting, assembly design, and CSWA-certified technical workflows."
     },
     {
-      category: "Programming & Computation",
-      skills: ["MATLAB", "Python (NumPy, SciPy, Matplotlib)", "C", "Fortran"],
-      description: "Numerical algorithms, ODE/PDE finite difference schemes, automated simulation batch scripting, and data pipelines."
+      category: "Simulation & CFD",
+      skills: ["ANSYS Fluent", "ANSYS LS-DYNA", "OpenFOAM (Foundational Knowledge)", "COMSOL Multiphysics (Foundational Knowledge)"],
+      description: "Computational fluid dynamics, sliding mesh rotation, explicit dynamics impact analysis, and multiphysics modeling."
     },
     {
-      category: "Data Analysis & Visualization",
-      skills: ["OriginPro", "Microsoft Excel (Advanced Data / Solver)", "ParaView", "Tecplot 360"],
-      description: "Scientific curve fitting, statistical data synthesis, vector field post-processing, and publication-ready charting."
+      category: "Programming",
+      skills: ["MATLAB", "Python", "C (Coursework)", "Fortran (Coursework)"],
+      description: "Numerical computation, algorithm formulation, scientific scripting, and computational engineering coursework."
     },
     {
-      category: "Office & Documentation",
-      skills: ["LaTeX", "Microsoft Word", "Microsoft PowerPoint", "Google Workspace"],
-      description: "Academic manuscript typesetting, thesis composition, equations formatting, and collaborative scholarly documentation."
+      category: "Scientific Computing & Data Analysis",
+      skills: ["NumPy", "Pandas", "Jupyter Notebook", "OriginPro", "MS Excel"],
+      description: "High-dimensional matrix operations, statistical data synthesis, scientific curve fitting, and exploratory analytics."
     },
     {
-      category: "Presentation & Graphic Design",
-      skills: ["Adobe Illustrator", "Adobe Photoshop", "Figma", "Adobe Premiere Pro", "Canva"],
-      description: "Technical schematics vector illustration, research poster layouts, conference pitch deck design, and media editing."
+      category: "Version Control",
+      skills: ["Git & GitHub"],
+      description: "Distributed version control, collaborative research code management, and repository synchronization."
     },
     {
-      category: "Operating Systems & Environments",
-      skills: ["macOS", "Windows", "Linux (Ubuntu / WSL)"],
-      description: "Cross-platform engineering workflows, command-line terminal usage, and cluster computation readiness."
+      category: "Scientific Documentation & Research",
+      skills: ["LaTeX", "Mendeley", "MS Word", "MS PowerPoint", "Google Suite"],
+      description: "Academic manuscript typesetting, bibliographic referencing, peer-reviewed paper formulation, and scholarly presentations."
+    },
+    {
+      category: "Graphic Design & Visualization",
+      skills: ["Adobe Illustrator", "Adobe Photoshop", "Canva", "Figma", "Adobe Premiere Pro"],
+      description: "Technical schematics vector illustration, research poster layouts, conference pitch design, and multimedia editing."
+    },
+    {
+      category: "Operating Systems",
+      skills: ["macOS", "Windows"],
+      description: "Cross-platform engineering workflows, software administration, and terminal environments."
     }
   ],
 
