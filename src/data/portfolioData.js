@@ -161,7 +161,8 @@ export const researchData = {
       imageUrl: "/images/real/bsme_certificate.jpg",
       authors: ["Md. Jubair Uddin Zidan", "Wakil Ahmed", "Co-authors"],
       abstract: "Investigation into turbofan jet exhaust noise attenuation using serrated chevron nozzles with 12 (N12) and 16 (N16) lobe configurations. Utilizes compressible turbulent Navier-Stokes computations paired with acoustic broadband noise and Ffowcs Williams-Hawkings (FW-H) acoustic analogy to predict far-field sound pressure levels (SPL) and turbulent shear layer mixing efficiency.",
-      keywords: ["Aeroacoustics", "Chevron Nozzles", "Jet Noise", "CFD", "FW-H Analogy", "BUET"]
+      keywords: ["Aeroacoustics", "Chevron Nozzles", "Jet Noise", "CFD", "FW-H Analogy", "BUET"],
+      tags: ["Aeroacoustics", "Chevron Nozzles", "Jet Noise", "CFD", "FW-H Analogy", "BUET"]
     },
     {
       id: "conf-2",
@@ -174,7 +175,8 @@ export const researchData = {
       imageUrl: "/images/real/mimec_certificate.jpg",
       authors: ["Md. Jubair Uddin Zidan", "Wakil Ahmed", "Co-authors"],
       abstract: "A numerical investigation evaluating aerodynamic self-starting capability and power coefficients (Cp) across diverse symmetrical and cambered NACA airfoil profiles for H-type Vertical Axis Wind Turbines (VAWT). Dynamic mesh formulations and sliding mesh interfaces were employed to simulate rotational unsteady vortex shedding under varying tip speed ratios (TSR).",
-      keywords: ["VAWT", "Airfoil Aerodynamics", "Unsteady CFD", "Dynamic Meshing", "RUET MIMEC"]
+      keywords: ["VAWT", "Airfoil Aerodynamics", "Unsteady CFD", "Dynamic Meshing", "RUET MIMEC"],
+      tags: ["VAWT", "Airfoil Aerodynamics", "Unsteady CFD", "Dynamic Meshing", "RUET MIMEC"]
     },
     {
       id: "conf-3",
@@ -187,7 +189,8 @@ export const researchData = {
       imageUrl: null,
       authors: ["Md. Jubair Uddin Zidan", "Research Team"],
       abstract: "Coupled numerical and wind-tunnel experimental performance analysis of an innovative hybrid Darrieus-Savonius vertical axis wind turbine configuration engineered specifically for urban and low-wind-speed coastal regimes.",
-      keywords: ["Hybrid Rotor", "Darrieus-Savonius", "Wind Energy", "Low Speed Aerodynamics", "KUET"]
+      keywords: ["Hybrid Rotor", "Darrieus-Savonius", "Wind Energy", "Low Speed Aerodynamics", "KUET"],
+      tags: ["Hybrid Rotor", "Darrieus-Savonius", "Wind Energy", "Low Speed Aerodynamics", "KUET"]
     },
     {
       id: "conf-4",
@@ -200,7 +203,8 @@ export const researchData = {
       imageUrl: null,
       authors: ["Md. Jubair Uddin Zidan", "Collaborators"],
       abstract: "Investigation into acoustic dampening and acoustic impedance alterations through double concentric cylindrical perforated acoustic liners incorporated within high-temperature combustion chambers.",
-      keywords: ["Perforated Liners", "Combustion Noise", "Acoustic Impedance", "Thermoacoustics"]
+      keywords: ["Perforated Liners", "Combustion Noise", "Acoustic Impedance", "Thermoacoustics"],
+      tags: ["Perforated Liners", "Combustion Noise", "Acoustic Impedance", "Thermoacoustics"]
     }
   ],
 

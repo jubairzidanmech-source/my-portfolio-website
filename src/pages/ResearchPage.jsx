@@ -133,9 +133,9 @@ export const ResearchPage = () => {
       <section id="research-publications" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">SCHOLARLY PUBLICATIONS</div>
+            <div className="section-eyebrow">SCHOLARLY WORKS</div>
             <h2 className="section-main-heading">
-              Peer-Reviewed Papers & Bachelor Thesis
+              Publications
             </h2>
           </div>
           <span className="section-count-badge">
@@ -143,7 +143,7 @@ export const ResearchPage = () => {
           </span>
         </div>
 
-        <div className="publication-list-container">
+        <div className="pub-grid-2col">
           {/* --- Item 1: Undergraduate Bachelor Thesis --- */}
           {(() => {
             const thesis = researchData.undergradThesis;
@@ -284,7 +284,7 @@ export const ResearchPage = () => {
                   </div>
 
                   <div className="pub-tags-row">
-                    {paper.tags.map((tag, tIdx) => (
+                    {(paper.tags || paper.keywords || []).map((tag, tIdx) => (
                       <span key={tIdx} className="pub-tag-pill">{tag}</span>
                     ))}
                   </div>
@@ -368,17 +368,17 @@ export const ResearchPage = () => {
       <section id="research-presentations" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">ACADEMIC CONFERENCES</div>
+            <div className="section-eyebrow">CONFERENCE TALKS</div>
             <h2 className="section-main-heading">
-              Podium Presentations & Symposia
+              Presentations
             </h2>
           </div>
           <span className="section-count-badge">
-            {researchData.conferencePresentations.length} Talks
+            {researchData.conferencePresentations.length} Presentations
           </span>
         </div>
 
-        <div className="publication-list-container">
+        <div className="pub-grid-2col">
           {researchData.conferencePresentations.map((pres, idx) => {
             const presIndex = idx + 1;
             const isExpanded = Boolean(expandedItems[pres.id]);
