@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X, ExternalLink } from 'lucide-react';
 
 export const InteractiveModal = ({ isOpen, onClose, title, subtitle, children, maxWidth = '720px' }) => {
@@ -20,7 +21,7 @@ export const InteractiveModal = ({ isOpen, onClose, title, subtitle, children, m
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div 
       style={{
         position: 'fixed',
@@ -31,7 +32,7 @@ export const InteractiveModal = ({ isOpen, onClose, title, subtitle, children, m
         backgroundColor: 'rgba(21, 21, 29, 0.75)',
         backdropFilter: 'blur(8px)',
         WebkitBackdropFilter: 'blur(8px)',
-        zIndex: 2000,
+        zIndex: 99999,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -107,7 +108,8 @@ export const InteractiveModal = ({ isOpen, onClose, title, subtitle, children, m
           {children}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
@@ -130,7 +132,7 @@ export const ImageLightboxModal = ({ isOpen, onClose, title, subtitle, imageUrl,
 
   if (!isOpen || !imageUrl) return null;
 
-  return (
+  return createPortal(
     <div 
       className="image-lightbox-overlay"
       onClick={onClose}
@@ -193,7 +195,8 @@ export const ImageLightboxModal = ({ isOpen, onClose, title, subtitle, imageUrl,
           </a>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

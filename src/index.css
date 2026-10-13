@@ -8218,10 +8218,14 @@ img {
 .image-lightbox-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(11, 19, 43, 0.82);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(11, 19, 43, 0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  z-index: 2500;
+  z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8233,18 +8237,19 @@ img {
   background: var(--bg-card);
   border-radius: 18px;
   width: 100%;
-  max-width: 1080px;
-  height: 94vh;
-  max-height: 94vh;
+  max-width: 1040px;
+  height: 90vh;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--border-card);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
-  padding: 18px 22px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  padding: 16px 20px;
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
   color: var(--text-primary);
+  margin: auto;
 }
 
 .image-lightbox-header {
