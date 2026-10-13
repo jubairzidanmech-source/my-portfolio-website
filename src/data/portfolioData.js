@@ -864,10 +864,18 @@ export const skillsData = {
   ],
 
   hobbies: [
-    { name: "Graphic & Editorial Design", desc: "Crafting vector typography, editorial booklets, and clean minimalist layouts." },
-    { name: "Photography & Visual Framing", desc: "Documentary street and architectural photography capturing perspective and light." },
-    { name: "Motorsport Aerodynamics Tracking", desc: "Following Formula 1 technical updates, FIA regulatory technical directives, and aero evolutions." },
-    { name: "Literature & Scholarly Reading", desc: "Reading scientific biographies, physics treatises, and classic philosophy." }
+    { 
+      name: "Graphic & Editorial Design", 
+      desc: "Crafting vector typography, editorial booklets, and clean minimalist layouts.",
+      link: "https://www.behance.net/jubairzidan99",
+      platform: "Behance"
+    },
+    { 
+      name: "Photography & Visual Framing", 
+      desc: "Documentary street and architectural photography capturing perspective and light.",
+      link: "https://www.instagram.com/jubair_zidan.arw/",
+      platform: "Instagram"
+    }
   ]
 };
 

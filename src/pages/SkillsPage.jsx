@@ -17,7 +17,8 @@ import {
   Camera,
   Wind,
   BookOpen,
-  GitBranch
+  GitBranch,
+  ExternalLink
 } from 'lucide-react';
 import { skillsData } from '../data/portfolioData';
 
@@ -185,20 +186,38 @@ export const SkillsPage = () => {
           </span>
         </div>
 
-        <div className="interests-grid">
+        <div className="interests-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
           {skillsData.hobbies.map((hobby, idx) => (
-            <div key={idx} className="interest-card-light">
-              <div className="interest-header">
-                <span className="interest-icon-light">
-                  {getHobbyIcon(idx)}
-                </span>
-                <h3 className="interest-title-light">
-                  {hobby.name}
-                </h3>
+            <div key={idx} className="interest-card-light" style={{ justifyContent: 'space-between' }}>
+              <div>
+                <div className="interest-header">
+                  <span className="interest-icon-light">
+                    {getHobbyIcon(idx)}
+                  </span>
+                  <h3 className="interest-title-light">
+                    {hobby.name}
+                  </h3>
+                </div>
+                <p className="interest-desc-light">
+                  {hobby.desc}
+                </p>
               </div>
-              <p className="interest-desc-light">
-                {hobby.desc}
-              </p>
+
+              {hobby.link && (
+                <div style={{ marginTop: '16px', paddingTop: '8px' }}>
+                  <a
+                    href={hobby.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="pub-visual-btn"
+                    style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                    title={`View ${hobby.name} on ${hobby.platform || 'portfolio'}`}
+                  >
+                    <span>View My Works</span>
+                    <ExternalLink size={12} />
+                  </a>
+                </div>
+              )}
             </div>
           ))}
         </div>
