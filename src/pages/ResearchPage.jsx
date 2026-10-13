@@ -15,7 +15,7 @@ import {
   Compass
 } from 'lucide-react';
 import { researchData } from '../data/portfolioData';
-import { InteractiveModal } from '../components/InteractiveModal';
+import { InteractiveModal, ImageLightboxModal } from '../components/InteractiveModal';
 
 export const ResearchPage = () => {
   // Active category filter for Projects
@@ -742,69 +742,26 @@ export const ResearchPage = () => {
         </div>
       </section>
 
-      {/* Global Interactive Modal for full-size inspection */}
-      {activeModalData && (
+      {/* Zero-crop Responsive Image Lightbox Modal or Interactive Modal */}
+      {activeModalData && activeModalData.imageUrl ? (
+        <ImageLightboxModal
+          isOpen={Boolean(activeModalData)}
+          onClose={() => setActiveModalData(null)}
+          title={activeModalData.title}
+          subtitle={activeModalData.subtitle}
+          imageUrl={activeModalData.imageUrl}
+          description={activeModalData.description}
+        />
+      ) : activeModalData ? (
         <InteractiveModal
           isOpen={Boolean(activeModalData)}
           onClose={() => setActiveModalData(null)}
           title={activeModalData.title}
           subtitle={activeModalData.subtitle}
-          maxWidth={activeModalData.imageUrl ? "1040px" : "720px"}
         >
-          {activeModalData.imageUrl ? (
-            <div style={{ textAlign: 'center' }}>
-              <div 
-                style={{
-                  position: 'relative',
-                  background: '#0B132B',
-                  borderRadius: '16px',
-                  padding: '16px',
-                  border: '1px solid var(--border-subtle)',
-                  boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  minHeight: '340px',
-                  overflow: 'hidden'
-                }}
-              >
-                <img 
-                  src={activeModalData.imageUrl} 
-                  alt={activeModalData.title} 
-                  style={{ 
-                    maxWidth: '100%', 
-                    maxHeight: '74vh', 
-                    borderRadius: '8px', 
-                    objectFit: 'contain',
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-                    display: 'block'
-                  }} 
-                />
-              </div>
-              
-              <div style={{ marginTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
-                {activeModalData.description && (
-                  <p style={{ fontSize: '0.90rem', color: 'var(--text-secondary)', textAlign: 'left', flex: '1 1 300px', margin: 0, lineHeight: 1.55 }}>
-                    {activeModalData.description}
-                  </p>
-                )}
-                <a
-                  href={activeModalData.imageUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pub-visual-btn"
-                  style={{ textDecoration: 'none', marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
-                >
-                  <ExternalLink size={14} />
-                  <span>Open Full Resolution in New Tab</span>
-                </a>
-              </div>
-            </div>
-          ) : (
-            activeModalData.content
-          )}
+          {activeModalData.content}
         </InteractiveModal>
-      )}
+      ) : null}
     </div>
   );
 };

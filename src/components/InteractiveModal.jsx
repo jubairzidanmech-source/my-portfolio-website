@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X } from 'lucide-react';
+import { X, ExternalLink } from 'lucide-react';
 
 export const InteractiveModal = ({ isOpen, onClose, title, subtitle, children, maxWidth = '720px' }) => {
   useEffect(() => {
@@ -110,3 +110,90 @@ export const InteractiveModal = ({ isOpen, onClose, title, subtitle, children, m
     </div>
   );
 };
+
+export const ImageLightboxModal = ({ isOpen, onClose, title, subtitle, imageUrl, description }) => {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen || !imageUrl) return null;
+
+  return (
+    <div 
+      className="image-lightbox-overlay"
+      onClick={onClose}
+    >
+      <div
+        className="image-lightbox-card"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="image-lightbox-header">
+          <div className="image-lightbox-titles">
+            {subtitle && (
+              <span className="image-lightbox-subtitle">
+                {subtitle}
+              </span>
+            )}
+            {title && (
+              <h3 className="image-lightbox-title">
+                {title}
+              </h3>
+            )}
+          </div>
+
+          <button
+            onClick={onClose}
+            className="image-lightbox-close"
+            aria-label="Close image viewer"
+            title="Close (Esc)"
+          >
+            <X size={18} />
+          </button>
+        </div>
+
+        {/* Stage: Flex container where image scales to 100% available space with zero cropping */}
+        <div className="image-lightbox-stage">
+          <img 
+            src={imageUrl} 
+            alt={title || "Full image"} 
+            className="image-lightbox-img"
+          />
+        </div>
+
+        {/* Footer */}
+        <div className="image-lightbox-footer">
+          {description ? (
+            <p className="image-lightbox-desc">
+              {description}
+            </p>
+          ) : <div />}
+
+          <a
+            href={imageUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pub-visual-btn image-lightbox-external-btn"
+            title="Open raw high-resolution image in new browser tab"
+          >
+            <ExternalLink size={13} />
+            <span>Open Full Resolution in New Tab</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
