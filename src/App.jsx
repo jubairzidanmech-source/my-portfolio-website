@@ -12,6 +12,7 @@ import { ContactPage } from './pages/ContactPage';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { AestheticGridBackground } from './components/AestheticGridBackground';
 import { CustomCursor } from './components/CustomCursor';
+import { Analytics } from '@vercel/analytics/react';
 
 const SECTIONS = ['home', 'academics', 'research', 'awards', 'experience', 'skills', 'contact'];
 
@@ -185,6 +186,7 @@ export function App() {
         </section>
       </main>
       <Footer activePage={activePage} setActivePage={scrollToSection} />
+      <Analytics />
     </div>
   );
 }
