@@ -633,55 +633,59 @@ export const experienceData = {
       {
         subject: "Physics 1",
         topics: [
-          "Vectors & Coordinate Systems",
-          "Linear Motion & Kinematics",
-          "Newton’s Laws of Motion & Applications",
+          "Vectors",
+          "Linear Motion",
+          "Newton's Laws of Motion and Applications",
           "Work, Energy, and Power",
-          "Circular Motion & Gravitation",
-          "States of Matter & Fluid Pressure",
-          "Simple Harmonic Motion & Mechanical Waves",
-          "Heat, Kinetic Theory & Thermodynamics"
+          "Circular Motion",
+          "Gravitation",
+          "States of Matter and Pressure",
+          "Simple Harmonic Motion and Waves",
+          "Heat and Thermodynamics"
         ]
       },
       {
         subject: "Physics 2",
         topics: [
-          "Electrostatics & Electric Fields",
-          "Current Electricity & Circuit Networks",
-          "Magnetism & Electromagnetism",
-          "Electromagnetic Induction & AC Circuits",
+          "Electrostatics",
+          "Current Electricity",
+          "Magnetism and Electromagnetism",
+          "Electromagnetic Induction",
           "Geometrical Optics",
-          "Physical Optics & Wave Interference",
-          "Modern Physics (Relativity, Photoelectric Effect, Atomic Models)",
-          "Nuclear Physics, Radioactivity, Semiconductor & Electronics"
+          "Physical Optics",
+          "Modern Physics (Relativity, Quantum Mechanics, Atomic Models)",
+          "Nuclear Physics",
+          "Semiconductor and Electronics"
         ]
       },
       {
-        subject: "Mathematics 1",
+        subject: "Math 1",
         topics: [
           "Matrices and Determinants",
-          "Vector Algebra",
-          "Straight Lines & Coordinate Geometry",
-          "The Circle & Conic Foundations",
+          "Vector",
+          "Straight Lines",
+          "The Circle",
           "Permutations and Combinations",
-          "Trigonometric Ratios & Compound Angles",
-          "Functions & Graph of Functions",
-          "Differential Calculus & Limits",
-          "Integral Calculus & Area Computation"
+          "Trigonometric Ratios",
+          "Trigonometric Ratios of Associated Angles",
+          "Functions and Graph of Functions",
+          "Differentiation",
+          "Integration"
         ]
       },
       {
-        subject: "Mathematics 2",
+        subject: "Math 2",
         topics: [
-          "Complex Numbers & De Moivre's Theorem",
-          "Polynomials and Theory of Equations",
+          "Complex Numbers",
+          "Polynomials",
           "Exponential and Logarithmic Functions",
-          "Conic Sections (Parabola, Ellipse, Hyperbola)",
-          "Inverse Trigonometric Functions & Equations",
-          "Three-Dimensional Geometry & Vectors",
-          "Linear Programming Optimization",
-          "Probability & Statistics",
-          "First and Second Order Differential Equations"
+          "Conic Sections",
+          "Inverse Trigonometric Functions",
+          "Three-Dimensional Geometry",
+          "Linear Programming",
+          "Probability",
+          "Statistics",
+          "Differential Equations"
         ]
       }
     ]

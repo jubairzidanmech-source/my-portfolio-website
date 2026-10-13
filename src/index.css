@@ -8418,4 +8418,90 @@ img {
   }
 }
 
+/* 4-Column Instructorship Curriculum Board */
+.curriculum-grid-4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .curriculum-grid-4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .curriculum-grid-4col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.curriculum-subject-col {
+  background: rgba(15, 23, 42, 0.025);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.curriculum-subject-col:hover {
+  transform: translateY(-2px);
+  border-color: var(--blue-royal);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.08);
+}
+
+[data-theme="dark"] .curriculum-subject-col {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .curriculum-subject-col:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.curriculum-col-header {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 10px;
+}
+
+.curriculum-count-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--blue-royal);
+  background: rgba(37, 99, 235, 0.08);
+  border-radius: 9999px;
+  padding: 2px 8px;
+}
+
+.curriculum-topics-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.curriculum-topic-item {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.curriculum-topic-item:hover {
+  color: var(--text-primary);
+}
+
 

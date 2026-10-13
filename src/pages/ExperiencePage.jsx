@@ -199,56 +199,38 @@ export const ExperiencePage = () => {
             ))}
           </div>
 
-          {/* Expandable Syllabus Section with Thin Dividers */}
-          <div className="card exp-card" style={{ marginTop: '20px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
-              <div>
-                <span className="section-eyebrow">CURRICULUM DELIVERED</span>
-                <h3 className="exp-role-title" style={{ marginTop: '2px' }}>
-                  Physics & Mathematics Syllabi Instruction
-                </h3>
-                <div className="exp-meta-row" style={{ marginTop: '2px' }}>
-                  <span>Comprehensive national curriculum coverage for Higher Secondary Certificate (HSC) candidates</span>
-                </div>
+          {/* Complete 4-Column Instructorship Curriculum Board */}
+          <div className="card exp-card" style={{ marginTop: '24px' }}>
+            <div style={{ marginBottom: '16px' }}>
+              <span className="section-eyebrow">CURRICULUM DELIVERED</span>
+              <h3 className="exp-role-title" style={{ marginTop: '2px', fontSize: '1.25rem' }}>
+                HSC Physics & Mathematics Syllabi Instruction
+              </h3>
+              <div className="exp-meta-row" style={{ marginTop: '4px' }}>
+                <span>Comprehensive national curriculum coverage across 38 foundational and advanced topics</span>
               </div>
-
-              <button
-                onClick={() => toggleSection('syllabus-coverage')}
-                className="pub-expand-btn"
-                aria-expanded={Boolean(expandedSections['syllabus-coverage'])}
-              >
-                <span>{expandedSections['syllabus-coverage'] ? 'Hide Curriculum Topics' : 'Explore Detailed Topics Covered'}</span>
-                {expandedSections['syllabus-coverage'] ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-              </button>
             </div>
 
-            {expandedSections['syllabus-coverage'] && (
-              <div style={{ marginTop: '16px' }}>
-                <div className="exp-divider" />
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
-                  {experienceData.instructorship.curriculumCovered.map((curr, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveSubject(idx)}
-                      className={`filter-pill ${activeSubject === idx ? 'active' : ''}`}
-                    >
-                      {curr.subject}
-                    </button>
-                  ))}
-                </div>
+            <div className="exp-divider" style={{ margin: '14px 0 20px 0' }} />
 
-                <div className="exp-divided-list">
-                  {experienceData.instructorship.curriculumCovered[activeSubject].topics.map((topic, tIdx) => (
-                    <div key={tIdx} className="exp-divided-item" style={{ padding: '8px 0' }}>
-                      <div className="exp-item-point">
-                        <span className="exp-item-bullet" />
-                        <span className="exp-item-desc" style={{ color: 'var(--text-secondary)' }}>{topic}</span>
-                      </div>
-                    </div>
-                  ))}
+            <div className="curriculum-grid-4col">
+              {experienceData.instructorship.curriculumCovered.map((curr, idx) => (
+                <div key={idx} className="curriculum-subject-col">
+                  <div className="curriculum-col-header">
+                    <span>{curr.subject}</span>
+                    <span className="curriculum-count-badge">{curr.topics.length} Topics</span>
+                  </div>
+
+                  <ul className="curriculum-topics-list">
+                    {curr.topics.map((topic, tIdx) => (
+                      <li key={tIdx} className="curriculum-topic-item">
+                        {topic}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-            )}
+              ))}
+            </div>
           </div>
         </section>
       )}
