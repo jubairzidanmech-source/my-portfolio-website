@@ -3037,355 +3037,294 @@ img {
 
 .timeline-row {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 200px 1fr;
   position: relative;
-  padding-bottom: 40px;
+  padding-bottom: 36px;
 }
 
 .timeline-row:last-child {
   padding-bottom: 0;
 }
 
-/* Spine vertical line on left */
+/* Spine vertical line on left (Thin connecting line) */
 .timeline-axis {
   position: relative;
   display: flex;
   align-items: flex-start;
-  padding-right: 24px;
+  padding-right: 28px;
 }
 
 .timeline-axis::before {
   content: '';
   position: absolute;
-  left: 13px;
-  top: 28px;
-  bottom: -40px;
-  width: 2px;
-  background: linear-gradient(to bottom, #93C5FD 0%, #DBEAFE 100%);
+  left: 6.5px;
+  top: 18px;
+  bottom: -36px;
+  width: 1.5px;
+  background: rgba(37, 99, 235, 0.22);
+  transition: background 0.25s ease;
 }
 
 .timeline-row:last-child .timeline-axis::before {
   display: none;
 }
 
+/* Small, refined blue circular markers */
 .timeline-node-circle {
-  width: 28px;
-  height: 28px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  border: 3.5px solid #1D4ED8;
   background: #FFFFFF;
+  border: 2.5px solid #2563EB;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 2;
   flex-shrink: 0;
-  margin-top: 3px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.12);
+  margin-top: 4px;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
 }
 
 .timeline-node-inner-dot {
-  width: 9px;
-  height: 9px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  background: #1D4ED8;
-  transition: all 0.3s ease;
+  background: #2563EB;
+  transition: all 0.25s ease;
 }
 
+/* Current Degree: Active marker highlight */
+.timeline-row.is-current .timeline-node-circle {
+  background: #2563EB;
+  border-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.28);
+}
+
+.timeline-row.is-current .timeline-node-inner-dot {
+  background: #FFFFFF;
+}
+
+.timeline-row:hover .timeline-node-circle {
+  border-color: #1D4ED8;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.22);
+}
+
+/* Dates: Secondary element */
 .timeline-year-text {
-  margin-left: 16px;
-  font-size: 1.55rem;
-  font-weight: 900;
-  color: #0A1E4A;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
+  margin-left: 14px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #64748B;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
   white-space: nowrap;
   display: inline-block;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: color 0.2s ease;
   font-feature-settings: 'tnum';
 }
 
-/* Card on right */
+.timeline-row.is-current .timeline-year-text {
+  color: #1D4ED8;
+  font-weight: 700;
+}
+
+.timeline-row:hover .timeline-year-text {
+  color: #0F172A;
+}
+
+/* Timeline Academic Card: Consistent padding (24px 28px) and corner radius (16px) across all timeline entries */
 .timeline-academic-card {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 28px 34px;
-  box-shadow: 0 4px 20px rgba(11, 19, 43, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 2px 10px rgba(11, 19, 43, 0.03);
   position: relative;
   overflow: hidden;
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-.timeline-academic-card {
-  cursor: pointer;
+/* Current Degree: Subtle blue border & light tint to distinguish it */
+.timeline-academic-card.is-current {
+  background: linear-gradient(145deg, rgba(239, 246, 255, 0.75) 0%, rgba(255, 255, 255, 0.98) 100%);
+  border: 1.5px solid rgba(37, 99, 235, 0.35);
+  box-shadow: 0 6px 22px rgba(37, 99, 235, 0.08), 0 2px 6px rgba(11, 19, 43, 0.02);
 }
 
-.degree-badge-dark {
-  background: var(--blue-royal);
-  color: #FFFFFF;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 5px 14px;
-  border-radius: 9px;
-  letter-spacing: 0.02em;
-  display: inline-block;
-  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.25);
-  transition: all var(--transition-fast);
+.timeline-academic-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(37, 99, 235, 0.08), 0 2px 8px rgba(11, 19, 43, 0.04);
+  border-color: rgba(37, 99, 235, 0.35);
 }
 
+.timeline-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Degree Title: The STRONGEST visual element */
 .timeline-card-heading {
   font-size: 1.28rem;
-  font-weight: 600;
-  color: var(--blue-midnight);
+  font-weight: 700;
+  color: #0B132B;
   margin: 0;
   line-height: 1.35;
-  transition: color var(--transition-fast);
+  letter-spacing: -0.015em;
+  transition: color 0.2s ease;
 }
 
+.timeline-academic-card:hover .timeline-card-heading {
+  color: var(--blue-royal);
+}
+
+/* Current Degree subtle pill */
+.timeline-current-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #1D4ED8;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* Institution Name: Secondary element */
 .timeline-card-subheading {
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-  margin-top: 3px;
-  transition: color var(--transition-fast);
+  font-size: 0.88rem;
+  color: #64748B;
+  margin-top: 4px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+/* Subtle degree badge (secondary tag) */
+.degree-badge-dark {
+  background: rgba(37, 99, 235, 0.08);
+  color: #1D4ED8;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .timeline-card-hairline {
   height: 1px;
   background: var(--border-subtle);
-  margin: 22px 0 20px;
-  transition: background var(--transition-fast);
+  margin: 16px 0 14px;
 }
 
-/* Milestone Elements */
-.milestones-label {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #6A6394;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  transition: color var(--transition-fast);
-}
-
-.milestones-badge {
-  font-size: 0.76rem;
-  font-weight: 500;
-  color: #25213B;
-  background: #ECECF8;
-  padding: 3px 12px;
-  border-radius: 9999px;
-  transition: all var(--transition-fast);
-}
-
-.milestone-item-box {
-  background: #F9F8FE;
-  border: 1px solid rgba(183, 189, 225, 0.4);
-  border-radius: 12px;
-  padding: 14px 16px;
-  transition: all var(--transition-fast);
-}
-
-.milestone-item-title {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #25213B;
-  transition: color var(--transition-fast);
-}
-
-.milestone-item-desc {
-  font-size: 0.82rem;
-  color: #6A6682;
-  margin: 0;
-  line-height: 1.45;
-  transition: color var(--transition-fast);
-}
-
-/* ==========================================================================
-   ACADEMIC CARD HOVER: DARK BLUE TRANSFORMATION (User Request)
-   ========================================================================== */
-
-.timeline-academic-card:hover .timeline-card-heading {
-  color: #FFFFFF !important;
-}
-
-.timeline-academic-card:hover .timeline-card-subheading {
-  color: #BFDBFE !important;
-}
-
-.timeline-academic-card:hover .degree-badge-dark {
-  background: rgba(255, 255, 255, 0.18) !important;
-  border: 1px solid rgba(147, 197, 253, 0.4) !important;
-  color: #FFFFFF !important;
-}
-
-.timeline-academic-card:hover .timeline-card-hairline {
-  background: rgba(255, 255, 255, 0.14) !important;
-}
-
-.timeline-academic-card:hover .milestones-label {
-  color: #93C5FD !important;
-}
-
-.timeline-academic-card:hover .milestones-badge {
-  background: rgba(255, 255, 255, 0.14) !important;
-  color: #FFFFFF !important;
-  border: 1px solid rgba(147, 197, 253, 0.35) !important;
-}
-
-.timeline-academic-card:hover .milestone-item-box {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(147, 197, 253, 0.28) !important;
-}
-
-.timeline-academic-card:hover .milestone-item-title {
-  color: #FFFFFF !important;
-}
-
-.timeline-academic-card:hover .milestone-item-desc {
-  color: #DCE9FD !important;
-}
-
-.timeline-academic-card:hover .milestone-item-box svg {
-  color: #38BDF8 !important;
-  stroke: #38BDF8 !important;
-}
-
-/* Academic CGPA Cards inside Dark Timeline Card Hover */
-.timeline-academic-card:hover .academic-cgpa-card {
-  background: rgba(255, 255, 255, 0.09) !important;
-  border-color: rgba(147, 197, 253, 0.3) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
-}
-
-.timeline-academic-card:hover .academic-cgpa-num {
-  color: #FFFFFF !important;
-}
-
-.timeline-academic-card:hover .academic-cgpa-scale {
-  color: #93C5FD !important;
-}
-
-.timeline-academic-card:hover .academic-cgpa-label {
-  color: #FFFFFF !important;
-}
-
-.timeline-academic-card:hover .academic-cgpa-sublabel {
-  color: #D6E7FF !important;
-}
-
-.timeline-academic-card:hover .academic-cgpa-badge {
-  background: rgba(56, 189, 248, 0.22) !important;
-  color: #38BDF8 !important;
-  border-color: rgba(56, 189, 248, 0.45) !important;
-}
-
-/* Timeline axis active lighting on hover */
-.timeline-row:hover .timeline-node-circle {
-  border-color: #2563EB !important;
-  box-shadow: 0 0 20px rgba(37, 99, 235, 0.45), 0 0 0 7px rgba(37, 99, 235, 0.2) !important;
-  transform: scale(1.1);
-}
-
-.timeline-row:hover .timeline-node-inner-dot {
-  background: #2563EB !important;
-  transform: scale(1.2);
-}
-
-.timeline-row:hover .timeline-year-text {
-  color: #1D4ED8 !important;
-  transform: translateX(4px);
-}
-
-/* ==========================================================================
-   Prominent Academic CGPA & GPA Number Cards (Replaces circular progress bars)
-   ========================================================================== */
-
+/* CGPA Figures: Clean, clear display without oversized boxes or bright badges */
 .academic-cgpa-group {
   display: flex;
-  align-items: stretch;
-  gap: 16px;
   flex-wrap: wrap;
+  gap: 12px 28px;
+  align-items: center;
+  padding: 4px 0 6px;
 }
 
-.academic-cgpa-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(11, 19, 43, 0.08);
-  border-radius: 14px;
-  padding: 18px 22px;
-  min-width: 220px;
-  flex: 1 1 240px;
+.academic-cgpa-item {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  transition: all var(--transition-fast);
-  box-shadow: 0 2px 8px rgba(11, 19, 43, 0.02);
+  gap: 2px;
 }
 
-.academic-cgpa-card:hover {
-  background: #FFFFFF;
-  border-color: rgba(37, 99, 235, 0.32);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(11, 19, 43, 0.06);
-}
-
-.academic-cgpa-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 4px;
-}
-
-.academic-cgpa-val-wrap {
+.academic-cgpa-primary {
   display: flex;
   align-items: baseline;
   gap: 4px;
 }
 
 .academic-cgpa-num {
-  font-size: 2.3rem;
-  font-weight: 600;
-  color: var(--blue-midnight);
-  letter-spacing: -0.035em;
-  line-height: 1;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0F172A;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  font-feature-settings: 'tnum';
 }
 
 .academic-cgpa-scale {
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #64748B;
 }
 
-.academic-cgpa-badge {
+.academic-cgpa-subtle-tag {
   font-size: 0.72rem;
   font-weight: 500;
-  color: var(--blue-royal);
-  background: rgba(37, 99, 235, 0.08);
-  border: 1px solid rgba(37, 99, 235, 0.18);
-  padding: 2px 9px;
-  border-radius: 9999px;
-  white-space: nowrap;
+  color: #475569;
+  background: rgba(148, 163, 184, 0.12);
+  padding: 1px 7px;
+  border-radius: 4px;
+  margin-left: 6px;
+}
+
+.academic-cgpa-info {
+  font-size: 0.84rem;
+  line-height: 1.4;
 }
 
 .academic-cgpa-label {
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin-top: 4px;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: #334155;
 }
 
 .academic-cgpa-sublabel {
-  font-size: 0.78rem;
-  color: var(--text-muted);
+  color: #64748B;
   font-weight: 400;
-  margin-top: 2px;
-  line-height: 1.35;
+}
+
+/* Milestone Elements */
+.milestones-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.milestones-badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #1D4ED8;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  padding: 2px 10px;
+  border-radius: 9999px;
+}
+
+.milestone-item-box {
+  background: #F8FAFC;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: all var(--transition-fast);
+}
+
+.milestone-item-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1E293B;
+}
+
+.milestone-item-desc {
+  font-size: 0.82rem;
+  color: #64748B;
+  margin: 0;
+  line-height: 1.45;
 }
 
 /* ==========================================================================
@@ -5293,11 +5232,12 @@ img {
   }
 
   .timeline-year-text {
-    font-size: 1.28rem;
+    font-size: 0.92rem;
   }
 
   .timeline-academic-card {
-    padding: 22px 20px;
+    padding: 20px 20px;
+    border-radius: 16px;
   }
 
   /* Anti-flickering hardware acceleration for mobile scrolling */
@@ -6055,91 +5995,119 @@ img {
   color: #FFFFFF !important;
 }
 
-/* Academic CGPA Cards */
-[data-theme="dark"] .academic-cgpa-card {
-  background: rgba(15, 23, 42, 0.58) !important;
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-  border-color: rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-}
-
+/* Academic CGPA Display in Dark Mode */
 [data-theme="dark"] .academic-cgpa-num {
-  color: #FFFFFF !important;
+  color: #F8FAFC !important;
 }
 
-[data-theme="dark"] .academic-cgpa-scale {
-  color: #94A3B8;
+[data-theme="dark"] .academic-cgpa-scale,
+[data-theme="dark"] .academic-cgpa-sublabel {
+  color: #94A3B8 !important;
 }
 
 [data-theme="dark"] .academic-cgpa-label {
-  color: #F8FAFC;
+  color: #E2E8F0 !important;
 }
 
-[data-theme="dark"] .academic-cgpa-badge {
-  background: rgba(255, 255, 255, 0.14) !important;
-  color: #FFFFFF !important;
-  border-color: rgba(255, 255, 255, 0.3) !important;
+[data-theme="dark"] .academic-cgpa-subtle-tag {
+  color: #CBD5E1 !important;
+  background: rgba(255, 255, 255, 0.08) !important;
 }
 
 /* Degree Badges in Academic Timeline */
 [data-theme="dark"] .degree-badge-dark {
-  background: var(--blue-royal, #2563EB) !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 3px 12px rgba(37, 99, 235, 0.3) !important;
+  background: rgba(96, 165, 250, 0.12) !important;
+  color: #93C5FD !important;
+  border: 1px solid rgba(96, 165, 250, 0.25) !important;
+  box-shadow: none !important;
 }
 
-[data-theme="dark"] .timeline-academic-card:hover .degree-badge-dark {
-  background: #1D4ED8 !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.45) !important;
-}
-
-/* Timeline Cards, Spine & Prominent Year Text in Dark Mode */
+/* Timeline Cards, Spine & Markers in Dark Mode */
 [data-theme="dark"] .timeline-axis::before {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+  background: rgba(96, 165, 250, 0.25) !important;
 }
 
 [data-theme="dark"] .timeline-node-circle {
-  border-color: #FFFFFF !important;
-  background: #0B132B;
-  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.18) !important;
+  border-color: #60A5FA !important;
+  background: #0B132B !important;
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2) !important;
 }
 
 [data-theme="dark"] .timeline-node-inner-dot {
+  background: #60A5FA !important;
+}
+
+[data-theme="dark"] .timeline-row.is-current .timeline-node-circle {
+  background: #2563EB !important;
+  border-color: #FFFFFF !important;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.4) !important;
+}
+
+[data-theme="dark"] .timeline-row.is-current .timeline-node-inner-dot {
   background: #FFFFFF !important;
 }
 
 [data-theme="dark"] .timeline-year-text {
-  color: #FFFFFF !important;
+  color: #94A3B8 !important;
   background: none !important;
-  -webkit-text-fill-color: #FFFFFF !important;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  -webkit-text-fill-color: #94A3B8 !important;
+  text-shadow: none !important;
+}
+
+[data-theme="dark"] .timeline-row.is-current .timeline-year-text {
+  color: #93C5FD !important;
+  -webkit-text-fill-color: #93C5FD !important;
 }
 
 [data-theme="dark"] .timeline-row:hover .timeline-node-circle {
-  border-color: #FFFFFF !important;
-  box-shadow: 0 0 24px rgba(255, 255, 255, 0.65), 0 0 0 7px rgba(255, 255, 255, 0.25) !important;
-  transform: scale(1.1);
-}
-
-[data-theme="dark"] .timeline-row:hover .timeline-node-inner-dot {
-  background: #FFFFFF !important;
+  border-color: #93C5FD !important;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.3) !important;
 }
 
 [data-theme="dark"] .timeline-row:hover .timeline-year-text {
-  color: #FFFFFF !important;
-  background: none !important;
-  -webkit-text-fill-color: #FFFFFF !important;
-  transform: translateX(4px);
+  color: #F8FAFC !important;
+  -webkit-text-fill-color: #F8FAFC !important;
 }
 
 [data-theme="dark"] .timeline-academic-card {
-  background: rgba(15, 23, 42, 0.58) !important;
+  background: rgba(15, 23, 42, 0.6) !important;
   backdrop-filter: blur(24px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-  border-color: rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .timeline-academic-card.is-current {
+  background: linear-gradient(145deg, rgba(23, 42, 79, 0.45) 0%, rgba(15, 23, 42, 0.8) 100%) !important;
+  border: 1.5px solid rgba(96, 165, 250, 0.4) !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35), 0 0 16px rgba(37, 99, 235, 0.12) !important;
+}
+
+[data-theme="dark"] .timeline-card-heading {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .timeline-card-subheading {
+  color: #94A3B8 !important;
+}
+
+[data-theme="dark"] .timeline-current-pill {
+  color: #93C5FD !important;
+  background: rgba(59, 130, 246, 0.16) !important;
+  border-color: rgba(96, 165, 250, 0.3) !important;
+}
+
+[data-theme="dark"] .milestone-item-box {
+  background: rgba(30, 41, 59, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .milestone-item-title {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .milestone-item-desc {
+  color: #94A3B8 !important;
 }
 
 /* Preview Cards */

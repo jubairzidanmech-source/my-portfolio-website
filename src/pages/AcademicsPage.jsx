@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import { CheckCircle2, Clock, Sparkles, ChevronDown, ChevronUp, BookOpen, GraduationCap } from 'lucide-react';
 
-// Prominent Academic CGPA / GPA Number Component (Clean typography without nested container borders)
+// Academic CGPA / GPA Display (Clean typography without oversized boxes or bright badges)
 const CgpaStatNumber = ({ value, max, label, sublabel, badge }) => {
   return (
-    <div className="academic-cgpa-card">
-      <div className="academic-cgpa-header">
-        <div className="academic-cgpa-val-wrap">
-          <span className="academic-cgpa-num">
-            {typeof value === 'number' ? value.toFixed(2) : value}
-          </span>
-          <span className="academic-cgpa-scale">
-            / {typeof max === 'number' ? max.toFixed(2) : max}
-          </span>
-        </div>
-        {badge && <span className="academic-cgpa-badge">{badge}</span>}
+    <div className="academic-cgpa-item">
+      <div className="academic-cgpa-primary">
+        <span className="academic-cgpa-num">
+          {typeof value === 'number' ? value.toFixed(2) : value}
+        </span>
+        <span className="academic-cgpa-scale">
+          / {typeof max === 'number' ? max.toFixed(2) : max}
+        </span>
+        {badge && <span className="academic-cgpa-subtle-tag">{badge}</span>}
       </div>
-      <div className="academic-cgpa-label">{label}</div>
-      {sublabel && <div className="academic-cgpa-sublabel">{sublabel}</div>}
+      <div className="academic-cgpa-info">
+        <span className="academic-cgpa-label">{label}</span>
+        {sublabel && <span className="academic-cgpa-sublabel"> — {sublabel}</span>}
+      </div>
     </div>
   );
 };
@@ -46,8 +46,8 @@ export const AcademicsPage = () => {
 
       {/* Timeline Section */}
       <div className="timeline-spine-wrapper">
-        {/* 1. M.Sc. in Mechanical Engineering */}
-        <div className="timeline-row">
+        {/* 1. M.Sc. in Mechanical Engineering (Current Degree) */}
+        <div className="timeline-row is-current">
           <div className="timeline-axis">
             <div className="timeline-node-circle">
               <div className="timeline-node-inner-dot" />
@@ -55,11 +55,14 @@ export const AcademicsPage = () => {
             <span className="timeline-year-text">2025 – 2026</span>
           </div>
 
-          <div className="timeline-academic-card">
+          <div className="timeline-academic-card is-current">
             <div className="timeline-card-header">
               <span className="degree-badge-dark">MSc</span>
-              <div>
-                <h3 className="timeline-card-heading">Master of Science in Mechanical Engineering</h3>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <h3 className="timeline-card-heading">Master of Science in Mechanical Engineering</h3>
+                  <span className="timeline-current-pill">Current Degree</span>
+                </div>
                 <div className="timeline-card-subheading">
                   Chittagong University of Engineering and Technology (CUET) · Chattogram
                 </div>
