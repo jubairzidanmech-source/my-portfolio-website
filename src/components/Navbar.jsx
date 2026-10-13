@@ -3,7 +3,7 @@ import { Menu, X, ArrowUpRight, GraduationCap, Compass, Award, Briefcase, Wrench
 import { personalData } from '../data/portfolioData';
 import { SkyThemeToggle } from './SkyThemeToggle';
 
-export const Navbar = ({ activePage, setActivePage, theme, toggleTheme }) => {
+export const Navbar = ({ activePage, setActivePage, theme, toggleTheme, hasAnnouncement = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -56,7 +56,7 @@ export const Navbar = ({ activePage, setActivePage, theme, toggleTheme }) => {
 
   return (
     <>
-      <header className={`site-navbar ${scrolled ? 'scrolled' : ''}`}>
+      <header className={`site-navbar ${scrolled ? 'scrolled' : ''} ${hasAnnouncement ? 'with-announcement' : ''}`}>
         <div className="nav-container">
           {/* Brand Identity: Official Logo a.png (Dark Mode) / b.png (Light Mode) */}
           <button 
@@ -127,7 +127,7 @@ export const Navbar = ({ activePage, setActivePage, theme, toggleTheme }) => {
 
       {/* Premium Floating Mobile Card Sheet */}
       <div 
-        className={`mobile-nav-drawer ${mobileMenuOpen ? 'open' : ''}`}
+        className={`mobile-nav-drawer ${mobileMenuOpen ? 'open' : ''} ${hasAnnouncement ? 'with-announcement' : ''}`}
         role="dialog"
         aria-modal="true"
         aria-label="Mobile Navigation Menu"

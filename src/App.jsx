@@ -13,6 +13,7 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { AestheticGridBackground } from './components/AestheticGridBackground';
 import { CustomCursor } from './components/CustomCursor';
 import { Analytics } from '@vercel/analytics/react';
+import { AnnouncementBar } from './components/AnnouncementBar';
 
 const SECTIONS = ['home', 'academics', 'research', 'awards', 'experience', 'skills', 'contact'];
 
@@ -24,6 +25,7 @@ export function App() {
 
   const [activePage, setActivePage] = useState(getInitialPage);
   const [theme, setTheme] = useState('light');
+  const [announcementVisible, setAnnouncementVisible] = useState(true);
 
   useEffect(() => {
     try {
@@ -136,13 +138,18 @@ export function App() {
     <div className="app-wrapper">
       <CustomCursor />
       <AestheticGridBackground />
+      <AnnouncementBar 
+        isVisible={announcementVisible} 
+        onDismiss={() => setAnnouncementVisible(false)} 
+      />
       <Navbar 
         activePage={activePage} 
         setActivePage={scrollToSection} 
         theme={theme} 
         toggleTheme={toggleTheme} 
+        hasAnnouncement={announcementVisible}
       />
-      <main className="site-main" id="main-content">
+      <main className={`site-main ${announcementVisible ? 'with-announcement' : ''}`} id="main-content">
         <section id="home" className="page-section">
           <ErrorBoundary>
             <HomePage setActivePage={scrollToSection} />

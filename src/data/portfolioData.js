@@ -704,3 +704,28 @@ export const contactData = {
     "Academic Seminars & Guest Lectures"
   ]
 };
+
+export const upcomingAnnouncements = [
+  {
+    id: 1,
+    tag: "Milestone",
+    text: "Thesis Defense : December",
+    highlight: true,
+    emoji: "🎓"
+  },
+  {
+    id: 2,
+    tag: "Conference",
+    text: "Upcoming Conference : MIMEC 2024 / BSME Presentation",
+    highlight: false,
+    emoji: "🌐"
+  },
+  {
+    id: 3,
+    tag: "Opportunity",
+    text: "Open for Ph.D. & Graduate Research Opportunities",
+    highlight: false,
+    emoji: "🔬"
+  }
+];
+

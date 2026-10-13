@@ -758,6 +758,318 @@ img {
 }
 
 /* ==========================================================================
+   Announcement Bar (Life Events & Academic Updates Marquee Ticker)
+   ========================================================================== */
+
+.announcement-bar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 38px;
+  z-index: 1002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 2px 10px rgba(10, 36, 99, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.announcement-bar-content {
+  width: 100%;
+  max-width: var(--max-width);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  position: relative;
+  gap: 14px;
+}
+
+/* Left Pinned Badge */
+.announcement-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  flex-shrink: 0;
+  z-index: 3;
+}
+
+.announcement-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2563EB;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.8);
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}
+
+.announcement-badge-text {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #1D4ED8;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Center Marquee with fade masks */
+.announcement-marquee-wrapper {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent);
+}
+
+/* Marquee Track moving from LEFT TO RIGHT */
+.announcement-marquee-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  width: max-content;
+  gap: 36px;
+  animation: marqueeLeftToRight 28s linear infinite;
+  will-change: transform;
+}
+
+.announcement-marquee-wrapper:hover .announcement-marquee-track {
+  animation-play-state: paused;
+  cursor: default;
+}
+
+@keyframes marqueeLeftToRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.announcement-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #334155;
+  transition: color var(--transition-fast);
+}
+
+.announcement-emoji {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.announcement-tag {
+  font-size: 0.66rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 1px 7px;
+  border-radius: 6px;
+  background: rgba(226, 232, 240, 0.85);
+  color: #475569;
+}
+
+.announcement-item.highlight .announcement-tag {
+  background: rgba(37, 99, 235, 0.12);
+  color: #1D4ED8;
+  font-weight: 700;
+}
+
+.announcement-text {
+  font-weight: 600;
+  color: #0F172A;
+  letter-spacing: -0.01em;
+}
+
+.announcement-divider {
+  color: #94A3B8;
+  font-size: 0.68rem;
+  margin-left: 20px;
+  opacity: 0.6;
+}
+
+/* Close / Dismiss button */
+.announcement-close-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #64748B;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  z-index: 3;
+}
+
+.announcement-close-btn:hover {
+  background: rgba(226, 232, 240, 0.8);
+  color: #0F172A;
+}
+
+/* Offset rules when Announcement Bar is active */
+.site-navbar.with-announcement {
+  top: 50px;
+}
+
+.site-navbar.with-announcement.scrolled {
+  top: 44px;
+}
+
+.mobile-nav-drawer.with-announcement {
+  top: 110px;
+}
+
+.site-main.with-announcement {
+  padding-top: calc(var(--header-height) + 62px);
+}
+
+/* Dark Mode Overrides for Announcement Bar */
+[data-theme="dark"] .announcement-bar-container {
+  background: rgba(8, 14, 28, 0.90);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .announcement-badge {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+[data-theme="dark"] .announcement-pulse-dot {
+  background: #38BDF8;
+  box-shadow: 0 0 8px #38BDF8;
+}
+
+[data-theme="dark"] .announcement-badge-text {
+  color: #7DD3FC;
+}
+
+[data-theme="dark"] .announcement-item {
+  color: #CBD5E1;
+}
+
+[data-theme="dark"] .announcement-tag {
+  background: rgba(255, 255, 255, 0.08);
+  color: #94A3B8;
+}
+
+[data-theme="dark"] .announcement-item.highlight .announcement-tag {
+  background: rgba(56, 189, 248, 0.18);
+  color: #38BDF8;
+}
+
+[data-theme="dark"] .announcement-text {
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .announcement-divider {
+  color: #64748B;
+}
+
+[data-theme="dark"] .announcement-close-btn {
+  color: #94A3B8;
+}
+
+[data-theme="dark"] .announcement-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+/* Mobile responsive rules for Announcement Bar */
+@media (max-width: 860px) {
+  .announcement-bar-container {
+    height: 35px;
+  }
+
+  .announcement-bar-content {
+    padding: 0 14px;
+    gap: 10px;
+  }
+
+  .site-navbar.with-announcement {
+    top: 42px;
+  }
+
+  .site-navbar.with-announcement.scrolled {
+    top: 38px;
+  }
+
+  .mobile-nav-drawer.with-announcement {
+    top: 102px;
+  }
+
+  .site-main.with-announcement {
+    padding-top: calc(var(--header-height) + 52px);
+  }
+}
+
+@media (max-width: 520px) {
+  .announcement-bar-container {
+    height: 33px;
+  }
+
+  .announcement-bar-content {
+    padding: 0 10px;
+    gap: 8px;
+  }
+
+  .announcement-badge {
+    padding: 2px 7px;
+  }
+
+  .announcement-badge-text {
+    font-size: 0.62rem;
+  }
+
+  .site-navbar.with-announcement {
+    top: 39px;
+  }
+
+  .site-navbar.with-announcement.scrolled {
+    top: 36px;
+  }
+
+  .mobile-nav-drawer.with-announcement {
+    top: 96px;
+  }
+
+  .site-main.with-announcement {
+    padding-top: calc(var(--header-height) + 48px);
+  }
+}
+
+/* ==========================================================================
    Navigation Bar (Floating Rounded Capsule Design - Reference Image 2)
    ========================================================================== */
 
