@@ -63,7 +63,7 @@ export const ContactPage = () => {
               <span>DIRECT CORRESPONDENCE</span>
             </div>
 
-            <div className="contact-email-display">
+            <div className="contact-email-display" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <a 
                 href={`mailto:${contactData.email}`} 
                 className="contact-email-link" 
@@ -71,6 +71,16 @@ export const ContactPage = () => {
               >
                 {contactData.email}
               </a>
+              {contactData.secondaryEmail && (
+                <a 
+                  href={`mailto:${contactData.secondaryEmail}`} 
+                  className="contact-email-link" 
+                  title="Send email to Jubair Zidan (Academic / Mech)"
+                  style={{ fontSize: '1.25rem', opacity: 0.95 }}
+                >
+                  {contactData.secondaryEmail}
+                </a>
+              )}
             </div>
 
             <p className="contact-email-desc">

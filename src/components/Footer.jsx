@@ -33,9 +33,17 @@ export const Footer = ({ activePage, setActivePage }) => {
           })}
         </nav>
 
-        {/* Understated Copyright & Affiliation Text */}
+        {/* Understated Copyright, Affiliation & Direct Email */}
         <div className="footer-compact-meta">
-          <span>© {new Date().getFullYear()} Md. Jubair Uddin Zidan · Department of Mechanical Engineering, CUET · All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Md. Jubair Uddin Zidan · Department of Mechanical Engineering, CUET</span>
+          <span className="footer-compact-dot">·</span>
+          <a 
+            href="mailto:jubairzidan.mech@gmail.com" 
+            className="footer-email-link"
+            title="Direct Contact Email"
+          >
+            jubairzidan.mech@gmail.com
+          </a>
         </div>
       </div>
     </footer>

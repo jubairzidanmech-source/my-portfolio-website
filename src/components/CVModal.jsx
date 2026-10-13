@@ -95,7 +95,7 @@ export const CVModal = ({ isOpen, onClose }) => {
               <div className="cv-sheet-contact-row">
                 <span><MapPin size={12} /> {personalData.location}</span>
                 <span>•</span>
-                <span><Mail size={12} /> {personalData.email}</span>
+                <span><Mail size={12} /> {personalData.email} · {personalData.secondaryEmail}</span>
                 <span>•</span>
                 <span>CUET Mechanical Engineering</span>
               </div>

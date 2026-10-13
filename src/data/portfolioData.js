@@ -10,6 +10,7 @@ export const personalData = {
   location: "Adabor, Shyamoli, Dhaka, Bangladesh",
   fullAddress: "House: Silicone Arcade, Flat: 4/A, 1/1/B, Ring Road, Hasanabad State, Mohonpur, Ward-30, Adabor, Shyamoli, Dhaka, Bangladesh",
   email: "jubairzidan99@gmail.com",
+  secondaryEmail: "jubairzidan.mech@gmail.com",
   portraitUrl: "/images/image.png",
   cvUrl: "/Md_Jubair_Uddin_Zidan_CV.pdf",
   status: "Available for Ph.D. & Graduate Research Opportunities",
@@ -21,7 +22,7 @@ export const personalData = {
     { label: "ResearchGate", url: "https://www.researchgate.net", icon: "researchgate" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/jubairzidan", icon: "linkedin" },
     { label: "GitHub", url: "https://github.com", icon: "github" },
-    { label: "Email", url: "mailto:jubairzidan99@gmail.com", icon: "email" }
+    { label: "Email", url: "mailto:jubairzidan.mech@gmail.com", icon: "email" }
   ],
   stats: [
     { label: "Peer-Reviewed Works", value: "4", detail: "Published & Conference Papers" },
@@ -838,6 +839,8 @@ export const contactData = {
   addressLine3: "Adabor, Shyamoli, Dhaka, Bangladesh",
   shortLocation: "Adabor, Shyamoli, Dhaka, Bangladesh",
   email: "jubairzidan99@gmail.com",
+  secondaryEmail: "jubairzidan.mech@gmail.com",
+  emails: ["jubairzidan99@gmail.com", "jubairzidan.mech@gmail.com"],
   timeZone: "GMT+6 (Dhaka)",
   affiliation: "Department of Mechanical Engineering, Chittagong University of Engineering and Technology (CUET)",
   openFor: [
