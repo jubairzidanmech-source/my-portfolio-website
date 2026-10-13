@@ -316,18 +316,8 @@ export const ResearchPage = () => {
                         onClick={() => setActiveModalData({
                           title: paper.title,
                           subtitle: `${paper.conference} • ${paper.date}`,
-                          content: (
-                            <div style={{ textAlign: 'center' }}>
-                              <img
-                                src={paper.imageUrl}
-                                alt={paper.title}
-                                style={{ width: '100%', maxHeight: '480px', objectFit: 'contain', borderRadius: '12px' }}
-                              />
-                              <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                                {paper.abstract.slice(0, 220)}...
-                              </p>
-                            </div>
-                          )
+                          imageUrl: paper.imageUrl,
+                          description: paper.abstract
                         })}
                         className="pub-visual-btn"
                       >
@@ -714,18 +704,8 @@ export const ResearchPage = () => {
                       onClick={() => setActiveModalData({
                         title: project.title,
                         subtitle: `${project.category} (${project.year}) • Tools: ${(project.tools || []).join(', ')}`,
-                        content: (
-                          <div style={{ textAlign: 'center' }}>
-                            <img
-                              src={project.imageUrl}
-                              alt={project.title}
-                              style={{ width: '100%', maxHeight: '480px', objectFit: 'contain', borderRadius: '12px' }}
-                            />
-                            <p style={{ marginTop: '12px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                              {project.description}
-                            </p>
-                          </div>
-                        )
+                        imageUrl: project.imageUrl,
+                        description: project.description
                       })}
                       className="project-modal-btn"
                     >
