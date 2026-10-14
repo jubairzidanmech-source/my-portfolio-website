@@ -215,9 +215,9 @@ export const AwardsPage = () => {
     { id: 'all', label: 'All Honors' },
     { id: 'competitions', label: 'Competitions & Achievements' },
     { id: 'posters', label: 'Poster Presentations' },
-    { id: 'organization', label: 'Organization' },
     { id: 'technical-certs', label: 'Technical Certifications' },
-    { id: 'course-certs', label: 'Course Certifications' }
+    { id: 'course-certs', label: 'Course Certifications' },
+    { id: 'organization', label: 'Organization' }
   ];
 
   return (
@@ -331,49 +331,7 @@ export const AwardsPage = () => {
       )}
 
       {/* =========================================================================
-          3. ORGANIZATION
-          ========================================================================= */}
-      {(activeCategory === 'all' || activeCategory === 'organization') && (
-        <section className="section-spacing">
-          <div className="section-heading-row">
-            <div>
-              <div className="section-eyebrow">LEADERSHIP & ENGAGEMENT</div>
-              <h2 className="section-main-heading">
-                Organization
-              </h2>
-            </div>
-            <span className="section-count-badge">
-              {(awardsData?.organization || []).length} Milestones & Summits
-            </span>
-          </div>
-
-          <div className="pub-grid-2col">
-            {(awardsData?.organization || []).map((item, idx) => (
-              <AwardCard
-                key={item.id}
-                item={item}
-                itemIndex={idx + 1}
-                isExpanded={Boolean(expandedAwards[item.id])}
-                onToggle={toggleAward}
-                onOpenModal={handleOpenModal}
-                badgeClass={item.cohort ? "manuscript" : "presentation"}
-                badgeLabel={item.category || "Organization"}
-                statusLabel="Organizer"
-                title={item.title}
-                authorLabel={item.organizer || item.event}
-                venueLabel={item.venue || item.cohort}
-                expandOpenText="View Responsibilities & Scale"
-                expandCloseText="Hide Details"
-                visualBtnText="View Credential"
-                detailHeading="Scope & Leadership Responsibilities"
-              />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* =========================================================================
-          5. TECHNICAL CERTIFICATIONS
+          3. TECHNICAL CERTIFICATIONS
           ========================================================================= */}
       {(activeCategory === 'all' || activeCategory === 'certs' || activeCategory === 'technical-certs') && (
         <section className="section-spacing">
@@ -416,7 +374,7 @@ export const AwardsPage = () => {
       )}
 
       {/* =========================================================================
-          6. COURSE CERTIFICATIONS
+          4. COURSE CERTIFICATIONS
           ========================================================================= */}
       {(((activeCategory === 'all' || activeCategory === 'certs') && (awardsData?.courseCertifications || []).length > 0) || activeCategory === 'course-certs') && (
         <section className="section-spacing">
@@ -469,6 +427,48 @@ export const AwardsPage = () => {
               Course certifications are currently being updated and will appear here.
             </div>
           )}
+        </section>
+      )}
+
+      {/* =========================================================================
+          5. ORGANIZATION
+          ========================================================================= */}
+      {(activeCategory === 'all' || activeCategory === 'organization') && (
+        <section className="section-spacing">
+          <div className="section-heading-row">
+            <div>
+              <div className="section-eyebrow">LEADERSHIP & ENGAGEMENT</div>
+              <h2 className="section-main-heading">
+                Organization
+              </h2>
+            </div>
+            <span className="section-count-badge">
+              {(awardsData?.organization || []).length} Milestones & Summits
+            </span>
+          </div>
+
+          <div className="pub-grid-2col">
+            {(awardsData?.organization || []).map((item, idx) => (
+              <AwardCard
+                key={item.id}
+                item={item}
+                itemIndex={idx + 1}
+                isExpanded={Boolean(expandedAwards[item.id])}
+                onToggle={toggleAward}
+                onOpenModal={handleOpenModal}
+                badgeClass={item.cohort ? "manuscript" : "presentation"}
+                badgeLabel={item.category || "Organization"}
+                statusLabel="Organizer"
+                title={item.title}
+                authorLabel={item.organizer || item.event}
+                venueLabel={item.venue || item.cohort}
+                expandOpenText="View Responsibilities & Scale"
+                expandCloseText="Hide Details"
+                visualBtnText="View Credential"
+                detailHeading="Scope & Leadership Responsibilities"
+              />
+            ))}
+          </div>
         </section>
       )}
 
