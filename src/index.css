@@ -2295,10 +2295,13 @@ img {
 /* Icon Containers & SVGs */
 .card-interactive:hover .preview-card-icon-box,
 .skill-tech-card:hover .skill-cat-icon-box,
-.competency-card:hover .skill-cat-icon-box {
-  background: rgba(255, 255, 255, 0.22) !important;
-  border-color: rgba(255, 255, 255, 0.42) !important;
+.competency-card:hover .skill-cat-icon-box,
+.exp-card:hover .exp-org-logo-box,
+.leadership-card:hover .exp-org-logo-box {
+  background: rgba(255, 255, 255, 0.24) !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
   color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16) !important;
 }
 
 .card-interactive:hover svg,
@@ -2469,10 +2472,22 @@ img {
   border-color: rgba(255, 255, 255, 0.22) !important;
 }
 
-/* Experience Org Logo Box keeps clean white surface */
-.exp-card:hover .exp-org-logo-box {
-  background: #FFFFFF !important;
-  border-color: rgba(255, 255, 255, 0.5) !important;
+/* Experience & Leadership Org Logo Box: Frosted Glass Container with Luminous White Icon */
+.exp-card:hover .exp-org-logo-box,
+.leadership-card:hover .exp-org-logo-box,
+.exp-card:hover .leadership-logo-box,
+.leadership-card:hover .leadership-logo-box {
+  background: rgba(255, 255, 255, 0.24) !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16) !important;
+}
+
+.exp-card:hover .exp-org-logo-box svg,
+.leadership-card:hover .exp-org-logo-box svg,
+.exp-card:hover .exp-logo-icon,
+.leadership-card:hover .exp-logo-icon {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
 }
 
 /* Universal text fallback across ALL cards on hover */
@@ -7438,6 +7453,22 @@ img {
 [data-theme="dark"] .leadership-logo-placeholder {
   background: rgba(30, 41, 59, 0.8) !important;
   border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme="dark"] .exp-card:hover .exp-org-logo-box,
+[data-theme="dark"] .leadership-card:hover .exp-org-logo-box,
+[data-theme="dark"] .exp-card:hover .leadership-logo-box,
+[data-theme="dark"] .leadership-card:hover .leadership-logo-box {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+[data-theme="dark"] .exp-card:hover .exp-logo-icon,
+[data-theme="dark"] .leadership-card:hover .exp-logo-icon,
+[data-theme="dark"] .exp-card:hover .exp-org-logo-box svg,
+[data-theme="dark"] .leadership-card:hover .exp-org-logo-box svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
 }
 
 [data-theme="dark"] .exp-section-title,
