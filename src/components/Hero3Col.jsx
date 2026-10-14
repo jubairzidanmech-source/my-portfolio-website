@@ -163,15 +163,10 @@ export const Hero3Col = ({ setActivePage }) => {
                 {/* Primary Identity & Action Row */}
                 <div className="portrait-blur-main-row">
                   <div className="portrait-blur-user-info">
-                    <img
-                      src={personalData.portraitUrl}
-                      alt="Md. Jubair Uddin Zidan"
-                      className="portrait-blur-avatar"
-                    />
                     <div className="portrait-blur-text-wrap">
                       <div className="portrait-blur-name">Md. Jubair Uddin Zidan</div>
                       <div className="portrait-blur-role">
-                        <span>CUET Researcher</span>
+                        <span>Graduate Student</span>
                         <span className="role-dot">•</span>
                         <span className="role-degree">B.Sc. & M.Sc.</span>
                       </div>
