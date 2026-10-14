@@ -81,7 +81,10 @@ export const AcademicsPage = () => {
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                   <h3 className="timeline-card-heading">Master of Science in Mechanical Engineering</h3>
-                  <span className="timeline-current-pill">Current Degree</span>
+                  <span className="timeline-current-pill">
+                    <span className="timeline-pill-dot" />
+                    Currently In Progress
+                  </span>
                 </div>
                 <div className="timeline-card-subheading">
                   Chittagong University of Engineering and Technology (CUET) · Chattogram

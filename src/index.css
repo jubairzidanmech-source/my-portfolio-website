@@ -3610,17 +3610,48 @@ img {
   color: #FFFFFF !important;
 }
 
-/* Current Degree subtle pill */
+/* Currently In Progress vibrant blue pill */
 .timeline-current-pill {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 600;
-  color: #1D4ED8;
-  background: rgba(37, 99, 235, 0.08);
-  border: 1px solid rgba(37, 99, 235, 0.2);
-  padding: 2px 8px;
+  color: #FFFFFF !important;
+  background: #2563EB !important;
+  border: 1px solid #1D4ED8 !important;
+  padding: 3px 10px;
   border-radius: 9999px;
   letter-spacing: 0.01em;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28);
+  transition: all 0.18s ease;
+}
+
+.timeline-academic-card:hover .timeline-current-pill {
+  background: #1D4ED8 !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.timeline-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  display: inline-block;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
 }
 
 /* Institution Name: Secondary element */
@@ -7117,9 +7148,10 @@ img {
 }
 
 [data-theme="dark"] .timeline-current-pill {
-  color: #93C5FD !important;
-  background: rgba(59, 130, 246, 0.16) !important;
-  border-color: rgba(96, 165, 250, 0.3) !important;
+  color: #FFFFFF !important;
+  background: #2563EB !important;
+  border-color: #3B82F6 !important;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.45) !important;
 }
 
 [data-theme="dark"] .milestone-item-box {
