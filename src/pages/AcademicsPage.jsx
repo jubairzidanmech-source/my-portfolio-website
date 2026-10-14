@@ -78,7 +78,6 @@ export const AcademicsPage = () => {
           <div className="timeline-axis">
             <div className="timeline-node-outer-halo">
               <div className="timeline-stepper-node is-in-progress">
-                <span className="timeline-pulse-node" />
                 <span className="stepper-step-num">4</span>
               </div>
             </div>

@@ -10673,26 +10673,3 @@ body [style*="cursor:zoom-in"] {
 }
 
 
-/* ==========================================================================
-   VERTICAL TIMELINE SPINE NODE ENHANCEMENTS (Ticked Off & Viewing Highlight)
-   ========================================================================== */
-
-/* Timeline Pulse Beacon Node */
-
-.timeline-pulse-node {
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  border: 2px solid #2563EB;
-  animation: beaconPulse 2s infinite ease-out;
-  pointer-events: none;
-}
-
-@keyframes beaconPulse {
-  0% { transform: scale(0.9); opacity: 0.9; }
-  100% { transform: scale(1.7); opacity: 0; }
-}
-
-
-
-
