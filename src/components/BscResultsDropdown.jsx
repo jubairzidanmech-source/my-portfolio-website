@@ -4,8 +4,6 @@ import {
   ChevronUp, 
   BookOpen, 
   Award, 
-  GraduationCap, 
-  CheckCircle2, 
   Sparkles,
   Layers,
   ArrowRight
@@ -50,21 +48,6 @@ export const BscResultsDropdown = () => {
         </span>
       </div>
 
-      {/* Primary Key Milestones Summary Bar */}
-      <div className="bsc-summary-pills-row">
-        <div className="bsc-milestone-pill">
-          <CheckCircle2 size={14} color="#10B981" />
-          <span>Core Engineering Track: 161.50 Credits (74 Courses)</span>
-        </div>
-        <div className="bsc-milestone-pill">
-          <CheckCircle2 size={14} color="#10B981" />
-          <span>Undergraduate Thesis: Ground-Effect Aerodynamics</span>
-        </div>
-        <div className="bsc-milestone-pill">
-          <GraduationCap size={14} color="var(--blue-royal)" />
-          <span>Graduation Standing: First Class Honors</span>
-        </div>
-      </div>
 
       {/* Interactive Dropdown Trigger Box */}
       <div className="bsc-dropdown-box">
