@@ -9454,4 +9454,641 @@ img {
   font-weight: 700;
 }
 
+/* ==========================================================================
+   B.SC. SEMESTER RESULTS DROPDOWN MENU
+   ========================================================================== */
+
+.bsc-results-dropdown-container {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bsc-summary-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.bsc-milestone-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--bg-card-subtle);
+  padding: 6px 12px;
+  border-radius: 9999px;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.18s ease;
+}
+
+.bsc-dropdown-box {
+  border-radius: 14px;
+  border: 1px solid var(--border-accent);
+  background: var(--bg-card-subtle);
+  overflow: hidden;
+  transition: all 0.22s ease;
+}
+
+.bsc-dropdown-trigger-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+  transition: background 0.18s ease;
+}
+
+.bsc-dropdown-trigger-btn:hover {
+  background: rgba(37, 99, 235, 0.05);
+}
+
+.bsc-dropdown-trigger-btn.is-active {
+  background: rgba(37, 99, 235, 0.08);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.bsc-dropdown-trigger-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.bsc-dropdown-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--blue-royal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bsc-dropdown-trigger-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bsc-dropdown-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.bsc-dropdown-subtitle {
+  font-size: 0.80rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+.bsc-dropdown-trigger-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.bsc-dropdown-status-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--blue-royal);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.bsc-dropdown-chevron {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.bsc-dropdown-menu-content {
+  padding: 16px 18px 20px;
+}
+
+/* Dropdown Menu Navigation Controls */
+.bsc-dropdown-nav-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.bsc-select-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bsc-select-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.bsc-select-styled-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.bsc-custom-select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 10px 36px 10px 14px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-accent);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.18s ease;
+}
+
+.bsc-custom-select:focus {
+  border-color: var(--blue-royal);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.bsc-select-chevron {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  color: var(--text-muted);
+}
+
+/* Quick Pills Bar */
+.bsc-quick-pills-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.bsc-quick-pill {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.bsc-quick-pill:hover {
+  border-color: var(--blue-royal);
+  color: var(--blue-royal);
+}
+
+.bsc-quick-pill.is-active {
+  background: var(--blue-royal);
+  color: #FFFFFF !important;
+  border-color: var(--blue-royal);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+
+/* Overview Panel */
+.bsc-overview-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bsc-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.bsc-metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bsc-metric-card.highlight-card {
+  border-color: rgba(37, 99, 235, 0.35);
+  background: rgba(37, 99, 235, 0.04);
+}
+
+.bsc-metric-num {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-feature-settings: 'tnum';
+  line-height: 1.1;
+}
+
+.bsc-metric-label {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.bsc-metric-sub {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+/* Tables */
+.bsc-table-container {
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+}
+
+.bsc-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  text-align: left;
+}
+
+.bsc-data-table thead tr {
+  background: rgba(148, 163, 184, 0.08);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.bsc-data-table th {
+  padding: 9px 12px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.bsc-data-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.bsc-data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.bsc-clickable-row {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.bsc-clickable-row:hover {
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.bsc-sem-tag {
+  color: var(--blue-royal);
+  font-weight: 600;
+}
+
+.bsc-session-text {
+  color: var(--text-secondary);
+  font-feature-settings: 'tnum';
+}
+
+.bsc-gpa-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-feature-settings: 'tnum';
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  font-size: 0.8rem;
+}
+
+.bsc-credits-text {
+  font-weight: 600;
+  font-feature-settings: 'tnum';
+  color: var(--text-primary);
+}
+
+.bsc-view-btn-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--blue-royal);
+}
+
+/* Semester Detail Banner */
+.bsc-semester-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.bsc-semester-level-badge {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.bsc-semester-session-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.bsc-semester-banner-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.bsc-banner-stat-box {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.bsc-banner-stat-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.bsc-banner-stat-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-feature-settings: 'tnum';
+}
+
+.bsc-banner-stat-val.gpa-val {
+  color: #10B981;
+}
+
+.bsc-banner-stat-val small {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-left: 2px;
+}
+
+/* Course code and badges */
+.bsc-course-code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.80rem;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--blue-royal);
+}
+
+.bsc-course-title-cell {
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.bsc-type-badge {
+  font-size: 0.70rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.type-badge-theory {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--blue-royal);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.type-badge-lab {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.type-badge-project {
+  background: rgba(168, 85, 247, 0.1);
+  color: #A855F7;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.bsc-grade-badge {
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 6px;
+  display: inline-block;
+  min-width: 28px;
+  text-align: center;
+}
+
+.grade-badge-a {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.grade-badge-b {
+  background: rgba(59, 130, 246, 0.12);
+  color: var(--blue-royal);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.grade-badge-c {
+  background: rgba(245, 158, 11, 0.12);
+  color: #F59E0B;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.grade-badge-d {
+  background: rgba(239, 68, 68, 0.12);
+  color: #EF4444;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.bsc-gp-text {
+  font-weight: 600;
+  font-feature-settings: 'tnum';
+  color: var(--text-secondary);
+}
+
+/* Navigation Footer */
+.bsc-semester-nav-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.bsc-nav-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.bsc-nav-btn:hover:not(.is-disabled) {
+  border-color: var(--blue-royal);
+  color: var(--blue-royal);
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.bsc-nav-btn.is-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.bsc-nav-btn-center {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--blue-royal);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+/* ==========================================================================
+   Dark Mode & Card Hover Overrides for B.Sc. Results Dropdown
+   ========================================================================== */
+
+[data-theme="dark"] .bsc-dropdown-box {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .bsc-dropdown-trigger-btn:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+[data-theme="dark"] .bsc-dropdown-trigger-btn.is-active {
+  background: rgba(37, 99, 235, 0.15);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .bsc-custom-select {
+  background: #0f172a;
+  color: #f8fafc;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .bsc-quick-pill {
+  background: rgba(30, 41, 59, 0.75);
+  color: #cbd5e1;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .bsc-quick-pill:hover {
+  color: #ffffff;
+  border-color: #60a5fa;
+}
+
+[data-theme="dark"] .bsc-quick-pill.is-active {
+  background: #2563eb;
+  color: #ffffff !important;
+  border-color: #60a5fa;
+}
+
+[data-theme="dark"] .bsc-metric-card,
+[data-theme="dark"] .bsc-table-container {
+  background: rgba(15, 23, 42, 0.75);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .bsc-clickable-row:hover {
+  background: rgba(59, 130, 246, 0.12);
+}
+
+[data-theme="dark"] .bsc-course-code {
+  background: rgba(255, 255, 255, 0.08);
+  color: #93c5fd;
+}
+
+[data-theme="dark"] .bsc-nav-btn {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .bsc-nav-btn:hover:not(.is-disabled) {
+  background: rgba(59, 130, 246, 0.2);
+  color: #ffffff;
+  border-color: #60a5fa;
+}
+
+/* Inside hovered card */
+.timeline-academic-card:hover .bsc-dropdown-box {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.timeline-academic-card:hover .bsc-dropdown-title {
+  color: #ffffff !important;
+}
+
+.timeline-academic-card:hover .bsc-dropdown-subtitle {
+  color: #dbeafe !important;
+}
+
+.timeline-academic-card:hover .bsc-dropdown-status-pill {
+  background: rgba(255, 255, 255, 0.22) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.timeline-academic-card:hover .bsc-dropdown-chevron {
+  color: #ffffff !important;
+}
+
+.timeline-academic-card:hover .bsc-milestone-pill {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
 

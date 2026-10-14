@@ -11,6 +11,7 @@ import {
   ExternalLink, 
   X 
 } from 'lucide-react';
+import { BscResultsDropdown } from '../components/BscResultsDropdown';
 
 // Academic CGPA / GPA Display (Clean typography without oversized boxes or bright badges)
 const CgpaStatNumber = ({ value, max, label, sublabel, badge }) => {
@@ -181,40 +182,8 @@ export const AcademicsPage = () => {
               />
             </div>
 
-            {/* Academic Milestones & Curriculum Standing: Open Display (No dropdown, No descriptions) */}
-            <div className="msc-status-block">
-              <div className="msc-status-header">
-                <span className="milestones-label">
-                  Curriculum Scope & Academic Standing
-                </span>
-                <span className="milestones-badge" style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10B981', borderColor: 'rgba(16, 185, 129, 0.25)' }}>
-                  Degree Conferred · 2024
-                </span>
-              </div>
-
-              <div className="msc-milestones-grid is-compact">
-                <div className="msc-milestone-item is-compact">
-                  <CheckCircle2 size={15} color="#10B981" className="msc-milestone-icon" />
-                  <span className="msc-milestone-title">
-                    Core Engineering Track: Finished (160+ Credits)
-                  </span>
-                </div>
-
-                <div className="msc-milestone-item is-compact">
-                  <CheckCircle2 size={15} color="#10B981" className="msc-milestone-icon" />
-                  <span className="msc-milestone-title">
-                    Undergraduate Thesis: Ground-Effect Aerodynamics (Completed)
-                  </span>
-                </div>
-
-                <div className="msc-milestone-item is-compact">
-                  <GraduationCap size={15} color="var(--blue-royal)" className="msc-milestone-icon" />
-                  <span className="msc-milestone-title">
-                    Graduation Standing: First Class Standing
-                  </span>
-                </div>
-              </div>
-            </div>
+            {/* B.Sc. Results & Semester-by-Semester Dropdown Menu */}
+            <BscResultsDropdown />
 
             {/* Official Academic Documents for Faculty Review */}
             {/* Official Academic Documents for Faculty Review: Side-by-Side Grid */}
