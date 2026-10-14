@@ -2252,6 +2252,13 @@ img {
   font-weight: 700 !important;
 }
 
+.timeline-academic-card:hover .academic-cert-btn-primary span,
+.timeline-academic-card:hover .academic-cert-btn-primary strong,
+.timeline-academic-card:hover .academic-cert-btn-primary * {
+  color: #1D4ED8 !important;
+  -webkit-text-fill-color: #1D4ED8 !important;
+}
+
 .timeline-academic-card:hover .academic-cert-btn-primary svg {
   color: #1D4ED8 !important;
   stroke: #1D4ED8 !important;
@@ -2261,6 +2268,18 @@ img {
   background: #F8FAFC !important;
   color: #1E40AF !important;
   transform: translateY(-1px);
+}
+
+.timeline-academic-card:hover .academic-cert-btn-primary:hover span,
+.timeline-academic-card:hover .academic-cert-btn-primary:hover strong,
+.timeline-academic-card:hover .academic-cert-btn-primary:hover * {
+  color: #1E40AF !important;
+  -webkit-text-fill-color: #1E40AF !important;
+}
+
+.timeline-academic-card:hover .academic-cert-btn-primary:hover svg {
+  color: #1E40AF !important;
+  stroke: #1E40AF !important;
 }
 
 /* Action Links and Arrow (e.g. "View Education Timeline", "Learn more" in crisp white) */
@@ -2415,11 +2434,24 @@ img {
 .pub-list-card:hover .pub-action-btn,
 .project-card:hover .project-action-btn,
 .timeline-academic-card:hover .pub-expand-btn,
-.exp-card:hover .pub-expand-btn {
+.exp-card:hover .pub-expand-btn,
+.award-card:hover .pub-expand-btn,
+.award-card:hover .pub-visual-btn {
   background: rgba(255, 255, 255, 0.2) !important;
   border-color: rgba(255, 255, 255, 0.38) !important;
   color: #FFFFFF !important;
   cursor: pointer;
+}
+
+.pub-list-card:hover .pub-expand-btn span,
+.pub-list-card:hover .pub-visual-btn span,
+.pub-list-card:hover .pub-action-btn span,
+.project-card:hover .project-action-btn span,
+.timeline-academic-card:hover .pub-expand-btn span,
+.exp-card:hover .pub-expand-btn span,
+.award-card:hover .pub-expand-btn span,
+.award-card:hover .pub-visual-btn span {
+  color: #FFFFFF !important;
 }
 
 .pub-list-card:hover .pub-expand-btn:hover,
@@ -2427,16 +2459,36 @@ img {
 .pub-list-card:hover .pub-action-btn:hover,
 .project-card:hover .project-action-btn:hover,
 .timeline-academic-card:hover .pub-expand-btn:hover,
-.exp-card:hover .pub-expand-btn:hover {
+.exp-card:hover .pub-expand-btn:hover,
+.award-card:hover .pub-expand-btn:hover,
+.award-card:hover .pub-visual-btn:hover {
   background: #FFFFFF !important;
   border-color: #FFFFFF !important;
   color: #1D4ED8 !important;
 }
 
+.pub-list-card:hover .pub-expand-btn:hover span,
+.pub-list-card:hover .pub-visual-btn:hover span,
+.pub-list-card:hover .pub-action-btn:hover span,
+.project-card:hover .project-action-btn:hover span,
+.timeline-academic-card:hover .pub-expand-btn:hover span,
+.exp-card:hover .pub-expand-btn:hover span,
+.award-card:hover .pub-expand-btn:hover span,
+.award-card:hover .pub-visual-btn:hover span,
+.pub-list-card:hover button:hover span,
+.timeline-academic-card:hover button:hover span,
+.project-card:hover button:hover span,
+.exp-card:hover button:hover span,
+.award-card:hover button:hover span {
+  color: #1D4ED8 !important;
+  -webkit-text-fill-color: #1D4ED8 !important;
+}
+
 .pub-list-card:hover button:hover svg,
 .timeline-academic-card:hover button:hover svg,
 .project-card:hover button:hover svg,
-.exp-card:hover button:hover svg {
+.exp-card:hover button:hover svg,
+.award-card:hover button:hover svg {
   color: #1D4ED8 !important;
   stroke: #1D4ED8 !important;
 }
@@ -2472,19 +2524,19 @@ img {
   stroke: #FFFFFF !important;
 }
 
-/* Universal text fallback across ALL cards on hover */
-.card:hover span:not(.pulse-dot),
-.award-card:hover span:not(.pulse-dot),
-.exp-card:hover span:not(.pulse-dot),
-.leadership-card:hover span:not(.pulse-dot),
-.thesis-hero-card:hover span:not(.pulse-dot),
-.timeline-academic-card:hover span:not(.pulse-dot),
-.project-card:hover span:not(.pulse-dot),
-.ongoing-research-card:hover span:not(.pulse-dot),
-.pub-list-card:hover span:not(.pulse-dot),
-.skill-tech-card:hover span:not(.pulse-dot),
-.competency-card:hover span:not(.pulse-dot),
-.stat-card-image4:hover span:not(.pulse-dot) {
+/* Universal text fallback across ALL cards on hover (excludes interactive buttons with light backgrounds) */
+.card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+.award-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+.exp-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+.leadership-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+.thesis-hero-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+.timeline-academic-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+.project-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+.ongoing-research-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+.pub-list-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+.skill-tech-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+.competency-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+.stat-card-image4:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *) {
   color: #FFFFFF !important;
 }
 
@@ -5241,6 +5293,12 @@ img {
   color: var(--blue-royal) !important;
 }
 
+.card-interactive:hover .thesis-action-cta-full:hover span,
+.card-interactive:hover .thesis-action-cta-full:hover * {
+  color: var(--blue-royal) !important;
+  -webkit-text-fill-color: var(--blue-royal) !important;
+}
+
 .thesis-cta-dot {
   width: 7px;
   height: 7px;
@@ -7880,20 +7938,20 @@ img {
   color: #F8FAFC !important;
 }
 
-/* Ensure all text, headings, badges, and figures inside hovered cards are white in dark mode */
-[data-theme="dark"] .card-interactive:hover span:not(.pulse-dot),
-[data-theme="dark"] .stat-card-image4:hover span:not(.pulse-dot),
-[data-theme="dark"] .card:hover span:not(.pulse-dot),
-[data-theme="dark"] .award-card:hover span:not(.pulse-dot),
-[data-theme="dark"] .exp-card:hover span:not(.pulse-dot),
-[data-theme="dark"] .leadership-card:hover span:not(.pulse-dot),
-[data-theme="dark"] .thesis-hero-card:hover span:not(.pulse-dot),
-[data-theme="dark"] .timeline-academic-card:hover span:not(.pulse-dot),
-[data-theme="dark"] .pub-list-card:hover span:not(.pulse-dot),
-[data-theme="dark"] .skill-tech-card:hover span:not(.pulse-dot),
-[data-theme="dark"] .competency-card:hover span:not(.pulse-dot),
-[data-theme="dark"] .project-card:hover span:not(.pulse-dot),
-[data-theme="dark"] .ongoing-research-card:hover span:not(.pulse-dot) {
+/* Ensure all text, headings, badges, and figures inside hovered cards are white in dark mode (excluding light buttons) */
+[data-theme="dark"] .card-interactive:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+[data-theme="dark"] .stat-card-image4:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+[data-theme="dark"] .card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+[data-theme="dark"] .award-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+[data-theme="dark"] .exp-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+[data-theme="dark"] .leadership-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+[data-theme="dark"] .thesis-hero-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+[data-theme="dark"] .timeline-academic-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+[data-theme="dark"] .pub-list-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+[data-theme="dark"] .skill-tech-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+[data-theme="dark"] .competency-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+[data-theme="dark"] .project-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+[data-theme="dark"] .ongoing-research-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *) {
   color: #FFFFFF !important;
 }
 
@@ -10048,5 +10106,46 @@ body [style*="cursor:zoom-in"] {
   color: #ffffff !important;
   border-color: rgba(255, 255, 255, 0.4) !important;
 }
+
+.timeline-academic-card:hover .bsc-metric-card {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.timeline-academic-card:hover .bsc-metric-num {
+  color: #ffffff !important;
+}
+
+.timeline-academic-card:hover .bsc-metric-label {
+  color: #dbeafe !important;
+}
+
+.timeline-academic-card:hover .bsc-metric-sub {
+  color: #bfdbfe !important;
+}
+
+.timeline-academic-card:hover .bsc-quick-pill {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.timeline-academic-card:hover .bsc-quick-pill.is-active {
+  background: #ffffff !important;
+  color: #1d4ed8 !important;
+  border-color: #ffffff !important;
+}
+
+.timeline-academic-card:hover .bsc-quick-pill.is-active span,
+.timeline-academic-card:hover .bsc-quick-pill.is-active * {
+  color: #1d4ed8 !important;
+  -webkit-text-fill-color: #1d4ed8 !important;
+}
+
+.timeline-academic-card:hover .bsc-data-table th,
+.timeline-academic-card:hover .bsc-data-table td {
+  color: #ffffff !important;
+}
+
 
 
