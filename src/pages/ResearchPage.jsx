@@ -102,10 +102,19 @@ export const ResearchPage = () => {
             <button 
               onClick={() => jumpToSubSection('research-presentations')}
               className="research-subnav-btn"
-              title="Jump to Conference Podium Presentations"
+              title="Jump to Conference Oral Technical Presentations"
             >
               <span>Presentations</span>
               <span className="subnav-count">{researchData?.conferencePresentations?.length || 0}</span>
+            </button>
+            <span className="subnav-sep">·</span>
+            <button 
+              onClick={() => jumpToSubSection('research-posters')}
+              className="research-subnav-btn"
+              title="Jump to Research Poster Presentation"
+            >
+              <span>Poster</span>
+              <span className="subnav-count">{(researchData?.posterPresentations || []).length || 1}</span>
             </button>
             <span className="subnav-sep">·</span>
             <button 
@@ -496,14 +505,14 @@ export const ResearchPage = () => {
       </section>
 
       {/* =========================================================================
-          2. PRESENTATIONS (Conference Talks & Podium Symposia)
+          2. ORAL TECHNICAL PRESENTATIONS (Conference Talks & Podium Symposia)
           ========================================================================= */}
       <section id="research-presentations" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
             <div className="section-eyebrow">CONFERENCE TALKS</div>
             <h2 className="section-main-heading">
-              Presentations
+              Oral Technical Presentations
             </h2>
           </div>
           <span className="section-count-badge">
@@ -674,7 +683,158 @@ export const ResearchPage = () => {
       </section>
 
       {/* =========================================================================
-          3. ONGOING WORK (Manuscripts in Preparation & Working Papers)
+          3. POSTER PRESENTATIONS (Scholarly Symposia & Technical Exhibits)
+          ========================================================================= */}
+      <section id="research-posters" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
+        <div className="section-heading-row">
+          <div>
+            <div className="section-eyebrow">RESEARCH SYMPOSIA</div>
+            <h2 className="section-main-heading">
+              Poster Presentations
+            </h2>
+          </div>
+          <span className="section-count-badge">
+            {(researchData?.posterPresentations?.length || 1)} Presentation
+          </span>
+        </div>
+
+        <div className="pub-grid-2col">
+          {(researchData?.posterPresentations || []).map((poster, idx) => {
+            const posterIndex = idx + 1;
+            const isExpanded = Boolean(expandedItems[poster.id]);
+            const posterImg = poster.imageUrl || poster.certificateUrl || '/images/presentation_placeholder.jpg';
+            return (
+              <article key={poster.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
+                <div className="pub-card-split-row">
+                  {/* Left: Full-Visible Visual Thumbnail */}
+                  <div 
+                    className="award-card-media-side"
+                    onClick={() => setActiveModalData({
+                      title: poster.title,
+                      subtitle: `${poster.event} • ${poster.venue} (${poster.date})`,
+                      imageUrl: posterImg,
+                      description: poster.description
+                    })}
+                    title="Click to view full poster artifact"
+                  >
+                    <img 
+                      src={posterImg} 
+                      alt={poster.title} 
+                      className="award-side-img" 
+                      loading="lazy" 
+                    />
+                    <div className="award-side-overlay">
+                      <span className="award-thumb-zoom-badge">
+                        <ExternalLink size={12} />
+                        <span>Enlarge</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Right: Text & Details Content */}
+                  <div className="pub-card-main">
+                    <div className="pub-header-row">
+                      <div className="pub-meta-left">
+                        <span className="pub-number">0{posterIndex}</span>
+                        <span className="pub-category-badge presentation">
+                          <Presentation size={12} style={{ display: 'inline', marginRight: 4 }} />
+                          {poster.type || 'Poster Presentation'}
+                        </span>
+                        {poster.statusLabel && (
+                          <span className="pub-status-badge">{poster.statusLabel}</span>
+                        )}
+                      </div>
+                      <span className="pub-year">{poster.date}</span>
+                    </div>
+
+                    <h3 className="pub-title">
+                      {poster.title}
+                    </h3>
+
+                    <div className="pub-citation">
+                      <span className="pub-venue">{poster.event}</span>
+                      <span className="pub-sep">•</span>
+                      <span className="pub-location">{poster.venue}</span>
+                    </div>
+
+                    <div className="pub-tags-row">
+                      {(poster.tags || []).map((tag, tIdx) => (
+                        <span key={tIdx} className="pub-tag-pill">{tag}</span>
+                      ))}
+                    </div>
+
+                    {/* Expand / Collapse Disclosure Button */}
+                    <div className="pub-actions-row">
+                      <button
+                        onClick={() => toggleExpand(poster.id)}
+                        className="pub-expand-btn"
+                        aria-expanded={isExpanded}
+                      >
+                        <span>{isExpanded ? 'Hide Abstract & Details' : 'Read Abstract & View Credentials'}</span>
+                        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                      </button>
+
+                      <button
+                        onClick={() => setActiveModalData({
+                          title: poster.title,
+                          subtitle: `${poster.event} (${poster.date})`,
+                          imageUrl: poster.certificateUrl || posterImg,
+                          description: poster.description
+                        })}
+                        className="pub-visual-btn"
+                      >
+                        <ExternalLink size={13} />
+                        <span>View Poster Visuals</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* EXPANDABLE POSTER ABSTRACT & CERTIFICATE */}
+                {isExpanded && (
+                  <div className="pub-expanded-body">
+                    <div className="pub-detail-section">
+                      <h4 className="pub-detail-heading">Poster Presentation Summary</h4>
+                      <p className="pub-abstract-text">
+                        {poster.description}
+                      </p>
+                    </div>
+
+                    <div className="pub-detail-section">
+                      <h4 className="pub-detail-heading">Poster Artifact & Certificate (Click to Enlarge)</h4>
+                      <div 
+                        className="award-expanded-img-box"
+                        onClick={() => setActiveModalData({
+                          title: `${poster.title} - Poster Artifact`,
+                          subtitle: `${poster.event} (${poster.date})`,
+                          imageUrl: posterImg,
+                          description: poster.description
+                        })}
+                        title="Click to view full image"
+                      >
+                        <img 
+                          src={posterImg} 
+                          alt={poster.title} 
+                          className="award-expanded-img" 
+                        />
+                        <div className="award-side-overlay">
+                          <span className="award-thumb-zoom-badge">
+                            <ExternalLink size={12} />
+                            <span>View Full Image</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* =========================================================================
+          4. ONGOING WORK (Manuscripts in Preparation & Working Papers)
           ========================================================================= */}
       <section id="research-ongoing" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">

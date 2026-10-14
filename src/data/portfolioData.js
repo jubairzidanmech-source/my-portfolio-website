@@ -289,11 +289,27 @@ export const researchData = {
       event: "6th International Conference on Mechanical, Industrial & Materials Engineering (MIMEC)",
       venue: "RUET, Rajshahi, Bangladesh",
       date: "December 2024",
-      type: "Podium Presentation",
+      type: "Oral Technical Presentation",
       imageUrl: "/images/real/mimec_presentation.jpg",
       certificateUrl: "/images/real/mimec_certificate.jpg",
       tags: ["VAWT", "Aerodynamics", "Sliding Mesh", "RUET"],
       description: "Presented numerical investigation on aerodynamic self-starting capability and power coefficients across symmetrical and cambered NACA airfoil profiles."
+    }
+  ],
+
+  posterPresentations: [
+    {
+      id: "res-poster-1",
+      title: "Research Poster Presentation: Aerodynamic & CFD Flowfield Investigations",
+      event: "1st National Research Fair 2023",
+      venue: "Chittagong University of Engineering & Technology (CUET)",
+      date: "2023",
+      type: "Poster Presentation",
+      statusLabel: "Awarded 2nd Prize",
+      imageUrl: "/images/real_awards/award_cuet_research_fair_2023_poster2nd.png",
+      certificateUrl: "/images/real_awards/award_cuet_research_fair_2023_poster2nd.png",
+      tags: ["Research Fair", "Aerodynamics", "CFD", "CUET"],
+      description: "Awarded 2nd Prize (1st Runner-Up) for Research Poster Presentation organized by the Directorate of Research and Extension, Chittagong University of Engineering & Technology (CUET). Showcased computational aerodynamic modeling, vortex dynamics, and fluid flowfield investigations."
     }
   ],
 
