@@ -190,7 +190,24 @@ export const BscResultsDropdown = () => {
                           <td>{item.levelTerm}</td>
                           <td className="bsc-session-text">{item.session}</td>
                           <td style={{ textAlign: 'center' }}>
-                            <span className="bsc-gpa-badge">{item.gpa.toFixed(2)}</span>
+                            <span 
+                              className="bsc-gpa-badge"
+                              style={{
+                                display: 'inline-block',
+                                padding: '3px 10px',
+                                borderRadius: '6px',
+                                fontWeight: 800,
+                                background: '#047857',
+                                color: '#FFFFFF',
+                                WebkitTextFillColor: '#FFFFFF',
+                                border: '1px solid #065F46',
+                                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.15)',
+                                fontSize: '0.82rem',
+                                letterSpacing: '0.02em'
+                              }}
+                            >
+                              {item.gpa.toFixed(2)}
+                            </span>
                           </td>
                           <td style={{ textAlign: 'center' }} className="bsc-credits-text">
                             {item.credits.toFixed(2)}

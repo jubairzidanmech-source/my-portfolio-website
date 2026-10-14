@@ -9980,11 +9980,13 @@ body [style*="cursor:zoom-in"] {
   border-radius: 6px;
   font-weight: 800;
   font-feature-settings: 'tnum';
-  background: #D1FAE5;
-  color: #065F46;
-  border: 1.5px solid #6EE7B7;
+  background: #047857 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #065F46 !important;
   font-size: 0.82rem;
   letter-spacing: 0.02em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .bsc-credits-text {
@@ -10534,13 +10536,14 @@ body [style*="cursor:zoom-in"] {
 
 .timeline-academic-card:hover .bsc-gpa-badge,
 .timeline-academic-card:hover .bsc-data-table td .bsc-gpa-badge {
-  background: #D1FAE5 !important;
-  color: #065F46 !important;
-  -webkit-text-fill-color: #065F46 !important;
-  border: 1.5px solid #6EE7B7 !important;
+  background: #047857 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #065F46 !important;
   font-weight: 800 !important;
   display: inline-block !important;
   padding: 3px 10px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
 }
 
 /* 6. Footer Navigation Buttons */
@@ -10609,14 +10612,16 @@ body [style*="cursor:zoom-in"] {
 }
 
 [data-theme="dark"] .timeline-academic-card:hover .bsc-gpa-badge,
-[data-theme="dark"] .timeline-academic-card:hover .bsc-data-table td .bsc-gpa-badge {
-  background: rgba(16, 185, 129, 0.22) !important;
-  color: #34D399 !important;
-  -webkit-text-fill-color: #34D399 !important;
-  border: 1.5px solid rgba(52, 211, 153, 0.5) !important;
+[data-theme="dark"] .timeline-academic-card:hover .bsc-data-table td .bsc-gpa-badge,
+[data-theme="dark"] .bsc-gpa-badge {
+  background: #059669 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #10B981 !important;
   font-weight: 800 !important;
   display: inline-block !important;
   padding: 3px 10px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
 }
 
 [data-theme="dark"] .timeline-academic-card:hover .bsc-credits-text,
