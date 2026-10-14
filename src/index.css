@@ -8903,4 +8903,50 @@ img {
   margin: 0;
 }
 
+.msc-milestones-grid.is-compact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+}
+
+.msc-milestone-item.is-compact {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card-subtle);
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  transition: all 0.18s ease;
+}
+
+.msc-milestone-item.is-compact:hover {
+  border-color: var(--border-accent);
+}
+
+.msc-milestone-item.is-compact.is-ongoing {
+  background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.1);
+}
+
+.msc-milestone-item.is-compact .msc-milestone-icon {
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+.msc-milestone-item.is-compact .msc-milestone-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.msc-milestone-item.is-compact.is-ongoing .msc-milestone-title {
+  color: var(--blue-royal);
+  font-weight: 700;
+}
+
 

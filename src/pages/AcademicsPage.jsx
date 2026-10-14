@@ -3,8 +3,6 @@ import {
   CheckCircle2, 
   Clock, 
   Sparkles, 
-  ChevronDown, 
-  ChevronUp, 
   BookOpen, 
   GraduationCap, 
   Award, 
@@ -36,7 +34,6 @@ const CgpaStatNumber = ({ value, max, label, sublabel, badge }) => {
 };
 
 export const AcademicsPage = () => {
-  const [expandedSections, setExpandedSections] = useState({});
   const [activeDocModal, setActiveDocModal] = useState(null);
 
   useEffect(() => {
@@ -54,13 +51,6 @@ export const AcademicsPage = () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [activeDocModal]);
-
-  const toggleSection = (id) => {
-    setExpandedSections(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
-  };
 
   return (
     <div className="container animate-fade-in">
@@ -112,7 +102,7 @@ export const AcademicsPage = () => {
               />
             </div>
 
-            {/* Current Status & Progress Milestones: Open Display (No dropdown) */}
+            {/* Current Status & Progress Milestones: Open Display (No dropdown, No descriptions) */}
             <div className="msc-status-block">
               <div className="msc-status-header">
                 <span className="milestones-label">
@@ -123,41 +113,26 @@ export const AcademicsPage = () => {
                 </span>
               </div>
 
-              <div className="msc-milestones-grid">
-                <div className="msc-milestone-item">
-                  <CheckCircle2 size={16} color="#10B981" className="msc-milestone-icon" />
-                  <div>
-                    <div className="msc-milestone-title">
-                      Theory Coursework: Finished
-                    </div>
-                    <p className="msc-milestone-desc">
-                      Successfully completed all advanced postgraduate theory credit courses with CGPA 3.90 / 4.00.
-                    </p>
-                  </div>
+              <div className="msc-milestones-grid is-compact">
+                <div className="msc-milestone-item is-compact">
+                  <CheckCircle2 size={15} color="#10B981" className="msc-milestone-icon" />
+                  <span className="msc-milestone-title">
+                    Theory Coursework: Finished
+                  </span>
                 </div>
 
-                <div className="msc-milestone-item">
-                  <Clock size={16} color="#817CB8" className="msc-milestone-icon" />
-                  <div>
-                    <div className="msc-milestone-title">
-                      Master's Thesis: Ongoing
-                    </div>
-                    <p className="msc-milestone-desc">
-                      Active computational simulation, high-fidelity modeling, and numerical investigations in mechanical metamaterials.
-                    </p>
-                  </div>
+                <div className="msc-milestone-item is-compact is-ongoing">
+                  <Clock size={15} color="var(--blue-royal)" className="msc-milestone-icon" />
+                  <span className="msc-milestone-title">
+                    Master's Thesis: Ongoing
+                  </span>
                 </div>
 
-                <div className="msc-milestone-item">
-                  <Sparkles size={16} color="#3B82F6" className="msc-milestone-icon" />
-                  <div>
-                    <div className="msc-milestone-title">
-                      Thesis Defence: January 2027 (Tentative)
-                    </div>
-                    <p className="msc-milestone-desc">
-                      Tentative target schedule for formal thesis defence, final committee examination, and degree conferral.
-                    </p>
-                  </div>
+                <div className="msc-milestone-item is-compact">
+                  <Sparkles size={15} color="#817CB8" className="msc-milestone-icon" />
+                  <span className="msc-milestone-title">
+                    Conferral: Aug – Sept 2026 / Jan 2027 (Tentative)
+                  </span>
                 </div>
               </div>
             </div>
@@ -203,47 +178,40 @@ export const AcademicsPage = () => {
               />
             </div>
 
-            {/* Expandable Details Button */}
-            <div style={{ marginTop: '16px' }}>
-              <button
-                onClick={() => toggleSection('bsc-details')}
-                className="pub-expand-btn"
-                aria-expanded={Boolean(expandedSections['bsc-details'])}
-              >
-                <span>{expandedSections['bsc-details'] ? 'Hide Major Focus & Curriculum Scope' : 'View Major Focus & Curriculum Scope'}</span>
-                {expandedSections['bsc-details'] ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-              </button>
-            </div>
+            {/* Academic Milestones & Curriculum Standing: Open Display (No dropdown, No descriptions) */}
+            <div className="msc-status-block">
+              <div className="msc-status-header">
+                <span className="milestones-label">
+                  Curriculum Scope & Academic Standing
+                </span>
+                <span className="milestones-badge" style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10B981', borderColor: 'rgba(16, 185, 129, 0.25)' }}>
+                  Degree Conferred · 2024
+                </span>
+              </div>
 
-            {expandedSections['bsc-details'] && (
-              <div style={{ marginTop: '18px', paddingTop: '18px', borderTop: '1px solid var(--border-subtle)' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
-                  <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                    <CheckCircle2 size={16} color="var(--blue-royal)" style={{ flexShrink: 0, marginTop: '2px' }} />
-                    <div>
-                      <div style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '2px' }}>
-                        Core Engineering Track
-                      </div>
-                      <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
-                        Fluid dynamics, thermodynamics, heat transfer, solid mechanics, aerodynamics, and numerical methods.
-                      </p>
-                    </div>
-                  </div>
+              <div className="msc-milestones-grid is-compact">
+                <div className="msc-milestone-item is-compact">
+                  <CheckCircle2 size={15} color="#10B981" className="msc-milestone-icon" />
+                  <span className="msc-milestone-title">
+                    Core Engineering Track: Finished (160+ Credits)
+                  </span>
+                </div>
 
-                  <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                    <GraduationCap size={16} color="var(--blue-royal)" style={{ flexShrink: 0, marginTop: '2px' }} />
-                    <div>
-                      <div style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '2px' }}>
-                        Graduation Standing
-                      </div>
-                      <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
-                        Graduated with First Class Standing; 160+ total credit hours completed across all laboratory and lecture coursework.
-                      </p>
-                    </div>
-                  </div>
+                <div className="msc-milestone-item is-compact">
+                  <CheckCircle2 size={15} color="#10B981" className="msc-milestone-icon" />
+                  <span className="msc-milestone-title">
+                    Undergraduate Thesis: Ground-Effect Aerodynamics (Completed)
+                  </span>
+                </div>
+
+                <div className="msc-milestone-item is-compact">
+                  <GraduationCap size={15} color="var(--blue-royal)" className="msc-milestone-icon" />
+                  <span className="msc-milestone-title">
+                    Graduation Standing: First Class Standing
+                  </span>
                 </div>
               </div>
-            )}
+            </div>
 
             {/* Official Academic Documents for Faculty Review */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '22px' }}>
