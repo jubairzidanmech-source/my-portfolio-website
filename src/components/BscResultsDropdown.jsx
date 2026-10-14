@@ -23,10 +23,33 @@ export const BscResultsDropdown = () => {
     return 'grade-badge-d';
   };
 
+  const getGradeBadgeStyle = (grade) => {
+    if (grade.startsWith('A')) {
+      return { background: '#ECFDF5', color: '#065F46', WebkitTextFillColor: '#065F46', border: '1.5px solid #34D399', fontWeight: 800 };
+    }
+    if (grade.startsWith('B')) {
+      return { background: '#EFF6FF', color: '#1E40AF', WebkitTextFillColor: '#1E40AF', border: '1.5px solid #60A5FA', fontWeight: 800 };
+    }
+    if (grade.startsWith('C')) {
+      return { background: '#FFFBEB', color: '#B45309', WebkitTextFillColor: '#B45309', border: '1.5px solid #FBBF24', fontWeight: 800 };
+    }
+    return { background: '#FEF2F2', color: '#B91C1C', WebkitTextFillColor: '#B91C1C', border: '1.5px solid #F87171', fontWeight: 800 };
+  };
+
   const getTypeBadgeClass = (type) => {
     if (type === 'Theory') return 'type-badge-theory';
     if (type === 'Lab') return 'type-badge-lab';
     return 'type-badge-project';
+  };
+
+  const getTypeBadgeStyle = (type) => {
+    if (type === 'Theory') {
+      return { background: '#EFF6FF', color: '#1D4ED8', WebkitTextFillColor: '#1D4ED8', border: '1.5px solid #93C5FD', fontWeight: 700 };
+    }
+    if (type === 'Lab') {
+      return { background: '#ECFDF5', color: '#047857', WebkitTextFillColor: '#047857', border: '1.5px solid #6EE7B7', fontWeight: 700 };
+    }
+    return { background: '#FAF5FF', color: '#7E22CE', WebkitTextFillColor: '#7E22CE', border: '1.5px solid #D8B4FE', fontWeight: 700 };
   };
 
   return (
@@ -286,7 +309,10 @@ export const BscResultsDropdown = () => {
                             {course.title}
                           </td>
                           <td style={{ textAlign: 'center' }}>
-                            <span className={`bsc-type-badge ${getTypeBadgeClass(course.type)}`}>
+                            <span 
+                              className={`bsc-type-badge ${getTypeBadgeClass(course.type)}`}
+                              style={getTypeBadgeStyle(course.type)}
+                            >
                               {course.type}
                             </span>
                           </td>
@@ -294,7 +320,10 @@ export const BscResultsDropdown = () => {
                             {course.ch}
                           </td>
                           <td style={{ textAlign: 'center' }}>
-                            <span className={`bsc-grade-badge ${getGradeBadgeClass(course.grade)}`}>
+                            <span 
+                              className={`bsc-grade-badge ${getGradeBadgeClass(course.grade)}`}
+                              style={getGradeBadgeStyle(course.grade)}
+                            >
                               {course.grade}
                             </span>
                           </td>

@@ -2530,7 +2530,7 @@ img {
 .exp-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 .leadership-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 .thesis-hero-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
-.timeline-academic-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *):not(.bsc-gpa-badge),
+.timeline-academic-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *):not(.bsc-gpa-badge):not(.bsc-type-badge):not(.bsc-grade-badge),
 .project-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 .ongoing-research-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 .pub-list-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
@@ -8089,7 +8089,7 @@ img {
 [data-theme="dark"] .exp-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 [data-theme="dark"] .leadership-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 [data-theme="dark"] .thesis-hero-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
-[data-theme="dark"] .timeline-academic-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *):not(.bsc-gpa-badge),
+[data-theme="dark"] .timeline-academic-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *):not(.bsc-gpa-badge):not(.bsc-type-badge):not(.bsc-grade-badge),
 [data-theme="dark"] .pub-list-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 [data-theme="dark"] .skill-tech-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 [data-theme="dark"] .competency-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
@@ -10084,64 +10084,140 @@ body [style*="cursor:zoom-in"] {
   line-height: 1.4;
 }
 
-.bsc-type-badge {
-  font-size: 0.70rem;
-  font-weight: 600;
-  padding: 2px 7px;
+.bsc-type-badge,
+.timeline-academic-card:hover .bsc-type-badge {
+  font-size: 0.72rem;
+  font-weight: 700 !important;
+  padding: 3px 9px;
   border-radius: 9999px;
   white-space: nowrap;
+  display: inline-block;
+  letter-spacing: 0.02em;
 }
 
-.type-badge-theory {
-  background: rgba(37, 99, 235, 0.1);
-  color: var(--blue-royal);
-  border: 1px solid rgba(37, 99, 235, 0.2);
+.type-badge-theory,
+.timeline-academic-card:hover .type-badge-theory {
+  background: #EFF6FF !important;
+  color: #1D4ED8 !important;
+  -webkit-text-fill-color: #1D4ED8 !important;
+  border: 1.5px solid #93C5FD !important;
 }
 
-.type-badge-lab {
-  background: rgba(16, 185, 129, 0.1);
-  color: #10B981;
-  border: 1px solid rgba(16, 185, 129, 0.25);
+.type-badge-lab,
+.timeline-academic-card:hover .type-badge-lab {
+  background: #ECFDF5 !important;
+  color: #047857 !important;
+  -webkit-text-fill-color: #047857 !important;
+  border: 1.5px solid #6EE7B7 !important;
 }
 
-.type-badge-project {
-  background: rgba(168, 85, 247, 0.1);
-  color: #A855F7;
-  border: 1px solid rgba(168, 85, 247, 0.25);
+.type-badge-project,
+.timeline-academic-card:hover .type-badge-project {
+  background: #FAF5FF !important;
+  color: #7E22CE !important;
+  -webkit-text-fill-color: #7E22CE !important;
+  border: 1.5px solid #D8B4FE !important;
 }
 
-.bsc-grade-badge {
-  font-size: 0.76rem;
-  font-weight: 700;
-  padding: 1px 7px;
+.bsc-grade-badge,
+.timeline-academic-card:hover .bsc-grade-badge {
+  font-size: 0.78rem;
+  font-weight: 800 !important;
+  padding: 2px 8px;
   border-radius: 6px;
   display: inline-block;
-  min-width: 28px;
+  min-width: 32px;
   text-align: center;
+  font-feature-settings: 'tnum';
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
-.grade-badge-a {
-  background: rgba(16, 185, 129, 0.12);
-  color: #10B981;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+.grade-badge-a,
+.timeline-academic-card:hover .grade-badge-a {
+  background: #ECFDF5 !important;
+  color: #065F46 !important;
+  -webkit-text-fill-color: #065F46 !important;
+  border: 1.5px solid #34D399 !important;
 }
 
-.grade-badge-b {
-  background: rgba(59, 130, 246, 0.12);
-  color: var(--blue-royal);
-  border: 1px solid rgba(59, 130, 246, 0.25);
+.grade-badge-b,
+.timeline-academic-card:hover .grade-badge-b {
+  background: #EFF6FF !important;
+  color: #1E40AF !important;
+  -webkit-text-fill-color: #1E40AF !important;
+  border: 1.5px solid #60A5FA !important;
 }
 
-.grade-badge-c {
-  background: rgba(245, 158, 11, 0.12);
-  color: #F59E0B;
-  border: 1px solid rgba(245, 158, 11, 0.25);
+.grade-badge-c,
+.timeline-academic-card:hover .grade-badge-c {
+  background: #FFFBEB !important;
+  color: #B45309 !important;
+  -webkit-text-fill-color: #B45309 !important;
+  border: 1.5px solid #FBBF24 !important;
 }
 
-.grade-badge-d {
-  background: rgba(239, 68, 68, 0.12);
-  color: #EF4444;
-  border: 1px solid rgba(239, 68, 68, 0.25);
+.grade-badge-d,
+.timeline-academic-card:hover .grade-badge-d {
+  background: #FEF2F2 !important;
+  color: #B91C1C !important;
+  -webkit-text-fill-color: #B91C1C !important;
+  border: 1.5px solid #F87171 !important;
+}
+
+[data-theme="dark"] .type-badge-theory,
+[data-theme="dark"] .timeline-academic-card:hover .type-badge-theory {
+  background: rgba(37, 99, 235, 0.22) !important;
+  color: #93C5FD !important;
+  -webkit-text-fill-color: #93C5FD !important;
+  border: 1.5px solid rgba(96, 165, 250, 0.45) !important;
+}
+
+[data-theme="dark"] .type-badge-lab,
+[data-theme="dark"] .timeline-academic-card:hover .type-badge-lab {
+  background: rgba(16, 185, 129, 0.22) !important;
+  color: #6EE7B7 !important;
+  -webkit-text-fill-color: #6EE7B7 !important;
+  border: 1.5px solid rgba(52, 211, 153, 0.45) !important;
+}
+
+[data-theme="dark"] .type-badge-project,
+[data-theme="dark"] .timeline-academic-card:hover .type-badge-project {
+  background: rgba(168, 85, 247, 0.22) !important;
+  color: #D8B4FE !important;
+  -webkit-text-fill-color: #D8B4FE !important;
+  border: 1.5px solid rgba(192, 132, 252, 0.45) !important;
+}
+
+[data-theme="dark"] .grade-badge-a,
+[data-theme="dark"] .timeline-academic-card:hover .grade-badge-a {
+  background: rgba(16, 185, 129, 0.22) !important;
+  color: #34D399 !important;
+  -webkit-text-fill-color: #34D399 !important;
+  border: 1.5px solid rgba(52, 211, 153, 0.45) !important;
+}
+
+[data-theme="dark"] .grade-badge-b,
+[data-theme="dark"] .timeline-academic-card:hover .grade-badge-b {
+  background: rgba(59, 130, 246, 0.22) !important;
+  color: #93C5FD !important;
+  -webkit-text-fill-color: #93C5FD !important;
+  border: 1.5px solid rgba(96, 165, 250, 0.45) !important;
+}
+
+[data-theme="dark"] .grade-badge-c,
+[data-theme="dark"] .timeline-academic-card:hover .grade-badge-c {
+  background: rgba(245, 158, 11, 0.22) !important;
+  color: #FCD34D !important;
+  -webkit-text-fill-color: #FCD34D !important;
+  border: 1.5px solid rgba(251, 191, 36, 0.45) !important;
+}
+
+[data-theme="dark"] .grade-badge-d,
+[data-theme="dark"] .timeline-academic-card:hover .grade-badge-d {
+  background: rgba(239, 68, 68, 0.22) !important;
+  color: #FCA5A5 !important;
+  -webkit-text-fill-color: #FCA5A5 !important;
+  border: 1.5px solid rgba(248, 113, 113, 0.45) !important;
 }
 
 .bsc-gp-text {
