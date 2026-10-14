@@ -19,7 +19,7 @@ export const personalData = {
   researchSummary: "I’m a Mechanical Engineering researcher focused on computational approaches to understanding complex physical systems. My academic work spans Computational Fluid Mechanics and Computational Materials Modelling, with research interests across fluid dynamics, aerodynamics, aeroacoustics, renewable energy, fracture mechanics, and self-healing materials. Looking ahead, I’m particularly interested in exploring AI and machine learning driven approaches in engineering research, and how they can be integrated with computational modelling to improve prediction, simulation, and our understanding of complex physical systems.",
   socials: [
     { label: "ResearchGate", url: "https://www.researchgate.net/profile/Md-Jubair-Zidan-2", icon: "researchgate" },
-    { label: "LinkedIn", url: "https://www.linkedin.com/in/jubairzidan", icon: "linkedin" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/md-jubair-uddin-zidan/", icon: "linkedin" },
     { label: "GitHub", url: "https://github.com", icon: "github" },
     { label: "Email", url: "mailto:jubairzidan.mech@gmail.com", icon: "email" }
   ],

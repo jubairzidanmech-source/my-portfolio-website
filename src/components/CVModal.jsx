@@ -153,7 +153,7 @@ export const CVModal = ({ isOpen, onClose }) => {
                   <span><Phone size={12} /> +8801734802064</span>
                 </div>
                 <div className="cv-sheet-links-row">
-                  <a href="https://linkedin.com/in/jubairzidan" target="_blank" rel="noreferrer">LinkedIn: jubairzidan</a>
+                  <a href="https://www.linkedin.com/in/md-jubair-uddin-zidan/" target="_blank" rel="noreferrer">LinkedIn: md-jubair-uddin-zidan</a>
                   <span>•</span>
                   <a href="https://www.researchgate.net/profile/Md-Jubair-Zidan-2" target="_blank" rel="noreferrer">ResearchGate: Md-Jubair-Zidan-2</a>
                   <span>•</span>

@@ -201,7 +201,7 @@ export const Hero3Col = ({ setActivePage }) => {
                     <span>ResearchGate</span>
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/jubairzidan"
+                    href="https://www.linkedin.com/in/md-jubair-uddin-zidan/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="blur-pill-link"

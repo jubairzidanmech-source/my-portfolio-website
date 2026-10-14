@@ -108,7 +108,7 @@ def generate_cv():
     story.append(Paragraph("Mechanical Engineering Researcher • Computational Fluid Dynamics & Architected Metamaterials", subtitle_style))
     story.append(Spacer(1, 4))
     story.append(Paragraph("Adabor, Shyamoli, Dhaka, Bangladesh  |  Email: jubairzidan99@gmail.com / jubairzidan.mech@gmail.com  |  Institution: CUET", contact_style))
-    story.append(Paragraph("LinkedIn: linkedin.com/in/jubairzidan  |  ResearchGate: Md-Jubair-Zidan-2  |  GitHub: github.com/jubairzidan", contact_style))
+    story.append(Paragraph("LinkedIn: linkedin.com/in/md-jubair-uddin-zidan |  ResearchGate: Md-Jubair-Zidan-2  |  GitHub: github.com/jubairzidan", contact_style))
     story.append(Spacer(1, 8))
     story.append(HRFlowable(width="100%", thickness=1.5, color=royal, spaceAfter=8, spaceBefore=0))
 
