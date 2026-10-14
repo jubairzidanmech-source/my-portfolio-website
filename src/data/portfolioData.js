@@ -735,7 +735,7 @@ export const experienceData = {
       id: "asme",
       organization: "American Society Of Mechanical Engineers CUET student Branch",
       role: "Treasurer",
-      tagline: "Core mechanical engineering dedicated club",
+      tagline: "Premier collegiate engineering chapter fostering technical innovation, professional development, and nationwide engineering symposiums",
       logoUrl: "/images/real/asme_logo.png",
       period: "2020 – 2024",
       highlights: [
@@ -755,7 +755,7 @@ export const experienceData = {
       id: "scba",
       organization: "Supply Chain & Business Alliance CUET",
       role: "President",
-      tagline: "Club dedicated to leadership, entrepreneurship and skill building",
+      tagline: "Pioneering student alliance bridging engineering with industry, driving corporate case competitions, executive leadership, and mentorship",
       logoUrl: "/images/real/scba_logo.png",
       period: "2021 – 2024",
       highlights: [
@@ -775,7 +775,7 @@ export const experienceData = {
       id: "cams",
       organization: "CUET Automotive and Mobility Society",
       role: "Joint Publication Secretary",
-      tagline: "Club dedicated to developing small ranged automobiles",
+      tagline: "Collegiate automotive R&D society dedicated to energy-efficient vehicle prototyping, mobility innovations, and technical publications",
       logoUrl: "/images/real/cams_logo.png",
       period: "2021 – 2024",
       highlights: [
@@ -793,7 +793,7 @@ export const experienceData = {
       id: "joyoddhoney",
       organization: "Joyoddhoney, CUET",
       role: "Joint General Secretary",
-      tagline: "The cultural organization of Cuet",
+      tagline: "Flagship university cultural society orchestrating campus-wide festivals, creative performing arts, and student community engagement",
       logoUrl: "/images/real/joyoddhoney_logo.png",
       period: "2020 – 2023",
       highlights: [

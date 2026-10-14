@@ -5576,6 +5576,22 @@ img {
   margin-bottom: 4px;
 }
 
+.leadership-tagline {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin-top: 3px;
+  margin-bottom: 5px;
+  transition: color 0.18s ease;
+}
+
+.exp-card:hover .leadership-tagline,
+.leadership-card:hover .leadership-tagline,
+[data-theme="dark"] .exp-card:hover .leadership-tagline,
+[data-theme="dark"] .leadership-card:hover .leadership-tagline {
+  color: #DBEAFE !important;
+}
+
 /* 3. DATES & LOCATION THIRD: Secondary Metadata */
 .exp-meta-row {
   display: flex;

@@ -293,7 +293,7 @@ export const ExperiencePage = () => {
                       </div>
                       <div className="exp-org-name">{item.organization}</div>
                       {item.tagline && (
-                        <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+                        <div className="leadership-tagline">
                           {item.tagline}
                         </div>
                       )}
@@ -383,7 +383,7 @@ export const ExperiencePage = () => {
                       </div>
                       <div className="exp-org-name">{item.role}</div>
                       {item.tagline && (
-                        <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+                        <div className="leadership-tagline">
                           {item.tagline}
                         </div>
                       )}
