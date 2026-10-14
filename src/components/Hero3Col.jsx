@@ -191,7 +191,7 @@ export const Hero3Col = ({ setActivePage }) => {
                 {/* Secondary Quick-Links & Download Row */}
                 <div className="portrait-blur-links-row">
                   <a
-                    href="https://www.researchgate.net"
+                    href="https://www.researchgate.net/profile/Md-Jubair-Zidan-2"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="blur-pill-link"

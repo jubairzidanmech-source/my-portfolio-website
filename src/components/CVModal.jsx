@@ -155,7 +155,7 @@ export const CVModal = ({ isOpen, onClose }) => {
                 <div className="cv-sheet-links-row">
                   <a href="https://linkedin.com/in/jubairzidan" target="_blank" rel="noreferrer">LinkedIn: jubairzidan</a>
                   <span>•</span>
-                  <a href="https://www.researchgate.net" target="_blank" rel="noreferrer">ResearchGate: Jubair-Zidan</a>
+                  <a href="https://www.researchgate.net/profile/Md-Jubair-Zidan-2" target="_blank" rel="noreferrer">ResearchGate: Md-Jubair-Zidan-2</a>
                   <span>•</span>
                   <a href="https://jubair-zidan-portfolio.vercel.app" target="_blank" rel="noreferrer">jubairzidan.portfolio</a>
                 </div>
