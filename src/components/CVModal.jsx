@@ -157,6 +157,8 @@ export const CVModal = ({ isOpen, onClose }) => {
                   <span>•</span>
                   <a href="https://www.researchgate.net/profile/Md-Jubair-Zidan-2" target="_blank" rel="noreferrer">ResearchGate: Md-Jubair-Zidan-2</a>
                   <span>•</span>
+                  <a href="https://github.com/jubairzidanmech-source" target="_blank" rel="noreferrer">GitHub: jubairzidanmech-source</a>
+                  <span>•</span>
                   <a href="https://jubair-zidan-portfolio.vercel.app" target="_blank" rel="noreferrer">jubairzidan.portfolio</a>
                 </div>
               </header>

@@ -2951,24 +2951,26 @@ img {
 .portrait-blur-links-row {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 5px;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .blur-pill-link {
-  flex: 1;
+  flex: 1 1 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 4px;
   background: rgba(255, 255, 255, 0.18);
   color: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: var(--radius-pill);
-  padding: 6px 8px;
-  font-size: 0.74rem;
+  padding: 6px 7px;
+  font-size: 0.72rem;
   font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
   transition: all var(--transition-fast);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);

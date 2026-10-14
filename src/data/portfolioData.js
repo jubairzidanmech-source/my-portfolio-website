@@ -20,7 +20,7 @@ export const personalData = {
   socials: [
     { label: "ResearchGate", url: "https://www.researchgate.net/profile/Md-Jubair-Zidan-2", icon: "researchgate" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/md-jubair-uddin-zidan/", icon: "linkedin" },
-    { label: "GitHub", url: "https://github.com", icon: "github" },
+    { label: "GitHub", url: "https://github.com/jubairzidanmech-source", icon: "github" },
     { label: "Email", url: "mailto:jubairzidan.mech@gmail.com", icon: "email" }
   ],
   stats: [

@@ -211,6 +211,16 @@ export const Hero3Col = ({ setActivePage }) => {
                     <span>LinkedIn</span>
                   </a>
                   <a
+                    href="https://github.com/jubairzidanmech-source"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="blur-pill-link"
+                    title="GitHub Profile"
+                  >
+                    <ArrowUpRight size={12} />
+                    <span>GitHub</span>
+                  </a>
+                  <a
                     href={`mailto:${personalData.secondaryEmail || personalData.email}`}
                     className="blur-pill-link"
                     title="Direct Email"
