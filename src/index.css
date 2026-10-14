@@ -483,25 +483,7 @@ img {
   animation: liquidMorphTwo 28s ease-in-out infinite alternate-reverse;
 }
 
-/* Soft, Non-Distracting Cursor Spotlight Aura */
-.liquid-light-cursor-aura {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 750px;
-  height: 750px;
-  border-radius: 50%;
-  pointer-events: none;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(147, 197, 253, 0.12) 0%,
-    rgba(191, 219, 254, 0.06) 35%,
-    transparent 70%
-  );
-  filter: blur(65px);
-  will-change: transform;
-  opacity: 0.55;
-}
+
 
 
 
@@ -6976,20 +6958,7 @@ img {
   filter: blur(64px);
 }
 
-/* Cursor Spotlight in Dark Mode */
-[data-theme="dark"] .liquid-light-cursor-aura {
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(125, 211, 252, 0.50) 0%,
-    rgba(56, 189, 248, 0.35) 24%,
-    rgba(0, 102, 255, 0.22) 48%,
-    rgba(99, 102, 241, 0.08) 68%,
-    transparent 80%
-  );
-  filter: blur(45px);
-  opacity: 0.90;
-  mix-blend-mode: screen;
-}
+
 
 /* Subtle, Aesthetic & Premium Technical Grid in Dark Mode */
 [data-theme="dark"] .grid-layer {
@@ -8179,92 +8148,65 @@ img {
    Preserves default cursor feel, adds understated micro-interaction.
    ========================================================================== */
 
-.academic-cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--blue-royal);
-  box-shadow: 0 0 4px rgba(37, 99, 235, 0.4);
-  pointer-events: none;
-  z-index: 99999;
-  margin-top: -3px;
-  margin-left: -3px;
-  opacity: 0;
-  transition: opacity 0.25s ease, width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), margin 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease;
-  will-change: transform;
+/* Modern Rounded Arrow Pointer Cursor (Matches User Reference) */
+html,
+body,
+body * {
+  cursor: url('/custom-cursor.svg') 3 2, url('/custom-cursor.png') 3 2, auto;
 }
 
-.academic-cursor-dot.is-hovered {
-  width: 8px;
-  height: 8px;
-  margin-top: -4px;
-  margin-left: -4px;
-  background: #38BDF8;
-  box-shadow: 0 0 8px rgba(56, 189, 248, 0.7);
+/* Interactive elements maintain the sleek custom rounded cursor with pointer intent */
+body a,
+body button,
+body [role="button"],
+body input[type="button"],
+body input[type="submit"],
+body input[type="reset"],
+body select,
+body summary,
+body .card-interactive,
+body .tool-chip,
+body .filter-pill,
+body .pub-expand-btn,
+body .pub-visual-btn,
+body .pub-action-btn,
+body .theme-toggle-btn,
+body .contact-copy-btn,
+body .contact-quiet-cv-btn,
+body .research-slider-arrow-btn,
+body .research-slider-dot,
+body .bsc-dropdown-header,
+body .bsc-course-tag,
+body .cv-download-btn,
+body .nav-link,
+body .tab-btn {
+  cursor: url('/custom-cursor.svg') 3 2, url('/custom-cursor.png') 3 2, pointer !important;
 }
 
-.academic-cursor-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(37, 99, 235, 0.10) 55%, transparent 75%);
-  border: 1px solid rgba(37, 99, 235, 0.15);
-  pointer-events: none;
-  z-index: 99998;
-  margin-top: -13px;
-  margin-left: -13px;
-  opacity: 0;
-  transition: opacity 0.3s ease, width 0.32s cubic-bezier(0.16, 1, 0.3, 1), height 0.32s cubic-bezier(0.16, 1, 0.3, 1), margin 0.32s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background 0.3s ease;
-  will-change: transform;
+/* Text inputs keep native text caret */
+body input[type="text"],
+body input[type="email"],
+body input[type="tel"],
+body input[type="number"],
+body input[type="password"],
+body textarea {
+  cursor: text !important;
 }
 
-.academic-cursor-glow.is-hovered {
-  width: 42px;
-  height: 42px;
-  margin-top: -21px;
-  margin-left: -21px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.30) 0%, rgba(37, 99, 235, 0.16) 60%, transparent 80%);
-  border-color: rgba(56, 189, 248, 0.38);
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.22);
+/* Image zoom interactions */
+body [style*="cursor: zoom-in"],
+body [style*="cursor:zoom-in"] {
+  cursor: zoom-in !important;
 }
 
-/* Dark Mode Cursor Tone */
-[data-theme="dark"] .academic-cursor-dot {
-  background: #60A5FA;
-  box-shadow: 0 0 6px rgba(96, 165, 250, 0.6);
-}
-
-[data-theme="dark"] .academic-cursor-dot.is-hovered {
-  background: #38BDF8;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.85);
-}
-
-[data-theme="dark"] .academic-cursor-glow {
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(37, 99, 235, 0.10) 55%, transparent 75%);
-  border-color: rgba(96, 165, 250, 0.25);
-}
-
-[data-theme="dark"] .academic-cursor-glow.is-hovered {
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.30) 0%, rgba(96, 165, 250, 0.15) 60%, transparent 80%);
-  border-color: rgba(56, 189, 248, 0.45);
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
-}
-
-/* Hide on touch devices and small viewports to prevent cursor flickering */
-@media (max-width: 1024px), (hover: none), (pointer: coarse) {
-  .academic-cursor-dot,
-  .academic-cursor-glow {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-  }
+/* Ensure all legacy cursor elements and blue aura interactions are removed */
+.academic-cursor-dot,
+.academic-cursor-glow,
+.liquid-light-cursor-aura {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
 }
 
 /* Accessibility: Respect Reduced Motion Preferences */
