@@ -10342,6 +10342,23 @@ body [style*="cursor:zoom-in"] {
   stroke: #FFFFFF !important;
 }
 
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn *,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn:hover *,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn.is-active *,
+.bsc-dropdown-trigger-btn.is-active * {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn .bsc-dropdown-subtitle,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn:hover .bsc-dropdown-subtitle,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn.is-active .bsc-dropdown-subtitle,
+.bsc-dropdown-trigger-btn.is-active .bsc-dropdown-subtitle {
+  color: #F1F5F9 !important;
+  -webkit-text-fill-color: #F1F5F9 !important;
+  opacity: 0.95 !important;
+}
+
 /* 2. Choose Semester Controls & Quick Pills */
 .timeline-academic-card:hover .bsc-select-label {
   color: #FFFFFF !important;
