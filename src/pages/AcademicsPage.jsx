@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
+  Check,
   CheckCircle2, 
   Clock, 
   Sparkles, 
@@ -12,6 +13,7 @@ import {
   X 
 } from 'lucide-react';
 import { BscResultsDropdown } from '../components/BscResultsDropdown';
+import { AcademicTimelineBar } from '../components/AcademicTimelineBar';
 
 // Academic CGPA / GPA Display (Clean typography without oversized boxes or bright badges)
 const CgpaStatNumber = ({ value, max, label, sublabel, badge }) => {
@@ -36,6 +38,44 @@ const CgpaStatNumber = ({ value, max, label, sublabel, badge }) => {
 
 export const AcademicsPage = () => {
   const [activeDocModal, setActiveDocModal] = useState(null);
+  const [activeDegree, setActiveDegree] = useState('msc');
+
+  // Sync active degree in stepper bar as user scrolls through degree cards
+  useEffect(() => {
+    const ids = ['msc', 'bsc', 'hsc', 'ssc'];
+    const elements = ids.map(id => document.getElementById(`degree-${id}`)).filter(Boolean);
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter(e => e.isIntersecting);
+        if (visible.length > 0) {
+          // Find element closest to upper viewport zone
+          visible.sort((a, b) => Math.abs(a.boundingClientRect.top - 140) - Math.abs(b.boundingClientRect.top - 140));
+          const targetId = visible[0].target.getAttribute('data-degree-id');
+          if (targetId) setActiveDegree(targetId);
+        }
+      },
+      {
+        rootMargin: '-80px 0px -40% 0px',
+        threshold: [0.1, 0.25, 0.5]
+      }
+    );
+
+    elements.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  // Smooth scroll handler when user clicks a degree in the stepper bar
+  const handleSelectDegree = (degreeId) => {
+    setActiveDegree(degreeId);
+    const el = document.getElementById(`degree-${degreeId}`);
+    if (el) {
+      const yOffset = -110;
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -65,12 +105,23 @@ export const AcademicsPage = () => {
         </p>
       </div>
 
+      {/* Modern Stepper Progress & Degree Navigation Bar (Matches Reference Stepper) */}
+      <AcademicTimelineBar 
+        activeDegree={activeDegree} 
+        onSelectDegree={handleSelectDegree} 
+      />
+
       {/* Timeline Section */}
       <div className="timeline-spine-wrapper">
         {/* 1. M.Sc. in Mechanical Engineering (Current Degree) */}
-        <div className="timeline-row is-current">
+        <div 
+          id="degree-msc" 
+          data-degree-id="msc" 
+          className={`timeline-row is-current ${activeDegree === 'msc' ? 'is-active-viewing' : ''}`}
+        >
           <div className="timeline-axis">
-            <div className="timeline-node-circle">
+            <div className="timeline-node-circle is-in-progress">
+              <span className="timeline-pulse-node" />
               <div className="timeline-node-inner-dot" />
             </div>
             <span className="timeline-year-text">2025 – 2027</span>
@@ -144,10 +195,14 @@ export const AcademicsPage = () => {
         </div>
 
         {/* 2. B.Sc. in Mechanical Engineering */}
-        <div className="timeline-row">
+        <div 
+          id="degree-bsc" 
+          data-degree-id="bsc" 
+          className={`timeline-row ${activeDegree === 'bsc' ? 'is-active-viewing' : ''}`}
+        >
           <div className="timeline-axis">
-            <div className="timeline-node-circle">
-              <div className="timeline-node-inner-dot" />
+            <div className="timeline-node-circle is-completed">
+              <Check size={11} strokeWidth={3} className="vertical-node-check" />
             </div>
             <span className="timeline-year-text">2019 – 2024</span>
           </div>
@@ -274,10 +329,14 @@ export const AcademicsPage = () => {
         </div>
 
         {/* 3. Higher Secondary Certificate (HSC) */}
-        <div className="timeline-row">
+        <div 
+          id="degree-hsc" 
+          data-degree-id="hsc" 
+          className={`timeline-row ${activeDegree === 'hsc' ? 'is-active-viewing' : ''}`}
+        >
           <div className="timeline-axis">
-            <div className="timeline-node-circle">
-              <div className="timeline-node-inner-dot" />
+            <div className="timeline-node-circle is-completed">
+              <Check size={11} strokeWidth={3} className="vertical-node-check" />
             </div>
             <span className="timeline-year-text">2016 – 2018</span>
           </div>
@@ -308,10 +367,14 @@ export const AcademicsPage = () => {
         </div>
 
         {/* 4. Secondary School Certificate (SSC) */}
-        <div className="timeline-row">
+        <div 
+          id="degree-ssc" 
+          data-degree-id="ssc" 
+          className={`timeline-row ${activeDegree === 'ssc' ? 'is-active-viewing' : ''}`}
+        >
           <div className="timeline-axis">
-            <div className="timeline-node-circle">
-              <div className="timeline-node-inner-dot" />
+            <div className="timeline-node-circle is-completed">
+              <Check size={11} strokeWidth={3} className="vertical-node-check" />
             </div>
             <span className="timeline-year-text">2008 – 2016</span>
           </div>
