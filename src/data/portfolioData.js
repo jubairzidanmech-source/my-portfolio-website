@@ -815,7 +815,7 @@ export const experienceData = {
       organization: "Hult Prize BD",
       role: "Operations & Youth Leadership Volunteer",
       period: "2021 – 2022",
-      logoUrl: "/images/real/hult_prize_bd_logo.svg",
+      logoUrl: "/images/real/hult_prize_bd_logo.png",
       tagline: "Social entrepreneurship platform empowering student ventures",
       highlights: [
         "Social entrepreneurship initiatives",
