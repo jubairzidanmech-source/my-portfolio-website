@@ -461,7 +461,7 @@ export const AwardsPage = () => {
       {/* =========================================================================
           6. COURSE CERTIFICATIONS
           ========================================================================= */}
-      {(activeCategory === 'all' || activeCategory === 'certs' || activeCategory === 'course-certs') && (
+      {(((activeCategory === 'all' || activeCategory === 'certs') && (awardsData?.courseCertifications || []).length > 0) || activeCategory === 'course-certs') && (
         <section className="section-spacing">
           <div className="section-heading-row">
             <div>
@@ -475,29 +475,43 @@ export const AwardsPage = () => {
             </span>
           </div>
 
-          <div className="pub-grid-2col">
-            {(awardsData?.courseCertifications || []).map((item, idx) => (
-              <AwardCard
-                key={item.id}
-                item={item}
-                itemIndex={idx + 1}
-                isExpanded={Boolean(expandedAwards[item.id])}
-                onToggle={toggleAward}
-                onOpenModal={handleOpenModal}
-                badgeClass="verified"
-                badgeLabel="Verified Course"
-                statusLabel="Accredited"
-                yearLabel={item.year || "Certified"}
-                title={item.title}
-                authorLabel={item.issuer}
-                venueLabel={item.field}
-                expandOpenText="View Syllabus & Verification"
-                expandCloseText="Hide Details"
-                visualBtnText="View Certificate"
-                detailHeading="Course Syllabus & Academic Competencies"
-              />
-            ))}
-          </div>
+          {(awardsData?.courseCertifications || []).length > 0 ? (
+            <div className="pub-grid-2col">
+              {(awardsData?.courseCertifications || []).map((item, idx) => (
+                <AwardCard
+                  key={item.id}
+                  item={item}
+                  itemIndex={idx + 1}
+                  isExpanded={Boolean(expandedAwards[item.id])}
+                  onToggle={toggleAward}
+                  onOpenModal={handleOpenModal}
+                  badgeClass="verified"
+                  badgeLabel="Verified Course"
+                  statusLabel="Accredited"
+                  yearLabel={item.year || "Certified"}
+                  title={item.title}
+                  authorLabel={item.issuer}
+                  venueLabel={item.field}
+                  expandOpenText="View Syllabus & Verification"
+                  expandCloseText="Hide Details"
+                  visualBtnText="View Certificate"
+                  detailHeading="Course Syllabus & Academic Competencies"
+                />
+              ))}
+            </div>
+          ) : (
+            <div style={{
+              padding: '36px 24px',
+              borderRadius: '16px',
+              background: 'var(--bg-card-subtle)',
+              border: '1.5px dashed var(--border-subtle)',
+              textAlign: 'center',
+              color: 'var(--text-secondary)',
+              fontSize: '0.92rem'
+            }}>
+              Course certifications are currently being updated and will appear here.
+            </div>
+          )}
         </section>
       )}
 
