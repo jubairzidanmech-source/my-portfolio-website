@@ -8913,6 +8913,7 @@ img {
   flex: 1;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -8953,6 +8954,7 @@ img {
   .image-lightbox-desc {
     font-size: 0.80rem;
     -webkit-line-clamp: 1;
+    line-clamp: 1;
   }
 }
 
@@ -8965,6 +8967,7 @@ img {
     white-space: normal;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
   }
   .image-lightbox-footer {
