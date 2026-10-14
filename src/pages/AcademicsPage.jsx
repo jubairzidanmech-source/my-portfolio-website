@@ -286,8 +286,8 @@ export const AcademicsPage = () => {
                       onClick={() => setActiveDocModal({
                         title: "Bachelor of Science in Mechanical Engineering — Official Transcript",
                         subtitle: "Chittagong University of Engineering and Technology (CUET) · Complete 8-Semester Record",
-                        pdfUrl: "/docs/CUET_BSc_Mechanical_Engineering_Transcript.pdf",
-                        filename: "CUET_BSc_Mechanical_Engineering_Transcript.pdf",
+                        pdfUrl: "/docs/Transcripts_Md_Jubair_Uddin_Zidan-3.pdf",
+                        filename: "Transcripts_Md_Jubair_Uddin_Zidan-3.pdf",
                         tag: "Official Academic Transcript",
                         note: "Certified official transcript of Md. Jubair Uddin Zidan • Department of Mechanical Engineering (CUET)"
                       })}
