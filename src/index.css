@@ -3760,29 +3760,14 @@ img {
   color: #60A5FA;
 }
 
-/* ACTIVE VIEWING STATE (The exact luminous halo ring from the reference image!) */
-.timeline-row.is-active-viewing .timeline-node-outer-halo,
 .timeline-axis:hover .timeline-node-outer-halo {
-  box-shadow: 0 0 0 6px rgba(79, 70, 229, 0.22), 0 0 20px rgba(79, 70, 229, 0.38);
-  transform: scale(1.12);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18), 0 0 16px rgba(79, 70, 229, 0.28);
+  transform: scale(1.08);
 }
 
-[data-theme="dark"] .timeline-row.is-active-viewing .timeline-node-outer-halo,
 [data-theme="dark"] .timeline-axis:hover .timeline-node-outer-halo {
-  box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.32), 0 0 24px rgba(99, 102, 241, 0.5);
-  transform: scale(1.12);
-}
-
-.timeline-row.is-active-viewing .timeline-stepper-node.is-in-progress {
-  background: #4F46E5;
-  color: #FFFFFF;
-  border-color: #4F46E5;
-  box-shadow: 0 2px 12px rgba(79, 70, 229, 0.5);
-}
-
-.timeline-row.is-active-viewing .timeline-stepper-node.is-completed {
-  background: #1D4ED8;
-  box-shadow: 0 2px 12px rgba(29, 78, 216, 0.5);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25), 0 0 18px rgba(99, 102, 241, 0.35);
+  transform: scale(1.08);
 }
 
 /* Timeline Axis Meta: Year, Status Pill & Viewing Tag */
@@ -3848,14 +3833,6 @@ img {
   font-feature-settings: 'tnum';
 }
 
-.timeline-row.is-active-viewing .timeline-year-text {
-  color: #1D4ED8 !important;
-  font-weight: 700 !important;
-}
-
-[data-theme="dark"] .timeline-row.is-active-viewing .timeline-year-text {
-  color: #60A5FA !important;
-}
 
 .timeline-axis:hover .timeline-year-text {
   color: #0F172A;
@@ -10573,23 +10550,6 @@ body [style*="cursor:zoom-in"] {
   border-color: rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Stepper Active Viewing Pill Tag (Used on Vertical Spine) */
-.stepper-viewing-tag {
-  display: inline-block;
-  padding: 1px 7px;
-  border-radius: 9999px;
-  font-size: 0.64rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  background: #DBEAFE;
-  color: #1D4ED8;
-}
-
-[data-theme="dark"] .stepper-viewing-tag {
-  background: rgba(96, 165, 250, 0.2);
-  color: #93C5FD;
-}
 
 /* ==========================================================================
    VERTICAL TIMELINE SPINE NODE ENHANCEMENTS (Ticked Off & Viewing Highlight)

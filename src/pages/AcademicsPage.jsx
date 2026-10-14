@@ -37,44 +37,6 @@ const CgpaStatNumber = ({ value, max, label, sublabel, badge }) => {
 
 export const AcademicsPage = () => {
   const [activeDocModal, setActiveDocModal] = useState(null);
-  const [activeDegree, setActiveDegree] = useState('msc');
-
-  // Sync active degree in stepper bar as user scrolls through degree cards
-  useEffect(() => {
-    const ids = ['msc', 'bsc', 'hsc', 'ssc'];
-    const elements = ids.map(id => document.getElementById(`degree-${id}`)).filter(Boolean);
-    if (!elements.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter(e => e.isIntersecting);
-        if (visible.length > 0) {
-          // Find element closest to upper viewport zone
-          visible.sort((a, b) => Math.abs(a.boundingClientRect.top - 140) - Math.abs(b.boundingClientRect.top - 140));
-          const targetId = visible[0].target.getAttribute('data-degree-id');
-          if (targetId) setActiveDegree(targetId);
-        }
-      },
-      {
-        rootMargin: '-80px 0px -40% 0px',
-        threshold: [0.1, 0.25, 0.5]
-      }
-    );
-
-    elements.forEach(el => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
-  // Smooth scroll handler when user clicks a degree in the stepper bar
-  const handleSelectDegree = (degreeId) => {
-    setActiveDegree(degreeId);
-    const el = document.getElementById(`degree-${degreeId}`);
-    if (el) {
-      const yOffset = -110;
-      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -111,9 +73,9 @@ export const AcademicsPage = () => {
         <div 
           id="degree-msc" 
           data-degree-id="msc" 
-          className={`timeline-row is-current ${activeDegree === 'msc' ? 'is-active-viewing' : ''}`}
+          className="timeline-row is-current"
         >
-          <div className="timeline-axis" onClick={() => handleSelectDegree('msc')} title="Click to view M.Sc. Degree">
+          <div className="timeline-axis">
             <div className="timeline-node-outer-halo">
               <div className="timeline-stepper-node is-in-progress">
                 <span className="timeline-pulse-node" />
@@ -124,7 +86,6 @@ export const AcademicsPage = () => {
               <span className="timeline-year-text">2025 – 2027</span>
               <div className="timeline-axis-badge-row">
                 <span className="timeline-axis-status is-in-progress">In Progress</span>
-                {activeDegree === 'msc' && <span className="stepper-viewing-tag">Viewing</span>}
               </div>
             </div>
           </div>
@@ -208,9 +169,9 @@ export const AcademicsPage = () => {
         <div 
           id="degree-bsc" 
           data-degree-id="bsc" 
-          className={`timeline-row ${activeDegree === 'bsc' ? 'is-active-viewing' : ''}`}
+          className="timeline-row"
         >
-          <div className="timeline-axis" onClick={() => handleSelectDegree('bsc')} title="Click to view B.Sc. Degree">
+          <div className="timeline-axis">
             <div className="timeline-node-outer-halo">
               <div className="timeline-stepper-node is-completed">
                 <Check size={14} strokeWidth={3} className="stepper-check-icon" />
@@ -220,7 +181,6 @@ export const AcademicsPage = () => {
               <span className="timeline-year-text">2019 – 2024</span>
               <div className="timeline-axis-badge-row">
                 <span className="timeline-axis-status is-completed">Conferred</span>
-                {activeDegree === 'bsc' && <span className="stepper-viewing-tag">Viewing</span>}
               </div>
             </div>
           </div>
@@ -360,9 +320,9 @@ export const AcademicsPage = () => {
         <div 
           id="degree-hsc" 
           data-degree-id="hsc" 
-          className={`timeline-row ${activeDegree === 'hsc' ? 'is-active-viewing' : ''}`}
+          className="timeline-row"
         >
-          <div className="timeline-axis" onClick={() => handleSelectDegree('hsc')} title="Click to view HSC Milestone">
+          <div className="timeline-axis">
             <div className="timeline-node-outer-halo">
               <div className="timeline-stepper-node is-completed">
                 <Check size={14} strokeWidth={3} className="stepper-check-icon" />
@@ -372,7 +332,6 @@ export const AcademicsPage = () => {
               <span className="timeline-year-text">2016 – 2018</span>
               <div className="timeline-axis-badge-row">
                 <span className="timeline-axis-status is-completed">Completed</span>
-                {activeDegree === 'hsc' && <span className="stepper-viewing-tag">Viewing</span>}
               </div>
             </div>
           </div>
@@ -416,9 +375,9 @@ export const AcademicsPage = () => {
         <div 
           id="degree-ssc" 
           data-degree-id="ssc" 
-          className={`timeline-row ${activeDegree === 'ssc' ? 'is-active-viewing' : ''}`}
+          className="timeline-row"
         >
-          <div className="timeline-axis" onClick={() => handleSelectDegree('ssc')} title="Click to view SSC Milestone">
+          <div className="timeline-axis">
             <div className="timeline-node-outer-halo">
               <div className="timeline-stepper-node is-completed">
                 <Check size={14} strokeWidth={3} className="stepper-check-icon" />
@@ -428,7 +387,6 @@ export const AcademicsPage = () => {
               <span className="timeline-year-text">2008 – 2016</span>
               <div className="timeline-axis-badge-row">
                 <span className="timeline-axis-status is-completed">Completed</span>
-                {activeDegree === 'ssc' && <span className="stepper-viewing-tag">Viewing</span>}
               </div>
             </div>
           </div>
