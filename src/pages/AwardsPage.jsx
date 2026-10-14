@@ -231,12 +231,20 @@ export const AwardsPage = () => {
   const jumpToSubSection = (id) => {
     setActiveCategory(id);
     if (id === 'awards-top' || id === 'all') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window.lenis) {
+        window.lenis.scrollTo(0);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
       return;
     }
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (window.lenis) {
+        window.lenis.scrollTo(el, { offset: -135 });
+      } else {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   };
 

@@ -52,12 +52,16 @@ export const ResearchPage = () => {
     const el = document.getElementById(subId);
     if (el) {
       const headerOffset = 135;
-      const elementPosition = el.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({
-        top: Math.max(0, offsetPosition),
-        behavior: 'smooth'
-      });
+      if (window.lenis) {
+        window.lenis.scrollTo(el, { offset: -headerOffset });
+      } else {
+        const elementPosition = el.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth'
+        });
+      }
     }
   };
 

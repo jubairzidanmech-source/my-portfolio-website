@@ -14,10 +14,14 @@ import { AestheticGridBackground } from './components/AestheticGridBackground';
 import { CustomCursor } from './components/CustomCursor';
 import { Analytics } from '@vercel/analytics/react';
 import { AnnouncementBar } from './components/AnnouncementBar';
+import { useLenis } from './hooks/useLenis';
 
 const SECTIONS = ['home', 'academics', 'research', 'awards', 'experience', 'skills', 'contact'];
 
 export function App() {
+  // Initialize and manage global Lenis smooth momentum scrolling
+  useLenis();
+
   const getInitialPage = () => {
     const hash = window.location.hash.replace('#', '').toLowerCase();
     return SECTIONS.includes(hash) ? hash : 'home';
@@ -52,7 +56,11 @@ export function App() {
     }, 900);
 
     if (sectionId === 'home') {
-      window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+      if (window.lenis) {
+        window.lenis.scrollTo(0, { immediate: !smooth });
+      } else {
+        window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+      }
       try {
         window.history.replaceState(null, '', ' ');
       } catch (e) {}
@@ -63,12 +71,19 @@ export function App() {
     if (element) {
       // Dynamic header offset accounting for fixed announcement bar + sticky navbar
       const navOffset = announcementVisible ? 128 : 94;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navOffset;
-      window.scrollTo({
-        top: Math.max(0, offsetPosition),
-        behavior: smooth ? 'smooth' : 'auto'
-      });
+      if (window.lenis) {
+        window.lenis.scrollTo(element, {
+          offset: -navOffset,
+          immediate: !smooth
+        });
+      } else {
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: smooth ? 'smooth' : 'auto'
+        });
+      }
       try {
         window.history.replaceState(null, '', `#${sectionId}`);
       } catch (e) {}
