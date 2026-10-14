@@ -215,8 +215,7 @@ export const AwardsPage = () => {
     { id: 'all', label: 'All Honors' },
     { id: 'competitions', label: 'Competitions & Achievements' },
     { id: 'posters', label: 'Poster Presentations' },
-    { id: 'hult', label: 'Hult Prize Activities' },
-    { id: 'events', label: 'Event Organization' },
+    { id: 'organization', label: 'Organization' },
     { id: 'technical-certs', label: 'Technical Certifications' },
     { id: 'course-certs', label: 'Course Certifications' }
   ];
@@ -332,24 +331,24 @@ export const AwardsPage = () => {
       )}
 
       {/* =========================================================================
-          3. HULT PRIZE ACTIVITIES
+          3. ORGANIZATION
           ========================================================================= */}
-      {(activeCategory === 'all' || activeCategory === 'hult') && (
+      {(activeCategory === 'all' || activeCategory === 'organization') && (
         <section className="section-spacing">
           <div className="section-heading-row">
             <div>
-              <div className="section-eyebrow">SOCIAL ENTREPRENEURSHIP</div>
+              <div className="section-eyebrow">LEADERSHIP & ENGAGEMENT</div>
               <h2 className="section-main-heading">
-                Hult Prize Global Challenges
+                Organization
               </h2>
             </div>
             <span className="section-count-badge">
-              {(awardsData?.hultPrize || []).length} Milestones
+              {(awardsData?.organization || []).length} Milestones & Summits
             </span>
           </div>
 
           <div className="pub-grid-2col">
-            {(awardsData?.hultPrize || []).map((item, idx) => (
+            {(awardsData?.organization || []).map((item, idx) => (
               <AwardCard
                 key={item.id}
                 item={item}
@@ -357,57 +356,15 @@ export const AwardsPage = () => {
                 isExpanded={Boolean(expandedAwards[item.id])}
                 onToggle={toggleAward}
                 onOpenModal={handleOpenModal}
-                badgeClass="manuscript"
-                badgeLabel="Global Challenge"
-                statusLabel="Impact Venture"
+                badgeClass={item.cohort ? "manuscript" : "presentation"}
+                badgeLabel={item.category || "Organization"}
+                statusLabel="Organizer"
                 title={item.title}
-                authorLabel="Hult Prize Foundation"
-                venueLabel={item.cohort}
-                expandOpenText="View Impact & Contributions"
-                expandCloseText="Hide Details"
-                visualBtnText="View Certificate"
-                detailHeading="Impact & Contributions"
-              />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* =========================================================================
-          4. EVENT ORGANIZATION & DIRECTORSHIP
-          ========================================================================= */}
-      {(activeCategory === 'all' || activeCategory === 'events') && (
-        <section className="section-spacing">
-          <div className="section-heading-row">
-            <div>
-              <div className="section-eyebrow">LEADERSHIP</div>
-              <h2 className="section-main-heading">
-                Event Organization & Directorship
-              </h2>
-            </div>
-            <span className="section-count-badge">
-              {(awardsData?.eventOrganization || []).length} Summits & Events
-            </span>
-          </div>
-
-          <div className="pub-grid-2col">
-            {(awardsData?.eventOrganization || []).map((item, idx) => (
-              <AwardCard
-                key={item.id}
-                item={item}
-                itemIndex={idx + 1}
-                isExpanded={Boolean(expandedAwards[item.id])}
-                onToggle={toggleAward}
-                onOpenModal={handleOpenModal}
-                badgeClass="presentation"
-                badgeLabel="Leadership"
-                statusLabel="Lead Organizer"
-                title={item.title}
-                authorLabel={item.event}
-                venueLabel={item.venue}
+                authorLabel={item.organizer || item.event}
+                venueLabel={item.venue || item.cohort}
                 expandOpenText="View Responsibilities & Scale"
                 expandCloseText="Hide Details"
-                visualBtnText="View Summit Credential"
+                visualBtnText="View Credential"
                 detailHeading="Scope & Leadership Responsibilities"
               />
             ))}

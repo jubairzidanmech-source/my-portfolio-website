@@ -2476,7 +2476,7 @@ img {
 .award-card:hover .pub-expand-btn:hover span,
 .award-card:hover .pub-visual-btn:hover span,
 .pub-list-card:hover button:hover span,
-.timeline-academic-card:hover button:hover span,
+.timeline-academic-card:hover button:not(.bsc-dropdown-trigger-btn):hover span,
 .project-card:hover button:hover span,
 .exp-card:hover button:hover span,
 .award-card:hover button:hover span {
@@ -2485,7 +2485,7 @@ img {
 }
 
 .pub-list-card:hover button:hover svg,
-.timeline-academic-card:hover button:hover svg,
+.timeline-academic-card:hover button:not(.bsc-dropdown-trigger-btn):hover svg,
 .project-card:hover button:hover svg,
 .exp-card:hover button:hover svg,
 .award-card:hover button:hover svg {
@@ -2530,7 +2530,7 @@ img {
 .exp-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 .leadership-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 .thesis-hero-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
-.timeline-academic-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+.timeline-academic-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *):not(.bsc-gpa-badge),
 .project-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 .ongoing-research-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 .pub-list-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
@@ -8089,7 +8089,7 @@ img {
 [data-theme="dark"] .exp-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 [data-theme="dark"] .leadership-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 [data-theme="dark"] .thesis-hero-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
-[data-theme="dark"] .timeline-academic-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
+[data-theme="dark"] .timeline-academic-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *):not(.bsc-gpa-badge),
 [data-theme="dark"] .pub-list-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 [data-theme="dark"] .skill-tech-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
 [data-theme="dark"] .competency-card:hover span:not(.pulse-dot):not(button *):not(.btn *):not(.academic-cert-btn-primary *),
@@ -9976,14 +9976,15 @@ body [style*="cursor:zoom-in"] {
 
 .bsc-gpa-badge {
   display: inline-block;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 6px;
-  font-weight: 700;
+  font-weight: 800;
   font-feature-settings: 'tnum';
-  background: rgba(16, 185, 129, 0.1);
-  color: #10B981;
-  border: 1px solid rgba(16, 185, 129, 0.25);
-  font-size: 0.8rem;
+  background: #D1FAE5;
+  color: #065F46;
+  border: 1.5px solid #6EE7B7;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
 }
 
 .bsc-credits-text {
@@ -10275,46 +10276,66 @@ body [style*="cursor:zoom-in"] {
   background: rgba(255, 255, 255, 0.2) !important;
 }
 
-.timeline-academic-card:hover .bsc-dropdown-trigger-btn.is-active {
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn.is-active,
+.bsc-dropdown-trigger-btn.is-active {
   background: rgba(255, 255, 255, 0.22) !important;
   border-bottom-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-.timeline-academic-card:hover .bsc-dropdown-icon-wrap {
+.timeline-academic-card:hover .bsc-dropdown-icon-wrap,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn:hover .bsc-dropdown-icon-wrap,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn.is-active .bsc-dropdown-icon-wrap,
+.bsc-dropdown-trigger-btn.is-active .bsc-dropdown-icon-wrap {
   background: rgba(255, 255, 255, 0.25) !important;
   color: #FFFFFF !important;
 }
 
-.timeline-academic-card:hover .bsc-dropdown-icon-wrap svg {
+.timeline-academic-card:hover .bsc-dropdown-icon-wrap svg,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn:hover .bsc-dropdown-icon-wrap svg,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn.is-active .bsc-dropdown-icon-wrap svg,
+.bsc-dropdown-trigger-btn.is-active .bsc-dropdown-icon-wrap svg {
   color: #FFFFFF !important;
   stroke: #FFFFFF !important;
 }
 
-.timeline-academic-card:hover .bsc-dropdown-title {
+.timeline-academic-card:hover .bsc-dropdown-title,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn:hover .bsc-dropdown-title,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn.is-active .bsc-dropdown-title,
+.timeline-academic-card .bsc-dropdown-trigger-btn:hover .bsc-dropdown-title,
+.timeline-academic-card .bsc-dropdown-trigger-btn.is-active .bsc-dropdown-title,
+.bsc-dropdown-trigger-btn.is-active .bsc-dropdown-title {
   color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
   font-weight: 700 !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25) !important;
 }
 
-.timeline-academic-card:hover .bsc-dropdown-subtitle {
+.timeline-academic-card:hover .bsc-dropdown-subtitle,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn:hover .bsc-dropdown-subtitle,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn.is-active .bsc-dropdown-subtitle,
+.timeline-academic-card .bsc-dropdown-trigger-btn:hover .bsc-dropdown-subtitle,
+.timeline-academic-card .bsc-dropdown-trigger-btn.is-active .bsc-dropdown-subtitle,
+.bsc-dropdown-trigger-btn.is-active .bsc-dropdown-subtitle {
   color: #F1F5F9 !important;
+  -webkit-text-fill-color: #F1F5F9 !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
 }
 
-.timeline-academic-card:hover .bsc-dropdown-status-pill {
+.timeline-academic-card:hover .bsc-dropdown-status-pill,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn:hover .bsc-dropdown-status-pill,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn.is-active .bsc-dropdown-status-pill,
+.bsc-dropdown-trigger-btn.is-active .bsc-dropdown-status-pill {
   background: rgba(255, 255, 255, 0.25) !important;
   color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
   border: 1px solid rgba(255, 255, 255, 0.55) !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25) !important;
 }
 
-.timeline-academic-card:hover .bsc-dropdown-trigger-btn:hover .bsc-dropdown-status-pill {
-  background: rgba(255, 255, 255, 0.38) !important;
-  border-color: #FFFFFF !important;
-  color: #FFFFFF !important;
-}
-
-.timeline-academic-card:hover .bsc-dropdown-chevron svg {
+.timeline-academic-card:hover .bsc-dropdown-chevron svg,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn:hover .bsc-dropdown-chevron svg,
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn.is-active .bsc-dropdown-chevron svg,
+.bsc-dropdown-trigger-btn.is-active .bsc-dropdown-chevron svg {
   color: #FFFFFF !important;
   stroke: #FFFFFF !important;
 }
@@ -10511,6 +10532,17 @@ body [style*="cursor:zoom-in"] {
   stroke: #1D4ED8 !important;
 }
 
+.timeline-academic-card:hover .bsc-gpa-badge,
+.timeline-academic-card:hover .bsc-data-table td .bsc-gpa-badge {
+  background: #D1FAE5 !important;
+  color: #065F46 !important;
+  -webkit-text-fill-color: #065F46 !important;
+  border: 1.5px solid #6EE7B7 !important;
+  font-weight: 800 !important;
+  display: inline-block !important;
+  padding: 3px 10px !important;
+}
+
 /* 6. Footer Navigation Buttons */
 .timeline-academic-card:hover .bsc-nav-btn {
   background: #FFFFFF !important;
@@ -10574,6 +10606,17 @@ body [style*="cursor:zoom-in"] {
 
 [data-theme="dark"] .timeline-academic-card:hover .bsc-course-title-cell {
   color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .bsc-gpa-badge,
+[data-theme="dark"] .timeline-academic-card:hover .bsc-data-table td .bsc-gpa-badge {
+  background: rgba(16, 185, 129, 0.22) !important;
+  color: #34D399 !important;
+  -webkit-text-fill-color: #34D399 !important;
+  border: 1.5px solid rgba(52, 211, 153, 0.5) !important;
+  font-weight: 800 !important;
+  display: inline-block !important;
+  padding: 3px 10px !important;
 }
 
 [data-theme="dark"] .timeline-academic-card:hover .bsc-credits-text,

@@ -543,6 +543,89 @@ export const awardsData = {
     }
   ],
 
+  organization: [
+    {
+      id: "evt-1",
+      title: "Design Lead, Organizer for Hult Prize Dhaka Impact Summit 2021",
+      event: "Hult Prize Dhaka Impact Summit 2021",
+      organizer: "Hult Prize Foundation",
+      venue: "Dhaka Impact Summit",
+      year: "2021",
+      category: "Summit Leadership & Branding",
+      imageUrl: "/images/real_awards/cert_hult_prize_dhaka_summit_2021.png",
+      description: "Served as Design Lead & Organizer for the Hult Prize Dhaka Impact Summit 2021, coordinating design materials, delegate communications, and summit branding."
+    },
+    {
+      id: "evt-2",
+      title: "Design Lead, Organizer for Hult Prize Kuala Lumpur Impact Summit 2021",
+      event: "Hult Prize Kuala Lumpur Impact Summit 2021",
+      organizer: "Hult Prize Foundation",
+      venue: "Kuala Lumpur Impact Summit",
+      year: "2021",
+      category: "International Summit Leadership",
+      imageUrl: "/images/real_awards/cert_hult_prize_kl_summit_2021.png",
+      description: "Design Lead and Organizer for the international Hult Prize Kuala Lumpur Impact Summit 2021, managing creative collateral and summit operations."
+    },
+    {
+      id: "evt-3",
+      title: "Design Lead, Organizer for Hult Prize Chittagong Impact Summit 2021",
+      event: "Hult Prize Chittagong Impact Summit 2021",
+      organizer: "Hult Prize Foundation",
+      venue: "Chittagong Impact Summit",
+      year: "2021",
+      category: "Regional Summit Organization",
+      imageUrl: "/images/real_awards/cert_hult_prize_chittagong_summit_2021.png",
+      description: "Design Lead and Organizer for the Hult Prize Chittagong Impact Summit 2021, orchestrating regional event marketing and summit logistics."
+    },
+    {
+      id: "evt-4",
+      title: "Successfully arranged Autodesk Academic Event: Introduction to Autodesk Fusion 360",
+      event: "Introduction to Autodesk Fusion 360",
+      organizer: "Autodesk Academic Partner",
+      venue: "CUET Campus",
+      year: "2022",
+      category: "Academic Technical Workshop",
+      imageUrl: "/images/real_awards/cert_autodesk_fusion360_organizer.png",
+      description: "Awarded Certificate of Appreciation as Organizer for successfully arranging the Autodesk Academic Event: Introduction to Autodesk Fusion 360 at CUET."
+    },
+    {
+      id: "hult-1",
+      title: "Reached Semifinal round of on campus Hult Prize CUET cohort 2020-2021",
+      event: "Hult Prize Global Social Challenge",
+      organizer: "Hult Prize CUET",
+      cohort: "Hult Prize CUET Cohort 2020 – 2021",
+      venue: "CUET Campus",
+      year: "2020 – 2021",
+      category: "Social Entrepreneurship",
+      imageUrl: "/images/real_awards/cert_hult_prize_cuet_2021.png",
+      description: "Official certificate recognizing reaching the semifinal round in the on-campus Hult Prize CUET cohort (2020-2021), presenting sustainable social business models."
+    },
+    {
+      id: "hult-2",
+      title: "Reached Semifinal round of on campus Hult Prize CUET cohort 2019-2020",
+      event: "Hult Prize Global Social Challenge",
+      organizer: "Hult Prize CUET",
+      cohort: "Bottle Green House Team, Hult Prize CUET Cohort",
+      venue: "CUET Campus",
+      year: "2019 – 2020",
+      category: "Social Entrepreneurship",
+      imageUrl: "/images/real_awards/cert_hult_prize_cuet_2020.png",
+      description: "Official certificate conferred to 'Bottle Green House' team for advancing to the semifinal round in the on-campus Hult Prize CUET cohort (2019-2020)."
+    },
+    {
+      id: "hult-3",
+      title: "Volunteer Graphic Designer, HULT Prize Bangladesh Team",
+      event: "HULT Prize Bangladesh National Team",
+      organizer: "Hult Prize Bangladesh",
+      cohort: "HULT Prize Bangladesh National Team",
+      venue: "National Operations",
+      year: "2020 – 2021",
+      category: "Creative Directorship",
+      imageUrl: "/images/real_awards/cert_hult_prize_bd_volunteer.png",
+      description: "Volunteer Graphic Designer contributing visual identity, event branding, and promotional collateral for HULT Prize Bangladesh national organizing team."
+    }
+  ],
+
   technicalCertifications: [
     {
       id: "cert-cswp",
@@ -571,7 +654,67 @@ export const awardsData = {
     }
   ],
 
-  courseCertifications: [],
+  courseCertifications: [
+    {
+      id: "cert-cornell-simulation",
+      title: "ENGR2000X: A Hands-on Introduction to Engineering Simulations",
+      issuer: "Cornell University / CornellX (edX)",
+      field: "Finite Element Analysis (FEA) & Computational Fluid Dynamics (CFD)",
+      year: "Jul 2026",
+      date: "July 27, 2026",
+      certId: "d8491ceb9049465e90dac14236cbbfe8",
+      verificationUrl: "https://courses.edx.org/certificates/d8491ceb9049465e90dac14236cbbfe8",
+      imageUrl: "/images/real_certs/cert_cornell_simulation.png",
+      category: "course",
+      description: "Verified Certificate of Achievement issued by Cornell University through CornellX (Valid Certificate ID: d8491ceb9049465e90dac14236cbbfe8) on July 27, 2026. Instructed by Rajesh Bhaskaran, Swanson Director of Engineering Simulation at Sibley School of Mechanical & Aerospace Engineering, Cornell University. Successfully completed and received a passing grade in rigorous hands-on engineering simulations covering governing equations, finite element analysis (FEA), computational fluid dynamics (CFD), mesh sensitivity verification, and solution validation."
+    },
+    {
+      id: "cert-vanderbilt-matlab",
+      title: "Introduction to Programming with MATLAB",
+      issuer: "Vanderbilt University (Coursera)",
+      field: "Computer Science & Engineering Programming",
+      year: "Sep 2026",
+      date: "September 23, 2026",
+      certId: "AWUEPMZAJE64",
+      verificationUrl: "https://coursera.org/verify/AWUEPMZAJE64",
+      imageUrl: "/images/real_certs/cert_vanderbilt_matlab.png",
+      category: "course",
+      description: "Official Course Certificate authorized by Vanderbilt University and offered through Coursera, awarded to Md. Jubair Uddin Zidan on September 23, 2026 (Verification ID: AWUEPMZAJE64). Instructed by Dr. Akos Ledeczi and Dr. J. Michael Fitzpatrick (Professors of Computer Engineering, Computer Science, and Electrical Engineering). Comprehensive training in computer programming fundamentals, recursive algorithms, modular functions, file I/O operations, multidimensional matrix indexing, and computational problem-solving."
+    },
+    {
+      id: "cert-ansys-artery-steady",
+      title: "3D Bifurcating Artery (Steady)",
+      issuer: "Ansys Innovation Courses",
+      field: "Computational Fluid Dynamics (CFD) & Hemodynamics",
+      year: "Sep 2026",
+      date: "September 15, 2026",
+      imageUrl: "/images/real_certs/cert_ansys_artery_steady.png",
+      category: "course",
+      description: "Official Ansys Course Completion Certificate confirmed on September 15, 2026. Specialized CFD simulation in Ansys Fluent modeling steady laminar blood flow dynamics across an anatomical 3D bifurcating artery. Explored boundary layer meshing, non-Newtonian blood rheology, wall shear stress (WSS) distributions, recirculation zone identification, and hemodynamic pressure losses."
+    },
+    {
+      id: "cert-mathworks-simulink-onramp",
+      title: "Simulink Onramp",
+      issuer: "MathWorks Training Services",
+      field: "Dynamic Systems Simulation & Model-Based Design",
+      year: "Sep 2026",
+      date: "September 25, 2026",
+      imageUrl: "/images/real_certs/cert_mathworks_simulink_onramp.png",
+      category: "course",
+      description: "Course Completion Certificate awarded by MathWorks Training Services to Jubair Zidan on 25 September 2026 for successfully completing 100% of the self-paced training course, signed by Craig L. Santos, Director of Training Services. Covers graphical simulation of dynamic physical systems, continuous-time and discrete-time differential equation solutions, block-diagram modeling, signal routing, and feedback control system analysis."
+    },
+    {
+      id: "cert-mathworks-matlab-onramp",
+      title: "MATLAB Onramp",
+      issuer: "MathWorks Training Services",
+      field: "Numerical Computation & Data Visualization",
+      year: "Jun 2026",
+      date: "June 4, 2026",
+      imageUrl: "/images/real_certs/cert_mathworks_matlab_onramp.png",
+      category: "course",
+      description: "Course Completion Certificate awarded by MathWorks Training Services to Jubair Zidan on 4 June 2026 for successfully completing 100% of the self-paced training course, signed by Craig L. Santos, Director of Training Services. Validates proficiency in core MATLAB computation, array math, matrix transformations, script automation, data filtering, and technical 2D/3D visualization for engineering applications."
+    }
+  ],
 
   certifications: [
     {
@@ -598,6 +741,65 @@ export const awardsData = {
       imageUrl: "/images/real_certs/cert_cswa_solidworks.png",
       category: "technical",
       description: "Official Dassault Systèmes Certified SOLIDWORKS Associate (CSWA) credential (Certificate ID: C-HBYTZ6ULEW) conferred on June 23, 2025, signed by Manish Kumar (SOLIDWORKS CEO & R&D Vice President). Demonstrates validated professional competency in 3D CAD parametric modeling, mechanical design principles, engineering drawing generation, and multi-part assembly design in SOLIDWORKS."
+    },
+    {
+      id: "cert-cornell-simulation",
+      title: "ENGR2000X: A Hands-on Introduction to Engineering Simulations",
+      issuer: "Cornell University / CornellX (edX)",
+      field: "Finite Element Analysis (FEA) & Computational Fluid Dynamics (CFD)",
+      year: "Jul 2026",
+      date: "July 27, 2026",
+      certId: "d8491ceb9049465e90dac14236cbbfe8",
+      verificationUrl: "https://courses.edx.org/certificates/d8491ceb9049465e90dac14236cbbfe8",
+      imageUrl: "/images/real_certs/cert_cornell_simulation.png",
+      category: "course",
+      description: "Verified Certificate of Achievement issued by Cornell University through CornellX (Valid Certificate ID: d8491ceb9049465e90dac14236cbbfe8) on July 27, 2026. Instructed by Rajesh Bhaskaran, Swanson Director of Engineering Simulation at Sibley School of Mechanical & Aerospace Engineering, Cornell University. Successfully completed and received a passing grade in rigorous hands-on engineering simulations covering governing equations, finite element analysis (FEA), computational fluid dynamics (CFD), mesh sensitivity verification, and solution validation."
+    },
+    {
+      id: "cert-vanderbilt-matlab",
+      title: "Introduction to Programming with MATLAB",
+      issuer: "Vanderbilt University (Coursera)",
+      field: "Computer Science & Engineering Programming",
+      year: "Sep 2026",
+      date: "September 23, 2026",
+      certId: "AWUEPMZAJE64",
+      verificationUrl: "https://coursera.org/verify/AWUEPMZAJE64",
+      imageUrl: "/images/real_certs/cert_vanderbilt_matlab.png",
+      category: "course",
+      description: "Official Course Certificate authorized by Vanderbilt University and offered through Coursera, awarded to Md. Jubair Uddin Zidan on September 23, 2026 (Verification ID: AWUEPMZAJE64). Instructed by Dr. Akos Ledeczi and Dr. J. Michael Fitzpatrick (Professors of Computer Engineering, Computer Science, and Electrical Engineering). Comprehensive training in computer programming fundamentals, recursive algorithms, modular functions, file I/O operations, multidimensional matrix indexing, and computational problem-solving."
+    },
+    {
+      id: "cert-ansys-artery-steady",
+      title: "3D Bifurcating Artery (Steady)",
+      issuer: "Ansys Innovation Courses",
+      field: "Computational Fluid Dynamics (CFD) & Hemodynamics",
+      year: "Sep 2026",
+      date: "September 15, 2026",
+      imageUrl: "/images/real_certs/cert_ansys_artery_steady.png",
+      category: "course",
+      description: "Official Ansys Course Completion Certificate confirmed on September 15, 2026. Specialized CFD simulation in Ansys Fluent modeling steady laminar blood flow dynamics across an anatomical 3D bifurcating artery. Explored boundary layer meshing, non-Newtonian blood rheology, wall shear stress (WSS) distributions, recirculation zone identification, and hemodynamic pressure losses."
+    },
+    {
+      id: "cert-mathworks-simulink-onramp",
+      title: "Simulink Onramp",
+      issuer: "MathWorks Training Services",
+      field: "Dynamic Systems Simulation & Model-Based Design",
+      year: "Sep 2026",
+      date: "September 25, 2026",
+      imageUrl: "/images/real_certs/cert_mathworks_simulink_onramp.png",
+      category: "course",
+      description: "Course Completion Certificate awarded by MathWorks Training Services to Jubair Zidan on 25 September 2026 for successfully completing 100% of the self-paced training course, signed by Craig L. Santos, Director of Training Services. Covers graphical simulation of dynamic physical systems, continuous-time and discrete-time differential equation solutions, block-diagram modeling, signal routing, and feedback control system analysis."
+    },
+    {
+      id: "cert-mathworks-matlab-onramp",
+      title: "MATLAB Onramp",
+      issuer: "MathWorks Training Services",
+      field: "Numerical Computation & Data Visualization",
+      year: "Jun 2026",
+      date: "June 4, 2026",
+      imageUrl: "/images/real_certs/cert_mathworks_matlab_onramp.png",
+      category: "course",
+      description: "Course Completion Certificate awarded by MathWorks Training Services to Jubair Zidan on 4 June 2026 for successfully completing 100% of the self-paced training course, signed by Craig L. Santos, Director of Training Services. Validates proficiency in core MATLAB computation, array math, matrix transformations, script automation, data filtering, and technical 2D/3D visualization for engineering applications."
     }
   ]
 };
