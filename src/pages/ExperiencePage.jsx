@@ -21,7 +21,7 @@ export const ExperiencePage = () => {
     { id: 'all', label: 'All Experience' },
     { id: 'internship', label: 'Industrial Attachment' },
     { id: 'tutoring', label: 'Teaching & Instructorship' },
-    { id: 'extracurricular', label: 'University Clubs' },
+    { id: 'extracurricular', label: 'Extracurricular Activities' },
     { id: 'volunteering', label: 'Volunteering Work' }
   ];
 
