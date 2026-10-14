@@ -693,6 +693,7 @@ export const awardsData = {
       date: "September 23, 2026",
       certId: "AWUEPMZAJE64",
       verificationUrl: "https://coursera.org/verify/AWUEPMZAJE64",
+      pdfUrl: "/docs/Vanderbilt_MATLAB_Certificate_Jubair_Zidan.pdf",
       imageUrl: "/images/real_certs/cert_vanderbilt_matlab.png",
       category: "course",
       description: "Official Course Certificate authorized by Vanderbilt University and offered through Coursera, awarded to Md. Jubair Uddin Zidan on September 23, 2026 (Verification ID: AWUEPMZAJE64). Instructed by Dr. Akos Ledeczi and Dr. J. Michael Fitzpatrick (Professors of Computer Engineering, Computer Science, and Electrical Engineering). Comprehensive training in computer programming fundamentals, recursive algorithms, modular functions, file I/O operations, multidimensional matrix indexing, and computational problem-solving."
@@ -704,9 +705,22 @@ export const awardsData = {
       field: "Computational Fluid Dynamics (CFD) & Hemodynamics",
       year: "Sep 2026",
       date: "September 15, 2026",
+      pdfUrl: "/docs/Ansys_3D_Bifurcating_Artery_Steady_Certificate.pdf",
       imageUrl: "/images/real_certs/cert_ansys_artery_steady.png",
       category: "course",
       description: "Official Ansys Course Completion Certificate confirmed on September 15, 2026. Specialized CFD simulation in Ansys Fluent modeling steady laminar blood flow dynamics across an anatomical 3D bifurcating artery. Explored boundary layer meshing, non-Newtonian blood rheology, wall shear stress (WSS) distributions, recirculation zone identification, and hemodynamic pressure losses."
+    },
+    {
+      id: "cert-ansys-artery",
+      title: "3D Bifurcating Artery",
+      issuer: "Ansys Innovation Courses",
+      field: "Computational Fluid Dynamics (CFD) & Hemodynamics",
+      year: "Sep 2026",
+      date: "September 19, 2026",
+      pdfUrl: "/docs/Ansys_3D_Bifurcating_Artery_Certificate.pdf",
+      imageUrl: "/images/real_certs/cert_ansys_artery.png",
+      category: "course",
+      description: "Official Ansys Course Completion Certificate confirmed on September 19, 2026. Advanced computational biofluid dynamics simulation in Ansys Fluent modeling complete hemodynamic flow fields within an anatomical 3D bifurcating artery. Covers vascular geometry preparation, multi-block unstructured meshing with prism boundary layers, non-Newtonian blood viscosity models, arterial wall shear stress (WSS) profiling, and velocity vectors."
     },
     {
       id: "cert-mathworks-simulink-onramp",
@@ -780,6 +794,7 @@ export const awardsData = {
       date: "September 23, 2026",
       certId: "AWUEPMZAJE64",
       verificationUrl: "https://coursera.org/verify/AWUEPMZAJE64",
+      pdfUrl: "/docs/Vanderbilt_MATLAB_Certificate_Jubair_Zidan.pdf",
       imageUrl: "/images/real_certs/cert_vanderbilt_matlab.png",
       category: "course",
       description: "Official Course Certificate authorized by Vanderbilt University and offered through Coursera, awarded to Md. Jubair Uddin Zidan on September 23, 2026 (Verification ID: AWUEPMZAJE64). Instructed by Dr. Akos Ledeczi and Dr. J. Michael Fitzpatrick (Professors of Computer Engineering, Computer Science, and Electrical Engineering). Comprehensive training in computer programming fundamentals, recursive algorithms, modular functions, file I/O operations, multidimensional matrix indexing, and computational problem-solving."
@@ -791,9 +806,22 @@ export const awardsData = {
       field: "Computational Fluid Dynamics (CFD) & Hemodynamics",
       year: "Sep 2026",
       date: "September 15, 2026",
+      pdfUrl: "/docs/Ansys_3D_Bifurcating_Artery_Steady_Certificate.pdf",
       imageUrl: "/images/real_certs/cert_ansys_artery_steady.png",
       category: "course",
       description: "Official Ansys Course Completion Certificate confirmed on September 15, 2026. Specialized CFD simulation in Ansys Fluent modeling steady laminar blood flow dynamics across an anatomical 3D bifurcating artery. Explored boundary layer meshing, non-Newtonian blood rheology, wall shear stress (WSS) distributions, recirculation zone identification, and hemodynamic pressure losses."
+    },
+    {
+      id: "cert-ansys-artery",
+      title: "3D Bifurcating Artery",
+      issuer: "Ansys Innovation Courses",
+      field: "Computational Fluid Dynamics (CFD) & Hemodynamics",
+      year: "Sep 2026",
+      date: "September 19, 2026",
+      pdfUrl: "/docs/Ansys_3D_Bifurcating_Artery_Certificate.pdf",
+      imageUrl: "/images/real_certs/cert_ansys_artery.png",
+      category: "course",
+      description: "Official Ansys Course Completion Certificate confirmed on September 19, 2026. Advanced computational biofluid dynamics simulation in Ansys Fluent modeling complete hemodynamic flow fields within an anatomical 3D bifurcating artery. Covers vascular geometry preparation, multi-block unstructured meshing with prism boundary layers, non-Newtonian blood viscosity models, arterial wall shear stress (WSS) profiling, and velocity vectors."
     },
     {
       id: "cert-mathworks-simulink-onramp",
