@@ -2162,6 +2162,125 @@ img {
   background: rgba(255, 255, 255, 0.25) !important;
 }
 
+/* Academic Milestones inside hovered academic cards (Pills, Icons & Titles) */
+.timeline-academic-card:hover .msc-milestone-item,
+.timeline-academic-card:hover .msc-milestones-grid.is-compact .msc-milestone-item.is-compact {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  box-shadow: none !important;
+}
+
+.timeline-academic-card:hover .msc-milestones-grid.is-compact .msc-milestone-item.is-compact:hover {
+  background: rgba(255, 255, 255, 0.32) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.timeline-academic-card:hover .msc-milestones-grid.is-compact .msc-milestone-item.is-compact.is-ongoing {
+  background: rgba(255, 255, 255, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+.timeline-academic-card:hover .msc-milestone-title,
+.timeline-academic-card:hover .msc-milestone-item .msc-milestone-title,
+.timeline-academic-card:hover .msc-milestone-item.is-compact .msc-milestone-title,
+.timeline-academic-card:hover .msc-milestone-item.is-compact.is-ongoing .msc-milestone-title {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+.timeline-academic-card:hover .msc-milestone-desc {
+  color: #E2E8F0 !important;
+}
+
+.timeline-academic-card:hover .msc-milestone-icon,
+.timeline-academic-card:hover .msc-milestone-item svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+.timeline-academic-card:hover .msc-milestone-item svg.lucide-check-circle-2 {
+  color: #86EFAC !important;
+  stroke: #86EFAC !important;
+}
+
+.timeline-academic-card:hover .msc-milestone-item svg.lucide-sparkles {
+  color: #DDD6FE !important;
+  stroke: #DDD6FE !important;
+}
+
+.timeline-academic-card:hover .msc-milestone-item svg.lucide-clock {
+  color: #BFDBFE !important;
+  stroke: #BFDBFE !important;
+}
+
+.timeline-academic-card:hover .msc-milestone-item svg.lucide-graduation-cap {
+  color: #BFDBFE !important;
+  stroke: #BFDBFE !important;
+}
+
+/* Official Academic Document Cards inside hovered cards */
+.timeline-academic-card:hover .academic-cert-box {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border: 1px solid rgba(255, 255, 255, 0.34) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16) !important;
+}
+
+.timeline-academic-card:hover .academic-cert-box:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.52) !important;
+}
+
+.timeline-academic-card:hover .academic-cert-icon-badge {
+  background: rgba(255, 255, 255, 0.24) !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  color: #FFFFFF !important;
+}
+
+.timeline-academic-card:hover .academic-cert-icon-badge svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+.timeline-academic-card:hover .academic-cert-tag {
+  color: #DBEAFE !important;
+  font-weight: 700 !important;
+}
+
+.timeline-academic-card:hover .academic-cert-status-badge {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  color: #FFFFFF !important;
+}
+
+.timeline-academic-card:hover .academic-cert-status-badge svg {
+  color: #86EFAC !important;
+  stroke: #86EFAC !important;
+}
+
+.timeline-academic-card:hover .academic-cert-heading {
+  color: #FFFFFF !important;
+}
+
+.timeline-academic-card:hover .academic-cert-btn-primary {
+  background: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  color: #1D4ED8 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22) !important;
+  font-weight: 700 !important;
+}
+
+.timeline-academic-card:hover .academic-cert-btn-primary svg {
+  color: #1D4ED8 !important;
+  stroke: #1D4ED8 !important;
+}
+
+.timeline-academic-card:hover .academic-cert-btn-primary:hover {
+  background: #F8FAFC !important;
+  color: #1E40AF !important;
+  transform: translateY(-1px);
+}
+
 /* Action Links and Arrow (e.g. "View Education Timeline", "Learn more" in crisp white) */
 .card-interactive:hover .preview-card-action-text,
 .card-interactive:hover .preview-card-action-arrow,
@@ -2390,8 +2509,33 @@ img {
 .pub-list-card:hover [style*="color: var(--text-secondary)"],
 .pub-list-card:hover [style*="color:var(--text-secondary)"],
 .exp-card:hover [style*="color: var(--text-secondary)"],
-.exp-card:hover [style*="color:var(--text-secondary)"] {
+.exp-card:hover [style*="color:var(--text-secondary)"],
+.award-card:hover [style*="color: var(--text-secondary)"],
+.project-card:hover [style*="color: var(--text-secondary)"],
+.leadership-card:hover [style*="color: var(--text-secondary)"] {
   color: #E2E8F0 !important;
+}
+
+.card:hover [style*="color: var(--text-muted)"],
+.card:hover [style*="color:var(--text-muted)"],
+.timeline-academic-card:hover [style*="color: var(--text-muted)"],
+.timeline-academic-card:hover [style*="color:var(--text-muted)"],
+.pub-list-card:hover [style*="color: var(--text-muted)"],
+.pub-list-card:hover [style*="color:var(--text-muted)"],
+.exp-card:hover [style*="color: var(--text-muted)"],
+.exp-card:hover [style*="color:var(--text-muted)"],
+.award-card:hover [style*="color: var(--text-muted)"],
+.project-card:hover [style*="color: var(--text-muted)"],
+.leadership-card:hover [style*="color: var(--text-muted)"] {
+  color: #E2E8F0 !important;
+}
+
+.card:hover [style*="color: var(--accent-teal)"],
+.card:hover [style*="color:var(--accent-teal)"],
+.pub-list-card:hover [style*="color: var(--accent-teal)"],
+.award-card:hover [style*="color: var(--accent-teal)"],
+.timeline-academic-card:hover [style*="color: var(--accent-teal)"] {
+  color: #A7F3D0 !important;
 }
 
 .ongoing-research-card {
