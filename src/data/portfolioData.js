@@ -831,7 +831,7 @@ export const experienceData = {
       organization: "Green Lead",
       role: "Sustainability & Climate Action Volunteer",
       period: "2020 – 2022",
-      logoUrl: "/images/real/green_lead_logo.svg",
+      logoUrl: "/images/real/green_lead_logo.png",
       tagline: "Nonprofit social enterprise developing green leaders",
       description: "Green Lead is a nonprofit social enterprise that develops green leaders through sustainability, entrepreneurship, and climate action initiatives.",
       highlights: [
