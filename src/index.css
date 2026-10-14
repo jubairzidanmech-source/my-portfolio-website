@@ -10243,74 +10243,334 @@ body [style*="cursor:zoom-in"] {
   border-color: #60a5fa;
 }
 
-/* Inside hovered card */
+/* ==========================================================================
+   HIGH-CONTRAST CARD HOVER OVERRIDES FOR B.SC. RESULTS DROPDOWN
+   Fixes invisible text on hover inside the B.Sc. card
+   ========================================================================== */
+
+/* 1. Header Trigger & Status Pills */
 .timeline-academic-card:hover .bsc-dropdown-box {
-  background: rgba(255, 255, 255, 0.12) !important;
+  background: rgba(15, 23, 42, 0.35) !important;
   border-color: rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18) !important;
+}
+
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #FFFFFF !important;
+}
+
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn.is-active {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.25) !important;
 }
 
 .timeline-academic-card:hover .bsc-dropdown-title {
-  color: #ffffff !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
 }
 
 .timeline-academic-card:hover .bsc-dropdown-subtitle {
-  color: #dbeafe !important;
+  color: #E2E8F0 !important;
 }
 
 .timeline-academic-card:hover .bsc-dropdown-status-pill {
-  background: rgba(255, 255, 255, 0.22) !important;
-  color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.45) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
 }
 
-.timeline-academic-card:hover .bsc-dropdown-chevron {
-  color: #ffffff !important;
+.timeline-academic-card:hover .bsc-dropdown-chevron svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
 }
 
-.timeline-academic-card:hover .bsc-milestone-pill {
-  background: rgba(255, 255, 255, 0.2) !important;
-  color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.4) !important;
+/* 2. Choose Semester Controls & Quick Pills */
+.timeline-academic-card:hover .bsc-select-label {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
-.timeline-academic-card:hover .bsc-metric-card {
-  background: rgba(255, 255, 255, 0.2) !important;
-  border-color: rgba(255, 255, 255, 0.45) !important;
+.timeline-academic-card:hover .bsc-select-styled-container {
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
 }
 
-.timeline-academic-card:hover .bsc-metric-num {
-  color: #ffffff !important;
+.timeline-academic-card:hover .bsc-custom-select {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  font-weight: 600 !important;
 }
 
-.timeline-academic-card:hover .bsc-metric-label {
-  color: #dbeafe !important;
+.timeline-academic-card:hover .bsc-custom-select option {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
 }
 
-.timeline-academic-card:hover .bsc-metric-sub {
-  color: #bfdbfe !important;
+.timeline-academic-card:hover .bsc-select-chevron {
+  color: #0F172A !important;
 }
 
 .timeline-academic-card:hover .bsc-quick-pill {
-  background: rgba(255, 255, 255, 0.2) !important;
-  color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.4) !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  font-weight: 600 !important;
+}
+
+.timeline-academic-card:hover .bsc-quick-pill:hover {
+  background: rgba(255, 255, 255, 0.32) !important;
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
 }
 
 .timeline-academic-card:hover .bsc-quick-pill.is-active {
-  background: #ffffff !important;
-  color: #1d4ed8 !important;
-  border-color: #ffffff !important;
+  background: #FFFFFF !important;
+  color: #1D4ED8 !important;
+  border-color: #FFFFFF !important;
+  font-weight: 800 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
 }
 
 .timeline-academic-card:hover .bsc-quick-pill.is-active span,
 .timeline-academic-card:hover .bsc-quick-pill.is-active * {
-  color: #1d4ed8 !important;
-  -webkit-text-fill-color: #1d4ed8 !important;
+  color: #1D4ED8 !important;
+  -webkit-text-fill-color: #1D4ED8 !important;
 }
 
-.timeline-academic-card:hover .bsc-data-table th,
+/* 3. Semester Detail Banner */
+.timeline-academic-card:hover .bsc-semester-banner {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border: 1px solid rgba(255, 255, 255, 0.38) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12) !important;
+}
+
+.timeline-academic-card:hover .bsc-semester-level-badge {
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+}
+
+.timeline-academic-card:hover .bsc-semester-session-meta {
+  color: #E2E8F0 !important;
+  font-weight: 500 !important;
+}
+
+.timeline-academic-card:hover .bsc-banner-stat-label {
+  color: #DBEAFE !important;
+  font-weight: 600 !important;
+}
+
+.timeline-academic-card:hover .bsc-banner-stat-val {
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+}
+
+.timeline-academic-card:hover .bsc-banner-stat-val.gpa-val {
+  color: #34D399 !important;
+}
+
+.timeline-academic-card:hover .bsc-banner-stat-val small {
+  color: #E0E7FF !important;
+}
+
+/* 4. Overview Metric Cards */
+.timeline-academic-card:hover .bsc-metric-card {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+}
+
+.timeline-academic-card:hover .bsc-metric-card.highlight-card {
+  background: rgba(255, 255, 255, 0.26) !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.timeline-academic-card:hover .bsc-metric-num {
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+}
+
+.timeline-academic-card:hover .bsc-metric-label {
+  color: #DBEAFE !important;
+  font-weight: 600 !important;
+}
+
+.timeline-academic-card:hover .bsc-metric-sub {
+  color: #E2E8F0 !important;
+}
+
+/* 5. COURSES TABLE CONTRAST FIX (Crystal Clear Visibility on White Card Table) */
+.timeline-academic-card:hover .bsc-table-container {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(203, 213, 225, 0.95) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14) !important;
+}
+
+.timeline-academic-card:hover .bsc-data-table {
+  color: #0F172A !important;
+}
+
+.timeline-academic-card:hover .bsc-data-table thead tr {
+  background: #F1F5F9 !important;
+  border-bottom: 2px solid #CBD5E1 !important;
+}
+
+.timeline-academic-card:hover .bsc-data-table th {
+  color: #334155 !important;
+  font-weight: 700 !important;
+  background: #F1F5F9 !important;
+}
+
+.timeline-academic-card:hover .bsc-data-table tbody tr {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.timeline-academic-card:hover .bsc-data-table tbody tr:hover {
+  background: #F8FAFC !important;
+}
+
 .timeline-academic-card:hover .bsc-data-table td {
-  color: #ffffff !important;
+  color: #0F172A !important;
+  font-weight: 500 !important;
+}
+
+.timeline-academic-card:hover .bsc-course-title-cell {
+  color: #0F172A !important;
+  font-weight: 600 !important;
+}
+
+.timeline-academic-card:hover .bsc-credits-text {
+  color: #0F172A !important;
+  font-weight: 600 !important;
+}
+
+.timeline-academic-card:hover .bsc-gp-text {
+  color: #0F172A !important;
+  font-weight: 600 !important;
+}
+
+.timeline-academic-card:hover .bsc-course-code {
+  color: #1D4ED8 !important;
+  background: #EFF6FF !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
+}
+
+.timeline-academic-card:hover .bsc-sem-tag {
+  color: #1D4ED8 !important;
+  font-weight: 700 !important;
+}
+
+.timeline-academic-card:hover .bsc-session-text {
+  color: #475569 !important;
+  font-weight: 500 !important;
+}
+
+.timeline-academic-card:hover .bsc-view-btn-inline {
+  color: #1D4ED8 !important;
+  font-weight: 600 !important;
+}
+
+.timeline-academic-card:hover .bsc-view-btn-inline svg {
+  color: #1D4ED8 !important;
+  stroke: #1D4ED8 !important;
+}
+
+/* 6. Footer Navigation Buttons */
+.timeline-academic-card:hover .bsc-nav-btn {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+}
+
+.timeline-academic-card:hover .bsc-nav-btn:hover:not(.is-disabled) {
+  background: #EFF6FF !important;
+  color: #1D4ED8 !important;
+  border-color: #1D4ED8 !important;
+}
+
+.timeline-academic-card:hover .bsc-nav-btn-center {
+  background: rgba(255, 255, 255, 0.22) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+}
+
+.timeline-academic-card:hover .bsc-nav-btn-center:hover {
+  background: #FFFFFF !important;
+  color: #1D4ED8 !important;
+}
+
+.timeline-academic-card:hover .bsc-nav-btn.is-disabled {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: rgba(255, 255, 255, 0.45) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* 7. Dark Mode Card Hover Consistency */
+[data-theme="dark"] .timeline-academic-card:hover .bsc-table-container {
+  background: #0B1120 !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .bsc-data-table thead tr {
+  background: #111827 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .bsc-data-table th {
+  color: #94A3B8 !important;
+  background: #111827 !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .bsc-data-table tbody tr {
+  background: #0B1120 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .bsc-data-table tbody tr:hover {
+  background: rgba(37, 99, 235, 0.18) !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .bsc-data-table td {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .bsc-course-title-cell {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .bsc-credits-text,
+[data-theme="dark"] .timeline-academic-card:hover .bsc-gp-text {
+  color: #F1F5F9 !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .bsc-course-code {
+  color: #93C5FD !important;
+  background: rgba(37, 99, 235, 0.25) !important;
+  border-color: rgba(96, 165, 250, 0.35) !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .bsc-select-styled-container {
+  background: #0F172A !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .bsc-custom-select {
+  background: #0F172A !important;
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .bsc-select-chevron {
+  color: #94A3B8 !important;
+}
+
+[data-theme="dark"] .timeline-academic-card:hover .bsc-nav-btn {
+  background: #1E293B !important;
+  color: #F8FAFC !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 /* ==========================================================================
