@@ -13,7 +13,6 @@ import {
   X 
 } from 'lucide-react';
 import { BscResultsDropdown } from '../components/BscResultsDropdown';
-import { AcademicTimelineBar } from '../components/AcademicTimelineBar';
 
 // Academic CGPA / GPA Display (Clean typography without oversized boxes or bright badges)
 const CgpaStatNumber = ({ value, max, label, sublabel, badge }) => {
@@ -105,11 +104,6 @@ export const AcademicsPage = () => {
         </p>
       </div>
 
-      {/* Modern Stepper Progress & Degree Navigation Bar (Matches Reference Stepper) */}
-      <AcademicTimelineBar 
-        activeDegree={activeDegree} 
-        onSelectDegree={handleSelectDegree} 
-      />
 
       {/* Timeline Section */}
       <div className="timeline-spine-wrapper">
@@ -119,12 +113,20 @@ export const AcademicsPage = () => {
           data-degree-id="msc" 
           className={`timeline-row is-current ${activeDegree === 'msc' ? 'is-active-viewing' : ''}`}
         >
-          <div className="timeline-axis">
-            <div className="timeline-node-circle is-in-progress">
-              <span className="timeline-pulse-node" />
-              <div className="timeline-node-inner-dot" />
+          <div className="timeline-axis" onClick={() => handleSelectDegree('msc')} title="Click to view M.Sc. Degree">
+            <div className="timeline-node-outer-halo">
+              <div className="timeline-stepper-node is-in-progress">
+                <span className="timeline-pulse-node" />
+                <span className="stepper-step-num">4</span>
+              </div>
             </div>
-            <span className="timeline-year-text">2025 – 2027</span>
+            <div className="timeline-axis-meta">
+              <span className="timeline-year-text">2025 – 2027</span>
+              <div className="timeline-axis-badge-row">
+                <span className="timeline-axis-status is-in-progress">In Progress</span>
+                {activeDegree === 'msc' && <span className="stepper-viewing-tag">Viewing</span>}
+              </div>
+            </div>
           </div>
 
           <div className="timeline-academic-card is-current">
@@ -208,11 +210,19 @@ export const AcademicsPage = () => {
           data-degree-id="bsc" 
           className={`timeline-row ${activeDegree === 'bsc' ? 'is-active-viewing' : ''}`}
         >
-          <div className="timeline-axis">
-            <div className="timeline-node-circle is-completed">
-              <Check size={11} strokeWidth={3} className="vertical-node-check" />
+          <div className="timeline-axis" onClick={() => handleSelectDegree('bsc')} title="Click to view B.Sc. Degree">
+            <div className="timeline-node-outer-halo">
+              <div className="timeline-stepper-node is-completed">
+                <Check size={14} strokeWidth={3} className="stepper-check-icon" />
+              </div>
             </div>
-            <span className="timeline-year-text">2019 – 2024</span>
+            <div className="timeline-axis-meta">
+              <span className="timeline-year-text">2019 – 2024</span>
+              <div className="timeline-axis-badge-row">
+                <span className="timeline-axis-status is-completed">Conferred</span>
+                {activeDegree === 'bsc' && <span className="stepper-viewing-tag">Viewing</span>}
+              </div>
+            </div>
           </div>
 
           <div className="timeline-academic-card">
@@ -352,11 +362,19 @@ export const AcademicsPage = () => {
           data-degree-id="hsc" 
           className={`timeline-row ${activeDegree === 'hsc' ? 'is-active-viewing' : ''}`}
         >
-          <div className="timeline-axis">
-            <div className="timeline-node-circle is-completed">
-              <Check size={11} strokeWidth={3} className="vertical-node-check" />
+          <div className="timeline-axis" onClick={() => handleSelectDegree('hsc')} title="Click to view HSC Milestone">
+            <div className="timeline-node-outer-halo">
+              <div className="timeline-stepper-node is-completed">
+                <Check size={14} strokeWidth={3} className="stepper-check-icon" />
+              </div>
             </div>
-            <span className="timeline-year-text">2016 – 2018</span>
+            <div className="timeline-axis-meta">
+              <span className="timeline-year-text">2016 – 2018</span>
+              <div className="timeline-axis-badge-row">
+                <span className="timeline-axis-status is-completed">Completed</span>
+                {activeDegree === 'hsc' && <span className="stepper-viewing-tag">Viewing</span>}
+              </div>
+            </div>
           </div>
 
           <div className="timeline-academic-card">
@@ -400,11 +418,19 @@ export const AcademicsPage = () => {
           data-degree-id="ssc" 
           className={`timeline-row ${activeDegree === 'ssc' ? 'is-active-viewing' : ''}`}
         >
-          <div className="timeline-axis">
-            <div className="timeline-node-circle is-completed">
-              <Check size={11} strokeWidth={3} className="vertical-node-check" />
+          <div className="timeline-axis" onClick={() => handleSelectDegree('ssc')} title="Click to view SSC Milestone">
+            <div className="timeline-node-outer-halo">
+              <div className="timeline-stepper-node is-completed">
+                <Check size={14} strokeWidth={3} className="stepper-check-icon" />
+              </div>
             </div>
-            <span className="timeline-year-text">2008 – 2016</span>
+            <div className="timeline-axis-meta">
+              <span className="timeline-year-text">2008 – 2016</span>
+              <div className="timeline-axis-badge-row">
+                <span className="timeline-axis-status is-completed">Completed</span>
+                {activeDegree === 'ssc' && <span className="stepper-viewing-tag">Viewing</span>}
+              </div>
+            </div>
           </div>
 
           <div className="timeline-academic-card">
