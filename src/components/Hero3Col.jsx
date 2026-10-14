@@ -148,12 +148,6 @@ export const Hero3Col = ({ setActivePage }) => {
                 className="portrait-img"
                 loading="eager"
               />
-
-              {/* Top Floating Prestige Badge */}
-              <div className="portrait-top-pill">
-                <span className="pulse-dot" style={{ width: 6, height: 6 }}></span>
-                <span>CUET Mechanical Engineering</span>
-              </div>
               
               {/* Continuous Progressive Gradient Blur Layer (Inspo Style, No Box) */}
               <div className="portrait-progressive-blur-layer" aria-hidden="true"></div>
