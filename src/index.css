@@ -10086,144 +10086,158 @@ body [style*="cursor:zoom-in"] {
 
 .bsc-type-badge,
 .timeline-academic-card:hover .bsc-type-badge {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700 !important;
-  padding: 3px 9px;
+  padding: 3px 10px;
   border-radius: 9999px;
   white-space: nowrap;
   display: inline-block;
   letter-spacing: 0.02em;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14);
 }
 
 .type-badge-theory,
 .timeline-academic-card:hover .type-badge-theory {
-  background: #EFF6FF !important;
-  color: #1D4ED8 !important;
-  -webkit-text-fill-color: #1D4ED8 !important;
-  border: 1.5px solid #93C5FD !important;
+  background: #4F46E5 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #4338CA !important;
 }
 
 .type-badge-lab,
 .timeline-academic-card:hover .type-badge-lab {
-  background: #ECFDF5 !important;
-  color: #047857 !important;
-  -webkit-text-fill-color: #047857 !important;
-  border: 1.5px solid #6EE7B7 !important;
+  background: #0D9488 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #0F766E !important;
 }
 
 .type-badge-project,
 .timeline-academic-card:hover .type-badge-project {
-  background: #FAF5FF !important;
-  color: #7E22CE !important;
-  -webkit-text-fill-color: #7E22CE !important;
-  border: 1.5px solid #D8B4FE !important;
+  background: #7C3AED !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #6D28D9 !important;
 }
 
 .bsc-grade-badge,
 .timeline-academic-card:hover .bsc-grade-badge {
-  font-size: 0.78rem;
+  font-size: 0.80rem;
   font-weight: 800 !important;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 6px;
   display: inline-block;
-  min-width: 32px;
+  min-width: 38px;
   text-align: center;
   font-feature-settings: 'tnum';
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+  letter-spacing: 0.02em;
 }
 
 .grade-badge-a,
 .timeline-academic-card:hover .grade-badge-a {
-  background: #ECFDF5 !important;
-  color: #065F46 !important;
-  -webkit-text-fill-color: #065F46 !important;
-  border: 1.5px solid #34D399 !important;
+  background: #059669 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #047857 !important;
 }
 
 .grade-badge-b,
 .timeline-academic-card:hover .grade-badge-b {
-  background: #EFF6FF !important;
-  color: #1E40AF !important;
-  -webkit-text-fill-color: #1E40AF !important;
-  border: 1.5px solid #60A5FA !important;
+  background: #2563EB !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #1D4ED8 !important;
 }
 
 .grade-badge-c,
 .timeline-academic-card:hover .grade-badge-c {
-  background: #FFFBEB !important;
-  color: #B45309 !important;
-  -webkit-text-fill-color: #B45309 !important;
-  border: 1.5px solid #FBBF24 !important;
+  background: #D97706 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #B45309 !important;
 }
 
 .grade-badge-d,
 .timeline-academic-card:hover .grade-badge-d {
-  background: #FEF2F2 !important;
-  color: #B91C1C !important;
-  -webkit-text-fill-color: #B91C1C !important;
-  border: 1.5px solid #F87171 !important;
+  background: #DC2626 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #B91C1C !important;
 }
 
 [data-theme="dark"] .type-badge-theory,
 [data-theme="dark"] .timeline-academic-card:hover .type-badge-theory {
-  background: rgba(37, 99, 235, 0.22) !important;
-  color: #93C5FD !important;
-  -webkit-text-fill-color: #93C5FD !important;
-  border: 1.5px solid rgba(96, 165, 250, 0.45) !important;
+  background: #4338CA !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #6366F1 !important;
 }
 
 [data-theme="dark"] .type-badge-lab,
 [data-theme="dark"] .timeline-academic-card:hover .type-badge-lab {
-  background: rgba(16, 185, 129, 0.22) !important;
-  color: #6EE7B7 !important;
-  -webkit-text-fill-color: #6EE7B7 !important;
-  border: 1.5px solid rgba(52, 211, 153, 0.45) !important;
+  background: #0F766E !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #14B8A6 !important;
 }
 
 [data-theme="dark"] .type-badge-project,
 [data-theme="dark"] .timeline-academic-card:hover .type-badge-project {
-  background: rgba(168, 85, 247, 0.22) !important;
-  color: #D8B4FE !important;
-  -webkit-text-fill-color: #D8B4FE !important;
-  border: 1.5px solid rgba(192, 132, 252, 0.45) !important;
+  background: #6D28D9 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #A855F7 !important;
 }
 
 [data-theme="dark"] .grade-badge-a,
 [data-theme="dark"] .timeline-academic-card:hover .grade-badge-a {
-  background: rgba(16, 185, 129, 0.22) !important;
-  color: #34D399 !important;
-  -webkit-text-fill-color: #34D399 !important;
-  border: 1.5px solid rgba(52, 211, 153, 0.45) !important;
+  background: #047857 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #10B981 !important;
 }
 
 [data-theme="dark"] .grade-badge-b,
 [data-theme="dark"] .timeline-academic-card:hover .grade-badge-b {
-  background: rgba(59, 130, 246, 0.22) !important;
-  color: #93C5FD !important;
-  -webkit-text-fill-color: #93C5FD !important;
-  border: 1.5px solid rgba(96, 165, 250, 0.45) !important;
+  background: #1D4ED8 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #3B82F6 !important;
 }
 
 [data-theme="dark"] .grade-badge-c,
 [data-theme="dark"] .timeline-academic-card:hover .grade-badge-c {
-  background: rgba(245, 158, 11, 0.22) !important;
-  color: #FCD34D !important;
-  -webkit-text-fill-color: #FCD34D !important;
-  border: 1.5px solid rgba(251, 191, 36, 0.45) !important;
+  background: #B45309 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #F59E0B !important;
 }
 
 [data-theme="dark"] .grade-badge-d,
 [data-theme="dark"] .timeline-academic-card:hover .grade-badge-d {
-  background: rgba(239, 68, 68, 0.22) !important;
-  color: #FCA5A5 !important;
-  -webkit-text-fill-color: #FCA5A5 !important;
-  border: 1.5px solid rgba(248, 113, 113, 0.45) !important;
+  background: #B91C1C !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #EF4444 !important;
+}
+
+.bsc-credits-text {
+  font-weight: 700 !important;
+  font-feature-settings: 'tnum' !important;
+  font-size: 0.86rem !important;
+  color: var(--text-primary) !important;
 }
 
 .bsc-gp-text {
-  font-weight: 600;
-  font-feature-settings: 'tnum';
-  color: var(--text-secondary);
+  font-weight: 800 !important;
+  font-feature-settings: 'tnum' !important;
+  font-size: 0.86rem !important;
+  color: var(--text-primary) !important;
 }
 
 /* Navigation Footer */

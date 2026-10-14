@@ -25,15 +25,71 @@ export const BscResultsDropdown = () => {
 
   const getGradeBadgeStyle = (grade) => {
     if (grade.startsWith('A')) {
-      return { background: '#ECFDF5', color: '#065F46', WebkitTextFillColor: '#065F46', border: '1.5px solid #34D399', fontWeight: 800 };
+      return { 
+        background: '#059669', 
+        color: '#FFFFFF', 
+        WebkitTextFillColor: '#FFFFFF', 
+        border: '1px solid #047857', 
+        fontWeight: 800, 
+        padding: '3px 10px',
+        borderRadius: '6px',
+        display: 'inline-block',
+        minWidth: '38px',
+        textAlign: 'center',
+        boxShadow: '0 1px 2px rgba(0, 0, 0, 0.18)',
+        letterSpacing: '0.02em',
+        fontSize: '0.80rem'
+      };
     }
     if (grade.startsWith('B')) {
-      return { background: '#EFF6FF', color: '#1E40AF', WebkitTextFillColor: '#1E40AF', border: '1.5px solid #60A5FA', fontWeight: 800 };
+      return { 
+        background: '#2563EB', 
+        color: '#FFFFFF', 
+        WebkitTextFillColor: '#FFFFFF', 
+        border: '1px solid #1D4ED8', 
+        fontWeight: 800, 
+        padding: '3px 10px',
+        borderRadius: '6px',
+        display: 'inline-block',
+        minWidth: '38px',
+        textAlign: 'center',
+        boxShadow: '0 1px 2px rgba(0, 0, 0, 0.18)',
+        letterSpacing: '0.02em',
+        fontSize: '0.80rem'
+      };
     }
     if (grade.startsWith('C')) {
-      return { background: '#FFFBEB', color: '#B45309', WebkitTextFillColor: '#B45309', border: '1.5px solid #FBBF24', fontWeight: 800 };
+      return { 
+        background: '#D97706', 
+        color: '#FFFFFF', 
+        WebkitTextFillColor: '#FFFFFF', 
+        border: '1px solid #B45309', 
+        fontWeight: 800, 
+        padding: '3px 10px',
+        borderRadius: '6px',
+        display: 'inline-block',
+        minWidth: '38px',
+        textAlign: 'center',
+        boxShadow: '0 1px 2px rgba(0, 0, 0, 0.18)',
+        letterSpacing: '0.02em',
+        fontSize: '0.80rem'
+      };
     }
-    return { background: '#FEF2F2', color: '#B91C1C', WebkitTextFillColor: '#B91C1C', border: '1.5px solid #F87171', fontWeight: 800 };
+    return { 
+      background: '#DC2626', 
+      color: '#FFFFFF', 
+      WebkitTextFillColor: '#FFFFFF', 
+      border: '1px solid #B91C1C', 
+      fontWeight: 800, 
+      padding: '3px 10px',
+      borderRadius: '6px',
+      display: 'inline-block',
+      minWidth: '38px',
+      textAlign: 'center',
+      boxShadow: '0 1px 2px rgba(0, 0, 0, 0.18)',
+      letterSpacing: '0.02em',
+      fontSize: '0.80rem'
+    };
   };
 
   const getTypeBadgeClass = (type) => {
@@ -44,12 +100,48 @@ export const BscResultsDropdown = () => {
 
   const getTypeBadgeStyle = (type) => {
     if (type === 'Theory') {
-      return { background: '#EFF6FF', color: '#1D4ED8', WebkitTextFillColor: '#1D4ED8', border: '1.5px solid #93C5FD', fontWeight: 700 };
+      return { 
+        background: '#4F46E5', 
+        color: '#FFFFFF', 
+        WebkitTextFillColor: '#FFFFFF', 
+        border: '1px solid #4338CA', 
+        fontWeight: 700,
+        padding: '3px 10px',
+        borderRadius: '9999px',
+        display: 'inline-block',
+        boxShadow: '0 1px 2px rgba(0, 0, 0, 0.14)',
+        letterSpacing: '0.02em',
+        fontSize: '0.74rem'
+      };
     }
     if (type === 'Lab') {
-      return { background: '#ECFDF5', color: '#047857', WebkitTextFillColor: '#047857', border: '1.5px solid #6EE7B7', fontWeight: 700 };
+      return { 
+        background: '#0D9488', 
+        color: '#FFFFFF', 
+        WebkitTextFillColor: '#FFFFFF', 
+        border: '1px solid #0F766E', 
+        fontWeight: 700,
+        padding: '3px 10px',
+        borderRadius: '9999px',
+        display: 'inline-block',
+        boxShadow: '0 1px 2px rgba(0, 0, 0, 0.14)',
+        letterSpacing: '0.02em',
+        fontSize: '0.74rem'
+      };
     }
-    return { background: '#FAF5FF', color: '#7E22CE', WebkitTextFillColor: '#7E22CE', border: '1.5px solid #D8B4FE', fontWeight: 700 };
+    return { 
+      background: '#7C3AED', 
+      color: '#FFFFFF', 
+      WebkitTextFillColor: '#FFFFFF', 
+      border: '1px solid #6D28D9', 
+      fontWeight: 700,
+      padding: '3px 10px',
+      borderRadius: '9999px',
+      display: 'inline-block',
+      boxShadow: '0 1px 2px rgba(0, 0, 0, 0.14)',
+      letterSpacing: '0.02em',
+      fontSize: '0.74rem'
+    };
   };
 
   return (
