@@ -217,7 +217,8 @@ export const AwardsPage = () => {
     { id: 'posters', label: 'Poster Presentations' },
     { id: 'hult', label: 'Hult Prize Activities' },
     { id: 'events', label: 'Event Organization' },
-    { id: 'certs', label: 'Engineering Certifications' }
+    { id: 'technical-certs', label: 'Technical Certifications' },
+    { id: 'course-certs', label: 'Course Certifications' }
   ];
 
   return (
@@ -415,24 +416,24 @@ export const AwardsPage = () => {
       )}
 
       {/* =========================================================================
-          5. COURSE CERTIFICATIONS
+          5. TECHNICAL CERTIFICATIONS
           ========================================================================= */}
-      {(activeCategory === 'all' || activeCategory === 'certs') && (
+      {(activeCategory === 'all' || activeCategory === 'certs' || activeCategory === 'technical-certs') && (
         <section className="section-spacing">
           <div className="section-heading-row">
             <div>
-              <div className="section-eyebrow">ACCREDITATIONS</div>
+              <div className="section-eyebrow">INDUSTRY & PROFESSIONAL CREDENTIALS</div>
               <h2 className="section-main-heading">
-                Professional Engineering Certifications
+                Technical Certifications
               </h2>
             </div>
             <span className="section-count-badge">
-              {(awardsData?.certifications || []).length} Credentials
+              {(awardsData?.technicalCertifications || []).length} Credentials
             </span>
           </div>
 
           <div className="pub-grid-2col">
-            {(awardsData?.certifications || []).map((item, idx) => (
+            {(awardsData?.technicalCertifications || []).map((item, idx) => (
               <AwardCard
                 key={item.id}
                 item={item}
@@ -441,7 +442,50 @@ export const AwardsPage = () => {
                 onToggle={toggleAward}
                 onOpenModal={handleOpenModal}
                 badgeClass="verified"
-                badgeLabel="Verified Credential"
+                badgeLabel="Industry Professional"
+                statusLabel="Certified"
+                yearLabel={item.year || "Certified"}
+                title={item.title}
+                authorLabel={item.issuer}
+                venueLabel={item.field}
+                expandOpenText="View Syllabus & Verification"
+                expandCloseText="Hide Details"
+                visualBtnText="View Certificate"
+                detailHeading="Certification Competencies & Examination"
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* =========================================================================
+          6. COURSE CERTIFICATIONS
+          ========================================================================= */}
+      {(activeCategory === 'all' || activeCategory === 'certs' || activeCategory === 'course-certs') && (
+        <section className="section-spacing">
+          <div className="section-heading-row">
+            <div>
+              <div className="section-eyebrow">ACADEMIC & SIMULATION ACCREDITATIONS</div>
+              <h2 className="section-main-heading">
+                Course Certifications
+              </h2>
+            </div>
+            <span className="section-count-badge">
+              {(awardsData?.courseCertifications || []).length} Credentials
+            </span>
+          </div>
+
+          <div className="pub-grid-2col">
+            {(awardsData?.courseCertifications || []).map((item, idx) => (
+              <AwardCard
+                key={item.id}
+                item={item}
+                itemIndex={idx + 1}
+                isExpanded={Boolean(expandedAwards[item.id])}
+                onToggle={toggleAward}
+                onOpenModal={handleOpenModal}
+                badgeClass="verified"
+                badgeLabel="Verified Course"
                 statusLabel="Accredited"
                 yearLabel={item.year || "Certified"}
                 title={item.title}
@@ -450,7 +494,7 @@ export const AwardsPage = () => {
                 expandOpenText="View Syllabus & Verification"
                 expandCloseText="Hide Details"
                 visualBtnText="View Certificate"
-                detailHeading="Certification Syllabus & Competencies"
+                detailHeading="Course Syllabus & Academic Competencies"
               />
             ))}
           </div>

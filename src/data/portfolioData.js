@@ -543,7 +543,7 @@ export const awardsData = {
     }
   ],
 
-  certifications: [
+  technicalCertifications: [
     {
       id: "cert-cswp",
       title: "SOLIDWORKS Design Professional (CSWP)",
@@ -553,8 +553,22 @@ export const awardsData = {
       certId: "C-UJLY5CTD7Q",
       pdfUrl: "/docs/SolidWorks_CSWP_Certificate_Jubair_Zidan.pdf",
       imageUrl: "/images/real_certs/cert_cswp_solidworks.png",
+      category: "technical",
       description: "Official Dassault Systèmes Certified SOLIDWORKS Professional (CSWP) credential (Certificate ID: C-UJLY5CTD7Q) issued on September 18, 2026, signed by Manish Kumar (SOLIDWORKS CEO & R&D Vice President). Confirms proven ability to design and analyze parametric parts and movable assemblies using a variety of complex features in SOLIDWORKS software."
     },
+    {
+      id: "cert-cswa",
+      title: "Certified SOLIDWORKS Associate (CSWA)",
+      issuer: "Dassault Systèmes",
+      field: "Mechanical Design & 3D Parametric CAD",
+      year: "2024",
+      imageUrl: "/images/real_awards/cert_cswa_solidworks.png",
+      category: "technical",
+      description: "Official Dassault Systèmes Certified SOLIDWORKS Associate (CSWA) credential demonstrating fundamental competence in 3D CAD modeling, engineering drawing generation, and mechanical assemblies."
+    }
+  ],
+
+  courseCertifications: [
     {
       id: "cert-cornell-simulation",
       title: "ENGR2000X: A Hands-on Introduction to Engineering Simulations",
@@ -564,6 +578,7 @@ export const awardsData = {
       certId: "d8491ceb9049465e90dac14236cbbfe8",
       verificationUrl: "https://verify.edx.org/cert/d8491ceb9049465e90dac14236cbbfe8",
       imageUrl: "/images/real_certs/cert_cornell_simulation.png",
+      category: "course",
       description: "Verified Certificate from Cornell University (CornellX edX) issued on July 27, 2026, under the instruction of Dr. Rajesh Bhaskaran (Swanson Director of Engineering Simulation, Sibley School of Mechanical & Aerospace Engineering). Covers rigorous hands-on engineering simulations utilizing ANSYS solvers for structural mechanics, heat transfer, and fluid dynamics."
     },
     {
@@ -576,6 +591,7 @@ export const awardsData = {
       verificationUrl: "https://coursera.org/verify/AWUEPMZAJE64",
       pdfUrl: "/docs/Vanderbilt_MATLAB_Certificate_Jubair_Zidan.pdf",
       imageUrl: "/images/real_certs/cert_matlab_vanderbilt.png",
+      category: "course",
       description: "Verified Course Certificate from Vanderbilt University authorized through Coursera, issued on September 23, 2026 (Instructors: Prof. Akos Ledeczi & Prof. J. Michael Fitzpatrick). Attests to mastery in computational algorithms, array manipulations, matrix math, data visualization, and numerical methods in MATLAB."
     },
     {
@@ -586,6 +602,7 @@ export const awardsData = {
       year: "Sep 2026",
       pdfUrl: "/docs/Ansys_3D_Bifurcating_Artery_Steady_Certificate.pdf",
       imageUrl: "/images/real_certs/cert_ansys_artery_steady.png",
+      category: "course",
       description: "Verified Ansys Course Completion Certificate issued on September 15, 2026. Focuses on three-dimensional computational fluid dynamics (CFD) modeling of steady-state non-Newtonian blood flow in bifurcated arterial branches, wall shear stress (WSS) distributions, and pressure gradient computations."
     },
     {
@@ -596,7 +613,23 @@ export const awardsData = {
       year: "Sep 2026",
       pdfUrl: "/docs/Ansys_3D_Bifurcating_Artery_Certificate.pdf",
       imageUrl: "/images/real_certs/cert_ansys_artery.png",
+      category: "course",
       description: "Verified Ansys Course Completion Certificate issued on September 19, 2026. Covers complete end-to-end vascular CFD workflow: geometry preparation, refined volume meshing, boundary conditions, and flow field analysis across complex arterial bifurcations."
+    }
+  ],
+
+  certifications: [
+    {
+      id: "cert-cswp",
+      title: "SOLIDWORKS Design Professional (CSWP)",
+      issuer: "Dassault Systèmes / SOLIDWORKS",
+      field: "Advanced Mechanical Design & Parametric Solid Modeling",
+      year: "Sep 2026",
+      certId: "C-UJLY5CTD7Q",
+      pdfUrl: "/docs/SolidWorks_CSWP_Certificate_Jubair_Zidan.pdf",
+      imageUrl: "/images/real_certs/cert_cswp_solidworks.png",
+      category: "technical",
+      description: "Official Dassault Systèmes Certified SOLIDWORKS Professional (CSWP) credential (Certificate ID: C-UJLY5CTD7Q) issued on September 18, 2026, signed by Manish Kumar (SOLIDWORKS CEO & R&D Vice President). Confirms proven ability to design and analyze parametric parts and movable assemblies using a variety of complex features in SOLIDWORKS software."
     },
     {
       id: "cert-cswa",
@@ -605,7 +638,55 @@ export const awardsData = {
       field: "Mechanical Design & 3D Parametric CAD",
       year: "2024",
       imageUrl: "/images/real_awards/cert_cswa_solidworks.png",
+      category: "technical",
       description: "Official Dassault Systèmes Certified SOLIDWORKS Associate (CSWA) credential demonstrating fundamental competence in 3D CAD modeling, engineering drawing generation, and mechanical assemblies."
+    },
+    {
+      id: "cert-cornell-simulation",
+      title: "ENGR2000X: A Hands-on Introduction to Engineering Simulations",
+      issuer: "Cornell University / CornellX (edX)",
+      field: "Finite Element Analysis (FEA) & Computational Fluid Dynamics (CFD)",
+      year: "Jul 2026",
+      certId: "d8491ceb9049465e90dac14236cbbfe8",
+      verificationUrl: "https://verify.edx.org/cert/d8491ceb9049465e90dac14236cbbfe8",
+      imageUrl: "/images/real_certs/cert_cornell_simulation.png",
+      category: "course",
+      description: "Verified Certificate from Cornell University (CornellX edX) issued on July 27, 2026, under the instruction of Dr. Rajesh Bhaskaran (Swanson Director of Engineering Simulation, Sibley School of Mechanical & Aerospace Engineering). Covers rigorous hands-on engineering simulations utilizing ANSYS solvers for structural mechanics, heat transfer, and fluid dynamics."
+    },
+    {
+      id: "cert-vanderbilt-matlab",
+      title: "Introduction to Programming with MATLAB",
+      issuer: "Vanderbilt University (Coursera)",
+      field: "Scientific Computing, Matrix Analysis & Algorithm Design",
+      year: "Sep 2026",
+      certId: "AWUEPMZAJE64",
+      verificationUrl: "https://coursera.org/verify/AWUEPMZAJE64",
+      pdfUrl: "/docs/Vanderbilt_MATLAB_Certificate_Jubair_Zidan.pdf",
+      imageUrl: "/images/real_certs/cert_matlab_vanderbilt.png",
+      category: "course",
+      description: "Verified Course Certificate from Vanderbilt University authorized through Coursera, issued on September 23, 2026 (Instructors: Prof. Akos Ledeczi & Prof. J. Michael Fitzpatrick). Attests to mastery in computational algorithms, array manipulations, matrix math, data visualization, and numerical methods in MATLAB."
+    },
+    {
+      id: "cert-ansys-artery-steady",
+      title: "Ansys Course: 3D Bifurcating Artery (Steady)",
+      issuer: "Ansys Innovation Courses",
+      field: "Cardiovascular CFD & Steady Hemodynamic Flow",
+      year: "Sep 2026",
+      pdfUrl: "/docs/Ansys_3D_Bifurcating_Artery_Steady_Certificate.pdf",
+      imageUrl: "/images/real_certs/cert_ansys_artery_steady.png",
+      category: "course",
+      description: "Verified Ansys Course Completion Certificate issued on September 15, 2026. Focuses on three-dimensional computational fluid dynamics (CFD) modeling of steady-state non-Newtonian blood flow in bifurcated arterial branches, wall shear stress (WSS) distributions, and pressure gradient computations."
+    },
+    {
+      id: "cert-ansys-artery",
+      title: "Ansys Course: 3D Bifurcating Artery",
+      issuer: "Ansys Innovation Courses",
+      field: "Advanced Computational Biofluid Dynamics",
+      year: "Sep 2026",
+      pdfUrl: "/docs/Ansys_3D_Bifurcating_Artery_Certificate.pdf",
+      imageUrl: "/images/real_certs/cert_ansys_artery.png",
+      category: "course",
+      description: "Verified Ansys Course Completion Certificate issued on September 19, 2026. Covers complete end-to-end vascular CFD workflow: geometry preparation, refined volume meshing, boundary conditions, and flow field analysis across complex arterial bifurcations."
     }
   ]
 };
