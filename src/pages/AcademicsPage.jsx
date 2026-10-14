@@ -217,9 +217,10 @@ export const AcademicsPage = () => {
             </div>
 
             {/* Official Academic Documents for Faculty Review */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '22px' }}>
+            {/* Official Academic Documents for Faculty Review: Side-by-Side Grid */}
+            <div className="academic-cert-grid">
               {/* 1. Official Degree Certificate Box */}
-              <div className="academic-cert-box" style={{ marginTop: 0 }}>
+              <div className="academic-cert-box">
                 <div className="academic-cert-content">
                   <div className="academic-cert-header-row">
                     <div className="academic-cert-icon-badge">
@@ -239,10 +240,6 @@ export const AcademicsPage = () => {
                     </div>
                   </div>
 
-                  <p className="academic-cert-desc">
-                    Official certificate issued by Chittagong University of Engineering and Technology (CUET), certifying graduation with First Class Standing in Mechanical Engineering. Available for prospective graduate faculty advisors and admissions committees.
-                  </p>
-
                   <div className="academic-cert-actions">
                     <button
                       onClick={() => setActiveDocModal({
@@ -259,24 +256,12 @@ export const AcademicsPage = () => {
                       <Eye size={15} />
                       <span>View Official Certificate</span>
                     </button>
-
-                    <a
-                      href="/docs/CUET_BSc_Mechanical_Engineering_Certificate.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-secondary academic-cert-btn-secondary"
-                      title="Open Certificate PDF in new browser tab"
-                    >
-                      <FileText size={14} />
-                      <span>Open in New Tab</span>
-                      <ExternalLink size={13} />
-                    </a>
                   </div>
                 </div>
               </div>
 
               {/* 2. Official Academic Transcript Box */}
-              <div className="academic-cert-box" style={{ marginTop: 0 }}>
+              <div className="academic-cert-box">
                 <div className="academic-cert-content">
                   <div className="academic-cert-header-row">
                     <div className="academic-cert-icon-badge">
@@ -296,10 +281,6 @@ export const AcademicsPage = () => {
                     </div>
                   </div>
 
-                  <p className="academic-cert-desc">
-                    Official 8-semester academic transcript issued by Chittagong University of Engineering and Technology (CUET), detailing all completed lecture and laboratory coursework, letter grades, credit hours (160+), and semester GPAs.
-                  </p>
-
                   <div className="academic-cert-actions">
                     <button
                       onClick={() => setActiveDocModal({
@@ -316,18 +297,6 @@ export const AcademicsPage = () => {
                       <Eye size={15} />
                       <span>View Official Transcript</span>
                     </button>
-
-                    <a
-                      href="/docs/CUET_BSc_Mechanical_Engineering_Transcript.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-secondary academic-cert-btn-secondary"
-                      title="Open Transcript PDF in new browser tab"
-                    >
-                      <FileText size={14} />
-                      <span>Open in New Tab</span>
-                      <ExternalLink size={13} />
-                    </a>
                   </div>
                 </div>
               </div>
