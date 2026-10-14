@@ -129,10 +129,18 @@ export const AcademicsPage = () => {
 
           <div className="timeline-academic-card is-current">
             <div className="timeline-card-header">
-              <span className="degree-badge-dark">MSc</span>
-              <div style={{ flex: 1 }}>
+              <div className="timeline-inst-logo-box">
+                <img 
+                  src="/images/real/cuet_logo.png" 
+                  alt="Chittagong University of Engineering and Technology (CUET) Logo" 
+                  className="timeline-inst-logo-img" 
+                  loading="lazy"
+                />
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                   <h3 className="timeline-card-heading">Master of Science in Mechanical Engineering</h3>
+                  <span className="degree-badge-dark">MSc</span>
                   <span className="timeline-current-pill">
                     <span className="timeline-pill-dot" />
                     Currently In Progress
@@ -209,9 +217,19 @@ export const AcademicsPage = () => {
 
           <div className="timeline-academic-card">
             <div className="timeline-card-header">
-              <span className="degree-badge-dark">BSc</span>
-              <div>
-                <h3 className="timeline-card-heading">Bachelor of Science in Mechanical Engineering</h3>
+              <div className="timeline-inst-logo-box">
+                <img 
+                  src="/images/real/cuet_logo.png" 
+                  alt="Chittagong University of Engineering and Technology (CUET) Logo" 
+                  className="timeline-inst-logo-img" 
+                  loading="lazy"
+                />
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <h3 className="timeline-card-heading">Bachelor of Science in Mechanical Engineering</h3>
+                  <span className="degree-badge-dark">BSc</span>
+                </div>
                 <div className="timeline-card-subheading">
                   Chittagong University of Engineering and Technology (CUET) · Chattogram
                 </div>
@@ -343,9 +361,19 @@ export const AcademicsPage = () => {
 
           <div className="timeline-academic-card">
             <div className="timeline-card-header">
-              <span className="degree-badge-dark">HSC</span>
-              <div>
-                <h3 className="timeline-card-heading">Higher Secondary School Certificate</h3>
+              <div className="timeline-inst-logo-box">
+                <img 
+                  src="/images/real/ndc_logo.png" 
+                  alt="Notre Dame College Logo" 
+                  className="timeline-inst-logo-img" 
+                  loading="lazy"
+                />
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <h3 className="timeline-card-heading">Higher Secondary School Certificate</h3>
+                  <span className="degree-badge-dark">HSC</span>
+                </div>
                 <div className="timeline-card-subheading">
                   Notre Dame College · Dhaka
                 </div>
@@ -381,9 +409,19 @@ export const AcademicsPage = () => {
 
           <div className="timeline-academic-card">
             <div className="timeline-card-header">
-              <span className="degree-badge-dark">SSC</span>
-              <div>
-                <h3 className="timeline-card-heading">Secondary School Certificate</h3>
+              <div className="timeline-inst-logo-box">
+                <img 
+                  src="/images/real/bzs_logo.png" 
+                  alt="Barishal Zilla School Logo" 
+                  className="timeline-inst-logo-img" 
+                  loading="lazy"
+                />
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <h3 className="timeline-card-heading">Secondary School Certificate</h3>
+                  <span className="degree-badge-dark">SSC</span>
+                </div>
                 <div className="timeline-card-subheading">
                   Barishal Zilla School · Barishal
                 </div>
