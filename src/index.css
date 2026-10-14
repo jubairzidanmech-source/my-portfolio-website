@@ -9613,6 +9613,40 @@ body [style*="cursor:zoom-in"] {
   font-weight: 700;
 }
 
+.msc-icon-check {
+  color: #10B981 !important;
+  stroke: #10B981 !important;
+}
+
+.msc-icon-clock {
+  color: var(--blue-royal) !important;
+  stroke: var(--blue-royal) !important;
+}
+
+.msc-icon-sparkles {
+  color: #817CB8 !important;
+  stroke: #817CB8 !important;
+}
+
+.timeline-academic-card:hover .msc-icon-check {
+  color: #86EFAC !important;
+  stroke: #86EFAC !important;
+}
+
+.timeline-academic-card:hover .msc-icon-clock {
+  color: #BFDBFE !important;
+  stroke: #BFDBFE !important;
+}
+
+.timeline-academic-card:hover .msc-icon-sparkles {
+  color: #DDD6FE !important;
+  stroke: #DDD6FE !important;
+}
+
+.timeline-academic-card:hover .msc-status-block {
+  border-top-color: rgba(255, 255, 255, 0.3) !important;
+}
+
 /* ==========================================================================
    B.SC. SEMESTER RESULTS DROPDOWN MENU
    ========================================================================== */
@@ -10227,9 +10261,9 @@ body [style*="cursor:zoom-in"] {
 
 /* 1. Header Trigger & Status Pills */
 .timeline-academic-card:hover .bsc-dropdown-box {
-  background: rgba(15, 23, 42, 0.35) !important;
-  border-color: rgba(255, 255, 255, 0.35) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18) !important;
+  background: rgba(15, 23, 42, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.22) !important;
 }
 
 .timeline-academic-card:hover .bsc-dropdown-trigger-btn {
@@ -10237,24 +10271,47 @@ body [style*="cursor:zoom-in"] {
   color: #FFFFFF !important;
 }
 
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
 .timeline-academic-card:hover .bsc-dropdown-trigger-btn.is-active {
-  background: rgba(255, 255, 255, 0.18) !important;
-  border-bottom-color: rgba(255, 255, 255, 0.25) !important;
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.timeline-academic-card:hover .bsc-dropdown-icon-wrap {
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: #FFFFFF !important;
+}
+
+.timeline-academic-card:hover .bsc-dropdown-icon-wrap svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
 }
 
 .timeline-academic-card:hover .bsc-dropdown-title {
   color: #FFFFFF !important;
   font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25) !important;
 }
 
 .timeline-academic-card:hover .bsc-dropdown-subtitle {
-  color: #E2E8F0 !important;
+  color: #F1F5F9 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
 }
 
 .timeline-academic-card:hover .bsc-dropdown-status-pill {
   background: rgba(255, 255, 255, 0.25) !important;
   color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25) !important;
+}
+
+.timeline-academic-card:hover .bsc-dropdown-trigger-btn:hover .bsc-dropdown-status-pill {
+  background: rgba(255, 255, 255, 0.38) !important;
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
 }
 
 .timeline-academic-card:hover .bsc-dropdown-chevron svg {

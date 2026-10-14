@@ -141,21 +141,21 @@ export const AcademicsPage = () => {
 
               <div className="msc-milestones-grid is-compact">
                 <div className="msc-milestone-item is-compact">
-                  <CheckCircle2 size={15} color="#10B981" className="msc-milestone-icon" />
+                  <CheckCircle2 size={15} className="msc-milestone-icon msc-icon-check" />
                   <span className="msc-milestone-title">
                     Theory Coursework: Finished
                   </span>
                 </div>
 
                 <div className="msc-milestone-item is-compact is-ongoing">
-                  <Clock size={15} color="var(--blue-royal)" className="msc-milestone-icon" />
+                  <Clock size={15} className="msc-milestone-icon msc-icon-clock" />
                   <span className="msc-milestone-title">
                     Master's Thesis: Ongoing
                   </span>
                 </div>
 
                 <div className="msc-milestone-item is-compact">
-                  <Sparkles size={15} color="#817CB8" className="msc-milestone-icon" />
+                  <Sparkles size={15} className="msc-milestone-icon msc-icon-sparkles" />
                   <span className="msc-milestone-title">
                     Conferral: Aug – Sept 2026 / Jan 2027 (Tentative)
                   </span>
