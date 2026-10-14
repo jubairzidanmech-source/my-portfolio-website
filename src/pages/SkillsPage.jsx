@@ -176,8 +176,8 @@ export const SkillsPage = () => {
       <section className="section-spacing" style={{ marginBottom: '64px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow" style={{ color: '#64748B' }}>BEYOND THE LAB</div>
-            <h2 className="section-main-heading" style={{ fontSize: '1.35rem', color: 'var(--text-secondary)' }}>
+            <div className="section-eyebrow">BEYOND THE LAB</div>
+            <h2 className="section-main-heading" style={{ fontSize: '1.35rem' }}>
               Personal Interests & Explorations
             </h2>
           </div>
