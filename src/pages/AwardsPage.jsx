@@ -221,7 +221,7 @@ export const AwardsPage = () => {
 
   const categories = [
     { id: 'awards-top', label: 'All Honors', count: totalCount },
-    { id: 'awards-competitions', label: 'Competitions & Achievements', count: competitionsCount },
+    { id: 'awards-competitions', label: 'Prize', count: competitionsCount },
     { id: 'awards-posters', label: 'Poster Presentations', count: postersCount },
     { id: 'awards-technical-certs', label: 'Technical Certifications', count: technicalCertsCount },
     { id: 'awards-course-certs', label: 'Course Certifications', count: courseCertsCount },
@@ -284,14 +284,14 @@ export const AwardsPage = () => {
       </div>
 
       {/* =========================================================================
-          1. COMPETITIONS & ACHIEVEMENTS
+          1. PRIZE
           ========================================================================= */}
       <section id="awards-competitions" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
             <div className="section-eyebrow">HONORS</div>
             <h2 className="section-main-heading">
-              Competitions & Achievements
+              Prize
             </h2>
           </div>
           <span className="section-count-badge">
