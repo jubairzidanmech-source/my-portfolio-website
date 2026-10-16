@@ -1152,19 +1152,16 @@ img {
 /* Outer Shell holding navbar capsule and outside theme toggle */
 .nav-outer-shell {
   width: 100%;
-  max-width: var(--max-width);
+  max-width: calc(var(--max-width) - 56px);
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
   pointer-events: none;
 }
 
 .nav-container {
   pointer-events: auto;
-  flex: 1;
-  min-width: 0;
-  max-width: calc(var(--max-width) - 148px);
+  width: 100%;
   height: 64px;
   padding: 6px 16px 6px 20px;
   border-radius: var(--radius-pill); /* Rounded capsule design matching reference image */
@@ -1208,10 +1205,13 @@ img {
 
 /* Outside Desktop Dark / Light Theme Toggle (positioned in the outside red area) */
 .nav-outside-toggle {
+  position: absolute;
+  left: calc(100% + 16px);
+  top: 50%;
+  transform: translateY(-50%);
   pointer-events: auto;
   display: flex;
   align-items: center;
-  flex-shrink: 0;
   height: 64px;
   transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -1230,12 +1230,22 @@ img {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 12px rgba(37, 99, 235, 0.15);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1400px) {
+  .nav-outside-toggle {
+    position: fixed;
+    left: auto;
+    right: 16px;
+    top: 14px;
+    transform: none;
+  }
+  .site-navbar.scrolled .nav-outside-toggle {
+    top: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
   .nav-outside-toggle {
     display: none;
-  }
-  .nav-container {
-    max-width: 100%;
   }
 }
 
