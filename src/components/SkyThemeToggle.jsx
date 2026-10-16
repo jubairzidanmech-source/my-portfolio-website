@@ -3,9 +3,9 @@ import { Sun, Moon } from 'lucide-react';
 
 /**
  * SkyThemeToggle
- * Dual-segmented pill switch matching the reference design:
- * - Left segment: Minimized Moon icon + "DARK" text
- * - Right segment: Minimized Sun icon + "LIGHT" text
+ * Compact dual-segmented pill switch matching website typography:
+ * - Left segment: Minimized Moon icon + "DARK" text in website font
+ * - Right segment: Minimized Sun icon + "LIGHT" text in website font
  * - Sliding active pill thumb with smooth physics
  */
 export const SkyThemeToggle = ({ theme, toggleTheme, id = 'theme-toggle' }) => {
@@ -33,7 +33,7 @@ export const SkyThemeToggle = ({ theme, toggleTheme, id = 'theme-toggle' }) => {
         aria-label="Switch to dark theme"
         title="Dark Theme"
       >
-        <Moon size={11} strokeWidth={2.4} className="theme-switch-icon" />
+        <Moon size={10} strokeWidth={2.4} className="theme-switch-icon" />
         <span className="theme-switch-text">DARK</span>
       </button>
 
@@ -49,7 +49,7 @@ export const SkyThemeToggle = ({ theme, toggleTheme, id = 'theme-toggle' }) => {
         aria-label="Switch to light theme"
         title="Light Theme"
       >
-        <Sun size={11} strokeWidth={2.4} className="theme-switch-icon" />
+        <Sun size={10} strokeWidth={2.4} className="theme-switch-icon" />
         <span className="theme-switch-text">LIGHT</span>
       </button>
     </div>

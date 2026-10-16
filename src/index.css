@@ -1228,7 +1228,7 @@ img {
 .nav-links-desktop {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 4px;
   background: transparent;
   padding: 0;
   border: none;
@@ -1237,9 +1237,10 @@ img {
 
 .nav-plain-link,
 .nav-pill-btn {
-  padding: 6px 14px;
-  font-size: 0.9rem;
+  padding: 6px 12px;
+  font-size: 0.88rem;
   font-weight: 500;
+  font-family: 'Gilroy', var(--font-sans);
   color: #334155; /* High-contrast slate */
   border-radius: 9999px;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
@@ -6941,8 +6942,8 @@ img {
   position: relative;
   display: inline-flex;
   align-items: center;
-  width: 154px;
-  height: 32px;
+  width: 124px;
+  height: 28px;
   padding: 2px;
   background: #F1F5F9;
   border: 1px solid rgba(15, 23, 42, 0.12);
@@ -6968,7 +6969,7 @@ img {
   width: calc(50% - 2px);
   border-radius: 9999px;
   background: #111827;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), background 0.28s ease;
   z-index: 1;
   pointer-events: none;
@@ -6982,7 +6983,7 @@ img {
 .segmented-theme-switch.is-dark .theme-switch-slider {
   transform: translateX(0);
   background: #0B1120;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.14);
 }
 
 /* Option Buttons */
@@ -6994,17 +6995,17 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  padding: 0 8px;
+  gap: 4px;
+  padding: 0 4px;
   border: none;
   background: transparent;
   cursor: pointer;
   border-radius: 9999px;
   color: #475569;
-  font-size: 0.70rem;
+  font-family: 'Gilroy', var(--font-sans);
+  font-size: 0.64rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  font-family: inherit;
+  letter-spacing: 0.04em;
   transition: color 0.24s ease, opacity 0.24s ease;
   outline: none !important;
   box-shadow: none !important;
@@ -7046,6 +7047,7 @@ img {
 }
 
 .theme-switch-text {
+  font-family: 'Gilroy', var(--font-sans);
   font-feature-settings: 'tnum';
   line-height: 1;
 }
