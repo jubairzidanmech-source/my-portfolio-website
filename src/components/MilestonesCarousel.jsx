@@ -93,15 +93,11 @@ export const MilestonesCarousel = ({ setActivePage }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* 1. Centered Section Header */}
+      {/* 1. Centered Section Header - Just "In Frames" on top, nothing else */}
       <div className="milestones-header">
-        <div className="milestones-eyebrow">GALLERY OF EXCELLENCE</div>
         <h2 className="milestones-title">
-          In Frames: Academic & Research <span className="header-badge">Milestones</span>
+          In <span className="header-badge">Frames</span>
         </h2>
-        <p className="milestones-subtitle">
-          Photographic highlights from international conferences, oral presentations, national competitions, and research milestones.
-        </p>
       </div>
 
       {/* 2. Carousel Stage with 5 Overlapping Cards */}
@@ -225,19 +221,6 @@ export const MilestonesCarousel = ({ setActivePage }) => {
           />
         ))}
       </div>
-
-      {/* 5. Optional Subtle Link to Awards Section */}
-      {setActivePage && (
-        <div className="milestones-footer-link">
-          <button
-            onClick={() => setActivePage('awards')}
-            className="milestones-awards-btn"
-          >
-            <span>Explore all honors, awards & certifications</span>
-            <ArrowUpRight size={14} />
-          </button>
-        </div>
-      )}
 
       {/* Clean Full-Size Lightbox Modal */}
       <ImageLightboxModal
