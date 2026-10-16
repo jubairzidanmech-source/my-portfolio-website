@@ -118,15 +118,14 @@ export const MilestonesCarousel = () => {
 
           const absU = Math.min(1.25, Math.abs(u));
 
-          // BrandLyft Concave Height Curve:
-          // Center card: ~295px, outer cards: ~385px
-          // 100% Upright, ZERO rotation, ZERO skew, ZERO 3D.
-          // Images use object-fit: cover so aspect ratio is 100% natural (never squeezed).
-          const targetHeight = Math.round(295 + 90 * Math.pow(absU, 1.35));
-          if (card.style.height !== `${targetHeight}px`) {
-            card.style.height = `${targetHeight}px`;
-          }
-          card.style.removeProperty('transform');
+          // Proportional GPU Scaling (BrandLyft Design):
+          // Middle cards are gracefully smaller (~0.82), outer cards are larger (~1.05).
+          // Both width and height scale proportionally together so photos NEVER squeeze!
+          // GPU-accelerated subpixel precision eliminates all jumping and stair-stepping completely.
+          const s = 0.82 + 0.23 * Math.pow(absU, 1.35);
+          const yDip = Math.pow(Math.max(0, 1 - absU), 2) * 14;
+
+          card.style.transform = `translate3d(0, ${yDip.toFixed(2)}px, 0) scale(${s.toFixed(4)})`;
         }
       }
 
