@@ -10945,11 +10945,13 @@ body [style*="cursor:zoom-in"] {
   margin-left: -50vw;
   margin-right: -50vw;
   overflow: hidden;
-  padding: 54px 0 60px;
-  min-height: 480px;
+  padding: 40px 0 46px;
+  min-height: 440px;
   user-select: none;
   cursor: grab;
   touch-action: pan-y;
+  clip-path: url(#carousel-curved-ribbon);
+  -webkit-clip-path: url(#carousel-curved-ribbon);
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -10978,28 +10980,23 @@ body [style*="cursor:zoom-in"] {
   gap: 20px;
   width: max-content;
   will-change: transform;
-  transform-style: preserve-3d;
   pointer-events: auto;
 }
 
-/* 3. Individual Portrait Cards - 4:5 Aspect Ratio & 3D Cylindrical Perspective Ribbon */
+/* 3. Wide Photography Cards (Reference Design: Wide format, No rounded edges) */
 .marquee-photo-card {
   position: relative;
   flex-shrink: 0;
-  width: 272px;
-  height: 340px;
-  aspect-ratio: 4 / 5;
-  border-radius: 20px;
+  width: 380px;
+  height: 380px;
+  aspect-ratio: 1 / 1;
+  border-radius: 0 !important;
   overflow: hidden;
   cursor: grab;
   background-color: var(--bg-card-subtle);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.16);
-  transform-origin: center center;
-  transform-style: preserve-3d;
+  box-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.18);
   will-change: transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
   transition: box-shadow 300ms ease, border-color 300ms ease;
 }
 
@@ -11098,9 +11095,9 @@ body [style*="cursor:zoom-in"] {
   }
 
   .marquee-photo-card {
-    width: 200px;
-    height: 295px;
-    border-radius: 16px;
+    width: 280px;
+    height: 280px;
+    border-radius: 0 !important;
   }
 
   .milestones-marquee-track {

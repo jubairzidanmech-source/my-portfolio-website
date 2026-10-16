@@ -96,46 +96,6 @@ export const MilestonesCarousel = () => {
         }
       }
 
-      // Continuous Tangential BrandLyft Ribbon:
-      // Top and bottom edges of cards flow smoothly into each other along a single unbroken concave curve
-      if (trackRef.current) {
-        const viewportWidth = window.innerWidth;
-        const centerX = viewportWidth / 2;
-        const cards = trackRef.current.children;
-        const stride = blockWidth / 8;
-        const cardCenterOffset = 136; // half of 272px card width (4:5 aspect ratio)
-
-        for (let i = 0; i < cards.length; i++) {
-          const card = cards[i];
-          if (!card) continue;
-
-          // Deterministic screen coordinate
-          const cardCenterX = posRef.current + i * stride + cardCenterOffset;
-          const u = (cardCenterX - centerX) / (viewportWidth * 0.44);
-
-          // Skip cards far off screen
-          if (u < -2.2 || u > 2.2) continue;
-
-          const clampedU = Math.max(-1.3, Math.min(1.3, u));
-          const absU = Math.min(1.25, Math.abs(clampedU));
-
-          // Strict Constant Spacing + 3D Cylindrical Concave Bowl:
-          // Horizontal spacing between cards is 100% CONSTANT (translateX = 0, scaleX = 1).
-          // Card height contours gracefully (inner cards ~0.78, outer cards ~1.05).
-          // Photo counter-scale prevents any vertical squeezing, preserving 100% natural photo aspect ratio.
-          const sY = 0.78 + 0.27 * Math.pow(absU, 1.35);
-          const angleY = (-clampedU * 16).toFixed(2);
-          const yDip = (Math.pow(Math.max(0, 1 - absU), 2) * 18).toFixed(2);
-
-          card.style.transform = `perspective(1000px) translate3d(0, ${yDip}px, 0) rotateY(${angleY}deg) scale(1, ${sY.toFixed(4)})`;
-
-          const img = card.querySelector('.marquee-card-img');
-          if (img) {
-            img.style.transform = `scale(1, ${(1 / sY).toFixed(4)})`;
-          }
-        }
-      }
-
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
@@ -221,7 +181,16 @@ export const MilestonesCarousel = () => {
         </h2>
       </div>
 
-      {/* 2. Full-Bleed Continuous Interactive Drag Conveyor with Dynamic Concave Lens */}
+      {/* 2. Concave Curved Ribbon Clip Path (Reference Design) */}
+      <svg width="0" height="0" style={{ position: 'absolute', pointerEvents: 'none' }} aria-hidden="true">
+        <defs>
+          <clipPath id="carousel-curved-ribbon" clipPathUnits="objectBoundingBox">
+            <path d="M 0,0 Q 0.5,0.11 1,0 L 1,1 Q 0.5,0.89 0,1 Z" />
+          </clipPath>
+        </defs>
+      </svg>
+
+      {/* 3. Full-Bleed Continuous Interactive Drag Conveyor */}
       <div 
         className={`milestones-marquee-wrapper ${isGrabbing ? 'is-grabbing' : ''}`}
         onPointerDown={handlePointerDown}
