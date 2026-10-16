@@ -683,19 +683,15 @@ img {
 }
 
 #home.page-section {
-  min-height: calc(100vh - 128px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-bottom: 48px;
+  padding-bottom: 0px;
 }
 
 .site-main.with-announcement #home.page-section {
-  min-height: calc(100vh - 160px);
+  padding-bottom: 0px;
 }
 
 #academics.page-section {
-  padding-top: 32px;
+  padding-top: 24px;
   padding-bottom: 24px;
 }
 
@@ -3428,7 +3424,7 @@ img {
   border-radius: 22px;
   padding: 10px;
   margin-top: 16px;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
   box-shadow: 0 16px 40px rgba(9, 45, 140, 0.22);
   position: relative;
   overflow: hidden;
