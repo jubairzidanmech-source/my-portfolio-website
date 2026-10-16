@@ -10,6 +10,7 @@ import { SkillsPage } from './pages/SkillsPage';
 import { ContactPage } from './pages/ContactPage';
 
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { MilestonesCarousel } from './components/MilestonesCarousel';
 import { AestheticGridBackground } from './components/AestheticGridBackground';
 import { CustomCursor } from './components/CustomCursor';
 import { Analytics } from '@vercel/analytics/react';
@@ -177,6 +178,13 @@ export function App() {
         <section id="academics" className="page-section">
           <ErrorBoundary>
             <AcademicsPage />
+          </ErrorBoundary>
+        </section>
+
+        {/* In Frames: Continuous Editorial Photographic Conveyor */}
+        <section id="in-frames" className="in-frames-strip-section" aria-label="In Frames Photo Showcase">
+          <ErrorBoundary>
+            <MilestonesCarousel />
           </ErrorBoundary>
         </section>
 
