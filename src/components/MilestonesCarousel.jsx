@@ -189,13 +189,6 @@ export const MilestonesCarousel = () => {
         onMouseEnter={() => { isHoveredRef.current = true; }}
         onMouseLeave={() => { isHoveredRef.current = false; }}
       >
-        {/* Top Curved Arch Cutout (Curves down in center, matching reference design) */}
-        <div className="milestones-curve-overlay milestones-curve-top" aria-hidden="true">
-          <svg viewBox="0 0 1440 100" preserveAspectRatio="none" className="milestones-curve-svg">
-            <path d="M 0 0 L 1440 0 L 1440 10 Q 720 85 0 10 Z" />
-          </svg>
-        </div>
-
         <div ref={trackRef} className="milestones-marquee-track">
           {marqueeItems.map((item, idx) => (
             <div
@@ -249,13 +242,6 @@ export const MilestonesCarousel = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Bottom Curved Arch Cutout (Curves down in center, matching reference design) */}
-        <div className="milestones-curve-overlay milestones-curve-bottom" aria-hidden="true">
-          <svg viewBox="0 0 1440 100" preserveAspectRatio="none" className="milestones-curve-svg">
-            <path d="M 0 15 Q 720 90 1440 15 L 1440 100 L 0 100 Z" />
-          </svg>
         </div>
       </div>
 
