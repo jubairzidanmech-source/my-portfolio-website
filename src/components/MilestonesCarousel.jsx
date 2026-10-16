@@ -115,16 +115,12 @@ export const MilestonesCarousel = () => {
           // Skip calculations for cards far off screen
           if (dist < -2.2 || dist > 2.2) continue;
 
-          const clampedDist = Math.max(-1.5, Math.min(1.5, dist));
           const absDist = Math.min(1.35, Math.abs(dist));
-
-          // Outer cards are bigger, middle cards are smaller (Upright, no rotation or skew)
-          // Height: scaleY ~0.74 in center (~266px) up to ~1.16 at edges (~418px)
+          // Outer cards are taller, middle cards are smaller.
+          // Width is strictly 100% constant (no scaleX) so space between cards is perfectly identical everywhere!
           const scaleY = 0.74 + 0.42 * Math.pow(absDist, 1.25);
-          // Width: scaleX ~0.92 in center up to ~1.04 at edges for clean, consistent spacing
-          const scaleX = 0.92 + 0.12 * Math.pow(absDist, 1.25);
 
-          card.style.transform = `scale(${scaleX.toFixed(3)}, ${scaleY.toFixed(3)})`;
+          card.style.transform = `scale(1, ${scaleY.toFixed(3)})`;
         }
       }
 
