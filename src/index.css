@@ -6093,7 +6093,7 @@ img {
 
 .filter-pill {
   padding: 8px 20px;
-  border-radius: var(--radius-pill);
+  border-radius: 9999px;
   background: var(--bg-card);
   border: 1px solid var(--border-card);
   color: var(--text-secondary);
@@ -6102,18 +6102,29 @@ img {
   cursor: pointer;
   transition: all var(--transition-fast);
   white-space: nowrap;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .filter-pill:hover {
   background: var(--lavender-soft);
   color: var(--purple-deep);
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .filter-pill.active {
   background: var(--blue-primary);
   color: #FFFFFF;
   border-color: var(--blue-primary);
-  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.28);
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.filter-pill:focus,
+.filter-pill:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* ==========================================================================
@@ -7766,7 +7777,8 @@ img {
   background: #2563EB !important;
   color: #FFFFFF !important;
   border-color: #3B82F6 !important;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
 
 [data-theme="dark"] .award-badge.champion,
