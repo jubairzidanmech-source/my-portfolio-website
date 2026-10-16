@@ -10830,20 +10830,20 @@ body [style*="cursor:zoom-in"] {
   margin-left: -50vw;
   margin-right: -50vw;
   overflow: hidden;
-  padding: 24px 0 28px;
+  padding: 38px 0 44px;
   user-select: none;
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 4%,
-    black 96%,
+    black 3%,
+    black 97%,
     transparent 100%
   );
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 4%,
-    black 96%,
+    black 3%,
+    black 97%,
     transparent 100%
   );
 }
@@ -10851,9 +10851,9 @@ body [style*="cursor:zoom-in"] {
 .milestones-marquee-track {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 18px;
   width: max-content;
-  animation: marqueeConveyor 120s linear infinite;
+  animation: marqueeConveyor 115s linear infinite;
   will-change: transform;
 }
 
@@ -10872,13 +10872,12 @@ body [style*="cursor:zoom-in"] {
   }
 }
 
-/* 3. Individual Portrait Cards */
+/* 3. Individual Portrait Cards with Organic Angled Edges */
 .marquee-photo-card {
   position: relative;
   flex-shrink: 0;
-  width: 245px;
+  width: 240px;
   height: 355px;
-  border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
   background-color: var(--bg-card-subtle);
@@ -10891,20 +10890,44 @@ body [style*="cursor:zoom-in"] {
 
 [data-theme="light"] .marquee-photo-card {
   border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 8px 22px -6px rgba(0, 0, 0, 0.09);
 }
 
-/* Subtle editorial rotations (±2–3°) as seen in reference image */
-.marquee-photo-card:nth-child(8n + 1) { transform: rotate(-2.4deg); }
-.marquee-photo-card:nth-child(8n + 2) { transform: rotate(1.8deg); }
-.marquee-photo-card:nth-child(8n + 3) { transform: rotate(-1.2deg); }
-.marquee-photo-card:nth-child(8n + 4) { transform: rotate(2.2deg); }
-.marquee-photo-card:nth-child(8n + 5) { transform: rotate(-2.0deg); }
-.marquee-photo-card:nth-child(8n + 6) { transform: rotate(1.5deg); }
-.marquee-photo-card:nth-child(8n + 7) { transform: rotate(-2.2deg); }
-.marquee-photo-card:nth-child(8n + 8) { transform: rotate(1.9deg); }
+/* Individual subtle rotations (±2–4°), skews (±1–2.4°), and vertical offsets matching reference editorial strip */
+.marquee-photo-card:nth-child(8n + 1) {
+  transform: rotate(-3.2deg) skewY(-1.6deg) translateY(6px);
+  border-radius: 24px 22px 24px 22px;
+}
+.marquee-photo-card:nth-child(8n + 2) {
+  transform: rotate(2.4deg) skewY(-1.8deg) translateY(-8px);
+  border-radius: 22px 24px 22px 24px;
+}
+.marquee-photo-card:nth-child(8n + 3) {
+  transform: rotate(-1.4deg) skewY(1.2deg) translateY(-4px);
+  border-radius: 24px 22px 24px 22px;
+}
+.marquee-photo-card:nth-child(8n + 4) {
+  transform: rotate(0.8deg) skewY(-0.6deg) translateY(2px);
+  border-radius: 22px 24px 22px 24px;
+}
+.marquee-photo-card:nth-child(8n + 5) {
+  transform: rotate(-2.6deg) skewY(2.4deg) translateY(-10px);
+  border-radius: 24px 22px 24px 24px;
+}
+.marquee-photo-card:nth-child(8n + 6) {
+  transform: rotate(3.2deg) skewY(-1.8deg) translateY(8px);
+  border-radius: 22px 24px 24px 22px;
+}
+.marquee-photo-card:nth-child(8n + 7) {
+  transform: rotate(-2.2deg) skewY(-1.2deg) translateY(-6px);
+  border-radius: 24px 24px 22px 22px;
+}
+.marquee-photo-card:nth-child(8n + 8) {
+  transform: rotate(2.2deg) skewY(1.4deg) translateY(4px);
+  border-radius: 22px 22px 24px 24px;
+}
 
-/* Hover: pauses smoothly, maintains natural rotation, no scale, crisp accent border */
+/* Hover: pauses smoothly, maintains natural editorial angle and position, subtle accent outline */
 .marquee-photo-card:hover,
 .marquee-photo-card:focus-visible {
   box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.30), 0 0 0 2px var(--accent-blue);
