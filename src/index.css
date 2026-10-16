@@ -11113,22 +11113,29 @@ body [style*="cursor:zoom-in"] {
 
 /* ==========================================================================
    Smooth Scroll-Reveal Animations (Academics, Research, Awards, Experience, Skills, Contact)
-   Motion settings: 750ms, 24px vertical movement, cubic-bezier(0.16, 1, 0.3, 1), 90ms stagger
+   Calibrated to match the Homepage Hero entrance animation:
+   - Duration: 1.2–1.6s
+   - Stagger delay: 150–220ms (170ms)
+   - Easing: cubic-bezier(0.22, 1, 0.36, 1) & cubic-bezier(0.16, 1, 0.3, 1)
+   - Movement: Gentle upward reveal from 34–36px below & masked 110%
+   - Sequence: Headings first, followed by descriptions, cards, and supporting elements
    ========================================================================== */
 
-/* 1. Masked Heading Reveal */
+/* 1. Masked Heading Upward Reveal (Matching Hero Name Mask Reveal) */
 .scroll-reveal-ready .reveal-heading {
   overflow: hidden;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
 }
 
 .scroll-reveal-ready .reveal-heading-text {
   display: inline-block;
-  transform: translateY(105%);
+  transform: translateY(110%);
   opacity: 0;
   will-change: transform, opacity;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 1.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal-ready .reveal-heading.is-revealed .reveal-heading-text,
@@ -11138,13 +11145,15 @@ body [style*="cursor:zoom-in"] {
   opacity: 1;
 }
 
-/* 2. Gentle Fade-Up for Descriptions & Subtitles */
+/* 2. Gentle Fade-Up for Descriptions & Subtitles (Reveals after heading) */
 .scroll-reveal-ready .reveal-desc {
-  transform: translateY(24px);
+  transform: translateY(34px);
   opacity: 0;
   will-change: transform, opacity;
-  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
-              opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1) 160ms,
+              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1) 160ms;
 }
 
 .scroll-reveal-ready .reveal-desc.is-revealed {
@@ -11152,13 +11161,15 @@ body [style*="cursor:zoom-in"] {
   opacity: 1;
 }
 
-/* 3. Subtle Upward Entrance for Individual Cards */
+/* 3. Subtle Upward Entrance for Standalone Cards (Settles gracefully) */
 .scroll-reveal-ready .reveal-card {
-  transform: translateY(24px);
+  transform: translateY(36px);
   opacity: 0;
   will-change: transform, opacity;
-  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1) 220ms,
+              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1) 220ms;
 }
 
 .scroll-reveal-ready .reveal-card.is-revealed {
@@ -11166,58 +11177,62 @@ body [style*="cursor:zoom-in"] {
   opacity: 1;
 }
 
-/* 4. Staggered Card Groups */
+/* 4. Staggered Card Groups (170ms Stagger Delay, 1.3s Duration) */
 .scroll-reveal-ready .reveal-group > * {
-  transform: translateY(24px);
+  transform: translateY(36px);
   opacity: 0;
   will-change: transform, opacity;
-  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .scroll-reveal-ready .reveal-group.is-revealed > *:nth-child(1) {
   transform: translateY(0);
   opacity: 1;
-  transition-delay: 0ms;
+  transition-delay: 150ms;
 }
 .scroll-reveal-ready .reveal-group.is-revealed > *:nth-child(2) {
   transform: translateY(0);
   opacity: 1;
-  transition-delay: 90ms;
+  transition-delay: 320ms;
 }
 .scroll-reveal-ready .reveal-group.is-revealed > *:nth-child(3) {
   transform: translateY(0);
   opacity: 1;
-  transition-delay: 180ms;
+  transition-delay: 490ms;
 }
 .scroll-reveal-ready .reveal-group.is-revealed > *:nth-child(4) {
   transform: translateY(0);
   opacity: 1;
-  transition-delay: 270ms;
+  transition-delay: 660ms;
 }
 .scroll-reveal-ready .reveal-group.is-revealed > *:nth-child(5) {
   transform: translateY(0);
   opacity: 1;
-  transition-delay: 360ms;
+  transition-delay: 830ms;
 }
 .scroll-reveal-ready .reveal-group.is-revealed > *:nth-child(6) {
   transform: translateY(0);
   opacity: 1;
-  transition-delay: 450ms;
+  transition-delay: 1000ms;
 }
 .scroll-reveal-ready .reveal-group.is-revealed > *:nth-child(n+7) {
   transform: translateY(0);
   opacity: 1;
-  transition-delay: 500ms;
+  transition-delay: 1100ms;
 }
 
-/* 5. Progressive Timeline Row Reveal */
+/* 5. Progressive Timeline Row Reveal (Academics Journey) */
 .scroll-reveal-ready .reveal-timeline-row {
-  transform: translateY(24px);
+  transform: translateY(36px);
   opacity: 0;
   will-change: transform, opacity;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .scroll-reveal-ready .reveal-timeline-row.is-revealed {

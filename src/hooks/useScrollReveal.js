@@ -77,7 +77,7 @@ export function useScrollReveal() {
     // 2. Activate scroll reveal styling
     document.body.classList.add('scroll-reveal-ready');
 
-    // 3. Set up IntersectionObserver
+    // 3. Set up IntersectionObserver (triggers slightly before entering viewport)
     const observer = new IntersectionObserver(
       (entries, obs) => {
         entries.forEach((entry) => {
@@ -88,8 +88,8 @@ export function useScrollReveal() {
         });
       },
       {
-        threshold: 0.08,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.05,
+        rootMargin: '0px 0px -20px 0px'
       }
     );
 
