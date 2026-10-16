@@ -116,16 +116,20 @@ export const MilestonesCarousel = () => {
           // Skip cards far off screen
           if (u < -2.2 || u > 2.2) continue;
 
-          const absU = Math.min(1.25, Math.abs(u));
+          const clampedU = Math.max(-1.3, Math.min(1.3, u));
+          const absU = Math.min(1.25, Math.abs(clampedU));
 
-          // Proportional GPU Scaling (BrandLyft Design):
-          // Middle cards are gracefully smaller (~0.82), outer cards are larger (~1.05).
-          // Both width and height scale proportionally together so photos NEVER squeeze!
-          // GPU-accelerated subpixel precision eliminates all jumping and stair-stepping completely.
-          const s = 0.82 + 0.23 * Math.pow(absU, 1.35);
-          const yDip = Math.pow(Math.max(0, 1 - absU), 2) * 14;
+          // 3D Cylindrical Perspective Arc (BrandLyft & Reference Curve):
+          // Cards wrap along the circular arc of a cylinder:
+          // - Left cards (u < 0): rotateY > 0 -> top edge slopes DOWN to center, bottom edge slopes UP
+          // - Right cards (u > 0): rotateY < 0 -> top edge slopes DOWN to center, bottom edge slopes UP
+          // - Center card (u = 0): rotateY = 0 -> upright, horizontal top and bottom
+          // Result: Top and bottom edges connect seamlessly to form a single continuous circular curve!
+          const angleY = (-clampedU * 20).toFixed(2);
+          const s = (0.86 + 0.18 * Math.pow(absU, 1.3)).toFixed(4);
+          const yDip = (Math.pow(Math.max(0, 1 - absU), 2) * 14).toFixed(2);
 
-          card.style.transform = `translate3d(0, ${yDip.toFixed(2)}px, 0) scale(${s.toFixed(4)})`;
+          card.style.transform = `perspective(900px) translate3d(0, ${yDip}px, 0) rotateY(${angleY}deg) scale(${s})`;
         }
       }
 

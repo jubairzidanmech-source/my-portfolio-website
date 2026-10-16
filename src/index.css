@@ -11002,10 +11002,11 @@ body [style*="cursor:zoom-in"] {
   gap: 24px;
   width: max-content;
   will-change: transform;
+  transform-style: preserve-3d;
   pointer-events: auto;
 }
 
-/* 3. Individual Portrait Cards - 100% Upright, Natural Aspect Ratio */
+/* 3. Individual Portrait Cards - 3D Cylindrical Perspective Ribbon */
 .marquee-photo-card {
   position: relative;
   flex-shrink: 0;
@@ -11018,6 +11019,7 @@ body [style*="cursor:zoom-in"] {
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.16);
   transform-origin: center center;
+  transform-style: preserve-3d;
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
