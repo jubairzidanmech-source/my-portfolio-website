@@ -31,7 +31,7 @@ export function useLenis() {
 
     // Initialize Lenis instance
     const lenis = new Lenis({
-      lerp: 0.08,
+      lerp: 0.14,
       smoothWheel: true,
       wheelMultiplier: 1.0,
       touchMultiplier: 1.0,

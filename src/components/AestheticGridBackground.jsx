@@ -23,9 +23,27 @@ export const AestheticGridBackground = () => {
     }
 
     let animationFrameId;
+    let isScrolling = false;
+    let scrollTimeout;
     const startTime = performance.now();
 
+    const onScroll = () => {
+      isScrolling = true;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 100);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
     const render = (now) => {
+      // During active scroll, bypass heavy DOM style mutations to prioritize 60/120fps scrolling
+      if (isScrolling) {
+        animationFrameId = requestAnimationFrame(render);
+        return;
+      }
+
       // Flowing, majestic organic liquid time scale (~22-28s cycles for continuous, noticeable fluid motion)
       const elapsed = (now - startTime) * 0.001;
 
@@ -79,6 +97,8 @@ export const AestheticGridBackground = () => {
     animationFrameId = requestAnimationFrame(render);
 
     return () => {
+      window.removeEventListener('scroll', onScroll);
+      clearTimeout(scrollTimeout);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, []);

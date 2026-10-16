@@ -121,25 +121,29 @@ export function App() {
 
   // ScrollSpy: Accurately highlight current section in navbar using viewport screen coordinates
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false;
+
+    const updateActiveSection = () => {
       if (isManualScrolling.current) return;
 
+      const scrollY = window.scrollY;
+
       // Top of page
-      if (window.scrollY < 100) {
-        setActivePage('home');
+      if (scrollY < 100) {
+        setActivePage((prev) => (prev !== 'home' ? 'home' : prev));
         return;
       }
 
       // Bottom of page: ensure contact is highlighted when user reaches the end
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
-        setActivePage('contact');
+      if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 50) {
+        setActivePage((prev) => (prev !== 'contact' ? 'contact' : prev));
         return;
       }
 
       // Dynamic trigger line just below sticky header + announcement bar
       const triggerY = announcementVisible ? 160 : 120;
 
-      // Determine active section via getBoundingClientRect() to avoid offsetParent bugs
+      // Determine active section via getBoundingClientRect()
       let currentSection = 'home';
       for (let i = 0; i < SECTIONS.length; i++) {
         const id = SECTIONS[i];
@@ -153,12 +157,23 @@ export function App() {
         }
       }
 
-      setActivePage(currentSection);
+      setActivePage((prev) => (prev !== currentSection ? currentSection : prev));
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateActiveSection();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
     if (window.lenis) {
       window.lenis.on('scroll', handleScroll);
+    } else {
+      window.addEventListener('scroll', handleScroll, { passive: true });
     }
 
     return () => {

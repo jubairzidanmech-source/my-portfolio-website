@@ -1,0 +1,3 @@
+# Prevent non-web helper scripts from being uploaded to Vercel build containers
+generate_cv.py
+.DS_Store

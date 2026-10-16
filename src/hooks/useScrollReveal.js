@@ -78,34 +78,19 @@ export function useScrollReveal() {
     // 2. Activate scroll reveal ready styling
     document.body.classList.add('scroll-reveal-ready');
 
-    // 3. Dual-Observer Architecture with Hysteresis (Prevents flickering & enables bidirectional repeat)
-    // Reveal Observer: triggers when element enters viewport
+    // 3. Reveal Observer: triggers smoothly when element enters viewport
     const revealObserver = new IntersectionObserver(
-      (entries) => {
+      (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
           }
         });
       },
       {
         threshold: 0.08,
         rootMargin: '0px 0px -40px 0px'
-      }
-    );
-
-    // Exit Observer: triggers smooth reversal only when element completely leaves viewport with generous safety buffer
-    const exitObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            entry.target.classList.remove('is-revealed');
-          }
-        });
-      },
-      {
-        threshold: 0,
-        rootMargin: '50px 0px 50px 0px'
       }
     );
 
@@ -124,15 +109,13 @@ export function useScrollReveal() {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight - 40 && rect.bottom > 40) {
         el.classList.add('is-revealed');
+      } else {
+        revealObserver.observe(el);
       }
-
-      revealObserver.observe(el);
-      exitObserver.observe(el);
     });
 
     return () => {
       revealObserver.disconnect();
-      exitObserver.disconnect();
     };
   }, []);
 }
