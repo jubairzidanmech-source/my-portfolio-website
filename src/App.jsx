@@ -119,43 +119,55 @@ export function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  // ScrollSpy: Automatically highlight the current section in the navbar as user scrolls
+  // ScrollSpy: Accurately highlight current section in navbar using viewport screen coordinates
   useEffect(() => {
     const handleScroll = () => {
       if (isManualScrolling.current) return;
 
       // Top of page
-      if (window.scrollY < 120) {
+      if (window.scrollY < 100) {
         setActivePage('home');
         return;
       }
 
-      // Bottom of page
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+      // Bottom of page: ensure contact is highlighted when user reaches the end
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
         setActivePage('contact');
         return;
       }
 
-      // Dynamic offset matching header height + breathing room
-      const headerOffset = announcementVisible ? 138 : 104;
+      // Dynamic trigger line just below sticky header + announcement bar
+      const triggerY = announcementVisible ? 160 : 120;
 
-      // Scan through sections from bottom to top to identify which one is in view
-      for (let i = SECTIONS.length - 1; i >= 0; i--) {
+      // Determine active section via getBoundingClientRect() to avoid offsetParent bugs
+      let currentSection = 'home';
+      for (let i = 0; i < SECTIONS.length; i++) {
         const id = SECTIONS[i];
+        if (id === 'home') continue;
         const el = document.getElementById(id);
         if (el) {
-          const top = el.offsetTop - headerOffset;
-          if (window.scrollY >= top) {
-            setActivePage(id);
-            break;
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= triggerY) {
+            currentSection = id;
           }
         }
       }
+
+      setActivePage(currentSection);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    if (window.lenis) {
+      window.lenis.on('scroll', handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (window.lenis) {
+        window.lenis.off('scroll', handleScroll);
+      }
+    };
+  }, [announcementVisible]);
 
   return (
     <div className="app-wrapper">
