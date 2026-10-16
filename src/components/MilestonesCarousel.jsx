@@ -18,6 +18,7 @@ export const MilestonesCarousel = () => {
   const trackRef = useRef(null);
   const posRef = useRef(0);
   const velocityRef = useRef(0);
+  const isPointerDownRef = useRef(false);
   const isDraggingRef = useRef(false);
   const hasDraggedRef = useRef(false);
   const startXRef = useRef(0);
@@ -27,8 +28,8 @@ export const MilestonesCarousel = () => {
   const animationFrameRef = useRef(null);
   const lastTimeRef = useRef(null);
 
-  // Calm, luxurious linear speed: 22 pixels per second (moving right to left)
-  const AUTO_SPEED = -22;
+  // Dynamic continuous speed: -52 pixels per second (moving right to left)
+  const AUTO_SPEED = -52;
 
   // Measure single repetition block width (8 items) from live DOM
   const measureBlockWidth = useCallback(() => {
@@ -57,7 +58,7 @@ export const MilestonesCarousel = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [measureBlockWidth]);
 
-  // Main 60 FPS animation loop: handles motion, inertia, infinite wrapping & dynamic concave lens curvature
+  // Main 60 FPS animation loop: handles motion, inertia, infinite wrapping & dynamic movement
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -70,15 +71,15 @@ export const MilestonesCarousel = () => {
 
       const blockWidth = blockWidthRef.current || measureBlockWidth() || 2000;
 
-      if (!isDraggingRef.current && !lightboxData) {
+      if (!isDraggingRef.current) {
         // Inertia decay after user releases drag
         if (Math.abs(velocityRef.current) > 0.3) {
           posRef.current += velocityRef.current;
           velocityRef.current *= 0.94;
         } else {
           velocityRef.current = 0;
-          // Normal conveyor glide when not hovered
-          if (!isHoveredRef.current && !prefersReducedMotion) {
+          // Continuous conveyor glide (does not stop on click or hover)
+          if (!prefersReducedMotion) {
             posRef.current += AUTO_SPEED * dt;
           }
         }
@@ -106,53 +107,56 @@ export const MilestonesCarousel = () => {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [lightboxData, measureBlockWidth]);
+  }, [measureBlockWidth]);
 
-  // Interactive mouse & touch drag start
+  // Interactive mouse & touch drag start (does not stop motion unless actually dragged)
   const handlePointerDown = (e) => {
     if (e.button !== undefined && e.button !== 0) return;
 
-    isDraggingRef.current = true;
+    isPointerDownRef.current = true;
+    isDraggingRef.current = false;
     hasDraggedRef.current = false;
     const clientX = e.clientX ?? (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
     startXRef.current = clientX;
     lastXRef.current = clientX;
     velocityRef.current = 0;
-    setIsGrabbing(true);
   };
 
   // Window listeners for smooth, uninterrupted dragging even outside element bounds
   useEffect(() => {
     const handlePointerMove = (e) => {
-      if (!isDraggingRef.current) return;
+      if (!isPointerDownRef.current) return;
 
       const clientX = e.clientX ?? (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
-      const deltaX = clientX - lastXRef.current;
       const totalDist = Math.abs(clientX - startXRef.current);
 
-      if (totalDist > 5) {
+      // Only engage manual dragging when movement threshold is crossed
+      if (totalDist > 6) {
+        isDraggingRef.current = true;
         hasDraggedRef.current = true;
-      }
+        setIsGrabbing(true);
 
-      lastXRef.current = clientX;
-      posRef.current += deltaX;
-      velocityRef.current = deltaX; // Capture instantaneous speed for momentum
+        const deltaX = clientX - lastXRef.current;
+        lastXRef.current = clientX;
+        posRef.current += deltaX;
+        velocityRef.current = deltaX; // Capture instantaneous speed for momentum
 
-      const blockWidth = blockWidthRef.current || 2000;
-      while (posRef.current <= -blockWidth * 2) {
-        posRef.current += blockWidth;
-      }
-      while (posRef.current > -blockWidth) {
-        posRef.current -= blockWidth;
-      }
+        const blockWidth = blockWidthRef.current || 2000;
+        while (posRef.current <= -blockWidth * 2) {
+          posRef.current += blockWidth;
+        }
+        while (posRef.current > -blockWidth) {
+          posRef.current -= blockWidth;
+        }
 
-      if (trackRef.current) {
-        trackRef.current.style.transform = `translate3d(${posRef.current}px, 0, 0)`;
+        if (trackRef.current) {
+          trackRef.current.style.transform = `translate3d(${posRef.current}px, 0, 0)`;
+        }
       }
     };
 
     const handlePointerUp = () => {
-      if (!isDraggingRef.current) return;
+      isPointerDownRef.current = false;
       isDraggingRef.current = false;
       setIsGrabbing(false);
     };
