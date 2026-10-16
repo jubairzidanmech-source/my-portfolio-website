@@ -64,11 +64,11 @@ export const AcademicsPage = () => {
       const isMobile = window.innerWidth <= 768;
       const navOffset = isMobile ? 68 : 108;
       const stackOffset = isMobile ? 72 : 76;
-      const compressRange = isMobile ? 120 : 160;
-
       rows.forEach((row, idx) => {
         const card = row.querySelector('.timeline-academic-card');
         if (!card) return;
+
+        const compressRange = idx === 2 ? (isMobile ? 240 : 360) : (isMobile ? 120 : 160);
 
         // The final card (M.Sc.) stays fully expanded
         if (idx === rows.length - 1) {

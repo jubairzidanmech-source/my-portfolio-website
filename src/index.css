@@ -3938,13 +3938,13 @@ img {
   box-shadow: none !important;
 }
 
-/* Connecting spine line: exactly 48px tall to bridge to the next node halo without overshooting */
+/* Connecting spine line: spans from node halo down to the next node halo */
 .timeline-axis::before {
   content: '';
   position: absolute;
   left: 17.5px;
   top: 38px;
-  height: 48px;
+  bottom: -36px;
   width: 3px;
   background: linear-gradient(180deg, #2563EB, #4F46E5);
   border-radius: 9999px;
@@ -4046,38 +4046,7 @@ img {
   background: var(--bg-primary);
 }
 
-/* Hide SSC and HSC years & stepper nodes when scrolled to the bottom / compressed */
-#degree-ssc .timeline-axis-meta,
-#degree-hsc .timeline-axis-meta {
-  opacity: calc(1 - (var(--compress, 0) * 1.5));
-  transition: opacity 0.2s ease, visibility 0.2s ease;
-}
 
-#degree-ssc.is-compressed .timeline-axis-meta,
-#degree-hsc.is-compressed .timeline-axis-meta {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  visibility: hidden !important;
-}
-
-#degree-ssc .timeline-node-outer-halo,
-#degree-hsc .timeline-node-outer-halo {
-  opacity: calc(1 - (var(--compress, 0) * 1.5));
-  transition: opacity 0.2s ease, visibility 0.2s ease;
-}
-
-#degree-ssc.is-compressed .timeline-node-outer-halo,
-#degree-hsc.is-compressed .timeline-node-outer-halo {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  visibility: hidden !important;
-}
-
-#degree-ssc.is-compressed .timeline-axis::before,
-#degree-hsc.is-compressed .timeline-axis::before {
-  opacity: 0 !important;
-  visibility: hidden !important;
-}
 
 .timeline-axis-badge-row {
   display: flex;
@@ -4313,17 +4282,23 @@ img {
   opacity: calc(1 - (0.35 * var(--compress, 0)));
 }
 
-/* Secondary collapsible content (Dropdowns, Certificates, Milestones) - Stable height to prevent scroll jank */
+/* Secondary collapsible content (Dropdowns, Certificates, Milestones) */
 .academic-secondary-content {
   opacity: calc(1 - (var(--compress, 0) * 1.6));
+  max-height: 1200px;
+  overflow: hidden;
   margin-top: 16px;
   pointer-events: auto;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.25s ease, max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.25s ease;
 }
 
 .timeline-academic-card.is-compressed .academic-secondary-content {
   opacity: 0 !important;
+  max-height: 0 !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
   pointer-events: none !important;
+  visibility: hidden !important;
 }
 
 /* Current Degree: Subtle blue border & distinct elevation */
