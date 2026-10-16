@@ -119,16 +119,20 @@ export const MilestonesCarousel = () => {
           const clampedU = Math.max(-1.3, Math.min(1.3, u));
           const absU = Math.min(1.25, Math.abs(clampedU));
 
-          // Dynamic Concave Circular Bowl (Bigger Outer Cards, Smaller Inner Cards):
-          // Inner cards scale gracefully (~0.76) and outer cards grow larger (~1.06).
-          // xShift dynamically compensates for card width differences, keeping gaps 100% UNIFORM.
-          // rotateY slants top and bottom edges toward the center to form a continuous circular arc.
-          const s = 0.76 + 0.28 * Math.pow(absU, 1.35);
-          const xShift = -clampedU * 272 * (0.24 - 0.12 * Math.pow(absU, 1.35));
-          const angleY = (-clampedU * 18).toFixed(2);
-          const yDip = (Math.pow(Math.max(0, 1 - absU), 2) * 20).toFixed(2);
+          // Strict Constant Spacing + 3D Cylindrical Concave Bowl:
+          // Horizontal spacing between cards is 100% CONSTANT (translateX = 0, scaleX = 1).
+          // Card height contours gracefully (inner cards ~0.78, outer cards ~1.05).
+          // Photo counter-scale prevents any vertical squeezing, preserving 100% natural photo aspect ratio.
+          const sY = 0.78 + 0.27 * Math.pow(absU, 1.35);
+          const angleY = (-clampedU * 16).toFixed(2);
+          const yDip = (Math.pow(Math.max(0, 1 - absU), 2) * 18).toFixed(2);
 
-          card.style.transform = `perspective(1000px) translate3d(${xShift.toFixed(2)}px, ${yDip}px, 0) rotateY(${angleY}deg) scale(${s.toFixed(4)})`;
+          card.style.transform = `perspective(1000px) translate3d(0, ${yDip}px, 0) rotateY(${angleY}deg) scale(1, ${sY.toFixed(4)})`;
+
+          const img = card.querySelector('.marquee-card-img');
+          if (img) {
+            img.style.transform = `scale(1, ${(1 / sY).toFixed(4)})`;
+          }
         }
       }
 

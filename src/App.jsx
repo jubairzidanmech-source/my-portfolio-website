@@ -16,12 +16,15 @@ import { CustomCursor } from './components/CustomCursor';
 import { Analytics } from '@vercel/analytics/react';
 import { AnnouncementBar } from './components/AnnouncementBar';
 import { useLenis } from './hooks/useLenis';
+import { useScrollReveal } from './hooks/useScrollReveal';
 
 const SECTIONS = ['home', 'academics', 'research', 'awards', 'experience', 'skills', 'contact'];
 
 export function App() {
   // Initialize and manage global Lenis smooth momentum scrolling
   useLenis();
+  // Manage subtle, smooth scroll-reveal animations across sections
+  useScrollReveal();
 
   const getInitialPage = () => {
     const hash = window.location.hash.replace('#', '').toLowerCase();
