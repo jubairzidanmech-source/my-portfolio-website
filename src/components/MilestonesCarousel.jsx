@@ -214,11 +214,7 @@ export const MilestonesCarousel = () => {
       {/* 1. Header: Just "In Frames" on top */}
       <div className="milestones-header">
         <h2 className="milestones-title">
-          <span className="masked-header-mask">
-            <span className="masked-header-line">
-              In <span className="header-badge">Frames</span>
-            </span>
-          </span>
+          In <span className="header-badge">Frames</span>
         </h2>
       </div>
 

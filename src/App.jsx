@@ -154,29 +154,6 @@ export function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Scroll-triggered masked text reveal for all page headers
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -20px 0px'
-      }
-    );
-
-    const elements = document.querySelectorAll('.masked-header-line');
-    elements.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div className="app-wrapper">
       <CustomCursor />

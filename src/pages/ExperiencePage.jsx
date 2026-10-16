@@ -30,11 +30,7 @@ export const ExperiencePage = () => {
       {/* Editorial Page Header */}
       <div className="page-intro">
         <h1 className="page-title">
-          <span className="masked-header-mask">
-            <span className="masked-header-line">
-              Experience & <span className="header-badge">Leadership</span>
-            </span>
-          </span>
+          Experience & <span className="header-badge">Leadership</span>
         </h1>
         <p className="page-subtitle">
           Hands-on industrial engineering attachment in thermal power generation, comprehensive STEM instructorship across physics and higher mathematics, and executive leadership within ASME and collegiate societies.

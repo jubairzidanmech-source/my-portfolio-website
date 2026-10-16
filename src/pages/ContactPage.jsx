@@ -48,11 +48,7 @@ export const ContactPage = () => {
         <div className="contact-header-wrap">
           <div className="section-eyebrow">CLOSING INQUIRIES & CORRESPONDENCE</div>
           <h1 className="contact-main-heading">
-            <span className="masked-header-mask">
-              <span className="masked-header-line">
-                Get in <span className="header-badge">Touch</span>
-              </span>
-            </span>
+            Get in <span className="header-badge">Touch</span>
           </h1>
           <p className="contact-subtitle">
             Open for Ph.D. inquiries, graduate fellowships, collaborative CFD & metamaterial investigations, co-authorship, and academic seminars.

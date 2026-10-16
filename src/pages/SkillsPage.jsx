@@ -89,11 +89,7 @@ export const SkillsPage = () => {
       <div className="page-intro">
         <span className="section-label">TECHNICAL COMPETENCIES</span>
         <h1 className="page-title">
-          <span className="masked-header-mask">
-            <span className="masked-header-line">
-              Skills & <span className="header-badge">Proficiencies</span>
-            </span>
-          </span>
+          Skills & <span className="header-badge">Proficiencies</span>
         </h1>
         <p className="page-subtitle">
           Advanced computational engineering toolkits, programming environments, mathematical data synthesis, and interdisciplinary collaborative proficiencies.
