@@ -110,6 +110,37 @@ export const AcademicsPage = () => {
           row.classList.remove('is-compressed');
         }
       });
+
+      // When scrolled at the bottom: As Card 4 (M.Sc.) moves up towards the top,
+      // hide preceding rows' axes/years (SSC, HSC, B.Sc.) so they never overlap with Card 4
+      const mscRow = rows[rows.length - 1];
+      if (mscRow) {
+        const mscTop = mscRow.getBoundingClientRect().top;
+        rows.forEach((row, idx) => {
+          if (idx === rows.length - 1) return; // M.Sc. is never hidden
+          const rowStickyTop = navOffset + (idx * stackOffset);
+          const axis = row.querySelector('.timeline-axis');
+          if (!axis) return;
+
+          // When Card 4 has scrolled up to or past this row's position:
+          if (mscTop <= rowStickyTop + 36) {
+            axis.style.opacity = '0';
+            axis.style.pointerEvents = 'none';
+            axis.style.visibility = 'hidden';
+            axis.style.transition = 'opacity 0.2s ease, visibility 0.2s ease';
+          } else if (mscTop < rowStickyTop + 110) {
+            const fade = Math.max(0, Math.min(1, (mscTop - (rowStickyTop + 36)) / 74));
+            axis.style.opacity = fade.toFixed(2);
+            axis.style.visibility = 'visible';
+            axis.style.pointerEvents = 'none';
+          } else {
+            axis.style.opacity = '1';
+            axis.style.visibility = 'visible';
+            axis.style.pointerEvents = 'auto';
+            axis.style.transition = 'opacity 0.2s ease, visibility 0.2s ease';
+          }
+        });
+      }
     };
 
     let ticking = false;
