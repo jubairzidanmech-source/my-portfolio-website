@@ -1149,10 +1149,22 @@ img {
   top: 10px;
 }
 
+/* Outer Shell holding navbar capsule and outside theme toggle */
+.nav-outer-shell {
+  width: 100%;
+  max-width: var(--max-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  pointer-events: none;
+}
+
 .nav-container {
   pointer-events: auto;
-  width: 100%;
-  max-width: calc(var(--max-width) - 56px); /* Exact alignment with page cards width (1240px - 56px = 1184px) */
+  flex: 1;
+  min-width: 0;
+  max-width: calc(var(--max-width) - 148px);
   height: 64px;
   padding: 6px 16px 6px 20px;
   border-radius: var(--radius-pill); /* Rounded capsule design matching reference image */
@@ -1174,6 +1186,57 @@ img {
   background: rgba(255, 255, 255, 0.94);
   box-shadow: 0 14px 38px rgba(10, 36, 99, 0.12);
   border-color: rgba(255, 255, 255, 0.98);
+}
+
+[data-theme="dark"] .nav-container {
+  background: rgba(15, 23, 42, 0.78);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .site-navbar.scrolled .nav-container {
+  background: rgba(15, 23, 42, 0.92);
+}
+
+/* Right-aligned cluster inside navbar capsule (nav links right-aligned next to Get in Touch) */
+.nav-right-cluster {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+/* Outside Desktop Dark / Light Theme Toggle (positioned in the outside red area) */
+.nav-outside-toggle {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 64px;
+  transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-navbar.scrolled .nav-outside-toggle {
+  height: 58px;
+}
+
+.nav-outside-toggle .segmented-theme-switch {
+  box-shadow: 0 8px 24px rgba(10, 36, 99, 0.08), 0 2px 6px rgba(10, 36, 99, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+[data-theme="dark"] .nav-outside-toggle .segmented-theme-switch {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 12px rgba(37, 99, 235, 0.15);
+}
+
+@media (max-width: 900px) {
+  .nav-outside-toggle {
+    display: none;
+  }
+  .nav-container {
+    max-width: 100%;
+  }
 }
 
 /* Brand Identity: Official Logo a.png (Dark Mode) / b.png (Light Mode) */
@@ -6912,7 +6975,8 @@ img {
   }
 
   .nav-links-desktop,
-  .nav-actions .cv-button {
+  .nav-actions .cv-button,
+  .nav-right-cluster .cv-button {
     display: none;
   }
 

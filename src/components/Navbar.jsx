@@ -56,63 +56,67 @@ export const Navbar = ({ activePage, setActivePage, theme, toggleTheme, hasAnnou
   return (
     <>
       <header className={`site-navbar ${scrolled ? 'scrolled' : ''} ${hasAnnouncement ? 'with-announcement' : ''}`}>
-        <div className="nav-container">
-          {/* Brand Identity: Official Logo a.png (Dark Mode) / b.png (Light Mode) */}
-          <button 
-            className="brand-link" 
-            onClick={() => handleNavClick('home')}
-            aria-label="Jubair Zidan - Home"
-          >
-            <img 
-              key={theme}
-              src={theme === 'dark' ? '/a.png' : '/b.png'} 
-              alt="Jubair Zidan" 
-              className="brand-logo-img" 
-            />
-          </button>
+        <div className="nav-outer-shell">
+          <div className="nav-container">
+            {/* Brand Identity: Official Logo a.png (Dark Mode) / b.png (Light Mode) */}
+            <button 
+              className="brand-link" 
+              onClick={() => handleNavClick('home')}
+              aria-label="Jubair Zidan - Home"
+            >
+              <img 
+                key={theme}
+                src={theme === 'dark' ? '/a.png' : '/b.png'} 
+                alt="Jubair Zidan" 
+                className="brand-logo-img" 
+              />
+            </button>
 
-          {/* Plain Text Desktop Navigation */}
-          <nav className="nav-links-desktop" aria-label="Main Navigation">
-            {navItems.map((item) => {
-              const isActive = activePage === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`nav-plain-link ${isActive ? 'active' : ''}`}
-                  aria-current={isActive ? 'page' : undefined}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </nav>
+            {/* Right Group: Nav links right-aligned with Get in Touch button */}
+            <div className="nav-right-cluster">
+              <nav className="nav-links-desktop" aria-label="Main Navigation">
+                {navItems.map((item) => {
+                  const isActive = activePage === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => handleNavClick(item.id)}
+                      className={`nav-plain-link ${isActive ? 'active' : ''}`}
+                      aria-current={isActive ? 'page' : undefined}
+                    >
+                      {item.label}
+                    </button>
+                  );
+                })}
+              </nav>
 
-          {/* Action & Mobile Toggle */}
-          <div className="nav-actions">
+              <button
+                onClick={() => handleNavClick('contact')}
+                className="cv-button"
+                aria-label="Get in touch"
+              >
+                <span>Get in Touch</span>
+                <ArrowUpRight size={15} />
+              </button>
+
+              <button
+                className="mobile-menu-toggle"
+                onClick={() => setMobileMenuOpen(prev => !prev)}
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileMenuOpen}
+              >
+                {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
+          </div>
+
+          {/* Outside Desktop Dark / Light Theme Toggle (positioned in the outside red area) */}
+          <div className="nav-outside-toggle">
             <SkyThemeToggle
               theme={theme}
               toggleTheme={toggleTheme}
               id="desktop-theme-toggle"
             />
-
-            <button
-              onClick={() => handleNavClick('contact')}
-              className="cv-button"
-              aria-label="Get in touch"
-            >
-              <span>Get in Touch</span>
-              <ArrowUpRight size={15} />
-            </button>
-
-            <button
-              className="mobile-menu-toggle"
-              onClick={() => setMobileMenuOpen(prev => !prev)}
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
           </div>
         </div>
       </header>
