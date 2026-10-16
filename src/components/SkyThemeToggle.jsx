@@ -1,48 +1,58 @@
 import React from 'react';
+import { Sun, Moon } from 'lucide-react';
 
 /**
  * SkyThemeToggle
- * Smoothly animated day/night toggle switch matching reference designs:
- * - Light Mode: Day sky gradient track, glowing golden sun with highlight dot.
- * - Dark Mode: Deep night sky gradient track, crescent moon with soft aura.
- * Hardware-accelerated sliding spring physics.
+ * Dual-segmented pill switch matching the reference design:
+ * - Left segment: Minimized Moon icon + "DARK" text
+ * - Right segment: Minimized Sun icon + "LIGHT" text
+ * - Sliding active pill thumb with smooth physics
  */
 export const SkyThemeToggle = ({ theme, toggleTheme, id = 'theme-toggle' }) => {
   const isDark = theme === 'dark';
 
   return (
-    <button
+    <div
       id={id}
-      onClick={toggleTheme}
-      className={`sky-toggle ${isDark ? 'sky-toggle-dark' : 'sky-toggle-light'}`}
-      type="button"
-      role="switch"
-      aria-checked={isDark}
-      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-      title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+      className={`segmented-theme-switch ${isDark ? 'is-dark' : 'is-light'}`}
+      role="radiogroup"
+      aria-label="Color theme switcher"
     >
-      <span className="sky-toggle-track">
-        <span className="sky-toggle-thumb">
-          {/* Sun Graphic (Light Mode) */}
-          <span className="sky-sun" aria-hidden="true">
-            <span className="sun-core" />
-          </span>
+      {/* Sliding Active Pill Background */}
+      <span className="theme-switch-slider" aria-hidden="true" />
 
-          {/* Moon Graphic (Dark Mode) */}
-          <span className="sky-moon" aria-hidden="true">
-            <svg viewBox="0 0 22 22" width="22" height="22" className="moon-svg">
-              {/* Moon shadow disc */}
-              <circle cx="11" cy="11" r="10.5" fill="#151e33" />
-              {/* Refined Crescent Moon */}
-              <path
-                d="M 11 1.5 A 9.5 9.5 0 0 1 11 20.5 C 15.2 16.8 15.2 5.2 11 1.5 Z"
-                fill="#F8FAFC"
-              />
-            </svg>
-          </span>
-        </span>
-      </span>
-    </button>
+      {/* Dark Option Button */}
+      <button
+        type="button"
+        role="radio"
+        aria-checked={isDark}
+        className={`theme-switch-btn ${isDark ? 'is-active' : ''}`}
+        onClick={() => {
+          if (!isDark) toggleTheme();
+        }}
+        aria-label="Switch to dark theme"
+        title="Dark Theme"
+      >
+        <Moon size={11} strokeWidth={2.4} className="theme-switch-icon" />
+        <span className="theme-switch-text">DARK</span>
+      </button>
+
+      {/* Light Option Button */}
+      <button
+        type="button"
+        role="radio"
+        aria-checked={!isDark}
+        className={`theme-switch-btn ${!isDark ? 'is-active' : ''}`}
+        onClick={() => {
+          if (isDark) toggleTheme();
+        }}
+        aria-label="Switch to light theme"
+        title="Light Theme"
+      >
+        <Sun size={11} strokeWidth={2.4} className="theme-switch-icon" />
+        <span className="theme-switch-text">LIGHT</span>
+      </button>
+    </div>
   );
 };
 

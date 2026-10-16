@@ -6932,155 +6932,122 @@ img {
    MINIMAL & CLASSY THEME TOGGLE (No Stroke)
    Refined capsule pill switch with Apple-grade smooth spring physics.
    - Border: none (zero stroke)
-   - Light: Subtle atmospheric azure/sky track with radiant warm golden sun
-   - Dark: Minimal deep midnight/slate track with glowing silver crescent moon
+/* ==========================================================================
+   Segmented Pill Theme Switcher (Reference Design)
+   Pill container with sliding active thumb, mini Sun/Moon icons, and DARK/LIGHT labels
    ========================================================================== */
 
-.sky-toggle {
+.segmented-theme-switch {
   position: relative;
   display: inline-flex;
   align-items: center;
-  width: 52px;
-  height: 28px;
-  padding: 0;
+  width: 154px;
+  height: 32px;
+  padding: 2px;
+  background: #F1F5F9;
+  border: 1px solid rgba(15, 23, 42, 0.12);
   border-radius: 9999px;
-  cursor: pointer;
-  overflow: hidden;
+  user-select: none;
   box-sizing: border-box;
   flex-shrink: 0;
-  outline: none;
-  border: none;
-  transition:
-    background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.2s ease;
+  transition: background 0.3s ease, border-color 0.3s ease;
   vertical-align: middle;
+}
+
+[data-theme="dark"] .segmented-theme-switch {
+  background: #1E293B;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* Sliding active pill indicator */
+.theme-switch-slider {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  width: calc(50% - 2px);
+  border-radius: 9999px;
+  background: #111827;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), background 0.28s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.segmented-theme-switch.is-light .theme-switch-slider {
+  transform: translateX(100%);
+  background: #111827;
+}
+
+.segmented-theme-switch.is-dark .theme-switch-slider {
+  transform: translateX(0);
+  background: #0B1120;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+/* Option Buttons */
+.theme-switch-btn {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 9999px;
+  color: #475569;
+  font-size: 0.70rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-family: inherit;
+  transition: color 0.24s ease, opacity 0.24s ease;
+  outline: none !important;
+  box-shadow: none !important;
   -webkit-tap-highlight-color: transparent;
 }
 
-.sky-toggle:hover {
-  transform: scale(1.04);
+.segmented-theme-switch.is-light .theme-switch-btn:first-of-type {
+  color: #1E293B;
 }
 
-.sky-toggle:active {
-  transform: scale(0.96);
+.segmented-theme-switch.is-light .theme-switch-btn.is-active {
+  color: #FFFFFF !important;
 }
 
-/* Light Mode Track: Sleek azure/sky gradient with soft ambient shadow (NO STROKE) */
-.sky-toggle-light {
-  background: linear-gradient(135deg, #38BDF8 0%, #2563EB 100%);
-  box-shadow: 
-    0 2px 10px rgba(37, 99, 235, 0.25),
-    inset 0 1px 2px rgba(255, 255, 255, 0.25);
+.segmented-theme-switch.is-dark .theme-switch-btn {
+  color: #94A3B8;
 }
 
-/* Dark Mode Track: Deep midnight slate with soft velvet shadow (NO STROKE) */
-.sky-toggle-dark {
-  background: linear-gradient(135deg, #0B132B 0%, #1E293B 100%);
-  box-shadow: 
-    0 2px 10px rgba(0, 0, 0, 0.4),
-    inset 0 1px 2px rgba(255, 255, 255, 0.08);
+.segmented-theme-switch.is-dark .theme-switch-btn.is-active {
+  color: #FFFFFF !important;
 }
 
-.sky-toggle-track {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  pointer-events: none;
+.theme-switch-btn:hover:not(.is-active) {
+  color: #0F172A;
 }
 
-/* Thumb sliding physics: Perfectly centered (3px inset on all sides) */
-.sky-toggle-thumb {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+[data-theme="dark"] .theme-switch-btn:hover:not(.is-active) {
+  color: #F8FAFC;
 }
 
-.sky-toggle-light .sky-toggle-thumb {
-  transform: translateX(0);
+.theme-switch-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  transition: transform 0.24s ease;
 }
 
-.sky-toggle-dark .sky-toggle-thumb {
-  transform: translateX(24px);
+.theme-switch-btn.is-active .theme-switch-icon {
+  transform: scale(1.05);
 }
 
-/* Sun Element (Light Mode) */
-.sky-sun {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition:
-    opacity 0.32s ease,
-    transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.sun-core {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #FFFDF5 0%, #FDE047 50%, #F59E0B 100%);
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.15),
-    0 0 10px rgba(253, 224, 71, 0.7),
-    0 0 18px rgba(245, 158, 11, 0.35);
-}
-
-.sky-toggle-light .sky-sun {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-}
-
-.sky-toggle-dark .sky-sun {
-  opacity: 0;
-  transform: scale(0.35) rotate(-60deg);
-  pointer-events: none;
-}
-
-/* Moon Element (Dark Mode) */
-.sky-moon {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition:
-    opacity 0.32s ease,
-    transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.moon-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  border-radius: 50%;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  filter: drop-shadow(0 0 4px rgba(248, 250, 252, 0.45));
-}
-
-.sky-toggle-dark .sky-moon {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-}
-
-.sky-toggle-light .sky-moon {
-  opacity: 0;
-  transform: scale(0.35) rotate(60deg);
-  pointer-events: none;
+.theme-switch-text {
+  font-feature-settings: 'tnum';
+  line-height: 1;
 }
 
 /* Mobile Drawer Row */
