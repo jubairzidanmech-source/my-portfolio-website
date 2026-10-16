@@ -683,11 +683,20 @@ img {
 }
 
 #home.page-section {
-  padding-bottom: 32px;
+  min-height: calc(100vh - 128px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 48px;
+}
+
+.site-main.with-announcement #home.page-section {
+  min-height: calc(100vh - 160px);
 }
 
 #academics.page-section {
-  padding-bottom: 16px;
+  padding-top: 32px;
+  padding-bottom: 24px;
 }
 
 #contact.page-section {
