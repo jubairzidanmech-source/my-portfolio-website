@@ -61,26 +61,53 @@ export const AcademicsPage = () => {
     if (!rows || rows.length < 2) return;
 
     const updateStacking = () => {
+      const isMobile = window.innerWidth <= 768;
+      const navOffset = isMobile ? 68 : 108;
+      const stackOffset = isMobile ? 68 : 86;
+      const compressRange = isMobile ? 130 : 180; // Generous 180px scroll interpolation window
+
       rows.forEach((row, idx) => {
         const card = row.querySelector('.timeline-academic-card');
         if (!card) return;
 
-        // If there's a subsequent card, check if that card has reached this card's stack position
-        if (idx < rows.length - 1) {
-          const nextRow = rows[idx + 1];
-          const nextStickyTop = parseFloat(window.getComputedStyle(nextRow).top) || 108;
-          const nextRect = nextRow.getBoundingClientRect();
+        // The final card (M.Sc.) stays fully expanded
+        if (idx === rows.length - 1) {
+          card.style.setProperty('--compress', '0');
+          row.style.setProperty('--compress', '0');
+          card.classList.remove('is-compressed');
+          row.classList.remove('is-compressed');
+          return;
+        }
 
-          // Smooth progressive compression: triggers as next card enters the stack threshold
-          const isCompressed = nextRect.top <= (nextStickyTop + 36);
+        const nextRow = rows[idx + 1];
+        const nextStickyTop = parseFloat(window.getComputedStyle(nextRow).top) || (navOffset + ((idx + 1) * stackOffset));
+        const nextRect = nextRow.getBoundingClientRect();
 
-          if (isCompressed) {
-            row.classList.add('is-compressed');
-            card.classList.add('is-compressed');
-          } else {
-            row.classList.remove('is-compressed');
-            card.classList.remove('is-compressed');
-          }
+        // Distance remaining before next card reaches its sticky position
+        const distanceRemaining = nextRect.top - nextStickyTop;
+
+        let rawProgress = 0;
+        if (distanceRemaining <= 0) {
+          rawProgress = 1;
+        } else if (distanceRemaining < compressRange) {
+          rawProgress = (compressRange - distanceRemaining) / compressRange;
+        } else {
+          rawProgress = 0;
+        }
+
+        // Cubic smoothstep curve: 3t^2 - 2t^3 (0 velocity at start and end for butter-smooth fluidity)
+        const t = Math.min(1, Math.max(0, rawProgress));
+        const smoothProgress = t * t * (3 - 2 * t);
+
+        card.style.setProperty('--compress', smoothProgress.toFixed(3));
+        row.style.setProperty('--compress', smoothProgress.toFixed(3));
+
+        if (smoothProgress > 0.6) {
+          card.classList.add('is-compressed');
+          row.classList.add('is-compressed');
+        } else {
+          card.classList.remove('is-compressed');
+          row.classList.remove('is-compressed');
         }
       });
     };
