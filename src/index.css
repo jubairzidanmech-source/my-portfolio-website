@@ -3875,6 +3875,9 @@ img {
   position: sticky;
   padding-bottom: calc(32px - (16px * var(--compress, 0)));
   will-change: top, padding;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .timeline-row:nth-child(1) {
@@ -3901,23 +3904,26 @@ img {
   padding-bottom: 0;
 }
 
-/* Spine vertical line on left (Connected Stepper Track) */
+/* Spine vertical line on left (Clean Stepper Track - No Background Card) */
 .timeline-axis {
   position: relative;
   display: flex;
   align-items: flex-start;
   padding-right: 20px;
-  cursor: pointer;
+  cursor: default;
   user-select: none;
-  transition: transform 0.2s ease;
-  background: var(--bg-canvas);
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
   padding-top: 4px;
   padding-bottom: 4px;
-  border-radius: 10px;
 }
 
-.timeline-axis:hover {
-  transform: translateX(2px);
+[data-theme="dark"] .timeline-axis {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .timeline-axis::before {
