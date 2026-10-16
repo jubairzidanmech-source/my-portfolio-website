@@ -119,22 +119,16 @@ export const MilestonesCarousel = () => {
           const clampedU = Math.max(-1.3, Math.min(1.3, u));
           const absU = Math.abs(clampedU);
 
-          // 1. Smooth height scaling: outer cards taller (~385px), middle cards smaller (~298px)
-          const scaleY = 0.82 + 0.25 * Math.pow(absU, 1.25);
+          // Authentic 3D Cylindrical Perspective Ribbon (BrandLyft Design):
+          // No artificial card squeezing or scale distortion!
+          // Outer cards are naturally bigger because they are closer to the camera in 3D space (Z > 0).
+          // Middle cards are naturally smaller because they are positioned deeper in 3D space (Z < 0).
+          // Left and right cards naturally slope towards the center vanishing point via rotateY in 3D perspective.
+          const z = (Math.pow(absU, 1.35) * 190) - 130; // Z depth curve in 3D space
+          const rotY = clampedU * 19; // 3D Y-axis angle following the curved cylinder
+          const yDip = Math.pow(Math.max(0, 1 - absU), 2) * 12; // subtle natural cradle dip in center
 
-          // 2. Parabolic vertical dip so center cards dip gracefully into the cradle
-          const yDip = Math.pow(1 - Math.min(1, absU), 2) * 14;
-
-          // 3. Tangential slope angle (matching the user's continuous red line):
-          // Left side: top edge slopes down toward center (negative angle)
-          // Center: flat and level (0deg)
-          // Right side: top edge slopes up away from center (positive angle)
-          // Using skewY ensures the top/bottom borders slant along the curve
-          // while the vertical borders stay straight for perfectly uniform spacing!
-          const skewY = clampedU * 3.4;
-          const rotate = clampedU * 1.5;
-
-          card.style.transform = `translateY(${yDip.toFixed(2)}px) rotate(${rotate.toFixed(2)}deg) skewY(${skewY.toFixed(2)}deg) scale(1, ${scaleY.toFixed(3)}) translateZ(0)`;
+          card.style.transform = `translate3d(0, ${yDip.toFixed(2)}px, ${z.toFixed(2)}px) rotateY(${rotY.toFixed(2)}deg)`;
         }
       }
 
