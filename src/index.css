@@ -4117,7 +4117,7 @@ img {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .timeline-header-gpa {
@@ -4126,6 +4126,10 @@ img {
   gap: 20px;
   flex-shrink: 0;
   margin-left: auto;
+}
+
+.timeline-header-gpa.is-multi {
+  gap: 24px;
 }
 
 .timeline-header-gpa .academic-cgpa-item {
@@ -4139,7 +4143,7 @@ img {
 .timeline-header-gpa .academic-cgpa-primary {
   display: flex;
   align-items: baseline;
-  gap: 4px;
+  gap: 5px;
   justify-content: flex-end;
 }
 
@@ -4155,7 +4159,7 @@ img {
   .timeline-academic-card .timeline-card-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 12px;
   }
   .timeline-header-title-row {
     flex-wrap: wrap;
@@ -4220,23 +4224,45 @@ img {
 }
 
 .timeline-academic-card .academic-cgpa-num {
-  font-size: 1.38rem;
-  font-weight: 700;
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-feature-settings: 'tnum';
+  font-family: 'Gilroy', var(--font-sans);
+  color: #0F172A;
 }
 
 .timeline-academic-card .academic-cgpa-scale {
-  font-size: 0.86rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #64748B;
 }
 
 .timeline-academic-card .academic-cgpa-label {
-  font-size: 0.84rem;
+  font-size: 0.88rem;
   font-weight: 600;
+  color: #334155;
+  letter-spacing: -0.01em;
 }
 
 .timeline-academic-card .academic-cgpa-sublabel {
   display: inline;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
+  color: #64748B;
   opacity: 1;
+}
+
+.timeline-academic-card .academic-cgpa-subtle-tag {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #1D4ED8;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-left: 6px;
+  letter-spacing: 0.01em;
 }
 
 /* Secondary content (Dropdowns, Certificates, Milestones) */
@@ -4436,43 +4462,49 @@ img {
 }
 
 .academic-cgpa-num {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 1.85rem;
+  font-weight: 800;
   color: #0F172A;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
+  letter-spacing: -0.03em;
+  line-height: 1;
   font-feature-settings: 'tnum';
+  font-family: 'Gilroy', var(--font-sans);
 }
 
 .academic-cgpa-scale {
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-size: 1.05rem;
+  font-weight: 600;
   color: #64748B;
 }
 
 .academic-cgpa-subtle-tag {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: #475569;
-  background: rgba(148, 163, 184, 0.12);
-  padding: 1px 7px;
-  border-radius: 4px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #1D4ED8;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  padding: 2px 8px;
+  border-radius: 6px;
   margin-left: 6px;
+  letter-spacing: 0.01em;
 }
 
 .academic-cgpa-info {
-  font-size: 0.84rem;
+  font-size: 0.88rem;
   line-height: 1.4;
 }
 
 .academic-cgpa-label {
   font-weight: 600;
   color: #334155;
+  font-size: 0.88rem;
+  letter-spacing: -0.01em;
 }
 
 .academic-cgpa-sublabel {
   color: #64748B;
   font-weight: 400;
+  font-size: 0.84rem;
 }
 
 /* Milestone Elements */
@@ -7776,8 +7808,9 @@ img {
 }
 
 [data-theme="dark"] .academic-cgpa-subtle-tag {
-  color: #CBD5E1 !important;
-  background: rgba(255, 255, 255, 0.08) !important;
+  color: #93C5FD !important;
+  background: rgba(37, 99, 235, 0.15) !important;
+  border: 1px solid rgba(96, 165, 250, 0.3) !important;
 }
 
 /* Degree Badges in Academic Timeline */
@@ -10259,11 +10292,12 @@ body [style*="cursor:zoom-in"] {
 }
 
 .bsc-metric-num {
-  font-size: 1.35rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 800;
   color: var(--text-primary);
   font-feature-settings: 'tnum';
   line-height: 1.1;
+  font-family: 'Gilroy', var(--font-sans);
 }
 
 .bsc-metric-label {

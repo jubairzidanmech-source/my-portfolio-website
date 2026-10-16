@@ -371,20 +371,20 @@ export const AcademicsPage = () => {
                   </div>
                 </div>
               </div>
+
+              {/* M.Sc. CGPA Display in Card Header */}
+              <div className="timeline-header-gpa">
+                <CgpaStatNumber
+                  value={3.90}
+                  max={4.00}
+                  label="Coursework CGPA"
+                  sublabel="Theory Courses"
+                  badge="Postgraduate"
+                />
+              </div>
             </div>
 
             <div className="timeline-card-hairline" />
-
-            {/* M.Sc. CGPA Display: 3.90 / 4.00 */}
-            <div className="academic-cgpa-group">
-              <CgpaStatNumber
-                value={3.90}
-                max={4.00}
-                label="Coursework CGPA"
-                sublabel="Completed Advanced Postgraduate Theory Courses"
-                badge="Postgraduate"
-              />
-            </div>
 
             {/* Current Status & Progress Milestones: Open Display */}
             <div className="academic-secondary-content">
