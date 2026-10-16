@@ -72,24 +72,25 @@ export const Navbar = ({ activePage, setActivePage, theme, toggleTheme, hasAnnou
               />
             </button>
 
-            {/* Right Group: Nav links right-aligned with Get in Touch button */}
-            <div className="nav-right-cluster">
-              <nav className="nav-links-desktop" aria-label="Main Navigation">
-                {navItems.map((item) => {
-                  const isActive = activePage === item.id;
-                  return (
-                    <button
-                      key={item.id}
-                      onClick={() => handleNavClick(item.id)}
-                      className={`nav-plain-link ${isActive ? 'active' : ''}`}
-                      aria-current={isActive ? 'page' : undefined}
-                    >
-                      {item.label}
-                    </button>
-                  );
-                })}
-              </nav>
+            {/* Center Group: Navigation links centered inside navbar capsule */}
+            <nav className="nav-links-desktop" aria-label="Main Navigation">
+              {navItems.map((item) => {
+                const isActive = activePage === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleNavClick(item.id)}
+                    className={`nav-plain-link ${isActive ? 'active' : ''}`}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
+            </nav>
 
+            {/* Right Group: Action button and mobile menu toggle */}
+            <div className="nav-actions">
               <button
                 onClick={() => handleNavClick('contact')}
                 className="cv-button"

@@ -1161,6 +1161,7 @@ img {
 
 .nav-container {
   pointer-events: auto;
+  position: relative;
   width: 100%;
   height: 64px;
   padding: 6px 16px 6px 20px;
@@ -1193,14 +1194,6 @@ img {
 
 [data-theme="dark"] .site-navbar.scrolled .nav-container {
   background: rgba(15, 23, 42, 0.92);
-}
-
-/* Right-aligned cluster inside navbar capsule (nav links right-aligned next to Get in Touch) */
-.nav-right-cluster {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-left: auto;
 }
 
 /* Outside Desktop Dark / Light Theme Toggle (positioned in the outside red area) */
@@ -1259,6 +1252,8 @@ img {
   padding: 2px 0;
   text-decoration: none;
   transition: transform var(--transition-fast);
+  z-index: 2;
+  flex-shrink: 0;
 }
 
 .brand-link:hover {
@@ -1294,7 +1289,11 @@ img {
   display: block !important;
 }
 
+/* Center-aligned Navigation Links */
 .nav-links-desktop {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 4px;
@@ -1302,6 +1301,7 @@ img {
   padding: 0;
   border: none;
   box-shadow: none;
+  z-index: 1;
 }
 
 .nav-plain-link,
@@ -1340,6 +1340,9 @@ img {
   display: flex;
   align-items: center;
   gap: 12px;
+  margin-left: auto;
+  z-index: 2;
+  flex-shrink: 0;
 }
 
 .cv-button {
@@ -7013,8 +7016,7 @@ img {
   }
 
   .nav-links-desktop,
-  .nav-actions .cv-button,
-  .nav-right-cluster .cv-button {
+  .nav-actions .cv-button {
     display: none;
   }
 
