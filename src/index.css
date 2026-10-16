@@ -3865,7 +3865,8 @@ img {
   display: flex;
   flex-direction: column;
   position: relative;
-  margin: 24px 0 64px;
+  margin: 24px 0 0;
+  padding-bottom: 55vh;
 }
 
 /* Scroll-Driven Stacking Timeline Rows */
@@ -4178,7 +4179,14 @@ img {
 }
 
 .timeline-academic-card.is-compressed .academic-secondary-content {
-  pointer-events: none;
+  max-height: 0 !important;
+  opacity: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
 }
 
 /* Current Degree: Subtle blue border & distinct elevation */
