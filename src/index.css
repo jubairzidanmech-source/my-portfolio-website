@@ -2768,21 +2768,23 @@ img {
 }
 
 .hero-name-line-1 {
-  animation: heroNameReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.04s both;
+  animation: heroNameReveal 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
 }
 
 .hero-name-line-2 {
-  animation: heroNameReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.20s both;
+  animation: heroNameReveal 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
 }
 
 @keyframes heroNameReveal {
   0% {
     opacity: 0;
-    transform: translateY(105%);
+    transform: translateY(100%);
+    filter: blur(4px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 
@@ -2951,58 +2953,62 @@ img {
   flex-direction: column;
 }
 
-/* Opening sequence: 0.4–1.2s Portrait enters (gently scales 0.96 -> 1.0 and slides into position on the right) */
+/* Opening sequence: 0.4–1.5s Portrait enters (gently scales 0.98 -> 1.0 and slides smoothly into position) */
 .hero-anim-portrait {
-  animation: heroPortraitEnter 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  animation: heroPortraitEnter 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
   will-change: transform, opacity;
 }
 
 @keyframes heroPortraitEnter {
   0% {
     opacity: 0;
-    transform: translateX(36px) scale(0.96);
+    transform: translateX(24px) scale(0.975);
+    filter: blur(4px);
   }
   100% {
     opacity: 1;
     transform: translateX(0) scale(1);
+    filter: blur(0);
   }
 }
 
-/* Opening sequence: 0.9–1.6s Academic details appear in coordinated sequence */
+/* Opening sequence: 0.8–2.2s Academic details appear in gentle, coordinated sequence */
 .hero-anim-academic {
-  animation: heroDetailFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+  animation: heroDetailFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.85s both;
   will-change: transform, opacity;
 }
 
 .hero-anim-desc-1 {
-  animation: heroDetailFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 1.08s both;
+  animation: heroDetailFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.05s both;
   will-change: transform, opacity;
 }
 
 .hero-anim-desc-2 {
-  animation: heroDetailFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 1.24s both;
+  animation: heroDetailFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.25s both;
   will-change: transform, opacity;
 }
 
 .hero-anim-keywords {
-  animation: heroDetailFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 1.4s both;
+  animation: heroDetailFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.45s both;
   will-change: transform, opacity;
 }
 
-/* Opening sequence: 1.4–2.0s Buttons finish the introduction */
+/* Opening sequence: 1.6–2.5s Buttons finish the introduction */
 .hero-anim-cta {
-  animation: heroDetailFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 1.55s both;
+  animation: heroDetailFadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 1.65s both;
   will-change: transform, opacity;
 }
 
 @keyframes heroDetailFadeUp {
   0% {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(14px);
+    filter: blur(3px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 

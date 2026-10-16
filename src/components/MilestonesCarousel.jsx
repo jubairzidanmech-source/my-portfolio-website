@@ -27,8 +27,8 @@ export const MilestonesCarousel = () => {
   const animationFrameRef = useRef(null);
   const lastTimeRef = useRef(null);
 
-  // Linear speed: ~36 pixels per second (moving right to left)
-  const AUTO_SPEED = -36;
+  // Calm, luxurious linear speed: 22 pixels per second (moving right to left)
+  const AUTO_SPEED = -22;
 
   // Measure single repetition block width (8 items) from live DOM
   const measureBlockWidth = useCallback(() => {
