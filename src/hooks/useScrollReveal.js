@@ -60,7 +60,7 @@ export function useScrollReveal() {
 
       // Card groups (staggered entrance)
       const groups = section.querySelectorAll(
-        '.pub-grid-2col, .skills-tech-grid, .contact-hub-grid, .filter-bar, .contact-social-grid'
+        '.pub-grid-2col, .skills-tech-grid, .competencies-grid, .interests-grid, .contact-hub-grid, .filter-bar, .contact-social-grid'
       );
       groups.forEach((group) => {
         group.classList.add('reveal-group');
@@ -68,7 +68,7 @@ export function useScrollReveal() {
 
       // Standalone cards not inside a reveal-group
       const standaloneCards = section.querySelectorAll(
-        '.exp-card, .timeline-academic-card:not(.timeline-row .timeline-academic-card), .contact-closing-card'
+        '.exp-card, .pub-list-card:not(.pub-grid-2col .pub-list-card), .timeline-academic-card:not(.timeline-row .timeline-academic-card), .contact-closing-card'
       );
       standaloneCards.forEach((card) => {
         card.classList.add('reveal-card');
@@ -78,19 +78,34 @@ export function useScrollReveal() {
     // 2. Activate scroll reveal ready styling
     document.body.classList.add('scroll-reveal-ready');
 
-    // 3. Reveal Observer: triggers smoothly when element enters viewport
+    // 3. Dual-Observer Architecture with Hysteresis (Prevents flickering & enables bidirectional repeat)
+    // Reveal Observer: triggers when element enters viewport
     const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
+      (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-revealed');
-            observer.unobserve(entry.target);
           }
         });
       },
       {
         threshold: 0.08,
         rootMargin: '0px 0px -40px 0px'
+      }
+    );
+
+    // Exit Observer: triggers smooth reversal only when element completely leaves viewport with generous safety buffer
+    const exitObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            entry.target.classList.remove('is-revealed');
+          }
+        });
+      },
+      {
+        threshold: 0,
+        rootMargin: '50px 0px 50px 0px'
       }
     );
 
@@ -109,13 +124,15 @@ export function useScrollReveal() {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight - 40 && rect.bottom > 40) {
         el.classList.add('is-revealed');
-      } else {
-        revealObserver.observe(el);
       }
+
+      revealObserver.observe(el);
+      exitObserver.observe(el);
     });
 
     return () => {
       revealObserver.disconnect();
+      exitObserver.disconnect();
     };
   }, []);
 }
