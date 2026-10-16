@@ -96,31 +96,32 @@ export const MilestonesCarousel = () => {
         }
       }
 
-      // Dynamic Concave Lens Transformation (Outer cards BIGGER, Center card SMALLER)
+      // Refined Concave Height Curve: Outer cards taller, middle cards smaller.
+      // Pure deterministic calculation without getBoundingClientRect layout reflow to eliminate any jumping or breathing.
       if (trackRef.current) {
         const viewportWidth = window.innerWidth;
         const centerX = viewportWidth / 2;
-        const trackScreenLeft = trackRef.current.getBoundingClientRect().left;
         const cards = trackRef.current.children;
         const stride = blockWidth / 8;
-        const halfCard = stride / 2;
+        const cardCenterOffset = 115; // exactly half of base 230px card width
 
         for (let i = 0; i < cards.length; i++) {
           const card = cards[i];
           if (!card) continue;
 
-          const cardCenterX = trackScreenLeft + i * stride + halfCard;
+          // Deterministic screen coordinate (wrapper left edge is 0 in viewport)
+          const cardCenterX = posRef.current + i * stride + cardCenterOffset;
           const dist = (cardCenterX - centerX) / (viewportWidth * 0.44);
 
-          // Skip calculations for cards far off screen
-          if (dist < -2.2 || dist > 2.2) continue;
+          // Skip cards that are completely off screen
+          if (dist < -2.0 || dist > 2.0) continue;
 
-          const absDist = Math.min(1.35, Math.abs(dist));
-          // Outer cards are taller, middle cards are smaller.
-          // Width is strictly 100% constant (no scaleX) so space between cards is perfectly identical everywhere!
-          const scaleY = 0.74 + 0.42 * Math.pow(absDist, 1.25);
+          const absDist = Math.min(1.25, Math.abs(dist));
+          // Gentle, rock-solid height curve: outer cards taller (~380px), middle cards smaller (~320px)
+          // Calm and stable without visible pulsation or breathing
+          const scaleY = 0.88 + 0.16 * Math.pow(absDist, 1.35);
 
-          card.style.transform = `scale(1, ${scaleY.toFixed(3)})`;
+          card.style.transform = `scale(1, ${scaleY.toFixed(3)}) translateZ(0)`;
         }
       }
 

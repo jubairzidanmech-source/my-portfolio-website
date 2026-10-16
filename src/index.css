@@ -10872,7 +10872,7 @@ body [style*="cursor:zoom-in"] {
   flex-shrink: 0;
   width: 230px;
   height: 360px;
-  border-radius: 24px;
+  border-radius: 22px;
   overflow: hidden;
   cursor: grab;
   background-color: var(--bg-card-subtle);
@@ -10880,6 +10880,8 @@ body [style*="cursor:zoom-in"] {
   box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.16);
   transform-origin: center center;
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transition: box-shadow 300ms ease, border-color 300ms ease;
 }
 
