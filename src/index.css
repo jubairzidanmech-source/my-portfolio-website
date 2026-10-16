@@ -7084,24 +7084,7 @@ img {
     grid-template-columns: 1fr;
   }
 
-  :root {
-    --timeline-sticky-base: 80px;
-    --timeline-stack-offset: 16px;
-  }
 
-  .site-main.with-announcement {
-    --timeline-sticky-base: 108px;
-  }
-
-  .timeline-row {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding-bottom: 24px;
-  }
-
-  .timeline-axis::before {
-    display: none;
-  }
 
   .timeline-axis {
     padding-bottom: 4px;
