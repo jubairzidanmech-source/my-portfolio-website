@@ -3929,6 +3929,7 @@ img {
   border-radius: 0 !important;
   padding-top: 4px;
   padding-bottom: 4px;
+  z-index: 5;
 }
 
 [data-theme="dark"] .timeline-axis {
@@ -3937,12 +3938,13 @@ img {
   box-shadow: none !important;
 }
 
+/* Connecting spine line: exactly 48px tall to bridge to the next node halo without overshooting */
 .timeline-axis::before {
   content: '';
   position: absolute;
   left: 17.5px;
   top: 38px;
-  bottom: -36px;
+  height: 48px;
   width: 3px;
   background: linear-gradient(180deg, #2563EB, #4F46E5);
   border-radius: 9999px;
@@ -3956,8 +3958,12 @@ img {
   box-shadow: 0 0 10px rgba(59, 130, 246, 0.35);
 }
 
-.timeline-row:last-child .timeline-axis::before {
-  display: none;
+/* Final milestone (M.Sc.): absolutely NO connecting line extending below */
+.timeline-row:last-child .timeline-axis::before,
+#degree-msc .timeline-axis::before,
+.timeline-row.is-current .timeline-axis::before {
+  display: none !important;
+  content: none !important;
 }
 
 /* Stepper Node Outer Ring & Luminous Halo */
@@ -4030,7 +4036,14 @@ img {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding-top: 3px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--bg-primary);
+  z-index: 2;
+}
+
+[data-theme="dark"] .timeline-axis-meta {
+  background: var(--bg-primary);
 }
 
 .timeline-axis-badge-row {

@@ -66,29 +66,12 @@ export const AcademicsPage = () => {
       const stackOffset = isMobile ? 72 : 76;
       const compressRange = isMobile ? 120 : 160;
 
-      // Track whether Row 4 (M.Sc.) is being pushed above its sticky position when leaving the section
-      const lastIdx = rows.length - 1;
-      const lastRow = rows[lastIdx];
-      const lastNaturalStickyTop = navOffset + (lastIdx * stackOffset);
-      const lastRect = lastRow ? lastRow.getBoundingClientRect() : null;
-      const delta = (lastRect && lastRect.top < lastNaturalStickyTop)
-        ? Math.round(lastNaturalStickyTop - lastRect.top)
-        : 0;
-
       rows.forEach((row, idx) => {
         const card = row.querySelector('.timeline-academic-card');
         if (!card) return;
 
-        // When leaving Academics, adjust sticky top so all rows and stepper nodes scroll off in exact locked formation
-        if (delta > 0) {
-          const rowTargetTop = navOffset + (idx * stackOffset) - delta;
-          row.style.top = `${rowTargetTop}px`;
-        } else {
-          row.style.top = '';
-        }
-
         // The final card (M.Sc.) stays fully expanded
-        if (idx === lastIdx) {
+        if (idx === rows.length - 1) {
           card.style.setProperty('--compress', '0');
           row.style.setProperty('--compress', '0');
           card.classList.remove('is-compressed');
