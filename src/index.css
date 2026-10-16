@@ -10830,7 +10830,8 @@ body [style*="cursor:zoom-in"] {
   margin-left: -50vw;
   margin-right: -50vw;
   overflow: hidden;
-  padding: 38px 0 44px;
+  padding: 54px 0 60px;
+  min-height: 490px;
   user-select: none;
   cursor: grab;
   touch-action: pan-y;
@@ -10859,71 +10860,38 @@ body [style*="cursor:zoom-in"] {
 .milestones-marquee-track {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
   width: max-content;
   will-change: transform;
   pointer-events: auto;
 }
 
-/* 3. Individual Portrait Cards with Organic Angled Edges */
+/* 3. Individual Portrait Cards - Dynamic Concave Lens (Outer Bigger, Center Smaller) */
 .marquee-photo-card {
   position: relative;
   flex-shrink: 0;
-  width: 240px;
-  height: 355px;
+  width: 230px;
+  height: 360px;
+  border-radius: 24px;
   overflow: hidden;
   cursor: grab;
   background-color: var(--bg-card-subtle);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.14);
-  transition: box-shadow 300ms ease,
-              border-color 300ms ease;
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.16);
+  transform-origin: center center;
   will-change: transform;
+  transition: box-shadow 300ms ease, border-color 300ms ease;
 }
 
 [data-theme="light"] .marquee-photo-card {
   border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 22px -6px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.10);
 }
 
-/* Individual subtle rotations (±2–4°), skews (±1–2.4°), and vertical offsets matching reference editorial strip */
-.marquee-photo-card:nth-child(8n + 1) {
-  transform: rotate(-3.2deg) skewY(-1.6deg) translateY(6px);
-  border-radius: 24px 22px 24px 22px;
-}
-.marquee-photo-card:nth-child(8n + 2) {
-  transform: rotate(2.4deg) skewY(-1.8deg) translateY(-8px);
-  border-radius: 22px 24px 22px 24px;
-}
-.marquee-photo-card:nth-child(8n + 3) {
-  transform: rotate(-1.4deg) skewY(1.2deg) translateY(-4px);
-  border-radius: 24px 22px 24px 22px;
-}
-.marquee-photo-card:nth-child(8n + 4) {
-  transform: rotate(0.8deg) skewY(-0.6deg) translateY(2px);
-  border-radius: 22px 24px 22px 24px;
-}
-.marquee-photo-card:nth-child(8n + 5) {
-  transform: rotate(-2.6deg) skewY(2.4deg) translateY(-10px);
-  border-radius: 24px 22px 24px 24px;
-}
-.marquee-photo-card:nth-child(8n + 6) {
-  transform: rotate(3.2deg) skewY(-1.8deg) translateY(8px);
-  border-radius: 22px 24px 24px 22px;
-}
-.marquee-photo-card:nth-child(8n + 7) {
-  transform: rotate(-2.2deg) skewY(-1.2deg) translateY(-6px);
-  border-radius: 24px 24px 22px 22px;
-}
-.marquee-photo-card:nth-child(8n + 8) {
-  transform: rotate(2.2deg) skewY(1.4deg) translateY(4px);
-  border-radius: 22px 22px 24px 24px;
-}
-
-/* Hover: pauses smoothly, maintains natural editorial angle and position, subtle accent outline */
+/* Hover: pauses smoothly, maintains natural dynamic editorial angle and position */
 .marquee-photo-card:hover,
 .marquee-photo-card:focus-visible {
-  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.30), 0 0 0 2px var(--accent-blue);
+  box-shadow: 0 18px 40px -6px rgba(0, 0, 0, 0.32), 0 0 0 2px var(--accent-blue);
   border-color: rgba(37, 99, 235, 0.5);
   z-index: 2;
   outline: none;

@@ -47,7 +47,7 @@ export const MilestonesCarousel = () => {
         }
       }
     }
-    return 2064;
+    return 2000;
   }, []);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export const MilestonesCarousel = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [measureBlockWidth]);
 
-  // Main 60 FPS animation loop with momentum and infinite wrapping
+  // Main 60 FPS animation loop: handles motion, inertia, infinite wrapping & dynamic concave lens curvature
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -68,7 +68,7 @@ export const MilestonesCarousel = () => {
       const dt = Math.min((time - lastTimeRef.current) / 1000, 0.1);
       lastTimeRef.current = time;
 
-      const blockWidth = blockWidthRef.current || measureBlockWidth() || 2064;
+      const blockWidth = blockWidthRef.current || measureBlockWidth() || 2000;
 
       if (!isDraggingRef.current && !lightboxData) {
         // Inertia decay after user releases drag
@@ -93,6 +93,42 @@ export const MilestonesCarousel = () => {
 
         if (trackRef.current) {
           trackRef.current.style.transform = `translate3d(${posRef.current}px, 0, 0)`;
+        }
+      }
+
+      // Dynamic Concave Lens Transformation (Outer cards BIGGER, Center card SMALLER)
+      if (trackRef.current) {
+        const viewportWidth = window.innerWidth;
+        const centerX = viewportWidth / 2;
+        const trackScreenLeft = trackRef.current.getBoundingClientRect().left;
+        const cards = trackRef.current.children;
+        const stride = blockWidth / 8;
+        const halfCard = stride / 2;
+
+        for (let i = 0; i < cards.length; i++) {
+          const card = cards[i];
+          if (!card) continue;
+
+          const cardCenterX = trackScreenLeft + i * stride + halfCard;
+          const dist = (cardCenterX - centerX) / (viewportWidth * 0.44);
+
+          // Skip calculations for cards far off screen
+          if (dist < -2.2 || dist > 2.2) continue;
+
+          const clampedDist = Math.max(-1.5, Math.min(1.5, dist));
+          const absDist = Math.min(1.35, Math.abs(dist));
+
+          // Outer cards are bigger, middle is smaller
+          // Height: scaleY ~0.74 in center (~266px) up to ~1.20 at edges (~432px)
+          const scaleY = 0.74 + 0.44 * Math.pow(absDist, 1.25);
+          // Width: scaleX ~0.86 in center up to ~1.10 at edges
+          const scaleX = 0.86 + 0.22 * Math.pow(absDist, 1.25);
+
+          // Concave bowl curvature: left cards slope down towards center, right cards slope up away from center
+          const rotate = clampedDist * 4.2;
+          const skewY = clampedDist * 3.6;
+
+          card.style.transform = `scale(${scaleX.toFixed(3)}, ${scaleY.toFixed(3)}) rotate(${rotate.toFixed(2)}deg) skewY(${skewY.toFixed(2)}deg)`;
         }
       }
 
@@ -138,7 +174,7 @@ export const MilestonesCarousel = () => {
       posRef.current += deltaX;
       velocityRef.current = deltaX; // Capture instantaneous speed for momentum
 
-      const blockWidth = blockWidthRef.current || 2064;
+      const blockWidth = blockWidthRef.current || 2000;
       while (posRef.current <= -blockWidth * 2) {
         posRef.current += blockWidth;
       }
@@ -181,7 +217,7 @@ export const MilestonesCarousel = () => {
         </h2>
       </div>
 
-      {/* 2. Full-Bleed Continuous Interactive Drag Conveyor */}
+      {/* 2. Full-Bleed Continuous Interactive Drag Conveyor with Dynamic Concave Lens */}
       <div 
         className={`milestones-marquee-wrapper ${isGrabbing ? 'is-grabbing' : ''}`}
         onPointerDown={handlePointerDown}
