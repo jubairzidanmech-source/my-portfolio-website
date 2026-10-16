@@ -163,15 +163,9 @@ export function App() {
     let lastCheck = 0;
     const handleScroll = () => {
       const now = performance.now();
-      if (now - lastCheck > 100) {
+      if (now - lastCheck > 120) {
         lastCheck = now;
         updateActiveSection();
-      } else if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(() => {
-          updateActiveSection();
-          ticking = false;
-        });
       }
     };
 
