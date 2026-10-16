@@ -3781,18 +3781,28 @@ img {
 
 :root {
   --timeline-sticky-base: 108px;
-  --timeline-stack-offset: 24px;
+  --timeline-stack-offset: 86px;
 }
 
 .site-main.with-announcement {
   --timeline-sticky-base: 138px;
 }
 
+@media (max-width: 768px) {
+  :root {
+    --timeline-sticky-base: 68px;
+    --timeline-stack-offset: 68px;
+  }
+  .site-main.with-announcement {
+    --timeline-sticky-base: 98px;
+  }
+}
+
 .timeline-spine-wrapper {
   display: flex;
   flex-direction: column;
   position: relative;
-  margin: 36px 0 64px;
+  margin: 24px 0 64px;
 }
 
 /* Scroll-Driven Stacking Timeline Rows */
@@ -3800,8 +3810,13 @@ img {
   display: grid;
   grid-template-columns: 200px 1fr;
   position: sticky;
-  padding-bottom: 36px;
-  will-change: top;
+  padding-bottom: 32px;
+  will-change: top, padding;
+  transition: padding 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-row.is-compressed {
+  padding-bottom: 14px;
 }
 
 .timeline-row:nth-child(1) {
@@ -4006,17 +4021,125 @@ img {
   color: #F8FAFC;
 }
 
-/* Timeline Academic Card: Consistent padding (24px 28px) and corner radius (16px) across all timeline entries */
+/* Timeline Academic Card: Consistent padding (24px 28px) and corner radius (18px) across all timeline entries */
 .timeline-academic-card {
   background: #FFFFFF;
   border: 1px solid rgba(15, 23, 42, 0.11);
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 24px 28px;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
   position: relative;
   overflow: hidden;
-  transition: var(--card-transition);
+  transition: padding 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s ease;
   cursor: default;
+}
+
+/* Progressive Compression on stacked / inactive cards */
+.timeline-academic-card.is-compressed {
+  padding: 12px 22px 14px !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.07) !important;
+  border-color: rgba(37, 99, 235, 0.25) !important;
+}
+
+[data-theme="dark"] .timeline-academic-card.is-compressed {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+  border-color: rgba(96, 165, 250, 0.25) !important;
+}
+
+/* Reduced spacing between institution name and GPA/results on inactive cards */
+.timeline-academic-card.is-compressed .timeline-card-header {
+  margin-bottom: 4px !important;
+  align-items: center;
+}
+
+.timeline-academic-card.is-compressed .timeline-inst-logo-box {
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  border-radius: 8px !important;
+  padding: 3px !important;
+}
+
+.timeline-academic-card.is-compressed .timeline-card-heading {
+  font-size: 1.05rem !important;
+  margin-bottom: 1px !important;
+}
+
+.timeline-academic-card.is-compressed .timeline-card-subheading {
+  font-size: 0.82rem !important;
+  margin-top: 1px !important;
+}
+
+.timeline-academic-card.is-compressed .timeline-card-hairline {
+  margin: 4px 0 6px !important;
+  opacity: 0.45;
+}
+
+/* Compact GPA in compressed cards */
+.timeline-academic-card.is-compressed .academic-cgpa-group {
+  margin-top: 2px !important;
+  margin-bottom: 0 !important;
+  gap: 12px !important;
+  align-items: center !important;
+}
+
+.timeline-academic-card.is-compressed .academic-cgpa-item {
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.timeline-academic-card.is-compressed .academic-cgpa-primary {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  gap: 3px !important;
+}
+
+.timeline-academic-card.is-compressed .academic-cgpa-num {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+}
+
+.timeline-academic-card.is-compressed .academic-cgpa-scale {
+  font-size: 0.80rem !important;
+}
+
+.timeline-academic-card.is-compressed .academic-cgpa-info {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.timeline-academic-card.is-compressed .academic-cgpa-label {
+  font-size: 0.80rem !important;
+  font-weight: 600 !important;
+}
+
+.timeline-academic-card.is-compressed .academic-cgpa-sublabel {
+  display: none !important;
+}
+
+/* Secondary collapsible content (Dropdowns, Certificates, Milestones) */
+.academic-secondary-content {
+  max-height: 1400px;
+  opacity: 1;
+  overflow: visible;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.28s ease,
+              margin-top 0.35s ease;
+}
+
+.timeline-academic-card.is-compressed .academic-secondary-content {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
 }
 
 /* Current Degree: Subtle blue border & distinct elevation */
