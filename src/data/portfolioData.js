@@ -1192,3 +1192,79 @@ export const upcomingAnnouncements = [
   }
 ];
 
+export const milestonesGalleryData = [
+  {
+    id: "mimec-2022",
+    title: "MIMEC 2022 Conference",
+    badge: "Oral Presentation",
+    year: "2022",
+    imageUrl: "/images/real/mimec_presentation.jpg",
+    objectPosition: "center 22%",
+    description: "Delivering an oral presentation on bio-inspired aerodynamic optimization and turbulent flow structures at the MIMEC International Conference."
+  },
+  {
+    id: "bsme-2023",
+    title: "8th BSME Conference",
+    badge: "Podium Presentation",
+    year: "2023",
+    imageUrl: "/images/real/bsme_presentation.jpg",
+    objectPosition: "center 20%",
+    description: "Presenting research on Savonius-Darrieus hybrid vertical axis wind turbines (VAWT) at the 8th BSME International Conference on Thermal Engineering."
+  },
+  {
+    id: "research-fair-2023",
+    title: "CUET Research Fair",
+    badge: "2nd Prize Poster",
+    year: "2023",
+    imageUrl: "/images/real/award_research_fair.jpg",
+    objectPosition: "center 30%",
+    description: "Honored with 2nd Prize in the Scholarly Poster Presentation category for computational fluid dynamics investigation of hybrid wind rotor aerodynamics."
+  },
+  {
+    id: "climate-justice-2021",
+    title: "Climate Justice Idea Competition",
+    badge: "National Champion",
+    year: "2021",
+    imageUrl: "/images/real_awards/award_climate_justice_champion.png",
+    objectPosition: "center center",
+    description: "Crowned National Champion (1st Place) for designing a decentralized sustainable community energy network and engineering climate resilience model."
+  },
+  {
+    id: "vawt-prototype",
+    title: "Hybrid Wind Turbine Rotor",
+    badge: "R&D Prototype",
+    year: "2023",
+    imageUrl: "/images/real/vawt_prototype.jpg",
+    objectPosition: "center center",
+    description: "Aerodynamic prototyping, blade fabrication, and experimental assembly of a combined Savonius-Darrieus vertical axis wind turbine rotor."
+  },
+  {
+    id: "rpcl-internship",
+    title: "RPCL 25 MW Power Facility",
+    badge: "Industrial Attachment",
+    year: "2023",
+    imageUrl: "/images/real/rpcl_internship.jpg",
+    objectPosition: "center 35%",
+    description: "Undergoing intensive industrial engineering attachment, analyzing dual-fuel heavy fuel oil (HFO) thermal power generation cycles and mechanical auxiliaries."
+  },
+  {
+    id: "face-the-case",
+    title: "Face The Case 2021",
+    badge: "2nd Runner Up",
+    year: "2021",
+    imageUrl: "/images/real_awards/award_face_the_case_2021.png",
+    objectPosition: "center center",
+    description: "Awarded National 2nd Runner Up in collegiate business operations and engineering supply chain optimization organized by SCBA CUET."
+  },
+  {
+    id: "poster-award-crest",
+    title: "DRE Research Fair Crest",
+    badge: "Scholarly Accolade",
+    year: "2023",
+    imageUrl: "/images/real/award_poster_2nd.jpg",
+    objectPosition: "center 25%",
+    description: "Official award crest conferred by the Directorate of Research & Extension (DRE) for excellence in mechanical and renewable energy poster research."
+  }
+];
+
+
