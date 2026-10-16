@@ -2755,36 +2755,39 @@ img {
   margin-bottom: 16px;
 }
 
-/* Opening sequence: 0.0–0.5s name reveal from below with subtle fade */
+/* Opening sequence: slow, premium masked text reveal (Pallet Ross inspiration) */
 .hero-name-mask {
   display: block;
   overflow: hidden;
-  padding-bottom: 2px;
+  padding-bottom: 4px;
 }
 
 .hero-name-line {
   display: inline-block;
   will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .hero-name-line-1 {
-  animation: heroNameReveal 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+  animation: heroNameReveal 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
 }
 
 .hero-name-line-2 {
-  animation: heroNameReveal 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
+  animation: heroNameReveal 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both;
 }
 
 @keyframes heroNameReveal {
   0% {
     opacity: 0;
-    transform: translateY(100%);
-    filter: blur(4px);
+    transform: translateY(110%);
+  }
+  20% {
+    opacity: 0.6;
   }
   100% {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 
