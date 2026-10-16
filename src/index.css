@@ -10832,6 +10832,8 @@ body [style*="cursor:zoom-in"] {
   overflow: hidden;
   padding: 38px 0 44px;
   user-select: none;
+  cursor: grab;
+  touch-action: pan-y;
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -10848,28 +10850,19 @@ body [style*="cursor:zoom-in"] {
   );
 }
 
+.milestones-marquee-wrapper.is-grabbing,
+.milestones-marquee-wrapper.is-grabbing * {
+  cursor: grabbing !important;
+  user-select: none !important;
+}
+
 .milestones-marquee-track {
   display: flex;
   align-items: center;
   gap: 18px;
   width: max-content;
-  animation: marqueeConveyor 115s linear infinite;
   will-change: transform;
-}
-
-/* Pause smoothly on hover or when image is open */
-.milestones-marquee-wrapper:hover .milestones-marquee-track,
-.milestones-marquee-wrapper.is-paused .milestones-marquee-track {
-  animation-play-state: paused;
-}
-
-@keyframes marqueeConveyor {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
+  pointer-events: auto;
 }
 
 /* 3. Individual Portrait Cards with Organic Angled Edges */
@@ -10879,7 +10872,7 @@ body [style*="cursor:zoom-in"] {
   width: 240px;
   height: 355px;
   overflow: hidden;
-  cursor: pointer;
+  cursor: grab;
   background-color: var(--bg-card-subtle);
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.14);
@@ -11028,13 +11021,8 @@ body [style*="cursor:zoom-in"] {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .milestones-marquee-track {
-    animation: none !important;
-  }
   .milestones-marquee-wrapper {
-    overflow-x: auto;
-    -webkit-mask-image: none;
-    mask-image: none;
+    cursor: grab;
   }
 }
 
