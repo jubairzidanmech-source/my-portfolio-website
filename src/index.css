@@ -4046,6 +4046,39 @@ img {
   background: var(--bg-primary);
 }
 
+/* Hide SSC and HSC years & stepper nodes when scrolled to the bottom / compressed */
+#degree-ssc .timeline-axis-meta,
+#degree-hsc .timeline-axis-meta {
+  opacity: calc(1 - (var(--compress, 0) * 1.5));
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+#degree-ssc.is-compressed .timeline-axis-meta,
+#degree-hsc.is-compressed .timeline-axis-meta {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+#degree-ssc .timeline-node-outer-halo,
+#degree-hsc .timeline-node-outer-halo {
+  opacity: calc(1 - (var(--compress, 0) * 1.5));
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+#degree-ssc.is-compressed .timeline-node-outer-halo,
+#degree-hsc.is-compressed .timeline-node-outer-halo {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+#degree-ssc.is-compressed .timeline-axis::before,
+#degree-hsc.is-compressed .timeline-axis::before {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
 .timeline-axis-badge-row {
   display: flex;
   align-items: center;
