@@ -3852,63 +3852,21 @@ img {
    Timeline / Academics Styling (Image 02 Reference)
    ========================================================================== */
 
-:root {
-  --timeline-sticky-base: 108px;
-  --timeline-stack-offset: 76px;
-}
-
-.site-main.with-announcement {
-  --timeline-sticky-base: 138px;
-}
-
-@media (max-width: 768px) {
-  :root {
-    --timeline-sticky-base: 68px;
-    --timeline-stack-offset: 72px;
-  }
-  .site-main.with-announcement {
-    --timeline-sticky-base: 98px;
-  }
-}
-
 .timeline-spine-wrapper {
   display: flex;
   flex-direction: column;
   position: relative;
-  margin: 24px 0 0;
-  padding-bottom: 60vh;
+  margin: 36px 0 64px;
 }
 
-/* Scroll-Driven Stacking Timeline Rows */
 .timeline-row {
   display: grid;
   grid-template-columns: 200px 1fr;
-  position: sticky;
-  padding-bottom: calc(32px - (16px * var(--compress, 0)));
-  will-change: top, padding;
+  position: relative;
+  padding-bottom: 36px;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-}
-
-.timeline-row:nth-child(1) {
-  top: var(--timeline-sticky-base);
-  z-index: 10;
-}
-
-.timeline-row:nth-child(2) {
-  top: calc(var(--timeline-sticky-base) + var(--timeline-stack-offset));
-  z-index: 11;
-}
-
-.timeline-row:nth-child(3) {
-  top: calc(var(--timeline-sticky-base) + (var(--timeline-stack-offset) * 2));
-  z-index: 12;
-}
-
-.timeline-row:nth-child(4) {
-  top: calc(var(--timeline-sticky-base) + (var(--timeline-stack-offset) * 3));
-  z-index: 13;
 }
 
 .timeline-row:last-child {
@@ -3943,8 +3901,8 @@ img {
   content: '';
   position: absolute;
   left: 17.5px;
-  top: 38px;
-  bottom: -36px;
+  top: 36px;
+  bottom: -4px;
   width: 3px;
   background: linear-gradient(180deg, #2563EB, #4F46E5);
   border-radius: 9999px;
@@ -4111,21 +4069,21 @@ img {
   color: #F8FAFC;
 }
 
-/* Timeline Academic Card: Continuous fluid compression via scroll-linked --compress (0 to 1) */
+/* Timeline Academic Card: Clean, pristine, standard elevation */
 .timeline-academic-card {
   background: #FFFFFF;
-  border: 1px solid rgba(15, 23, 42, calc(0.11 + (0.05 * var(--compress, 0))));
+  border: 1px solid rgba(15, 23, 42, 0.11);
   border-radius: 18px;
-  padding: calc(20px - (6px * var(--compress, 0))) calc(28px - (6px * var(--compress, 0))) calc(20px - (6px * var(--compress, 0)));
-  box-shadow: 0 calc(6px - (2px * var(--compress, 0))) calc(18px - (6px * var(--compress, 0))) rgba(15, 23, 42, calc(0.06 + (0.02 * var(--compress, 0))));
+  padding: 24px 28px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
   position: relative;
   overflow: hidden;
-  will-change: padding, transform;
+  transition: var(--card-transition);
   cursor: default;
 }
 
 [data-theme="dark"] .timeline-academic-card {
-  border-color: rgba(255, 255, 255, calc(0.1 + (0.08 * var(--compress, 0))));
+  border-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.45);
 }
 
@@ -4221,84 +4179,68 @@ img {
   }
 }
 
-/* Fluid Logo scaling: 50px down to 36px */
 .timeline-academic-card .timeline-inst-logo-box {
-  width: calc(48px - (10px * var(--compress, 0)));
-  height: calc(48px - (10px * var(--compress, 0)));
-  min-width: calc(48px - (10px * var(--compress, 0)));
-  border-radius: calc(12px - (3px * var(--compress, 0)));
-  padding: calc(4px - (1px * var(--compress, 0)));
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 12px;
+  padding: 4px;
 }
 
-/* Fluid Heading size */
 .timeline-academic-card .timeline-card-heading {
-  font-size: calc(1.15rem - (0.08rem * var(--compress, 0)));
+  font-size: 1.15rem;
   margin-bottom: 2px;
   white-space: nowrap;
 }
 
 .timeline-academic-card .timeline-card-subheading {
-  font-size: calc(0.86rem - (0.04rem * var(--compress, 0)));
+  font-size: 0.86rem;
   white-space: nowrap;
 }
 
-/* Fluid Hairline spacing */
 .timeline-academic-card .timeline-card-hairline {
-  margin-top: calc(14px - (6px * var(--compress, 0)));
-  margin-bottom: calc(14px - (6px * var(--compress, 0)));
-  opacity: calc(0.7 - (0.3 * var(--compress, 0)));
+  margin-top: 14px;
+  margin-bottom: 14px;
+  opacity: 0.7;
 }
 
-/* Fluid GPA layout (Never snaps flex-direction!) */
 .timeline-academic-card .academic-cgpa-group {
-  margin-top: calc(6px - (4px * var(--compress, 0)));
+  margin-top: 6px;
   margin-bottom: 0;
-  gap: calc(16px - (4px * var(--compress, 0)));
+  gap: 16px;
 }
 
 .timeline-academic-card .academic-cgpa-item {
   display: flex;
   flex-direction: column;
-  gap: calc(2px - (1px * var(--compress, 0)));
+  gap: 2px;
 }
 
 .timeline-academic-card .academic-cgpa-num {
-  font-size: calc(1.38rem - (0.14rem * var(--compress, 0)));
+  font-size: 1.38rem;
   font-weight: 700;
 }
 
 .timeline-academic-card .academic-cgpa-scale {
-  font-size: calc(0.86rem - (0.06rem * var(--compress, 0)));
+  font-size: 0.86rem;
 }
 
 .timeline-academic-card .academic-cgpa-label {
-  font-size: calc(0.84rem - (0.04rem * var(--compress, 0)));
+  font-size: 0.84rem;
   font-weight: 600;
 }
 
 .timeline-academic-card .academic-cgpa-sublabel {
   display: inline;
-  font-size: calc(0.82rem - (0.04rem * var(--compress, 0)));
-  opacity: calc(1 - (0.35 * var(--compress, 0)));
+  font-size: 0.82rem;
+  opacity: 1;
 }
 
-/* Secondary collapsible content (Dropdowns, Certificates, Milestones) */
+/* Secondary content (Dropdowns, Certificates, Milestones) */
 .academic-secondary-content {
-  opacity: calc(1 - (var(--compress, 0) * 1.6));
-  max-height: 1200px;
-  overflow: hidden;
+  opacity: 1;
   margin-top: 16px;
   pointer-events: auto;
-  transition: opacity 0.25s ease, max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.25s ease;
-}
-
-.timeline-academic-card.is-compressed .academic-secondary-content {
-  opacity: 0 !important;
-  max-height: 0 !important;
-  margin-top: 0 !important;
-  padding: 0 !important;
-  pointer-events: none !important;
-  visibility: hidden !important;
 }
 
 /* Current Degree: Subtle blue border & distinct elevation */
