@@ -103,7 +103,7 @@ export const MilestonesCarousel = () => {
         const centerX = viewportWidth / 2;
         const cards = trackRef.current.children;
         const stride = blockWidth / 8;
-        const cardCenterOffset = 120; // half of 240px card width
+        const cardCenterOffset = 136; // half of 272px card width (4:5 aspect ratio)
 
         for (let i = 0; i < cards.length; i++) {
           const card = cards[i];
@@ -119,17 +119,17 @@ export const MilestonesCarousel = () => {
           const clampedU = Math.max(-1.3, Math.min(1.3, u));
           const absU = Math.min(1.25, Math.abs(clampedU));
 
-          // 3D Cylindrical Perspective Arc (BrandLyft & Reference Curve):
-          // Cards wrap along the circular arc of a cylinder:
+          // 3D Cylindrical Perspective Curve with UNIFORM Spacing:
+          // Kept at uniform scale so horizontal gaps between all cards remain 100% identical.
+          // Cards wrap along the circular arc of a cylinder via perspective rotateY:
           // - Left cards (u < 0): rotateY > 0 -> top edge slopes DOWN to center, bottom edge slopes UP
           // - Right cards (u > 0): rotateY < 0 -> top edge slopes DOWN to center, bottom edge slopes UP
-          // - Center card (u = 0): rotateY = 0 -> upright, horizontal top and bottom
-          // Result: Top and bottom edges connect seamlessly to form a single continuous circular curve!
-          const angleY = (-clampedU * 20).toFixed(2);
-          const s = (0.86 + 0.18 * Math.pow(absU, 1.3)).toFixed(4);
-          const yDip = (Math.pow(Math.max(0, 1 - absU), 2) * 14).toFixed(2);
+          // - Center card (u = 0): rotateY = 0 -> horizontal top and bottom
+          // Result: Continuous circular arc along top and bottom with perfectly identical card spacing!
+          const angleY = (-clampedU * 16).toFixed(2);
+          const yDip = (Math.pow(Math.max(0, 1 - absU), 2) * 16).toFixed(2);
 
-          card.style.transform = `perspective(900px) translate3d(0, ${yDip}px, 0) rotateY(${angleY}deg) scale(${s})`;
+          card.style.transform = `perspective(1000px) translate3d(0, ${yDip}px, 0) rotateY(${angleY}deg)`;
         }
       }
 

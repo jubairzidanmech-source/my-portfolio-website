@@ -10975,19 +10975,20 @@ body [style*="cursor:zoom-in"] {
 .milestones-marquee-track {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   width: max-content;
   will-change: transform;
   transform-style: preserve-3d;
   pointer-events: auto;
 }
 
-/* 3. Individual Portrait Cards - 3D Cylindrical Perspective Ribbon */
+/* 3. Individual Portrait Cards - 4:5 Aspect Ratio & 3D Cylindrical Perspective Ribbon */
 .marquee-photo-card {
   position: relative;
   flex-shrink: 0;
-  width: 240px;
-  height: 385px;
+  width: 272px;
+  height: 340px;
+  aspect-ratio: 4 / 5;
   border-radius: 20px;
   overflow: hidden;
   cursor: grab;
