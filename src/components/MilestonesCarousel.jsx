@@ -119,17 +119,16 @@ export const MilestonesCarousel = () => {
           const clampedU = Math.max(-1.3, Math.min(1.3, u));
           const absU = Math.min(1.25, Math.abs(clampedU));
 
-          // 3D Cylindrical Perspective Curve with UNIFORM Spacing:
-          // Kept at uniform scale so horizontal gaps between all cards remain 100% identical.
-          // Cards wrap along the circular arc of a cylinder via perspective rotateY:
-          // - Left cards (u < 0): rotateY > 0 -> top edge slopes DOWN to center, bottom edge slopes UP
-          // - Right cards (u > 0): rotateY < 0 -> top edge slopes DOWN to center, bottom edge slopes UP
-          // - Center card (u = 0): rotateY = 0 -> horizontal top and bottom
-          // Result: Continuous circular arc along top and bottom with perfectly identical card spacing!
-          const angleY = (-clampedU * 16).toFixed(2);
-          const yDip = (Math.pow(Math.max(0, 1 - absU), 2) * 16).toFixed(2);
+          // Dynamic Concave Circular Bowl (Bigger Outer Cards, Smaller Inner Cards):
+          // Inner cards scale gracefully (~0.76) and outer cards grow larger (~1.06).
+          // xShift dynamically compensates for card width differences, keeping gaps 100% UNIFORM.
+          // rotateY slants top and bottom edges toward the center to form a continuous circular arc.
+          const s = 0.76 + 0.28 * Math.pow(absU, 1.35);
+          const xShift = -clampedU * 272 * (0.24 - 0.12 * Math.pow(absU, 1.35));
+          const angleY = (-clampedU * 18).toFixed(2);
+          const yDip = (Math.pow(Math.max(0, 1 - absU), 2) * 20).toFixed(2);
 
-          card.style.transform = `perspective(1000px) translate3d(0, ${yDip}px, 0) rotateY(${angleY}deg)`;
+          card.style.transform = `perspective(1000px) translate3d(${xShift.toFixed(2)}px, ${yDip}px, 0) rotateY(${angleY}deg) scale(${s.toFixed(4)})`;
         }
       }
 
