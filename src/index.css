@@ -4133,7 +4133,7 @@ img {
 }
 
 .timeline-header-text {
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
@@ -4141,7 +4141,7 @@ img {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .timeline-header-gpa {
@@ -4181,6 +4181,13 @@ img {
     align-items: flex-start;
     gap: 10px;
   }
+  .timeline-header-title-row {
+    flex-wrap: wrap;
+  }
+  .timeline-academic-card .timeline-card-heading,
+  .timeline-academic-card .timeline-card-subheading {
+    white-space: normal !important;
+  }
   .timeline-header-gpa {
     margin-left: 0;
     width: 100%;
@@ -4212,10 +4219,12 @@ img {
 .timeline-academic-card .timeline-card-heading {
   font-size: calc(1.15rem - (0.08rem * var(--compress, 0)));
   margin-bottom: 2px;
+  white-space: nowrap;
 }
 
 .timeline-academic-card .timeline-card-subheading {
   font-size: calc(0.86rem - (0.04rem * var(--compress, 0)));
+  white-space: nowrap;
 }
 
 /* Fluid Hairline spacing */

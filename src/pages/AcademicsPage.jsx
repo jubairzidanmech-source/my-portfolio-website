@@ -64,32 +64,14 @@ export const AcademicsPage = () => {
       const isMobile = window.innerWidth <= 768;
       const navOffset = isMobile ? 68 : 108;
       const stackOffset = isMobile ? 72 : 76;
-      const compressRange = isMobile ? 120 : 160; // Generous 160px transition window for buttery smooth arrivals
-
-      // Check if the final card (M.Sc.) has docked and is now scrolling up towards In Frames
-      const lastIdx = rows.length - 1;
-      const lastRow = rows[lastIdx];
-      const lastStickyTop = navOffset + (lastIdx * stackOffset);
-      const lastRect = lastRow ? lastRow.getBoundingClientRect() : null;
-      const pushUpOffset = (lastRect && lastRect.top < lastStickyTop)
-        ? Math.round(lastStickyTop - lastRect.top)
-        : 0;
+      const compressRange = isMobile ? 120 : 160;
 
       rows.forEach((row, idx) => {
         const card = row.querySelector('.timeline-academic-card');
         if (!card) return;
 
-        // Apply lockstep translation to earlier cards so all 4 cards scroll away as a single locked deck
-        if (idx < lastIdx) {
-          if (pushUpOffset > 0) {
-            row.style.transform = `translate3d(0, -${pushUpOffset}px, 0)`;
-          } else {
-            row.style.transform = '';
-          }
-        }
-
         // The final card (M.Sc.) stays fully expanded
-        if (idx === lastIdx) {
+        if (idx === rows.length - 1) {
           card.style.setProperty('--compress', '0');
           row.style.setProperty('--compress', '0');
           card.classList.remove('is-compressed');
@@ -214,7 +196,6 @@ export const AcademicsPage = () => {
                   value={5.00}
                   max={5.00}
                   label="Secondary School Certificate GPA"
-                  sublabel="Science Division • Golden / Perfect Score"
                   badge="Perfect GPA"
                 />
               </div>
@@ -269,7 +250,6 @@ export const AcademicsPage = () => {
                   value={5.00}
                   max={5.00}
                   label="Higher Secondary Certificate GPA"
-                  sublabel="Science Division • Golden / Perfect Score"
                   badge="Perfect GPA"
                 />
               </div>
@@ -323,14 +303,12 @@ export const AcademicsPage = () => {
                 <CgpaStatNumber
                   value={3.29}
                   max={4.00}
-                  label="Overall Cumulative CGPA"
-                  sublabel="Across all 8 undergraduate semesters"
+                  label="Overall CGPA"
                 />
                 <CgpaStatNumber
                   value={3.41}
                   max={4.00}
-                  label="Last 4 Semesters CGPA"
-                  sublabel="Upper Semesters Core Engineering Trajectory"
+                  label="Last 4 Semesters"
                   badge="Major Focus"
                 />
               </div>
