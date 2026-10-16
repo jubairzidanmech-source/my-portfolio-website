@@ -3773,6 +3773,15 @@ img {
    Timeline / Academics Styling (Image 02 Reference)
    ========================================================================== */
 
+:root {
+  --timeline-sticky-base: 108px;
+  --timeline-stack-offset: 24px;
+}
+
+.site-main.with-announcement {
+  --timeline-sticky-base: 138px;
+}
+
 .timeline-spine-wrapper {
   display: flex;
   flex-direction: column;
@@ -3780,11 +3789,33 @@ img {
   margin: 36px 0 64px;
 }
 
+/* Scroll-Driven Stacking Timeline Rows */
 .timeline-row {
   display: grid;
   grid-template-columns: 200px 1fr;
-  position: relative;
+  position: sticky;
   padding-bottom: 36px;
+  will-change: top;
+}
+
+.timeline-row:nth-child(1) {
+  top: var(--timeline-sticky-base);
+  z-index: 10;
+}
+
+.timeline-row:nth-child(2) {
+  top: calc(var(--timeline-sticky-base) + var(--timeline-stack-offset));
+  z-index: 11;
+}
+
+.timeline-row:nth-child(3) {
+  top: calc(var(--timeline-sticky-base) + (var(--timeline-stack-offset) * 2));
+  z-index: 12;
+}
+
+.timeline-row:nth-child(4) {
+  top: calc(var(--timeline-sticky-base) + (var(--timeline-stack-offset) * 3));
+  z-index: 13;
 }
 
 .timeline-row:last-child {
@@ -3800,6 +3831,10 @@ img {
   cursor: pointer;
   user-select: none;
   transition: transform 0.2s ease;
+  background: var(--bg-canvas);
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 10px;
 }
 
 .timeline-axis:hover {
@@ -6768,9 +6803,19 @@ img {
     grid-template-columns: 1fr;
   }
 
+  :root {
+    --timeline-sticky-base: 80px;
+    --timeline-stack-offset: 16px;
+  }
+
+  .site-main.with-announcement {
+    --timeline-sticky-base: 108px;
+  }
+
   .timeline-row {
     grid-template-columns: 1fr;
     gap: 12px;
+    padding-bottom: 24px;
   }
 
   .timeline-axis::before {
@@ -11245,12 +11290,17 @@ body [style*="cursor:zoom-in"] {
 }
 
 .scroll-reveal-ready .reveal-timeline-row.is-revealed {
-  transform: translateY(0);
+  transform: none !important;
   opacity: 1;
 }
 
 /* Reduced Motion Accessibility */
 @media (prefers-reduced-motion: reduce) {
+  .timeline-row {
+    position: static !important;
+    top: auto !important;
+  }
+
   .scroll-reveal-ready .reveal-heading,
   .scroll-reveal-ready .reveal-heading-text,
   .scroll-reveal-ready .reveal-desc,
