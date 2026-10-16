@@ -103,31 +103,30 @@ export const MilestonesCarousel = () => {
         const centerX = viewportWidth / 2;
         const cards = trackRef.current.children;
         const stride = blockWidth / 8;
-        const cardCenterOffset = 115; // half of base 230px card width
+        const cardCenterOffset = 120; // half of 240px card width
 
         for (let i = 0; i < cards.length; i++) {
           const card = cards[i];
           if (!card) continue;
 
-          // Deterministic screen coordinate (wrapper left edge is 0 in viewport)
+          // Deterministic screen coordinate
           const cardCenterX = posRef.current + i * stride + cardCenterOffset;
           const u = (cardCenterX - centerX) / (viewportWidth * 0.44);
 
           // Skip cards far off screen
           if (u < -2.2 || u > 2.2) continue;
 
-          const clampedU = Math.max(-1.3, Math.min(1.3, u));
-          const absU = Math.abs(clampedU);
+          const absU = Math.min(1.25, Math.abs(u));
 
-          // BrandLyft Concave Curve: Outer cards taller (~380px), middle cards smaller (~290px)
-          // 100% Upright, ZERO rotation, ZERO 3D, and ZERO image squeezing (photos preserve natural aspect ratio with object-fit: cover)
-          const targetHeight = Math.round(290 + 90 * Math.pow(absU, 1.35));
+          // BrandLyft Concave Height Curve:
+          // Center card: ~295px, outer cards: ~385px
+          // 100% Upright, ZERO rotation, ZERO skew, ZERO 3D.
+          // Images use object-fit: cover so aspect ratio is 100% natural (never squeezed).
+          const targetHeight = Math.round(295 + 90 * Math.pow(absU, 1.35));
           if (card.style.height !== `${targetHeight}px`) {
             card.style.height = `${targetHeight}px`;
           }
-          if (card.style.transform !== 'none') {
-            card.style.transform = 'none';
-          }
+          card.style.removeProperty('transform');
         }
       }
 

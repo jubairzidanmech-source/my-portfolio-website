@@ -10860,7 +10860,7 @@ body [style*="cursor:zoom-in"] {
 .milestones-marquee-track {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
   width: max-content;
   will-change: transform;
   pointer-events: auto;
@@ -10870,15 +10870,15 @@ body [style*="cursor:zoom-in"] {
 .marquee-photo-card {
   position: relative;
   flex-shrink: 0;
-  width: 230px;
-  height: 380px;
+  width: 240px;
+  height: 385px;
   border-radius: 20px;
   overflow: hidden;
   cursor: grab;
   background-color: var(--bg-card-subtle);
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.16);
-  transform: none;
+  transform: none !important;
   transition: box-shadow 300ms ease, border-color 300ms ease;
 }
 
