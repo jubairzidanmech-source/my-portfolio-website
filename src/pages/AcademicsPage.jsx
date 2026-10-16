@@ -64,14 +64,32 @@ export const AcademicsPage = () => {
       const isMobile = window.innerWidth <= 768;
       const navOffset = isMobile ? 68 : 108;
       const stackOffset = isMobile ? 72 : 76;
-      const compressRange = isMobile ? 90 : 120; // Smooth 120px transition window
+      const compressRange = isMobile ? 120 : 160; // Generous 160px transition window for buttery smooth arrivals
+
+      // Check if the final card (M.Sc.) has docked and is now scrolling up towards In Frames
+      const lastIdx = rows.length - 1;
+      const lastRow = rows[lastIdx];
+      const lastStickyTop = navOffset + (lastIdx * stackOffset);
+      const lastRect = lastRow ? lastRow.getBoundingClientRect() : null;
+      const pushUpOffset = (lastRect && lastRect.top < lastStickyTop)
+        ? Math.round(lastStickyTop - lastRect.top)
+        : 0;
 
       rows.forEach((row, idx) => {
         const card = row.querySelector('.timeline-academic-card');
         if (!card) return;
 
+        // Apply lockstep translation to earlier cards so all 4 cards scroll away as a single locked deck
+        if (idx < lastIdx) {
+          if (pushUpOffset > 0) {
+            row.style.transform = `translate3d(0, -${pushUpOffset}px, 0)`;
+          } else {
+            row.style.transform = '';
+          }
+        }
+
         // The final card (M.Sc.) stays fully expanded
-        if (idx === rows.length - 1) {
+        if (idx === lastIdx) {
           card.style.setProperty('--compress', '0');
           row.style.setProperty('--compress', '0');
           card.classList.remove('is-compressed');

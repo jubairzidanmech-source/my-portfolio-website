@@ -3876,7 +3876,7 @@ img {
   flex-direction: column;
   position: relative;
   margin: 24px 0 0;
-  padding-bottom: 55vh;
+  padding-bottom: 30vh;
 }
 
 /* Scroll-Driven Stacking Timeline Rows */
@@ -4258,23 +4258,16 @@ img {
   opacity: calc(1 - (0.35 * var(--compress, 0)));
 }
 
-/* Secondary collapsible content (Dropdowns, Certificates, Milestones) */
+/* Secondary collapsible content (Dropdowns, Certificates, Milestones) - Stable height to prevent scroll jank */
 .academic-secondary-content {
-  max-height: calc(1400px * (1 - var(--compress, 0)));
-  opacity: calc(1 - (var(--compress, 0) * 1.5));
-  margin-top: calc(16px * (1 - var(--compress, 0)));
-  overflow: hidden;
-  transform: translateY(calc(-8px * var(--compress, 0)));
+  opacity: calc(1 - (var(--compress, 0) * 1.6));
+  margin-top: 16px;
+  pointer-events: auto;
+  transition: opacity 0.2s ease;
 }
 
 .timeline-academic-card.is-compressed .academic-secondary-content {
-  max-height: 0 !important;
   opacity: 0 !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  overflow: hidden !important;
   pointer-events: none !important;
 }
 
