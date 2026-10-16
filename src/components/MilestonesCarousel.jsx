@@ -96,14 +96,14 @@ export const MilestonesCarousel = () => {
         }
       }
 
-      // Refined Concave Height Curve: Outer cards taller, middle cards smaller.
-      // Pure deterministic calculation without getBoundingClientRect layout reflow to eliminate any jumping or breathing.
+      // Continuous Tangential BrandLyft Ribbon:
+      // Top and bottom edges of cards flow smoothly into each other along a single unbroken concave curve
       if (trackRef.current) {
         const viewportWidth = window.innerWidth;
         const centerX = viewportWidth / 2;
         const cards = trackRef.current.children;
         const stride = blockWidth / 8;
-        const cardCenterOffset = 115; // exactly half of base 230px card width
+        const cardCenterOffset = 115; // half of base 230px card width
 
         for (let i = 0; i < cards.length; i++) {
           const card = cards[i];
@@ -111,17 +111,30 @@ export const MilestonesCarousel = () => {
 
           // Deterministic screen coordinate (wrapper left edge is 0 in viewport)
           const cardCenterX = posRef.current + i * stride + cardCenterOffset;
-          const dist = (cardCenterX - centerX) / (viewportWidth * 0.44);
+          const u = (cardCenterX - centerX) / (viewportWidth * 0.44);
 
-          // Skip cards that are completely off screen
-          if (dist < -2.0 || dist > 2.0) continue;
+          // Skip cards far off screen
+          if (u < -2.2 || u > 2.2) continue;
 
-          const absDist = Math.min(1.25, Math.abs(dist));
-          // Gentle, rock-solid height curve: outer cards taller (~380px), middle cards smaller (~320px)
-          // Calm and stable without visible pulsation or breathing
-          const scaleY = 0.88 + 0.16 * Math.pow(absDist, 1.35);
+          const clampedU = Math.max(-1.3, Math.min(1.3, u));
+          const absU = Math.abs(clampedU);
 
-          card.style.transform = `scale(1, ${scaleY.toFixed(3)}) translateZ(0)`;
+          // 1. Smooth height scaling: outer cards taller (~385px), middle cards smaller (~298px)
+          const scaleY = 0.82 + 0.25 * Math.pow(absU, 1.25);
+
+          // 2. Parabolic vertical dip so center cards dip gracefully into the cradle
+          const yDip = Math.pow(1 - Math.min(1, absU), 2) * 14;
+
+          // 3. Tangential slope angle (matching the user's continuous red line):
+          // Left side: top edge slopes down toward center (negative angle)
+          // Center: flat and level (0deg)
+          // Right side: top edge slopes up away from center (positive angle)
+          // Using skewY ensures the top/bottom borders slant along the curve
+          // while the vertical borders stay straight for perfectly uniform spacing!
+          const skewY = clampedU * 3.4;
+          const rotate = clampedU * 1.5;
+
+          card.style.transform = `translateY(${yDip.toFixed(2)}px) rotate(${rotate.toFixed(2)}deg) skewY(${skewY.toFixed(2)}deg) scale(1, ${scaleY.toFixed(3)}) translateZ(0)`;
         }
       }
 
