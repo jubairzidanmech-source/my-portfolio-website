@@ -63,7 +63,7 @@ export const AcademicsPage = () => {
     const updateStacking = () => {
       const isMobile = window.innerWidth <= 768;
       const navOffset = isMobile ? 68 : 108;
-      const stackOffset = isMobile ? 68 : 86;
+      const stackOffset = isMobile ? 114 : 124;
       const compressRange = isMobile ? 130 : 180; // Generous 180px scroll interpolation window
 
       rows.forEach((row, idx) => {

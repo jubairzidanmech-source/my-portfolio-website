@@ -3844,7 +3844,7 @@ img {
 
 :root {
   --timeline-sticky-base: 108px;
-  --timeline-stack-offset: 86px;
+  --timeline-stack-offset: 124px;
 }
 
 .site-main.with-announcement {
@@ -3854,7 +3854,7 @@ img {
 @media (max-width: 768px) {
   :root {
     --timeline-sticky-base: 68px;
-    --timeline-stack-offset: 68px;
+    --timeline-stack-offset: 114px;
   }
   .site-main.with-announcement {
     --timeline-sticky-base: 98px;
