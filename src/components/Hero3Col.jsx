@@ -75,11 +75,17 @@ export const Hero3Col = ({ setActivePage }) => {
           <div className="hero-intro-card">
             <div>
               <h1 className="hero-name">
-                Md. Jubair <br />
-                Uddin <span className="hero-name-badge">Zidan</span>
+                <span className="hero-name-mask">
+                  <span className="hero-name-line hero-name-line-1">Md. Jubair</span>
+                </span>
+                <span className="hero-name-mask">
+                  <span className="hero-name-line hero-name-line-2">
+                    Uddin <span className="hero-name-badge">Zidan</span>
+                  </span>
+                </span>
               </h1>
 
-              <div className="hero-academic-bg">
+              <div className="hero-academic-bg hero-anim-academic">
                 <span className="hero-academic-institution">
                   CUET — Chittagong University of Engineering and Technology
                 </span>
@@ -89,15 +95,15 @@ export const Hero3Col = ({ setActivePage }) => {
                 </span>
               </div>
 
-              <p className="hero-desc">
+              <p className="hero-desc hero-anim-desc-1">
                 I’m a Mechanical Engineering researcher focused on computational approaches to understanding complex physical systems. My academic work spans <strong className="hero-highlight-phrase">Computational Fluid Mechanics</strong> and <strong className="hero-highlight-phrase">Computational Materials Modelling</strong>, with research interests across fluid dynamics, aerodynamics, aeroacoustics, renewable energy, fracture mechanics, and self-healing materials.
               </p>
-              <p className="hero-desc" style={{ marginTop: '12px' }}>
+              <p className="hero-desc hero-anim-desc-2" style={{ marginTop: '12px' }}>
                 Looking ahead, I’m particularly interested in exploring <strong className="hero-highlight-phrase">AI and machine learning driven approaches</strong> in engineering research, and how they can be integrated with computational modelling to improve prediction, simulation, and our understanding of complex physical systems.
               </p>
 
               {/* Research Focus Keywords Box */}
-              <div className="hero-keywords-box">
+              <div className="hero-keywords-box hero-anim-keywords">
                 <div className="hero-keywords-label">
                   <Compass size={13} />
                   <span>Research Domains & Keywords</span>
@@ -119,7 +125,7 @@ export const Hero3Col = ({ setActivePage }) => {
               </div>
             </div>
 
-            <div className="hero-cta-group">
+            <div className="hero-cta-group hero-anim-cta">
               <button
                 onClick={() => setActivePage('research')}
                 className="btn btn-primary"
@@ -139,7 +145,7 @@ export const Hero3Col = ({ setActivePage }) => {
         </div>
 
         {/* RIGHT COLUMN: Jubair's High-Res Portrait Card (Reference Style Gradient Blur at Bottom) */}
-        <div className="hero-col-right">
+        <div className="hero-col-right hero-anim-portrait">
           <div className="hero-portrait-card">
             <div className="portrait-frame">
               <img

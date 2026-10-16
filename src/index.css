@@ -2751,8 +2751,39 @@ img {
   font-weight: 600;
   color: var(--blue-midnight);
   letter-spacing: -0.03em;
-  line-height: 1.12;
+  line-height: 1.14;
   margin-bottom: 16px;
+}
+
+/* Opening sequence: 0.0–0.5s name reveal from below with subtle fade */
+.hero-name-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 2px;
+}
+
+.hero-name-line {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.hero-name-line-1 {
+  animation: heroNameReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.04s both;
+}
+
+.hero-name-line-2 {
+  animation: heroNameReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.20s both;
+}
+
+@keyframes heroNameReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(105%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-name-badge,
@@ -2914,10 +2945,83 @@ img {
   margin-top: 20px;
 }
 
-/* Right Column (Portrait Card ONLY, no text card squeezed beside it!) */
+/* Right Column (Portrait Card ONLY, with 0.4–1.2s opening sequence slide & scale) */
 .hero-col-right {
   display: flex;
   flex-direction: column;
+}
+
+/* Opening sequence: 0.4–1.2s Portrait enters (gently scales 0.96 -> 1.0 and slides into position on the right) */
+.hero-anim-portrait {
+  animation: heroPortraitEnter 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  will-change: transform, opacity;
+}
+
+@keyframes heroPortraitEnter {
+  0% {
+    opacity: 0;
+    transform: translateX(36px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Opening sequence: 0.9–1.6s Academic details appear in coordinated sequence */
+.hero-anim-academic {
+  animation: heroDetailFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+  will-change: transform, opacity;
+}
+
+.hero-anim-desc-1 {
+  animation: heroDetailFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 1.08s both;
+  will-change: transform, opacity;
+}
+
+.hero-anim-desc-2 {
+  animation: heroDetailFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 1.24s both;
+  will-change: transform, opacity;
+}
+
+.hero-anim-keywords {
+  animation: heroDetailFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 1.4s both;
+  will-change: transform, opacity;
+}
+
+/* Opening sequence: 1.4–2.0s Buttons finish the introduction */
+.hero-anim-cta {
+  animation: heroDetailFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 1.55s both;
+  will-change: transform, opacity;
+}
+
+@keyframes heroDetailFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-name-line-1,
+  .hero-name-line-2,
+  .hero-anim-portrait,
+  .hero-anim-academic,
+  .hero-anim-desc-1,
+  .hero-anim-desc-2,
+  .hero-anim-keywords,
+  .hero-anim-cta {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-name-mask {
+    overflow: visible !important;
+  }
 }
 
 /* ==========================================================================
