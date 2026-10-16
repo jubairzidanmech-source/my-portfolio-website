@@ -769,12 +769,7 @@ img {
 }
 
 .section-eyebrow {
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--blue-royal);
-  margin-bottom: 4px;
+  display: none !important;
 }
 
 .section-main-heading {

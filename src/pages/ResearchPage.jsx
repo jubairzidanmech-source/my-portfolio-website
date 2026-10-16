@@ -148,7 +148,6 @@ export const ResearchPage = () => {
       <section id="research-theses" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">ACADEMIC DISSERTATIONS</div>
             <h2 className="section-main-heading">
               Thesis
             </h2>
@@ -339,7 +338,6 @@ export const ResearchPage = () => {
       <section id="research-publications" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">SCHOLARLY WORKS</div>
             <h2 className="section-main-heading">
               Publications
             </h2>
@@ -514,7 +512,6 @@ export const ResearchPage = () => {
       <section id="research-presentations" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">CONFERENCE TALKS</div>
             <h2 className="section-main-heading">
               Oral Technical Presentations
             </h2>
@@ -692,7 +689,6 @@ export const ResearchPage = () => {
       <section id="research-posters" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">RESEARCH SYMPOSIA</div>
             <h2 className="section-main-heading">
               Poster Presentations
             </h2>
@@ -843,7 +839,6 @@ export const ResearchPage = () => {
       <section id="research-ongoing" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">CURRENT INITIATIVES</div>
             <h2 className="section-main-heading">
               Ongoing Work & Manuscripts in Preparation
             </h2>
@@ -951,7 +946,6 @@ export const ResearchPage = () => {
       <section id="research-projects" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">PORTFOLIO</div>
             <h2 className="section-main-heading">
               Project Repository & Technical Simulations
             </h2>

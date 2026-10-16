@@ -100,7 +100,6 @@ export const SkillsPage = () => {
       <section className="section-spacing">
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">COMPUTATIONAL & ENGINEERING TOOLKITS</div>
             <h2 className="section-main-heading">
               Technical Skills & Software Systems
             </h2>
@@ -143,7 +142,6 @@ export const SkillsPage = () => {
       <section className="section-spacing">
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">ACADEMIC & COLLABORATIVE EXCELLENCE</div>
             <h2 className="section-main-heading">
               Professional Competencies
             </h2>
@@ -176,7 +174,6 @@ export const SkillsPage = () => {
       <section className="section-spacing" style={{ marginBottom: '64px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">BEYOND THE LAB</div>
             <h2 className="section-main-heading" style={{ fontSize: '1.35rem' }}>
               Personal Interests & Explorations
             </h2>

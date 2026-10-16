@@ -46,7 +46,6 @@ export const ContactPage = () => {
       <div className="contact-closing-card">
         {/* Editorial Page Header */}
         <div className="contact-header-wrap">
-          <div className="section-eyebrow">CLOSING INQUIRIES & CORRESPONDENCE</div>
           <h1 className="contact-main-heading">
             Get in <span className="header-badge">Touch</span>
           </h1>

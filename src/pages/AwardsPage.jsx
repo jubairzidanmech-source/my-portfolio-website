@@ -289,7 +289,6 @@ export const AwardsPage = () => {
       <section id="awards-competitions" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">HONORS</div>
             <h2 className="section-main-heading">
               Prize
             </h2>
@@ -330,7 +329,6 @@ export const AwardsPage = () => {
       <section id="awards-posters" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">RESEARCH EXHIBITS</div>
             <h2 className="section-main-heading">
               Poster Presentations
             </h2>
@@ -370,7 +368,6 @@ export const AwardsPage = () => {
       <section id="awards-technical-certs" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">INDUSTRY & PROFESSIONAL CREDENTIALS</div>
             <h2 className="section-main-heading">
               Technical Certifications
             </h2>
@@ -411,7 +408,6 @@ export const AwardsPage = () => {
       <section id="awards-course-certs" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">ACADEMIC & SIMULATION ACCREDITATIONS</div>
             <h2 className="section-main-heading">
               Course Certifications
             </h2>
@@ -466,7 +462,6 @@ export const AwardsPage = () => {
       <section id="awards-organization" className="section-spacing" style={{ scrollMarginTop: '135px' }}>
         <div className="section-heading-row">
           <div>
-            <div className="section-eyebrow">LEADERSHIP & ENGAGEMENT</div>
             <h2 className="section-main-heading">
               Organization
             </h2>

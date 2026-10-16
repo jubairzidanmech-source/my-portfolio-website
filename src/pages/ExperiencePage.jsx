@@ -55,7 +55,6 @@ export const ExperiencePage = () => {
         <section className="section-spacing">
           <div className="section-heading-row">
             <div>
-              <div className="section-eyebrow">PRACTICAL ENGINEERING</div>
               <h2 className="section-main-heading">
                 Industrial Attachment / Internship
               </h2>
@@ -157,7 +156,6 @@ export const ExperiencePage = () => {
         <section className="section-spacing">
           <div className="section-heading-row">
             <div>
-              <div className="section-eyebrow">ACADEMIC MENTORSHIP</div>
               <h2 className="section-main-heading">
                 Tutoring & Instructorships
               </h2>
@@ -204,7 +202,6 @@ export const ExperiencePage = () => {
           <div className="card exp-card" style={{ marginTop: '20px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
               <div>
-                <span className="section-eyebrow">CURRICULUM DELIVERED</span>
                 <h3 className="exp-role-title" style={{ marginTop: '2px' }}>
                   Physics & Mathematics Syllabi Instruction
                 </h3>
@@ -259,7 +256,6 @@ export const ExperiencePage = () => {
         <section className="section-spacing">
           <div className="section-heading-row">
             <div>
-              <div className="section-eyebrow">EXECUTIVE ROLES</div>
               <h2 className="section-main-heading">
                 Extracurricular Activities & Leadership
               </h2>
@@ -347,7 +343,6 @@ export const ExperiencePage = () => {
         <section className="section-spacing">
           <div className="section-heading-row">
             <div>
-              <div className="section-eyebrow">COMMUNITY & SOCIAL ENTERPRISE</div>
               <h2 className="section-main-heading">
                 Volunteering Work
               </h2>

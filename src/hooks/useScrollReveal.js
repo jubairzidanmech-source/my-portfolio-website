@@ -46,7 +46,7 @@ export function useScrollReveal() {
       });
 
       // Descriptions and subtitles to fade-up
-      const descriptions = section.querySelectorAll('.page-subtitle, .contact-subtitle, .section-eyebrow, .research-subnav-bar');
+      const descriptions = section.querySelectorAll('.page-subtitle, .contact-subtitle, .research-subnav-bar');
       descriptions.forEach((desc) => {
         desc.classList.add('reveal-desc');
       });
