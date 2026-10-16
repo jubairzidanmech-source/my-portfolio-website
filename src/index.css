@@ -10945,13 +10945,11 @@ body [style*="cursor:zoom-in"] {
   margin-left: -50vw;
   margin-right: -50vw;
   overflow: hidden;
-  padding: 40px 0 46px;
+  padding: 18px 0 20px;
   min-height: 440px;
   user-select: none;
   cursor: grab;
   touch-action: pan-y;
-  clip-path: url(#carousel-curved-ribbon);
-  -webkit-clip-path: url(#carousel-curved-ribbon);
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -10966,6 +10964,32 @@ body [style*="cursor:zoom-in"] {
     black 97%,
     transparent 100%
   );
+}
+
+/* 2b. Top and Bottom Curved Arch Cutouts (Box Studio Reference Curved Carousel Effect) */
+.milestones-curve-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 90px;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.milestones-curve-top {
+  top: 0;
+}
+
+.milestones-curve-bottom {
+  bottom: 0;
+}
+
+.milestones-curve-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: var(--bg-canvas);
 }
 
 .milestones-marquee-wrapper.is-grabbing,
@@ -10988,8 +11012,7 @@ body [style*="cursor:zoom-in"] {
   position: relative;
   flex-shrink: 0;
   width: 380px;
-  height: 380px;
-  aspect-ratio: 1 / 1;
+  height: 420px;
   border-radius: 0 !important;
   overflow: hidden;
   cursor: grab;
@@ -11102,6 +11125,10 @@ body [style*="cursor:zoom-in"] {
 
   .milestones-marquee-track {
     gap: 16px;
+  }
+
+  .milestones-curve-overlay {
+    height: 55px;
   }
 }
 
