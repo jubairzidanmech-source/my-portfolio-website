@@ -59,7 +59,11 @@ export const AcademicsPage = () => {
       {/* Editorial Page Header */}
       <div className="page-intro">
         <h1 className="page-title">
-          Academic <span className="header-badge">Journey</span>
+          <span className="masked-header-mask">
+            <span className="masked-header-line">
+              Academic <span className="header-badge">Journey</span>
+            </span>
+          </span>
         </h1>
         <p className="page-subtitle">
           Timeline of higher education milestones, degrees conferred, and current postgraduate standing.

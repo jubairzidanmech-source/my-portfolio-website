@@ -2791,6 +2791,29 @@ img {
   }
 }
 
+/* Universal Scroll-Triggered Masked Text Reveal (Pallet Ross Inspiration) */
+.masked-header-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 4px;
+}
+
+.masked-header-line {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 1.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.masked-header-line.is-revealed {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 .hero-name-badge,
 .header-badge {
   display: inline-block;
@@ -3023,12 +3046,15 @@ img {
   .hero-anim-desc-1,
   .hero-anim-desc-2,
   .hero-anim-keywords,
-  .hero-anim-cta {
+  .hero-anim-cta,
+  .masked-header-line {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+    transition: none !important;
   }
-  .hero-name-mask {
+  .hero-name-mask,
+  .masked-header-mask {
     overflow: visible !important;
   }
 }

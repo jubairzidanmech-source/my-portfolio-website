@@ -253,7 +253,11 @@ export const AwardsPage = () => {
       {/* Editorial Page Header */}
       <div className="page-intro">
         <h1 className="page-title">
-          Awards & <span className="header-badge">Certificates</span>
+          <span className="masked-header-mask">
+            <span className="masked-header-line">
+              Awards & <span className="header-badge">Certificates</span>
+            </span>
+          </span>
         </h1>
         <p className="page-subtitle">
           National engineering innovation competitions, scholarly poster symposia, global social entrepreneurship summits, and accredited professional engineering certifications.
