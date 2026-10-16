@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 /**
- * Custom hook to manage subtle, buttery-smooth scroll-reveal animations across:
+ * Custom hook to manage bidirectional, repeatable scroll-reveal animations across:
  * - Academics (#academics)
  * - Research (#research)
  * - Awards (#awards)
@@ -9,26 +9,27 @@ import { useEffect } from 'react';
  * - Skills (#skills)
  * - Contact (#contact)
  * 
- * Specifically excludes the homepage (#home) and "In Frames" carousel (#in-frames).
+ * Specifically preserves and excludes:
+ * - Homepage hero (#home)
+ * - In Frames continuous carousel (#in-frames / .milestones-section)
  * 
- * Specifications:
- * - Duration: 600–900ms (750ms).
- * - Vertical movement: 20–30px (24px).
- * - Stagger delay: 80–120ms (90ms).
- * - Easing: cubic-bezier(0.16, 1, 0.3, 1).
- * - Trigger once per page load via IntersectionObserver.
+ * Features:
+ * - Bidirectional: animates in when entering, smoothly reverses when exiting.
+ * - Repeatable: replays staggered cascade whenever re-entering the viewport.
+ * - Hysteresis deadzone: prevents flickering or jitter during small scroll movements.
+ * - Synchronized with Lenis smooth scrolling.
  * - Respects prefers-reduced-motion.
  */
 export function useScrollReveal() {
   useEffect(() => {
-    // Respect reduced motion
+    // Respect reduced motion preferences
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
     }
 
     const TARGET_SECTIONS_SELECTOR = '#academics, #research, #awards, #experience, #skills, #contact';
 
-    // 1. Target sections only
+    // 1. Query target sections only
     const targetSections = document.querySelectorAll(TARGET_SECTIONS_SELECTOR);
     if (!targetSections.length) return;
 
@@ -74,22 +75,37 @@ export function useScrollReveal() {
       });
     });
 
-    // 2. Activate scroll reveal styling
+    // 2. Activate scroll reveal ready styling
     document.body.classList.add('scroll-reveal-ready');
 
-    // 3. Set up IntersectionObserver (triggers slightly before entering viewport)
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
+    // 3. Dual-Observer Architecture with Hysteresis (Prevents flickering & enables bidirectional repeat)
+    // Reveal Observer: triggers when element enters viewport
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-revealed');
-            obs.unobserve(entry.target);
           }
         });
       },
       {
-        threshold: 0.1,
+        threshold: 0.08,
         rootMargin: '0px 0px -40px 0px'
+      }
+    );
+
+    // Exit Observer: triggers smooth reversal only when element completely leaves viewport with generous safety buffer
+    const exitObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            entry.target.classList.remove('is-revealed');
+          }
+        });
+      },
+      {
+        threshold: 0,
+        rootMargin: '50px 0px 50px 0px'
       }
     );
 
@@ -106,15 +122,19 @@ export function useScrollReveal() {
     elementsToObserve.forEach((el) => {
       // If already in viewport on mount, reveal immediately
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
+      if (rect.top < window.innerHeight - 40 && rect.bottom > 40) {
         el.classList.add('is-revealed');
-      } else {
-        observer.observe(el);
       }
+
+      revealObserver.observe(el);
+      exitObserver.observe(el);
     });
 
     return () => {
-      observer.disconnect();
+      revealObserver.disconnect();
+      exitObserver.disconnect();
     };
   }, []);
 }
+
+export default useScrollReveal;

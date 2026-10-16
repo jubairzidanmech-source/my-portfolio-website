@@ -11355,8 +11355,8 @@ body [style*="cursor:zoom-in"] {
   will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  transition: transform 1.35s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal-ready .reveal-heading.is-revealed .reveal-heading-text,
@@ -11364,6 +11364,8 @@ body [style*="cursor:zoom-in"] {
 .scroll-reveal-ready .is-revealed.reveal-heading-text {
   transform: translateY(0);
   opacity: 1;
+  transition: transform 1.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* 2. Gentle Fade-Up for Descriptions & Subtitles (Reveals after heading) */
@@ -11373,13 +11375,15 @@ body [style*="cursor:zoom-in"] {
   will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1) 160ms,
-              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1) 160ms;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal-ready .reveal-desc.is-revealed {
   transform: translateY(0);
   opacity: 1;
+  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1) 160ms,
+              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1) 160ms;
 }
 
 /* 3. Subtle Upward Entrance for Standalone Cards (Settles gracefully) */
@@ -11389,13 +11393,15 @@ body [style*="cursor:zoom-in"] {
   will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1) 220ms,
-              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1) 220ms;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal-ready .reveal-card.is-revealed {
   transform: translateY(0);
   opacity: 1;
+  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1) 220ms,
+              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1) 220ms;
 }
 
 /* 4. Staggered Card Groups (170ms Stagger Delay, 1.3s Duration) */
@@ -11405,43 +11411,57 @@ body [style*="cursor:zoom-in"] {
   will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal-ready .reveal-group.is-revealed > *:nth-child(1) {
   transform: translateY(0);
   opacity: 1;
+  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: 150ms;
 }
 .scroll-reveal-ready .reveal-group.is-revealed > *:nth-child(2) {
   transform: translateY(0);
   opacity: 1;
+  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: 320ms;
 }
 .scroll-reveal-ready .reveal-group.is-revealed > *:nth-child(3) {
   transform: translateY(0);
   opacity: 1;
+  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: 490ms;
 }
 .scroll-reveal-ready .reveal-group.is-revealed > *:nth-child(4) {
   transform: translateY(0);
   opacity: 1;
+  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: 660ms;
 }
 .scroll-reveal-ready .reveal-group.is-revealed > *:nth-child(5) {
   transform: translateY(0);
   opacity: 1;
+  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: 830ms;
 }
 .scroll-reveal-ready .reveal-group.is-revealed > *:nth-child(6) {
   transform: translateY(0);
   opacity: 1;
+  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: 1000ms;
 }
 .scroll-reveal-ready .reveal-group.is-revealed > *:nth-child(n+7) {
   transform: translateY(0);
   opacity: 1;
+  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: 1100ms;
 }
 
@@ -11452,13 +11472,15 @@ body [style*="cursor:zoom-in"] {
   will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  transition: transform 1.35s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal-ready .reveal-timeline-row.is-revealed {
   transform: none !important;
   opacity: 1;
+  transition: transform 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Reduced Motion Accessibility */
