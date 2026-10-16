@@ -58,11 +58,33 @@ export const MilestonesCarousel = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [measureBlockWidth]);
 
+  const sectionRef = useRef(null);
+  const isVisibleRef = useRef(true);
+
+  // Pause carousel RAF loop when offscreen to free up 100% GPU/CPU during page scroll
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   // Main 60 FPS animation loop: handles motion, inertia, infinite wrapping & dynamic movement
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const animate = (time) => {
+      if (!isVisibleRef.current) {
+        lastTimeRef.current = null;
+        animationFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
       if (lastTimeRef.current === null) {
         lastTimeRef.current = time;
       }
@@ -177,7 +199,7 @@ export const MilestonesCarousel = () => {
   }, []);
 
   return (
-    <section className="milestones-section" aria-label="In Frames">
+    <section ref={sectionRef} className="milestones-section" aria-label="In Frames">
       {/* 1. Header: Just "In Frames" on top */}
       <div className="milestones-header">
         <h2 className="milestones-title">

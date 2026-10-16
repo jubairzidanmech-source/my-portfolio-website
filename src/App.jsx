@@ -160,13 +160,18 @@ export function App() {
       setActivePage((prev) => (prev !== currentSection ? currentSection : prev));
     };
 
+    let lastCheck = 0;
     const handleScroll = () => {
-      if (!ticking) {
+      const now = performance.now();
+      if (now - lastCheck > 100) {
+        lastCheck = now;
+        updateActiveSection();
+      } else if (!ticking) {
+        ticking = true;
         requestAnimationFrame(() => {
           updateActiveSection();
           ticking = false;
         });
-        ticking = true;
       }
     };
 

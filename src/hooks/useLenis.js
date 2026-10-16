@@ -29,15 +29,17 @@ export function useLenis() {
       window.__lenisInstance = null;
     }
 
-    // Initialize Lenis instance
+    // Initialize Lenis instance with optimal momentum easing
     const lenis = new Lenis({
-      lerp: 0.14,
+      lerp: 0.08,
       smoothWheel: true,
       wheelMultiplier: 1.0,
       touchMultiplier: 1.0,
       syncTouch: false,
       autoRaf: true,
-      respectReducedMotion: true
+      respectReducedMotion: true,
+      anchors: true,
+      autoToggle: true
     });
 
     lenisRef.current = lenis;

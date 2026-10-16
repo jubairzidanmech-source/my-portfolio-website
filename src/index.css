@@ -263,7 +263,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 #root {
@@ -373,6 +373,10 @@ img {
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
+  transform: translateZ(0);
+  contain: strict;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Dynamic Ambient Blue Gradient Mesh behind grid (High-Visibility Floating Energy Orbs) */
@@ -390,6 +394,7 @@ img {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  transform: translateZ(0);
   background-image: 
     /* Soft, ethereal sky luminescence concentrated specifically behind the hero */
     radial-gradient(ellipse 90% 50% at 50% 14%, rgba(186, 215, 250, 0.42) 0%, rgba(214, 230, 252, 0.25) 45%, rgba(235, 240, 247, 0.05) 80%, transparent 100%);
@@ -401,6 +406,9 @@ img {
   pointer-events: none;
   will-change: transform, border-radius;
   opacity: 0.65;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Pool 1: Subtle cerulean blue glow behind the hero left */
@@ -417,7 +425,7 @@ img {
     rgba(186, 215, 250, 0.08) 65%,
     transparent 85%
   );
-  filter: blur(105px);
+  filter: blur(35px);
   animation: liquidMorphOne 24s ease-in-out infinite alternate;
 }
 
@@ -435,7 +443,7 @@ img {
     rgba(214, 230, 252, 0.07) 65%,
     transparent 85%
   );
-  filter: blur(105px);
+  filter: blur(35px);
   animation: liquidMorphTwo 26s ease-in-out infinite alternate;
 }
 
@@ -453,7 +461,7 @@ img {
     rgba(235, 240, 247, 0.03) 75%,
     transparent 88%
   );
-  filter: blur(120px);
+  filter: blur(38px);
   animation: liquidMorphThree 28s ease-in-out infinite alternate;
 }
 
@@ -470,7 +478,7 @@ img {
     rgba(186, 215, 250, 0.10) 45%,
     transparent 80%
   );
-  filter: blur(120px);
+  filter: blur(38px);
   animation: liquidMorphOne 25s ease-in-out infinite alternate-reverse;
 }
 
@@ -487,7 +495,7 @@ img {
     rgba(224, 236, 252, 0.08) 45%,
     transparent 78%
   );
-  filter: blur(110px);
+  filter: blur(32px);
   animation: liquidMorphTwo 28s ease-in-out infinite alternate-reverse;
 }
 
@@ -7501,7 +7509,7 @@ img {
     rgba(14, 165, 233, 0.30) 60%,
     rgba(2, 6, 23, 0) 80%
   );
-  filter: blur(62px);
+  filter: blur(28px);
 }
 
 /* Pool 2: Luminous Wave with Ice-White Core & Electric Cyan Crest (Top-Right) */
@@ -7514,7 +7522,7 @@ img {
     rgba(30, 27, 75, 0.15) 70%,
     transparent 82%
   );
-  filter: blur(56px);
+  filter: blur(26px);
 }
 
 /* Pool 3: Deep Abyssal Ultramarine & Indigo Ocean (Bottom-Left) */
@@ -7526,7 +7534,7 @@ img {
     rgba(30, 27, 75, 0.20) 68%,
     transparent 85%
   );
-  filter: blur(70px);
+  filter: blur(30px);
 }
 
 /* Pool 4: Vivid Neon Cyan Arc with Violet-Indigo Fringe (Center-Right) */
@@ -7538,7 +7546,7 @@ img {
     rgba(124, 58, 237, 0.35) 58%,
     transparent 80%
   );
-  filter: blur(60px);
+  filter: blur(28px);
 }
 
 /* Pool 5: Translucent Ice-Blue Liquid Core with White Sheen (Center Core) */
@@ -7550,7 +7558,7 @@ img {
     rgba(0, 71, 225, 0.38) 58%,
     transparent 80%
   );
-  filter: blur(64px);
+  filter: blur(28px);
 }
 
 
