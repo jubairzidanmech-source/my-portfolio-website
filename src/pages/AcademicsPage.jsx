@@ -63,8 +63,8 @@ export const AcademicsPage = () => {
     const updateStacking = () => {
       const isMobile = window.innerWidth <= 768;
       const navOffset = isMobile ? 68 : 108;
-      const stackOffset = isMobile ? 114 : 124;
-      const compressRange = isMobile ? 130 : 180; // Generous 180px scroll interpolation window
+      const stackOffset = isMobile ? 72 : 76;
+      const compressRange = isMobile ? 90 : 120; // Smooth 120px transition window
 
       rows.forEach((row, idx) => {
         const card = row.querySelector('.timeline-academic-card');
@@ -171,35 +171,35 @@ export const AcademicsPage = () => {
 
           <div className="timeline-academic-card">
             <div className="timeline-card-header">
-              <div className="timeline-inst-logo-box">
-                <img 
-                  src="/images/real/bzs_logo.png" 
-                  alt="Barishal Zilla School Logo" 
-                  className="timeline-inst-logo-img" 
-                  loading="lazy"
+              <div className="timeline-header-left">
+                <div className="timeline-inst-logo-box">
+                  <img 
+                    src="/images/real/bzs_logo.png" 
+                    alt="Barishal Zilla School Logo" 
+                    className="timeline-inst-logo-img" 
+                    loading="lazy"
+                  />
+                </div>
+                <div className="timeline-header-text">
+                  <div className="timeline-header-title-row">
+                    <h3 className="timeline-card-heading">Secondary School Certificate</h3>
+                    <span className="degree-badge-dark">SSC</span>
+                  </div>
+                  <div className="timeline-card-subheading">
+                    Barishal Zilla School · Barishal
+                  </div>
+                </div>
+              </div>
+
+              <div className="timeline-header-gpa">
+                <CgpaStatNumber
+                  value={5.00}
+                  max={5.00}
+                  label="Secondary School Certificate GPA"
+                  sublabel="Science Division • Golden / Perfect Score"
+                  badge="Perfect GPA"
                 />
               </div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                  <h3 className="timeline-card-heading">Secondary School Certificate</h3>
-                  <span className="degree-badge-dark">SSC</span>
-                </div>
-                <div className="timeline-card-subheading">
-                  Barishal Zilla School · Barishal
-                </div>
-              </div>
-            </div>
-
-            <div className="timeline-card-hairline" />
-
-            <div className="academic-cgpa-group">
-              <CgpaStatNumber
-                value={5.00}
-                max={5.00}
-                label="Secondary School Certificate GPA"
-                sublabel="Science Division • Golden / Perfect Score"
-                badge="Perfect GPA"
-              />
             </div>
           </div>
         </div>
@@ -226,35 +226,35 @@ export const AcademicsPage = () => {
 
           <div className="timeline-academic-card">
             <div className="timeline-card-header">
-              <div className="timeline-inst-logo-box">
-                <img 
-                  src="/images/real/ndc_logo.png" 
-                  alt="Notre Dame College Logo" 
-                  className="timeline-inst-logo-img" 
-                  loading="lazy"
+              <div className="timeline-header-left">
+                <div className="timeline-inst-logo-box">
+                  <img 
+                    src="/images/real/ndc_logo.png" 
+                    alt="Notre Dame College Logo" 
+                    className="timeline-inst-logo-img" 
+                    loading="lazy"
+                  />
+                </div>
+                <div className="timeline-header-text">
+                  <div className="timeline-header-title-row">
+                    <h3 className="timeline-card-heading">Higher Secondary School Certificate</h3>
+                    <span className="degree-badge-dark">HSC</span>
+                  </div>
+                  <div className="timeline-card-subheading">
+                    Notre Dame College · Dhaka
+                  </div>
+                </div>
+              </div>
+
+              <div className="timeline-header-gpa">
+                <CgpaStatNumber
+                  value={5.00}
+                  max={5.00}
+                  label="Higher Secondary Certificate GPA"
+                  sublabel="Science Division • Golden / Perfect Score"
+                  badge="Perfect GPA"
                 />
               </div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                  <h3 className="timeline-card-heading">Higher Secondary School Certificate</h3>
-                  <span className="degree-badge-dark">HSC</span>
-                </div>
-                <div className="timeline-card-subheading">
-                  Notre Dame College · Dhaka
-                </div>
-              </div>
-            </div>
-
-            <div className="timeline-card-hairline" />
-
-            <div className="academic-cgpa-group">
-              <CgpaStatNumber
-                value={5.00}
-                max={5.00}
-                label="Higher Secondary Certificate GPA"
-                sublabel="Science Division • Golden / Perfect Score"
-                badge="Perfect GPA"
-              />
             </div>
           </div>
         </div>
@@ -281,42 +281,41 @@ export const AcademicsPage = () => {
 
           <div className="timeline-academic-card">
             <div className="timeline-card-header">
-              <div className="timeline-inst-logo-box">
-                <img 
-                  src="/images/real/cuet_logo.png" 
-                  alt="Chittagong University of Engineering and Technology (CUET) Logo" 
-                  className="timeline-inst-logo-img" 
-                  loading="lazy"
+              <div className="timeline-header-left">
+                <div className="timeline-inst-logo-box">
+                  <img 
+                    src="/images/real/cuet_logo.png" 
+                    alt="Chittagong University of Engineering and Technology (CUET) Logo" 
+                    className="timeline-inst-logo-img" 
+                    loading="lazy"
+                  />
+                </div>
+                <div className="timeline-header-text">
+                  <div className="timeline-header-title-row">
+                    <h3 className="timeline-card-heading">Bachelor of Science in Mechanical Engineering</h3>
+                    <span className="degree-badge-dark">BSc</span>
+                  </div>
+                  <div className="timeline-card-subheading">
+                    Chittagong University of Engineering and Technology (CUET) · Chattogram
+                  </div>
+                </div>
+              </div>
+
+              <div className="timeline-header-gpa is-multi">
+                <CgpaStatNumber
+                  value={3.29}
+                  max={4.00}
+                  label="Overall Cumulative CGPA"
+                  sublabel="Across all 8 undergraduate semesters"
+                />
+                <CgpaStatNumber
+                  value={3.41}
+                  max={4.00}
+                  label="Last 4 Semesters CGPA"
+                  sublabel="Upper Semesters Core Engineering Trajectory"
+                  badge="Major Focus"
                 />
               </div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                  <h3 className="timeline-card-heading">Bachelor of Science in Mechanical Engineering</h3>
-                  <span className="degree-badge-dark">BSc</span>
-                </div>
-                <div className="timeline-card-subheading">
-                  Chittagong University of Engineering and Technology (CUET) · Chattogram
-                </div>
-              </div>
-            </div>
-
-            <div className="timeline-card-hairline" />
-
-            {/* Prominent Numbers: Overall CGPA and Last 4 Semesters */}
-            <div className="academic-cgpa-group">
-              <CgpaStatNumber
-                value={3.29}
-                max={4.00}
-                label="Overall Cumulative CGPA"
-                sublabel="Across all 8 undergraduate semesters"
-              />
-              <CgpaStatNumber
-                value={3.41}
-                max={4.00}
-                label="Last 4 Semesters CGPA"
-                sublabel="Upper Semesters Core Engineering Trajectory"
-                badge="Major Focus"
-              />
             </div>
 
             {/* Collapsible Secondary Content (Gracefully compresses when stacked) */}
@@ -434,25 +433,27 @@ export const AcademicsPage = () => {
 
           <div className="timeline-academic-card is-current">
             <div className="timeline-card-header">
-              <div className="timeline-inst-logo-box">
-                <img 
-                  src="/images/real/cuet_logo.png" 
-                  alt="Chittagong University of Engineering and Technology (CUET) Logo" 
-                  className="timeline-inst-logo-img" 
-                  loading="lazy"
-                />
-              </div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                  <h3 className="timeline-card-heading">Master of Science in Mechanical Engineering</h3>
-                  <span className="degree-badge-dark">MSc</span>
-                  <span className="timeline-current-pill">
-                    <span className="timeline-pill-dot" />
-                    Currently In Progress
-                  </span>
+              <div className="timeline-header-left">
+                <div className="timeline-inst-logo-box">
+                  <img 
+                    src="/images/real/cuet_logo.png" 
+                    alt="Chittagong University of Engineering and Technology (CUET) Logo" 
+                    className="timeline-inst-logo-img" 
+                    loading="lazy"
+                  />
                 </div>
-                <div className="timeline-card-subheading">
-                  Chittagong University of Engineering and Technology (CUET) · Chattogram
+                <div className="timeline-header-text">
+                  <div className="timeline-header-title-row">
+                    <h3 className="timeline-card-heading">Master of Science in Mechanical Engineering</h3>
+                    <span className="degree-badge-dark">MSc</span>
+                    <span className="timeline-current-pill">
+                      <span className="timeline-pill-dot" />
+                      Currently In Progress
+                    </span>
+                  </div>
+                  <div className="timeline-card-subheading">
+                    Chittagong University of Engineering and Technology (CUET) · Chattogram
+                  </div>
                 </div>
               </div>
             </div>

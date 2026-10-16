@@ -3854,7 +3854,7 @@ img {
 
 :root {
   --timeline-sticky-base: 108px;
-  --timeline-stack-offset: 124px;
+  --timeline-stack-offset: 76px;
 }
 
 .site-main.with-announcement {
@@ -3864,7 +3864,7 @@ img {
 @media (max-width: 768px) {
   :root {
     --timeline-sticky-base: 68px;
-    --timeline-stack-offset: 114px;
+    --timeline-stack-offset: 72px;
   }
   .site-main.with-announcement {
     --timeline-sticky-base: 98px;
@@ -4101,7 +4101,7 @@ img {
   background: #FFFFFF;
   border: 1px solid rgba(15, 23, 42, calc(0.11 + (0.05 * var(--compress, 0))));
   border-radius: 18px;
-  padding: calc(24px - (11px * var(--compress, 0))) calc(28px - (6px * var(--compress, 0))) calc(24px - (10px * var(--compress, 0)));
+  padding: calc(20px - (6px * var(--compress, 0))) calc(28px - (6px * var(--compress, 0))) calc(20px - (6px * var(--compress, 0)));
   box-shadow: 0 calc(6px - (2px * var(--compress, 0))) calc(18px - (6px * var(--compress, 0))) rgba(15, 23, 42, calc(0.06 + (0.02 * var(--compress, 0))));
   position: relative;
   overflow: hidden;
@@ -4114,19 +4114,98 @@ img {
   box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.45);
 }
 
-/* Fluid Header spacing */
+/* Fluid Header spacing & layout: Left (Title/Sub) + Right (GPA) */
 .timeline-academic-card .timeline-card-header {
-  margin-bottom: calc(10px - (6px * var(--compress, 0)));
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.timeline-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.timeline-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.timeline-header-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.timeline-header-gpa {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.timeline-header-gpa .academic-cgpa-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 2px;
+}
+
+.timeline-header-gpa .academic-cgpa-primary {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.timeline-header-gpa .academic-cgpa-info {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  justify-content: flex-end;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .timeline-academic-card .timeline-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .timeline-header-gpa {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .timeline-header-gpa .academic-cgpa-item {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .timeline-header-gpa .academic-cgpa-primary {
+    justify-content: flex-start;
+  }
+  .timeline-header-gpa .academic-cgpa-info {
+    justify-content: flex-start;
+    white-space: normal;
+  }
 }
 
 /* Fluid Logo scaling: 50px down to 36px */
 .timeline-academic-card .timeline-inst-logo-box {
-  width: calc(50px - (14px * var(--compress, 0)));
-  height: calc(50px - (14px * var(--compress, 0)));
-  min-width: calc(50px - (14px * var(--compress, 0)));
-  border-radius: calc(12px - (4px * var(--compress, 0)));
-  padding: calc(5px - (2px * var(--compress, 0)));
+  width: calc(48px - (10px * var(--compress, 0)));
+  height: calc(48px - (10px * var(--compress, 0)));
+  min-width: calc(48px - (10px * var(--compress, 0)));
+  border-radius: calc(12px - (3px * var(--compress, 0)));
+  padding: calc(4px - (1px * var(--compress, 0)));
 }
 
 /* Fluid Heading size */
@@ -4141,8 +4220,8 @@ img {
 
 /* Fluid Hairline spacing */
 .timeline-academic-card .timeline-card-hairline {
-  margin-top: calc(8px - (4px * var(--compress, 0)));
-  margin-bottom: calc(10px - (5px * var(--compress, 0)));
+  margin-top: calc(14px - (6px * var(--compress, 0)));
+  margin-bottom: calc(14px - (6px * var(--compress, 0)));
   opacity: calc(0.7 - (0.3 * var(--compress, 0)));
 }
 
