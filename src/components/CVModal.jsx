@@ -434,7 +434,7 @@ export const CVModal = ({ isOpen, onClose }) => {
                     <span className="cv-skill-items">LaTeX, Mendeley, MS Word, MS PowerPoint, Google Suite</span>
                   </div>
                   <div className="cv-skill-row">
-                    <span className="cv-skill-category">Graphic Design & Visualization:</span>
+                    <span className="cv-skill-category">Visualization:</span>
                     <span className="cv-skill-items">Adobe Illustrator, Adobe Photoshop, Canva, Figma, Adobe Premiere Pro</span>
                   </div>
                   <div className="cv-skill-row">

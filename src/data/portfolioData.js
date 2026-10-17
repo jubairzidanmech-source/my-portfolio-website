@@ -1118,7 +1118,7 @@ export const skillsData = {
       description: "Academic manuscript typesetting, bibliographic referencing, peer-reviewed paper formulation, and scholarly presentations."
     },
     {
-      category: "Graphic Design & Visualization",
+      category: "Visualization",
       skills: ["Adobe Illustrator", "Adobe Photoshop", "Canva", "Figma", "Adobe Premiere Pro"],
       description: "Technical schematics vector illustration, research poster layouts, conference pitch design, and multimedia editing."
     },

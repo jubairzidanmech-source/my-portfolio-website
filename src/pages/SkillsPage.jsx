@@ -39,6 +39,7 @@ export const SkillsPage = () => {
         return <GitBranch size={17} strokeWidth={2} />;
       case 'Scientific Documentation & Research':
         return <FileSpreadsheet size={17} strokeWidth={2} />;
+      case 'Visualization':
       case 'Graphic Design & Visualization':
         return <Palette size={17} strokeWidth={2} />;
       case 'Operating Systems':
