@@ -11813,6 +11813,11 @@ body [style*="cursor:zoom-in"] {
   color: var(--blue-midnight);
 }
 
+/* Royal blue accent for highlighted culmination ("know itself.") */
+.cinematic-quote-serif.cinematic-quote-accent {
+  color: var(--blue-royal);
+}
+
 /* Understated author attribution mask: centered in page */
 .cinematic-quote-author-mask {
   display: flex;
@@ -11887,6 +11892,10 @@ body [style*="cursor:zoom-in"] {
 
 [data-theme="dark"] .cinematic-quote-serif {
   color: #FFFFFF;
+}
+
+[data-theme="dark"] .cinematic-quote-serif.cinematic-quote-accent {
+  color: #60A5FA;
 }
 
 [data-theme="dark"] .cinematic-quote-author-name {
