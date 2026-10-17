@@ -4916,11 +4916,71 @@ img {
   background: #0F172A;
 }
 
+/* Publication Certificate Media Column & Bottom Button */
+.pub-cert-col {
+  width: 175px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pub-cert-col .award-card-media-side {
+  width: 100%;
+  min-height: 135px;
+  height: 135px;
+  margin: 0;
+}
+
+.pub-cert-bottom-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.77rem;
+  font-weight: 600;
+  color: var(--blue-royal);
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.pub-cert-bottom-btn:hover {
+  background: rgba(37, 99, 235, 0.16);
+  border-color: var(--blue-royal);
+  color: var(--blue-royal);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.18);
+}
+
+[data-theme="dark"] .pub-cert-bottom-btn {
+  background: rgba(56, 189, 248, 0.08);
+  color: #38BDF8;
+  border-color: rgba(56, 189, 248, 0.24);
+}
+
+[data-theme="dark"] .pub-cert-bottom-btn:hover {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: #38BDF8;
+  color: #38BDF8;
+  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.25);
+}
+
 @media (max-width: 640px) {
   .pub-card-split-row {
     flex-direction: column;
     gap: 12px;
   }
+  .pub-cert-col {
+    width: 100%;
+  }
+  .pub-cert-col .award-card-media-side,
   .award-card-media-side {
     width: 100%;
     height: 175px;
@@ -5154,6 +5214,50 @@ img {
 .pub-visual-btn:hover {
   background: rgba(0, 0, 0, 0.08);
   transform: translateY(-1px);
+}
+
+/* Primary Action Button: See the Full Paper */
+.pub-full-paper-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #FFFFFF !important;
+  background: var(--blue-royal);
+  border: 1px solid var(--blue-royal);
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.pub-full-paper-btn:hover {
+  background: var(--blue-royal-dark, #1D4ED8);
+  border-color: var(--blue-royal-dark, #1D4ED8);
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  color: #FFFFFF !important;
+}
+
+.pub-full-paper-btn:active {
+  transform: translateY(0);
+}
+
+[data-theme="dark"] .pub-full-paper-btn {
+  background: #2563EB;
+  border-color: #3B82F6;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+}
+
+[data-theme="dark"] .pub-full-paper-btn:hover {
+  background: #1D4ED8;
+  border-color: #60A5FA;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.45);
 }
 
 /* Expandable Disclosure Body (Clean, unboxed styling) */

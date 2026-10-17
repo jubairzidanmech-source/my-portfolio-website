@@ -34,6 +34,11 @@ export const ResearchPage = () => {
     }));
   };
 
+  const handleOpenFullPaper = (paper) => {
+    const targetUrl = paper.paperUrl || "https://www.researchgate.net/profile/Md-Jubair-Zidan-2";
+    window.open(targetUrl, '_blank', 'noopener,noreferrer');
+  };
+
   const projectFields = ['All', 'Fluid Mechanics', 'Materials Science'];
 
   const getFilteredProjects = () => {
@@ -351,35 +356,54 @@ export const ResearchPage = () => {
           {/* --- Peer-Reviewed Conference Papers --- */}
           {(researchData?.conferencePapers || []).map((paper, idx) => {
             const paperIndex = idx + 1;
-            const isExpanded = Boolean(expandedItems[paper.id]);
             const certImg = paper.certificateUrl || paper.imageUrl || '/images/conference_certificate_placeholder.svg';
             return (
-              <article key={paper.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
+              <article key={paper.id} className="pub-list-card">
                 {/* Side-by-Side Row: Certificate Image on Left, Text & Details on Right */}
                 <div className="pub-card-split-row">
-                  {/* Left: Certificate Thumbnail / Placeholder */}
-                  <div 
-                    className="award-card-media-side"
-                    onClick={() => setActiveModalData({
-                      title: `${paper.title} - Conference Certificate`,
-                      subtitle: `${paper.conference} • ${paper.date}`,
-                      imageUrl: certImg,
-                      description: paper.abstract
-                    })}
-                    title="Click to view full conference certificate"
-                  >
-                    <img 
-                      src={certImg} 
-                      alt={`${paper.title} Certificate`} 
-                      className="award-side-img" 
-                      loading="lazy" 
-                    />
-                    <div className="award-side-overlay">
-                      <span className="award-thumb-zoom-badge">
-                        <ExternalLink size={12} />
-                        <span>Enlarge</span>
-                      </span>
+                  {/* Left: Certificate Thumbnail with "View Certificate" Button on the Bottom */}
+                  <div className="pub-cert-col">
+                    <div 
+                      className="award-card-media-side pub-cert-media"
+                      onClick={() => setActiveModalData({
+                        title: `${paper.title} - Conference Certificate`,
+                        subtitle: `${paper.conference} • ${paper.date}`,
+                        imageUrl: certImg,
+                        description: paper.abstract
+                      })}
+                      title="Click to view full conference certificate"
+                    >
+                      <img 
+                        src={certImg} 
+                        alt={`${paper.title} Certificate`} 
+                        className="award-side-img" 
+                        loading="lazy" 
+                      />
+                      <div className="award-side-overlay">
+                        <span className="award-thumb-zoom-badge">
+                          <ExternalLink size={12} />
+                          <span>Enlarge</span>
+                        </span>
+                      </div>
                     </div>
+
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveModalData({
+                          title: `${paper.title} - Conference Certificate`,
+                          subtitle: `${paper.conference} • ${paper.date}`,
+                          imageUrl: certImg,
+                          description: paper.abstract
+                        });
+                      }}
+                      className="pub-cert-bottom-btn"
+                      title="View Certificate"
+                    >
+                      <Award size={13} />
+                      <span>View Certificate</span>
+                    </button>
                   </div>
 
                   {/* Right: Text & Scholarly Details */}
@@ -409,97 +433,28 @@ export const ResearchPage = () => {
                       <span className="pub-venue">{paper.conference}</span>
                     </div>
 
+                    {/* Compact Tags Row: max 3 tags */}
                     <div className="pub-tags-row">
-                      {(paper.tags || paper.keywords || []).map((tag, tIdx) => (
+                      {(paper.tags || paper.keywords || []).slice(0, 3).map((tag, tIdx) => (
                         <span key={tIdx} className="pub-tag-pill">{tag}</span>
                       ))}
                     </div>
 
-                    {/* Expand / Collapse & Visual Disclosure Buttons */}
+                    {/* Primary Action Button: See the Full Paper */}
                     <div className="pub-actions-row">
                       <button
-                        onClick={() => toggleExpand(paper.id)}
-                        className="pub-expand-btn"
-                        aria-expanded={isExpanded}
+                        type="button"
+                        onClick={() => handleOpenFullPaper(paper)}
+                        className="pub-full-paper-btn"
+                        title="See the Full Paper"
                       >
-                        <span>{isExpanded ? 'Hide Abstract & Methods' : 'Read Abstract & Methodology'}</span>
-                        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                      </button>
-
-                      <button
-                        onClick={() => setActiveModalData({
-                          title: `${paper.title} - Conference Certificate`,
-                          subtitle: `${paper.conference} • ${paper.date}`,
-                          imageUrl: certImg,
-                          description: paper.abstract
-                        })}
-                        className="pub-visual-btn"
-                      >
-                        <ExternalLink size={13} />
-                        <span>View Certificate</span>
+                        <FileText size={14} />
+                        <span>See the Full Paper</span>
+                        <ExternalLink size={12} />
                       </button>
                     </div>
                   </div>
                 </div>
-
-                {/* EXPANDABLE ABSTRACT & METHODOLOGY ACCORDION */}
-                {isExpanded && (
-                  <div className="pub-expanded-body">
-                    <div className="pub-detail-section">
-                      <h4 className="pub-detail-heading">Abstract</h4>
-                      <p className="pub-abstract-text">
-                        {paper.abstract}
-                      </p>
-                    </div>
-
-                    <div className="pub-detail-section">
-                      <h4 className="pub-detail-heading">Conference Proceedings Details</h4>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '8px', fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
-                        <div>
-                          <strong>Conference:</strong> {paper.conference}
-                        </div>
-                        <div>
-                          <strong>Organizer:</strong> {paper.organizer || 'Academic Conference Committee'}
-                        </div>
-                        <div>
-                          <strong>Location / Venue:</strong> {paper.location || 'International Conference'}
-                        </div>
-                        <div>
-                          <strong>Session Date:</strong> {paper.date}
-                        </div>
-                        <div>
-                          <strong>Current Status:</strong> {paper.status}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="pub-detail-section">
-                      <h4 className="pub-detail-heading">Conference Certificate &amp; Author Credential (Click to Enlarge)</h4>
-                      <div 
-                        className="award-expanded-img-box"
-                        onClick={() => setActiveModalData({
-                          title: `${paper.title} - Conference Certificate`,
-                          subtitle: `${paper.conference} • ${paper.date}`,
-                          imageUrl: certImg,
-                          description: paper.abstract
-                        })}
-                        title="Click to view full certificate"
-                      >
-                        <img
-                          src={certImg}
-                          alt={`${paper.title} Certificate`}
-                          className="award-expanded-img"
-                        />
-                        <div className="award-side-overlay">
-                          <span className="award-thumb-zoom-badge">
-                            <ExternalLink size={12} />
-                            <span>View Full Certificate</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
               </article>
             );
           })}
