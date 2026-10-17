@@ -1221,13 +1221,58 @@ export const upcomingAnnouncements = [
 
 export const milestonesGalleryData = [
   {
+    id: "climate-justice-champion",
+    title: "National Champion — Climate Justice",
+    badge: "1st Place Champion",
+    year: "2023",
+    imageUrl: "/images/carousel/climate_justice_champion.jpg",
+    objectPosition: "center 20%",
+    description: "Crowned National Champion at the Climate Justice Idea Competition 2023 organized by The Daily Star and ActionAid, winning 50,000 BDT for Team SolarXen's sustainable decentralized energy model."
+  },
+  {
+    id: "cuet-poster-defense",
+    title: "Driving Simulators Poster Defense",
+    badge: "Poster Defense",
+    year: "2023",
+    imageUrl: "/images/carousel/cuet_poster_defense.jpg",
+    objectPosition: "center 25%",
+    description: "Defending research poster on driving simulator interventions and traffic safety to evaluators at the 1st National Research Fair 2023 at CUET."
+  },
+  {
+    id: "research-fair-stage",
+    title: "CUET Research Fair 2nd Prize",
+    badge: "2nd Prize Laureate",
+    year: "2023",
+    imageUrl: "/images/carousel/research_fair_stage_celebration.jpg",
+    objectPosition: "center 25%",
+    description: "Celebrating 2nd Prize at the 1st National Research Fair 2023 for research poster presentation on smart transit and driving simulators."
+  },
+  {
+    id: "research-fair-award-handover",
+    title: "Closing Ceremony Award Handover",
+    badge: "Conferred by VC",
+    year: "2023",
+    imageUrl: "/images/carousel/research_fair_award_handover.jpg",
+    objectPosition: "center 30%",
+    description: "Receiving the 2nd Prize accolade and crest from the Vice Chancellor and distinguished academic leadership at the official Closing Ceremony."
+  },
+  {
+    id: "research-fair-laureates",
+    title: "National Research Fair Laureates",
+    badge: "Scholarly Gathering",
+    year: "2023",
+    imageUrl: "/images/carousel/research_fair_laureates_stage.jpg",
+    objectPosition: "center center",
+    description: "All award recipients, university administrators, and faculty on the main auditorium stage during the Closing Ceremony of Research Fair 2023."
+  },
+  {
     id: "mimec-2022",
     title: "MIMEC 2022 Conference",
     badge: "Oral Presentation",
     year: "2022",
     imageUrl: "/images/real/mimec_presentation.jpg",
     objectPosition: "center 22%",
-    description: "Delivering an oral presentation on bio-inspired aerodynamic optimization and turbulent flow structures at the MIMEC International Conference."
+    description: "Delivering an oral podium presentation on bio-inspired aerodynamic optimization and turbulent flow structures at the MIMEC International Conference."
   },
   {
     id: "bsme-2023",
@@ -1239,24 +1284,6 @@ export const milestonesGalleryData = [
     description: "Presenting research on Savonius-Darrieus hybrid vertical axis wind turbines (VAWT) at the 8th BSME International Conference on Thermal Engineering."
   },
   {
-    id: "research-fair-2023",
-    title: "CUET Research Fair",
-    badge: "2nd Prize Poster",
-    year: "2023",
-    imageUrl: "/images/real/award_research_fair.jpg",
-    objectPosition: "center 30%",
-    description: "Honored with 2nd Prize in the Scholarly Poster Presentation category for computational fluid dynamics investigation of hybrid wind rotor aerodynamics."
-  },
-  {
-    id: "climate-justice-2021",
-    title: "Climate Justice Idea Competition",
-    badge: "National Champion",
-    year: "2021",
-    imageUrl: "/images/real_awards/award_climate_justice_champion.png",
-    objectPosition: "center center",
-    description: "Crowned National Champion (1st Place) for designing a decentralized sustainable community energy network and engineering climate resilience model."
-  },
-  {
     id: "vawt-prototype",
     title: "Hybrid Wind Turbine Rotor",
     badge: "R&D Prototype",
@@ -1266,31 +1293,67 @@ export const milestonesGalleryData = [
     description: "Aerodynamic prototyping, blade fabrication, and experimental assembly of a combined Savonius-Darrieus vertical axis wind turbine rotor."
   },
   {
-    id: "rpcl-internship",
+    id: "cuet-machining-workshop",
+    title: "Precision Machining & Fabrication",
+    badge: "Machine Tools Lab",
+    year: "2023",
+    imageUrl: "/images/carousel/cuet_machining_workshop.jpg",
+    objectPosition: "center 30%",
+    description: "Operating heavy machine tools and performing precision milling and fabrication in the CUET Mechanical Engineering central machine shop."
+  },
+  {
+    id: "rpcl-internship-certification",
     title: "RPCL 25 MW Power Facility",
     badge: "Industrial Attachment",
     year: "2023",
-    imageUrl: "/images/real/rpcl_internship.jpg",
+    imageUrl: "/images/carousel/rpcl_internship_certification.jpg",
     objectPosition: "center 35%",
-    description: "Undergoing intensive industrial engineering attachment, analyzing dual-fuel heavy fuel oil (HFO) thermal power generation cycles and mechanical auxiliaries."
+    description: "Receiving industrial training certification from engineering directors at Rural Power Company Limited (RPCL) 25 MW heavy fuel oil power generation facility."
   },
   {
-    id: "face-the-case",
-    title: "Face The Case 2021",
-    badge: "2nd Runner Up",
+    id: "sparksurge-keynote",
+    title: "Keynote Address: SparkSurge '21",
+    badge: "Keynote & Hosting",
     year: "2021",
-    imageUrl: "/images/real_awards/award_face_the_case_2021.png",
-    objectPosition: "center center",
-    description: "Awarded National 2nd Runner Up in collegiate business operations and engineering supply chain optimization organized by SCBA CUET."
+    imageUrl: "/images/carousel/sparksurge_keynote_speech.jpg",
+    objectPosition: "center 20%",
+    description: "Delivering an address and hosting collegiate delegates at SparkSurge '21, demonstrating communications mastery and student leadership."
   },
   {
-    id: "poster-award-crest",
-    title: "DRE Research Fair Crest",
-    badge: "Scholarly Accolade",
+    id: "academic-honors-crest",
+    title: "Academic Honors & Leadership",
+    badge: "Distinguished Accolade",
+    year: "2024",
+    imageUrl: "/images/carousel/academic_honors_crest.jpg",
+    objectPosition: "center 20%",
+    description: "Conferred honorary crest from faculty and department heads in recognition of academic excellence, engineering leadership, and co-curricular distinction."
+  },
+  {
+    id: "bandarban-policy-workshop",
+    title: "Municipal Policy Workshop",
+    badge: "Policy Formulation",
     year: "2023",
-    imageUrl: "/images/real/award_poster_2nd.jpg",
+    imageUrl: "/images/carousel/bandarban_policy_workshop.jpg",
+    objectPosition: "center 30%",
+    description: "Facilitating youth policy formulation and presenting environmental roadmaps on waste management and resource conservation at Bandarban Municipality."
+  },
+  {
+    id: "bandarban-tree-plantation",
+    title: "Community Tree Plantation",
+    badge: "Community Impact",
+    year: "2023",
+    imageUrl: "/images/carousel/bandarban_tree_plantation.jpg",
     objectPosition: "center 25%",
-    description: "Official award crest conferred by the Directorate of Research & Extension (DRE) for excellence in mechanical and renewable energy poster research."
+    description: "Leading a green community tree plantation initiative in Bandarban Municipality to foster urban biodiversity and environmental sustainability."
+  },
+  {
+    id: "bandarban-climate-volunteers",
+    title: "Bandarban Climate Action Initiative",
+    badge: "Climate Leadership",
+    year: "2023",
+    imageUrl: "/images/carousel/bandarban_climate_volunteers.jpg",
+    objectPosition: "center 30%",
+    description: "Spearheading community climate action and tree planting with youth volunteers and municipal leaders in Bandarban."
   }
 ];
 

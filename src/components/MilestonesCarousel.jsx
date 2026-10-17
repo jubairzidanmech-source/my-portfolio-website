@@ -31,13 +31,14 @@ export const MilestonesCarousel = () => {
   // Dynamic continuous speed: -52 pixels per second (moving right to left)
   const AUTO_SPEED = -52;
 
-  // Measure single repetition block width (8 items) from live DOM
+  // Measure single repetition block width dynamically from live DOM
   const measureBlockWidth = useCallback(() => {
-    if (trackRef.current && trackRef.current.children.length >= 8) {
+    const totalItems = milestonesGalleryData.length;
+    if (trackRef.current && trackRef.current.children.length >= totalItems * 2) {
       const first = trackRef.current.children[0];
-      const eighth = trackRef.current.children[8];
-      if (first && eighth) {
-        const width = eighth.offsetLeft - first.offsetLeft;
+      const nextBlockFirst = trackRef.current.children[totalItems];
+      if (first && nextBlockFirst) {
+        const width = nextBlockFirst.offsetLeft - first.offsetLeft;
         if (width > 0) {
           blockWidthRef.current = width;
           if (posRef.current === 0) {
@@ -48,7 +49,7 @@ export const MilestonesCarousel = () => {
         }
       }
     }
-    return 2000;
+    return 3000;
   }, []);
 
   useEffect(() => {
