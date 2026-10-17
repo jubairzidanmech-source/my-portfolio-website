@@ -11765,10 +11765,11 @@ body [style*="cursor:zoom-in"] {
 }
 
 .cinematic-quote-block {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   border: none;
-  text-align: left;
+  text-align: center;
+  max-width: 980px;
 }
 
 /* Line-by-line reveal mask: clips overflow while preventing letter descenders from clipping */
@@ -11777,6 +11778,7 @@ body [style*="cursor:zoom-in"] {
   overflow: hidden;
   padding-bottom: 0.16em;
   margin-bottom: -0.04em;
+  text-align: center;
 }
 
 /* Master typographic statement: bold, commanding presence matching the homepage hero name */
@@ -11785,9 +11787,10 @@ body [style*="cursor:zoom-in"] {
   font-family: var(--font-sans);
   font-size: clamp(2.6rem, 5.2vw, 4.8rem);
   font-weight: 600;
-  line-height: 1.16;
-  letter-spacing: -0.03em;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
   color: var(--blue-midnight);
+  text-align: center;
   will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -11800,26 +11803,29 @@ body [style*="cursor:zoom-in"] {
 
 /* Expressive italic serif for selected words/phrases creating sophisticated editorial juxtaposition */
 .cinematic-quote-serif {
-  font-family: 'Playfair Display', 'Instrument Serif', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  font-family: 'Instrument Serif', 'Playfair Display', Georgia, 'Times New Roman', serif;
   font-style: italic;
-  font-weight: 500;
-  font-size: 1.04em;
-  letter-spacing: -0.012em;
+  font-weight: 400;
+  font-size: 1.14em;
+  letter-spacing: 0.005em;
   padding: 0 0.04em;
   color: var(--blue-midnight);
 }
 
-/* Understated author attribution mask */
+/* Understated author attribution mask: centered in page */
 .cinematic-quote-author-mask {
-  display: block;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
   margin-top: clamp(28px, 4.2vw, 46px);
   padding-bottom: 0.14em;
+  text-align: center;
 }
 
 .cinematic-quote-author-line {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   font-family: var(--font-sans);
   font-size: clamp(1rem, 1.3vw, 1.25rem);
