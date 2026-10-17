@@ -6773,6 +6773,112 @@ img {
   display: block;
 }
 
+/* Internship Featured Photo Carousel & Navigation Controls */
+.exp-carousel-container {
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.exp-carousel-counter-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 3px 9px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 5;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  letter-spacing: 0.02em;
+}
+
+.exp-carousel-nav-btn {
+  position: absolute;
+  top: 46%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 6;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+  opacity: 0.85;
+}
+
+.exp-carousel-nav-btn:hover {
+  background: var(--blue-royal);
+  border-color: #FFFFFF;
+  opacity: 1;
+  transform: translateY(-50%) scale(1.12);
+}
+
+.exp-carousel-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.exp-carousel-nav-btn.prev {
+  left: 8px;
+}
+
+.exp-carousel-nav-btn.next {
+  right: 8px;
+}
+
+.exp-carousel-dots {
+  position: absolute;
+  bottom: 28px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.exp-carousel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.25s ease;
+}
+
+.exp-carousel-dot.active {
+  width: 20px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  border-color: rgba(37, 99, 235, 0.6);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.85);
+}
+
+.exp-carousel-dot:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.95);
+}
+
 .exp-featured-content {
   flex: 1;
   min-width: 0;

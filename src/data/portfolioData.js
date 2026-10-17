@@ -898,8 +898,34 @@ export const experienceData = {
     role: "Industrial Attachment / Engineering Intern",
     period: "September 2023 – October 2023",
     location: "Kaptai Road, Raozan, Chittagong, Bangladesh",
-    imageUrl: "/images/real/rpcl_internship.jpg",
     overview: "Underwent rigorous industrial training at the RPCL 25 MW Dual-Fuel Power Generation Facility. Gained practical experience in large-scale reciprocating internal combustion engine operations, auxiliary fuel heating, steam and water treatment cycles, and electrical switchyard distribution.",
+    imageUrl: "/images/real/rpcl_internship.jpg",
+    images: [
+      {
+        url: "/images/real/rpcl_internship.jpg",
+        title: "RPCL Raozan 25 MW Facility",
+        subtitle: "RPCL Raozan Facility (Main)",
+        caption: "Industrial Attachment Training Facility: RPCL 25 MW Dual-Fuel Power Plant in Raozan, Chattogram — main visual reference of heavy generation units, balance-of-plant, and auxiliary systems."
+      },
+      {
+        url: "/images/real/rpcl_internship_turbocharger_assembly.jpg",
+        title: "Turbocharger Impeller Assembly & Overhaul",
+        subtitle: "Turbocharger Impeller Assembly",
+        caption: "Hands-on engineering inspection and assembly of large-scale heavy turbocharger compressor impeller runner and rotor casing during planned preventive maintenance overhaul."
+      },
+      {
+        url: "/images/real/rpcl_internship_auxiliary_skid.jpg",
+        title: "Auxiliary Pumping, Fuel & Lube Oil Skid",
+        subtitle: "Auxiliary Pumping & Filtration Skid",
+        caption: "Technical on-site briefing at the auxiliary heavy fuel oil (HFO) preheating, centrifugal filtration, and lube oil booster pump skid with pressure monitoring manifolds."
+      },
+      {
+        url: "/images/real/rpcl_internship_power_plant_hall.jpg",
+        title: "RPCL Main Power Generation Engine Hall",
+        subtitle: "Power Plant Engine Hall & Crane",
+        caption: "RPCL power station main generator hall featuring heavy reciprocating engine blocks, massive insulated exhaust gas ducting, and industrial overhead gantry crane infrastructure."
+      }
+    ],
     keyLearnings: [
       {
         title: "Dual-Fuel Operations (HFO & LFO)",

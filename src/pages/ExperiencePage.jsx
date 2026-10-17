@@ -1,5 +1,22 @@
 import React, { useState } from 'react';
-import { Factory, GraduationCap, Users, MapPin, ChevronDown, ChevronUp, CheckCircle2, ArrowUpRight, BookOpen, Wrench, Leaf, ExternalLink, Heart } from 'lucide-react';
+import { 
+  Factory, 
+  GraduationCap, 
+  Users, 
+  MapPin, 
+  ChevronDown, 
+  ChevronUp, 
+  ChevronLeft, 
+  ChevronRight, 
+  Camera, 
+  CheckCircle2, 
+  ArrowUpRight, 
+  BookOpen, 
+  Wrench, 
+  Leaf, 
+  ExternalLink, 
+  Heart 
+} from 'lucide-react';
 import { experienceData } from '../data/portfolioData';
 import { InteractiveModal, ImageLightboxModal } from '../components/InteractiveModal';
 
@@ -9,6 +26,23 @@ export const ExperiencePage = () => {
   const [selectedClub, setSelectedClub] = useState(null);
   const [activeImageModal, setActiveImageModal] = useState(null);
   const [expandedSections, setExpandedSections] = useState({});
+  const [activeInternshipPhoto, setActiveInternshipPhoto] = useState(0);
+
+  const internshipImages = experienceData.internship.images && experienceData.internship.images.length > 0
+    ? experienceData.internship.images
+    : [{ url: experienceData.internship.imageUrl, title: experienceData.internship.company, subtitle: 'Facility Overview', caption: 'RPCL Raozan Facility' }];
+
+  const currentPhoto = internshipImages[activeInternshipPhoto] || internshipImages[0];
+
+  const handlePrevPhoto = (e) => {
+    e.stopPropagation();
+    setActiveInternshipPhoto((prev) => (prev === 0 ? internshipImages.length - 1 : prev - 1));
+  };
+
+  const handleNextPhoto = (e) => {
+    e.stopPropagation();
+    setActiveInternshipPhoto((prev) => (prev === internshipImages.length - 1 ? 0 : prev + 1));
+  };
 
   const toggleSection = (id) => {
     setExpandedSections(prev => ({
@@ -63,24 +97,77 @@ export const ExperiencePage = () => {
 
           <div className="card exp-card exp-card-featured">
             <div className="exp-featured-layout">
-              {/* Contained supporting image on the left side, full card height */}
+              {/* Contained supporting image gallery on the left side with navigation */}
               <div 
-                className="exp-contained-image-box exp-featured-image-box"
+                className="exp-contained-image-box exp-featured-image-box exp-carousel-container"
                 style={{ cursor: 'zoom-in', position: 'relative' }}
                 onClick={() => setActiveImageModal({
-                  title: `${experienceData.internship.company} — Facility`,
-                  subtitle: `${experienceData.internship.role} (${experienceData.internship.period})`,
-                  imageUrl: experienceData.internship.imageUrl,
-                  description: "Industrial Attachment Training Facility: RPCL 210 MW Combined Cycle Power Plant (CCPP) in Raozan, Chattogram — visual reference of heavy gas turbine, balance-of-plant, and heat recovery steam generator (HRSG) installations."
+                  title: `${experienceData.internship.company} — ${currentPhoto.title || 'Facility Photo'}`,
+                  subtitle: `${experienceData.internship.role} (${experienceData.internship.period}) • Photo ${activeInternshipPhoto + 1} of ${internshipImages.length}`,
+                  imageUrl: currentPhoto.url,
+                  description: currentPhoto.caption || experienceData.internship.overview
                 })}
-                title="Click to view full image"
+                title="Click to view high-resolution photograph"
               >
+                {/* Counter badge top right */}
+                <div className="exp-carousel-counter-badge">
+                  <Camera size={11} />
+                  <span>{activeInternshipPhoto + 1} / {internshipImages.length}</span>
+                </div>
+
+                {/* Left & Right Navigation Arrows */}
+                {internshipImages.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      className="exp-carousel-nav-btn prev"
+                      onClick={handlePrevPhoto}
+                      aria-label="Previous photo"
+                      title="Previous photo"
+                    >
+                      <ChevronLeft size={16} />
+                    </button>
+                    <button
+                      type="button"
+                      className="exp-carousel-nav-btn next"
+                      onClick={handleNextPhoto}
+                      aria-label="Next photo"
+                      title="Next photo"
+                    >
+                      <ChevronRight size={16} />
+                    </button>
+                  </>
+                )}
+
+                {/* Main displayed image */}
                 <img
-                  src={experienceData.internship.imageUrl}
-                  alt={experienceData.internship.company}
+                  src={currentPhoto.url}
+                  alt={currentPhoto.title || experienceData.internship.company}
                   className="exp-contained-image exp-featured-image"
                 />
-                <span className="exp-image-caption">RPCL Raozan Facility (Click to Enlarge)</span>
+
+                {/* Dots Navigation */}
+                {internshipImages.length > 1 && (
+                  <div className="exp-carousel-dots">
+                    {internshipImages.map((_, dotIdx) => (
+                      <button
+                        key={dotIdx}
+                        type="button"
+                        className={`exp-carousel-dot ${dotIdx === activeInternshipPhoto ? 'active' : ''}`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveInternshipPhoto(dotIdx);
+                        }}
+                        aria-label={`View photo ${dotIdx + 1}`}
+                        title={`View photo ${dotIdx + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
+
+                <span className="exp-image-caption">
+                  {currentPhoto.subtitle || currentPhoto.title || 'RPCL Raozan Facility'} (Click to Enlarge)
+                </span>
               </div>
 
               {/* Right content column */}
