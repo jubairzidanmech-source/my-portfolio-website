@@ -1061,7 +1061,7 @@ img {
 }
 
 .site-navbar.with-announcement.scrolled {
-  top: 44px;
+  top: 50px;
 }
 
 .mobile-nav-drawer.with-announcement {
@@ -1140,7 +1140,7 @@ img {
   }
 
   .site-navbar.with-announcement.scrolled {
-    top: 38px;
+    top: 42px;
   }
 
   .mobile-nav-drawer.with-announcement {
@@ -1175,7 +1175,7 @@ img {
   }
 
   .site-navbar.with-announcement.scrolled {
-    top: 36px;
+    top: 39px;
   }
 
   .mobile-nav-drawer.with-announcement {
@@ -1210,7 +1210,7 @@ img {
 }
 
 .site-navbar.scrolled {
-  top: 10px;
+  top: 14px;
 }
 
 /* Outer Shell holding navbar capsule and outside theme toggle */
@@ -1234,7 +1234,7 @@ img {
   align-items: center;
   justify-content: space-between;
   
-  /* Light Mode Floating Capsule: Vibrant Luminous Royal Blue */
+  /* Light Mode Floating Capsule: Vibrant Luminous Royal Blue (constant everywhere) */
   background: linear-gradient(135deg, rgba(29, 78, 216, 0.94) 0%, rgba(37, 99, 235, 0.90) 100%);
   border: 1px solid rgba(255, 255, 255, 0.28);
   box-shadow: 0 12px 36px rgba(29, 78, 216, 0.28), 0 2px 8px rgba(29, 78, 216, 0.16);
@@ -1244,20 +1244,23 @@ img {
 }
 
 .site-navbar.scrolled .nav-container {
-  height: 58px;
-  background: linear-gradient(135deg, rgba(30, 64, 175, 0.97) 0%, rgba(29, 78, 216, 0.95) 100%);
-  box-shadow: 0 16px 42px rgba(29, 78, 216, 0.35);
-  border-color: rgba(255, 255, 255, 0.38);
+  /* Retain exact same height and royal blue aesthetic on scroll */
+  height: 64px;
+  background: linear-gradient(135deg, rgba(29, 78, 216, 0.94) 0%, rgba(37, 99, 235, 0.90) 100%);
+  box-shadow: 0 12px 36px rgba(29, 78, 216, 0.28), 0 2px 8px rgba(29, 78, 216, 0.16);
+  border-color: rgba(255, 255, 255, 0.28);
 }
 
 [data-theme="dark"] .nav-container {
-  background: rgba(15, 23, 42, 0.78);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  background: #0B0F19;
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="dark"] .site-navbar.scrolled .nav-container {
-  background: rgba(15, 23, 42, 0.92);
+  background: #0B0F19;
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Outside Desktop Dark / Light Theme Toggle (positioned in the outside red area) */
@@ -1274,7 +1277,7 @@ img {
 }
 
 .site-navbar.scrolled .nav-outside-toggle {
-  height: 58px;
+  height: 64px;
 }
 
 .nav-outside-toggle .segmented-theme-switch {
@@ -7425,9 +7428,9 @@ img {
 }
 
 [data-theme="dark"] .site-navbar.scrolled .nav-container {
-  background: rgba(11, 15, 25, 0.95);
-  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.55);
-  border-color: rgba(255, 255, 255, 0.18);
+  background: #0B0F19;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="dark"] .brand-logo-img {
