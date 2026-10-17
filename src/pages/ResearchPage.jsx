@@ -36,7 +36,7 @@ export const ResearchPage = () => {
   };
 
   const handleOpenFullPaper = (paper) => {
-    if (paper && paper.paperUrl) {
+    if (paper && paper.paperUrl && paper.paperUrl.trim() !== '') {
       window.open(paper.paperUrl, '_blank', 'noopener,noreferrer');
     }
   };
@@ -252,23 +252,23 @@ export const ResearchPage = () => {
 
                     {/* Primary Action Button or In-Progress Status Note */}
                     <div className="pub-actions-row">
-                      {thesis.paperUrl ? (
+                      {thesis.id === 'thesis-msc' && thesis.statusNote ? (
+                        <div className="pub-dev-status-pill">
+                          <Clock size={13} style={{ flexShrink: 0, color: 'var(--blue-royal)' }} />
+                          <span>{thesis.statusNote}</span>
+                        </div>
+                      ) : (
                         <button
                           type="button"
                           onClick={() => handleOpenFullPaper(thesis)}
                           className="pub-full-paper-btn"
-                          title="See the Full Paper"
+                          title={thesis.paperUrl ? "See the Full Paper" : "Thesis PDF link coming soon"}
                         >
                           <FileText size={14} />
                           <span>See the Full Paper</span>
                           <ExternalLink size={12} />
                         </button>
-                      ) : thesis.statusNote ? (
-                        <div className="pub-dev-status-pill">
-                          <Clock size={13} style={{ flexShrink: 0, color: 'var(--blue-royal)' }} />
-                          <span>{thesis.statusNote}</span>
-                        </div>
-                      ) : null}
+                      )}
                     </div>
                   </div>
                 </div>

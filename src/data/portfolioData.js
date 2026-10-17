@@ -141,7 +141,8 @@ export const researchData = {
       institution: "Department of Mechanical Engineering, CUET",
       supervisor: "Faculty of Mechanical Engineering, CUET",
       imageUrl: "/images/project_f1_cfd.jpg",
-      paperUrl: "https://www.researchgate.net/profile/Md-Jubair-Zidan-2",
+      // Google Drive Thesis PDF Link: https://drive.google.com/file/d/1ta51qFHX7OxG5NlLClWN94WZrbY4sLxb/view?usp=drive_link
+      paperUrl: "",
       tags: ["Aerodynamics & CFD", "Ground Effect", "Venturi Tunnel", "ANSYS Fluent", "FIA Regulations"],
       abstract: "The 2022 Formula One (F1) regulation overhaul marked the reintroduction of ground effect, a concept that had been absent from the sport since 1978, with the primary objective of enhancing overtaking opportunities and improving overall race dynamics. This thesis delves into the integration of ground effect within the context of advanced simulation research, focusing on its critical role in advancing car design, enhancing vehicular stability, and optimizing performance, which has collectively contributed to a significant reshaping of the sport's competitive landscape. The central aim of this study is to assess the impact of the Venturi tunnel's implementation on key aerodynamic parameters, specifically the drag coefficient and negative lift. By employing computational fluid dynamics (CFD) simulations, the research meticulously compares two distinct models: one representing the pre-2022 design and the other embodying the 2022 regulations. The results of this comparative analysis demonstrate a substantial reduction in the drag coefficient and a notable increase in negative lift in the 2022 model, thereby validating the aerodynamic advancements and the overall effectiveness of these regulatory changes in achieving their intended outcomes.",
       methodology: [
@@ -182,6 +183,8 @@ export const researchData = {
     year: "2024",
     supervisor: "Faculty of Mechanical Engineering, CUET",
     imageUrl: "/images/project_f1_cfd.jpg",
+    // Google Drive Thesis PDF Link: https://drive.google.com/file/d/1ta51qFHX7OxG5NlLClWN94WZrbY4sLxb/view?usp=drive_link
+    paperUrl: "",
     abstract: "The 2022 Formula One (F1) regulation overhaul marked the reintroduction of ground effect, a concept that had been absent from the sport since 1978, with the primary objective of enhancing overtaking opportunities and improving overall race dynamics. This thesis delves into the integration of ground effect within the context of advanced simulation research, focusing on its critical role in advancing car design, enhancing vehicular stability, and optimizing performance, which has collectively contributed to a significant reshaping of the sport's competitive landscape. The central aim of this study is to assess the impact of the Venturi tunnel's implementation on key aerodynamic parameters, specifically the drag coefficient and negative lift. By employing computational fluid dynamics (CFD) simulations, the research meticulously compares two distinct models: one representing the pre-2022 design and the other embodying the 2022 regulations. The results of this comparative analysis demonstrate a substantial reduction in the drag coefficient and a notable increase in negative lift in the 2022 model, thereby validating the aerodynamic advancements and the overall effectiveness of these regulatory changes in achieving their intended outcomes.",
     methodology: [
       "Full 3D aerodynamic domain with polyhedral unstructured meshing and boundary layer inflation (y+ ≈ 1)",
