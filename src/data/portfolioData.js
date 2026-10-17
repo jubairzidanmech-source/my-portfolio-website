@@ -172,17 +172,16 @@ export const researchData = {
       imageUrl: "/images/project_auxetic.jpg",
       paperUrl: "https://www.researchgate.net/profile/Md-Jubair-Zidan-2",
       tags: ["Auxetic Metamaterials", "Energy Absorption", "Lattice Fabrication", "Mechanical Characterization", "CUET"],
-      abstract: "Comprehensive state-of-the-art review and computational investigation into architected auxetic (negative Poisson's ratio) cellular mechanical metamaterials. Explores 2D re-entrant, chiral, and 3D rotational lattice unit cells engineered for superior specific energy absorption (SEA), dynamic impact mitigation, and crush-resistance across aerospace and protective structures.",
+      abstract: "A literature review of architected auxetic mechanical metamaterials for energy absorption, examining how engineered geometries influence negative Poisson’s ratio and mechanical performance. Covers structural design, fabrication, characterization, and computational optimization, alongside applications and challenges in scalability, reproducibility, and long-term durability.",
       methodology: [
-        "In-depth synthesis of additive manufacturing constraints (SLS, SLA, LPBF) for micro-architected metamaterials",
-        "Nonlinear dynamic finite element crashworthiness simulations comparing plateau stress and densification strains",
-        "Multi-objective topological optimization frameworks for tailoring Poisson's ratio and energy absorption profiles",
-        "Spatial discretization mesh convergence and benchmarked energy dissipation against empirical literature"
+        "Review of auxetic geometries, including re-entrant cells, chiral configurations, lattices, and origami-inspired structures.",
+        "Examination of additive manufacturing methods, including SLA, SLS, and FDM, alongside mechanical testing and characterization techniques.",
+        "Review of finite element modeling, topology optimization, and machine learning approaches for tailoring auxetic behavior and energy absorption."
       ],
       keyResults: [
         "Supervised by Kazi Zahir Uddin (Postdoctoral Research Associate at Beckman Institute-University of Illinois Urbana-Champaign)",
         "Co-authored with Wakil Ahmed and Dibosh Das at Chittagong University of Engineering and Technology, CUET",
-        "Postgraduate theory coursework completed with a 3.90 / 4.00 CGPA across advanced solid mechanics and finite element modeling",
+        "Comprehensive review synthesis covering structural design paradigms, multiscale fabrication, and computational optimization",
         "Currently in review by Supervisor prior to formal publication submission and master's evaluation"
       ]
     }
@@ -330,11 +329,13 @@ export const researchData = {
       supervisor: "Kazi Zahir Uddin",
       supervisorAffiliation: "Postdoctoral Research Associate at Beckman Institute-University of Illinois Urbana-Champaign",
       institution: "Chittagong University of Engineering and Technology, CUET",
-      overview: "Comprehensive state-of-the-art review and numerical characterization of auxetic (negative Poisson's ratio) architected cellular metamaterials. Explores 2D re-entrant, chiral, and 3D rotational lattice unit cells engineered for superior specific energy absorption (SEA), dynamic impact mitigation, and crush-resistance across aerospace and protective structures.",
+      tags: ["Auxetic Metamaterials", "Energy Absorption", "Additive Manufacturing", "Topology Optimization", "CUET"],
+      overview: "A literature review of architected auxetic mechanical metamaterials for energy absorption, examining how engineered geometries influence negative Poisson’s ratio and mechanical performance. Covers structural design, fabrication, characterization, and computational optimization, alongside applications and challenges in scalability, reproducibility, and long-term durability.",
+      desc: "A literature review of architected auxetic mechanical metamaterials for energy absorption, examining how engineered geometries influence negative Poisson’s ratio and mechanical performance. Covers structural design, fabrication, characterization, and computational optimization, alongside applications and challenges in scalability, reproducibility, and long-term durability.",
       deliverables: [
-        "In-depth synthesis of additive manufacturing constraints (SLS, SLA, LPBF) for micro-architected metamaterials",
-        "Nonlinear dynamic finite element crashworthiness simulations comparing plateau stress and densification strains",
-        "Multi-objective topological optimization frameworks for tailoring Poisson's ratio and energy absorption profiles"
+        "Review of auxetic geometries, including re-entrant cells, chiral configurations, lattices, and origami-inspired structures.",
+        "Examination of additive manufacturing methods, including SLA, SLS, and FDM, alongside mechanical testing and characterization techniques.",
+        "Review of finite element modeling, topology optimization, and machine learning approaches for tailoring auxetic behavior and energy absorption."
       ]
     }
   ],

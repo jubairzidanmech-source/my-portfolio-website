@@ -272,14 +272,14 @@ export const ResearchPage = () => {
                 {isExpanded && (
                   <div className="pub-expanded-body">
                     <div className="pub-detail-section">
-                      <h4 className="pub-detail-heading">Abstract</h4>
+                      <h4 className="pub-detail-heading">{thesis.id === 'thesis-msc' ? 'Research Overview' : 'Abstract'}</h4>
                       <p className="pub-abstract-text">
                         {thesis.abstract}
                       </p>
                     </div>
 
                     <div className="pub-detail-section">
-                      <h4 className="pub-detail-heading">Numerical Methodology & Modeling</h4>
+                      <h4 className="pub-detail-heading">{thesis.id === 'thesis-msc' ? 'Key Methodologies & Scope' : 'Numerical Methodology & Modeling'}</h4>
                       <ul className="pub-checklist">
                         {(thesis.methodology || []).map((m, mIdx) => (
                           <li key={mIdx}>
@@ -303,11 +303,11 @@ export const ResearchPage = () => {
                     </div>
 
                     <div className="pub-detail-section">
-                      <h4 className="pub-detail-heading">Simulation Artifact & Visuals (Click to Enlarge)</h4>
+                      <h4 className="pub-detail-heading">{thesis.id === 'thesis-msc' ? 'Simulation Artifact & Metamaterial Model (Click to Enlarge)' : 'Simulation Artifact & Visuals (Click to Enlarge)'}</h4>
                       <div 
                         className="award-expanded-img-box"
                         onClick={() => setActiveModalData({
-                          title: `${thesis.title} - CFD Simulation`,
+                          title: `${thesis.title} - ${thesis.id === 'thesis-msc' ? 'Metamaterial Model' : 'CFD Simulation'}`,
                           subtitle: `${thesis.degree} • ${thesis.institution}`,
                           imageUrl: thesis.imageUrl,
                           description: thesis.abstract
@@ -846,7 +846,7 @@ export const ResearchPage = () => {
                   )}
 
                   <div className="pub-tags-row" style={{ marginTop: '10px' }}>
-                    {work.deliverables.map((del, dIdx) => (
+                    {(work.tags || work.deliverables).map((del, dIdx) => (
                       <span key={dIdx} className="pub-tag-pill">{del}</span>
                     ))}
                   </div>
@@ -870,7 +870,7 @@ export const ResearchPage = () => {
                     <div className="pub-detail-section">
                       <h4 className="pub-detail-heading">Research Overview</h4>
                       <p className="pub-abstract-text">
-                        {work.desc}
+                        {work.desc || work.overview}
                       </p>
                     </div>
 
