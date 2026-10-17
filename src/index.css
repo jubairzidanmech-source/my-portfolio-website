@@ -4923,6 +4923,183 @@ img {
   background: #0F172A;
 }
 
+/* ==========================================================================
+   CERTIFICATION CARDS & IN-BORDER VIEW CERTIFICATE BADGE
+   ========================================================================== */
+.pub-list-card.is-cert-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.pub-list-card.is-cert-card .pub-card-split-row {
+  display: flex;
+  gap: 18px;
+  align-items: stretch;
+  height: 100%;
+}
+
+.pub-list-card.is-cert-card .pub-card-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.pub-list-card.is-cert-card .award-card-media-side {
+  width: 175px;
+  min-height: 180px;
+  align-self: stretch;
+}
+
+/* In-border "View Certificate" badge bar */
+.cert-media-view-badge-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 6px 7px;
+  background: linear-gradient(180deg, rgba(11, 19, 43, 0) 0%, rgba(11, 19, 43, 0.92) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.cert-media-view-badge {
+  font-size: 0.69rem;
+  font-weight: 600;
+  color: #FFFFFF !important;
+  background: rgba(15, 23, 42, 0.86);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  letter-spacing: 0.01em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+}
+
+.award-card-media-side:hover .cert-media-view-badge {
+  background: #2563EB !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.45);
+}
+
+.pub-list-card:hover .cert-media-view-badge {
+  background: rgba(15, 35, 95, 0.68) !important;
+  border-color: rgba(147, 197, 253, 0.28) !important;
+  color: #FFFFFF !important;
+}
+
+.pub-list-card:hover .award-card-media-side:hover .cert-media-view-badge {
+  background: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  color: #1D4ED8 !important;
+}
+
+/* Topic Description inside Certification Card */
+.cert-topic-desc {
+  font-size: 0.83rem;
+  line-height: 1.52;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pub-list-card:hover .cert-topic-desc {
+  color: #F1F5F9 !important;
+}
+
+/* Footer Row inside Certification Card */
+.cert-card-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.pub-list-card:hover .cert-card-footer-row {
+  border-top-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.cert-credential-id {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.cert-id-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.cert-id-value {
+  font-family: var(--font-mono, monospace);
+  color: var(--accent-teal);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  word-break: break-all;
+}
+
+.pub-list-card:hover .cert-id-label {
+  color: #DBEAFE !important;
+}
+
+.pub-list-card:hover .cert-id-value {
+  color: #93C5FD !important;
+}
+
+.cert-pdf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--accent-blue);
+  text-decoration: none;
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  transition: all 0.2s ease;
+}
+
+.cert-pdf-link:hover {
+  background: var(--accent-blue);
+  color: #FFFFFF;
+}
+
+.pub-list-card:hover .cert-pdf-link {
+  background: rgba(15, 35, 95, 0.45) !important;
+  border-color: rgba(147, 197, 253, 0.2) !important;
+  color: #FFFFFF !important;
+}
+
+.pub-list-card:hover .cert-pdf-link:hover {
+  background: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  color: #1D4ED8 !important;
+}
+
 /* Publication Certificate Media Column & Bottom Button */
 .pub-cert-col {
   width: 175px;

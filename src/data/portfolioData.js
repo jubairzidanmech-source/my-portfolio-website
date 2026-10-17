@@ -681,6 +681,8 @@ export const awardsData = {
       pdfUrl: "/docs/SolidWorks_CSWP_Certificate_Jubair_Zidan.pdf",
       imageUrl: "/images/real_certs/cert_cswp_solidworks.png",
       category: "technical",
+      topicSummary: "Certified professional mastery in parametric 3D solid part design, complex feature modeling, configurations, movable mechanical assembly constraints, and interference analysis.",
+      topics: ["CSWP Certified", "Parametric Modeling", "Movable Assemblies", "Mechanical Drafting"],
       description: "Official Dassault Systèmes Certified SOLIDWORKS Professional (CSWP) credential (Certificate ID: C-UJLY5CTD7Q) conferred on September 18, 2026, signed by Manish Kumar (SOLIDWORKS CEO & R&D Vice President). Confirms proven ability to design and analyze parametric parts and movable assemblies using a variety of complex features in SOLIDWORKS software."
     },
     {
@@ -693,6 +695,8 @@ export const awardsData = {
       certId: "C-HBYTZ6ULEW",
       imageUrl: "/images/real_certs/cert_cswa_solidworks.png",
       category: "technical",
+      topicSummary: "Validated fundamental competency in 3D CAD parametric modeling, mechanical design principles, multi-part assembly creation, and engineering drawing generation according to industry standards.",
+      topics: ["CSWA Certified", "3D CAD Modeling", "Part Design", "Engineering Drawings"],
       description: "Official Dassault Systèmes Certified SOLIDWORKS Associate (CSWA) credential (Certificate ID: C-HBYTZ6ULEW) conferred on June 23, 2025, signed by Manish Kumar (SOLIDWORKS CEO & R&D Vice President). Demonstrates validated professional competency in 3D CAD parametric modeling, mechanical design principles, engineering drawing generation, and multi-part assembly design in SOLIDWORKS."
     }
   ],
@@ -709,6 +713,8 @@ export const awardsData = {
       verificationUrl: "https://courses.edx.org/certificates/d8491ceb9049465e90dac14236cbbfe8",
       imageUrl: "/images/real_certs/cert_cornell_simulation.png",
       category: "course",
+      topicSummary: "Hands-on engineering simulation covering governing equations, finite element analysis (FEA), computational fluid dynamics (CFD), mesh sensitivity verification, and numerical solution validation in ANSYS.",
+      topics: ["FEA Simulation", "CFD Analysis", "Mesh Verification", "ANSYS Fluent"],
       description: "Verified Certificate of Achievement issued by Cornell University through CornellX (Valid Certificate ID: d8491ceb9049465e90dac14236cbbfe8) on July 27, 2026. Instructed by Rajesh Bhaskaran, Swanson Director of Engineering Simulation at Sibley School of Mechanical & Aerospace Engineering, Cornell University. Successfully completed and received a passing grade in rigorous hands-on engineering simulations covering governing equations, finite element analysis (FEA), computational fluid dynamics (CFD), mesh sensitivity verification, and solution validation."
     },
     {
@@ -723,6 +729,8 @@ export const awardsData = {
       pdfUrl: "/docs/Vanderbilt_MATLAB_Certificate_Jubair_Zidan.pdf",
       imageUrl: "/images/real_certs/cert_vanderbilt_matlab.png",
       category: "course",
+      topicSummary: "Foundational to advanced programming covering recursive algorithms, modular function design, file I/O operations, multidimensional matrix indexing, and computational problem-solving in MATLAB.",
+      topics: ["Algorithm Design", "Matrix Indexing", "File I/O", "Data Visualization"],
       description: "Official Course Certificate authorized by Vanderbilt University and offered through Coursera, awarded to Md. Jubair Uddin Zidan on September 23, 2026 (Verification ID: AWUEPMZAJE64). Instructed by Dr. Akos Ledeczi and Dr. J. Michael Fitzpatrick (Professors of Computer Engineering, Computer Science, and Electrical Engineering). Comprehensive training in computer programming fundamentals, recursive algorithms, modular functions, file I/O operations, multidimensional matrix indexing, and computational problem-solving."
     },
     {
@@ -735,6 +743,8 @@ export const awardsData = {
       pdfUrl: "/docs/Ansys_3D_Bifurcating_Artery_Steady_Certificate.pdf",
       imageUrl: "/images/real_certs/cert_ansys_artery_steady.png",
       category: "course",
+      topicSummary: "Specialized CFD simulation in Ansys Fluent modeling steady laminar blood flow dynamics across an anatomical 3D bifurcating artery, boundary layer meshing, non-Newtonian blood rheology, and wall shear stress.",
+      topics: ["ANSYS Fluent", "Hemodynamics", "Non-Newtonian Rheology", "Wall Shear Stress"],
       description: "Official Ansys Course Completion Certificate confirmed on September 15, 2026. Specialized CFD simulation in Ansys Fluent modeling steady laminar blood flow dynamics across an anatomical 3D bifurcating artery. Explored boundary layer meshing, non-Newtonian blood rheology, wall shear stress (WSS) distributions, recirculation zone identification, and hemodynamic pressure losses."
     },
     {
@@ -747,6 +757,8 @@ export const awardsData = {
       pdfUrl: "/docs/Ansys_3D_Bifurcating_Artery_Certificate.pdf",
       imageUrl: "/images/real_certs/cert_ansys_artery.png",
       category: "course",
+      topicSummary: "Advanced computational biofluid dynamics simulation in Ansys Fluent modeling complete hemodynamic flow fields within an anatomical 3D bifurcating artery, unstructured meshing, and velocity vectors.",
+      topics: ["Biofluid CFD", "Unstructured Meshing", "Vascular Hemodynamics", "Velocity Vectors"],
       description: "Official Ansys Course Completion Certificate confirmed on September 19, 2026. Advanced computational biofluid dynamics simulation in Ansys Fluent modeling complete hemodynamic flow fields within an anatomical 3D bifurcating artery. Covers vascular geometry preparation, multi-block unstructured meshing with prism boundary layers, non-Newtonian blood viscosity models, arterial wall shear stress (WSS) profiling, and velocity vectors."
     },
     {
@@ -758,6 +770,8 @@ export const awardsData = {
       date: "September 25, 2026",
       imageUrl: "/images/real_certs/cert_mathworks_simulink_onramp.png",
       category: "course",
+      topicSummary: "Graphical simulation of dynamic physical systems, continuous & discrete differential equation solutions, block-diagram modeling, signal routing, and feedback control system analysis.",
+      topics: ["Simulink", "Model-Based Design", "Dynamic Systems", "Control Systems"],
       description: "Course Completion Certificate awarded by MathWorks Training Services to Jubair Zidan on 25 September 2026 for successfully completing 100% of the self-paced training course, signed by Craig L. Santos, Director of Training Services. Covers graphical simulation of dynamic physical systems, continuous-time and discrete-time differential equation solutions, block-diagram modeling, signal routing, and feedback control system analysis."
     },
     {
@@ -769,6 +783,8 @@ export const awardsData = {
       date: "June 4, 2026",
       imageUrl: "/images/real_certs/cert_mathworks_matlab_onramp.png",
       category: "course",
+      topicSummary: "Proficiency in core MATLAB computation, array mathematics, matrix transformations, script automation, data filtering, and technical 2D/3D visualization for engineering applications.",
+      topics: ["Numerical Computing", "Matrix Math", "Script Automation", "2D/3D Plotting"],
       description: "Course Completion Certificate awarded by MathWorks Training Services to Jubair Zidan on 4 June 2026 for successfully completing 100% of the self-paced training course, signed by Craig L. Santos, Director of Training Services. Validates proficiency in core MATLAB computation, array math, matrix transformations, script automation, data filtering, and technical 2D/3D visualization for engineering applications."
     }
   ],

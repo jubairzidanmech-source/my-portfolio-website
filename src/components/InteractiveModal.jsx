@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { X, ExternalLink } from 'lucide-react';
+import { X, ExternalLink, FileText } from 'lucide-react';
 
 export const InteractiveModal = ({ isOpen, onClose, title, subtitle, children, maxWidth = '720px' }) => {
   useEffect(() => {
@@ -113,7 +113,7 @@ export const InteractiveModal = ({ isOpen, onClose, title, subtitle, children, m
   );
 };
 
-export const ImageLightboxModal = ({ isOpen, onClose, title, subtitle, imageUrl, description }) => {
+export const ImageLightboxModal = ({ isOpen, onClose, title, subtitle, imageUrl, description, verificationUrl, pdfUrl }) => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
@@ -183,16 +183,44 @@ export const ImageLightboxModal = ({ isOpen, onClose, title, subtitle, imageUrl,
             </p>
           ) : <div />}
 
-          <a
-            href={imageUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pub-visual-btn image-lightbox-external-btn"
-            title="Open raw high-resolution image in new browser tab"
-          >
-            <ExternalLink size={13} />
-            <span>Open Full Resolution in New Tab</span>
-          </a>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+            {verificationUrl && (
+              <a
+                href={verificationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pub-visual-btn image-lightbox-external-btn"
+                title="Verify credential on official issuing platform"
+              >
+                <ExternalLink size={13} />
+                <span>Verify Online</span>
+              </a>
+            )}
+
+            {pdfUrl && (
+              <a
+                href={pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pub-visual-btn image-lightbox-external-btn"
+                title="View / Download Official Certificate PDF"
+              >
+                <FileText size={13} />
+                <span>Official PDF</span>
+              </a>
+            )}
+
+            <a
+              href={imageUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pub-visual-btn image-lightbox-external-btn"
+              title="Open raw high-resolution image in new browser tab"
+            >
+              <ExternalLink size={13} />
+              <span>Open Full Resolution</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>,

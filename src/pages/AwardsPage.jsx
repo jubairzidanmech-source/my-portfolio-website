@@ -26,10 +26,116 @@ const AwardCard = ({
   expandOpenText = 'View Description & Details',
   expandCloseText = 'Hide Details',
   visualBtnText = 'View Award Artifact',
-  detailHeading = 'Recognition & Description'
+  detailHeading = 'Recognition & Description',
+  isCertCard = false
 }) => {
   const imageUrl = item.imageUrl || '/images/award_placeholder.jpg';
   const displayYear = yearLabel || item.year;
+
+  if (isCertCard) {
+    return (
+      <article className="pub-list-card is-cert-card">
+        {/* Side-by-Side Row: Image on the Left, Topic Text on the Right */}
+        <div className="pub-card-split-row">
+          {/* Left: Certificate Thumbnail with "View Certificate" inside image border */}
+          <div 
+            className="award-card-media-side cert-media-side"
+            onClick={() => onOpenModal({
+              title: title,
+              subtitle: `${authorLabel || ''} ${venueLabel ? `• ${venueLabel}` : ''} ${displayYear ? `(${displayYear})` : ''}`,
+              imageUrl: imageUrl,
+              description: item.description,
+              verificationUrl: item.verificationUrl,
+              pdfUrl: item.pdfUrl
+            })}
+            title="Click to view full certificate"
+          >
+            <img 
+              src={imageUrl} 
+              alt={title} 
+              className="award-side-img" 
+              loading="lazy" 
+            />
+            {/* View Certificate badge pinned inside the image border */}
+            <div className="cert-media-view-badge-container">
+              <span className="cert-media-view-badge">
+                <ExternalLink size={11} />
+                <span>View Certificate</span>
+              </span>
+            </div>
+          </div>
+
+          {/* Right: Focused Topic & Technical Details */}
+          <div className="pub-card-main">
+            <div className="pub-header-row">
+              <div className="pub-meta-left">
+                <span className="pub-number">0{itemIndex}</span>
+                <span className={`pub-category-badge ${badgeClass}`}>
+                  {badgeLabel}
+                </span>
+                {statusLabel && (
+                  <span className="pub-status-badge">{statusLabel}</span>
+                )}
+              </div>
+              {displayYear && <span className="pub-year">{displayYear}</span>}
+            </div>
+
+            <h3 className="pub-title">
+              {title}
+            </h3>
+
+            <div className="pub-citation">
+              <span className="pub-author highlight">{authorLabel}</span>
+              {venueLabel && (
+                <>
+                  <span className="pub-sep">•</span>
+                  <span className="pub-venue">{venueLabel}</span>
+                </>
+              )}
+            </div>
+
+            {/* Core Topic Overview */}
+            {(item.topicSummary || item.description) && (
+              <p className="cert-topic-desc">
+                {item.topicSummary || item.description}
+              </p>
+            )}
+
+            {/* Key Topic Competencies */}
+            {item.topics && item.topics.length > 0 && (
+              <div className="pub-tags-row" style={{ marginTop: '6px', marginBottom: '8px' }}>
+                {item.topics.map((topic, tIdx) => (
+                  <span key={tIdx} className="pub-tag-pill">{topic}</span>
+                ))}
+              </div>
+            )}
+
+            {/* Clean Footer: Credential ID & optional PDF link */}
+            <div className="cert-card-footer-row">
+              {item.certId && (
+                <div className="cert-credential-id">
+                  <span className="cert-id-label">Credential ID:</span>{' '}
+                  <span className="cert-id-value">{item.certId}</span>
+                </div>
+              )}
+              {item.pdfUrl && (
+                <a
+                  href={item.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cert-pdf-link"
+                  title="View / Download Official Certificate PDF"
+                >
+                  <FileText size={12} />
+                  <span>Official PDF</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </article>
+    );
+  }
 
   return (
     <article className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
@@ -203,12 +309,14 @@ export const AwardsPage = () => {
     }));
   };
 
-  const handleOpenModal = ({ title, subtitle, imageUrl, description }) => {
+  const handleOpenModal = ({ title, subtitle, imageUrl, description, verificationUrl, pdfUrl }) => {
     setActiveModalData({
       title,
       subtitle,
       imageUrl,
-      description
+      description,
+      verificationUrl,
+      pdfUrl
     });
   };
 
@@ -383,8 +491,7 @@ export const AwardsPage = () => {
               key={item.id}
               item={item}
               itemIndex={idx + 1}
-              isExpanded={Boolean(expandedAwards[item.id])}
-              onToggle={toggleAward}
+              isCertCard={true}
               onOpenModal={handleOpenModal}
               badgeClass="verified"
               badgeLabel="Industry Professional"
@@ -393,10 +500,6 @@ export const AwardsPage = () => {
               title={item.title}
               authorLabel={item.issuer}
               venueLabel={item.field}
-              expandOpenText="View Syllabus & Verification"
-              expandCloseText="Hide Details"
-              visualBtnText="View Certificate"
-              detailHeading="Certification Competencies & Examination"
             />
           ))}
         </div>
@@ -424,8 +527,7 @@ export const AwardsPage = () => {
                 key={item.id}
                 item={item}
                 itemIndex={idx + 1}
-                isExpanded={Boolean(expandedAwards[item.id])}
-                onToggle={toggleAward}
+                isCertCard={true}
                 onOpenModal={handleOpenModal}
                 badgeClass="verified"
                 badgeLabel="Verified Course"
@@ -434,10 +536,6 @@ export const AwardsPage = () => {
                 title={item.title}
                 authorLabel={item.issuer}
                 venueLabel={item.field}
-                expandOpenText="View Syllabus & Verification"
-                expandCloseText="Hide Details"
-                visualBtnText="View Certificate"
-                detailHeading="Course Syllabus & Academic Competencies"
               />
             ))}
           </div>
@@ -504,6 +602,8 @@ export const AwardsPage = () => {
           subtitle={activeModalData.subtitle}
           imageUrl={activeModalData.imageUrl}
           description={activeModalData.description}
+          verificationUrl={activeModalData.verificationUrl}
+          pdfUrl={activeModalData.pdfUrl}
         />
       )}
     </div>
