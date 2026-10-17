@@ -164,9 +164,8 @@ export const ResearchPage = () => {
 
         <div className="pub-grid-2col">
           {(researchData?.theses || []).map((thesis, idx) => {
-            const isExpanded = Boolean(expandedItems[thesis.id]);
             return (
-              <article key={thesis.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
+              <article key={thesis.id} className="pub-list-card">
                 <div className="pub-card-split-row">
                   {/* Left: Simulation Visual Thumbnail */}
                   <div 
@@ -243,17 +242,8 @@ export const ResearchPage = () => {
                       ))}
                     </div>
 
-                    {/* Expand / Collapse Disclosure Button & Publication Action Button */}
+                    {/* Primary Action Button: See the Full Paper */}
                     <div className="pub-actions-row">
-                      <button
-                        onClick={() => toggleExpand(thesis.id)}
-                        className="pub-expand-btn"
-                        aria-expanded={isExpanded}
-                      >
-                        <span>{isExpanded ? 'Hide Abstract & Methodology' : 'Read Abstract, Methodology & Findings'}</span>
-                        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                      </button>
-
                       <button
                         type="button"
                         onClick={() => handleOpenFullPaper(thesis)}
@@ -267,68 +257,6 @@ export const ResearchPage = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* EXPANDABLE DETAILS ACCORDION */}
-                {isExpanded && (
-                  <div className="pub-expanded-body">
-                    <div className="pub-detail-section">
-                      <h4 className="pub-detail-heading">{thesis.id === 'thesis-msc' ? 'Research Overview' : 'Abstract'}</h4>
-                      <p className="pub-abstract-text">
-                        {thesis.abstract}
-                      </p>
-                    </div>
-
-                    <div className="pub-detail-section">
-                      <h4 className="pub-detail-heading">{thesis.id === 'thesis-msc' ? 'Key Methodologies & Scope' : 'Numerical Methodology & Modeling'}</h4>
-                      <ul className="pub-checklist">
-                        {(thesis.methodology || []).map((m, mIdx) => (
-                          <li key={mIdx}>
-                            <CheckCircle2 size={15} color="var(--blue-royal)" style={{ flexShrink: 0, marginTop: '2px' }} />
-                            <span>{m}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="pub-detail-section">
-                      <h4 className="pub-detail-heading">Key Research Findings & Milestones</h4>
-                      <ul className="pub-checklist">
-                        {(thesis.keyResults || []).map((r, rIdx) => (
-                          <li key={rIdx}>
-                            <CheckCircle2 size={15} color="var(--blue-royal)" style={{ flexShrink: 0, marginTop: '2px' }} />
-                            <span>{r}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="pub-detail-section">
-                      <h4 className="pub-detail-heading">{thesis.id === 'thesis-msc' ? 'Simulation Artifact & Metamaterial Model (Click to Enlarge)' : 'Simulation Artifact & Visuals (Click to Enlarge)'}</h4>
-                      <div 
-                        className="award-expanded-img-box"
-                        onClick={() => setActiveModalData({
-                          title: `${thesis.title} - ${thesis.id === 'thesis-msc' ? 'Metamaterial Model' : 'CFD Simulation'}`,
-                          subtitle: `${thesis.degree} • ${thesis.institution}`,
-                          imageUrl: thesis.imageUrl,
-                          description: thesis.abstract
-                        })}
-                        title="Click to view full simulation visual"
-                      >
-                        <img
-                          src={thesis.imageUrl}
-                          alt={`${thesis.title} Visual`}
-                          className="award-expanded-img"
-                        />
-                        <div className="award-side-overlay">
-                          <span className="award-thumb-zoom-badge">
-                            <ExternalLink size={12} />
-                            <span>View Full Simulation</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
               </article>
             );
           })}
