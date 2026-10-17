@@ -208,10 +208,10 @@ export const researchData = {
       location: "Rajshahi, Bangladesh",
       date: "11 – 13 December, 2024",
       status: "Accepted & Presented",
-      imageUrl: "/images/conference_certificate_placeholder.svg",
-      certificateUrl: "/images/conference_certificate_placeholder.svg",
+      imageUrl: "/images/real/mimec_vawt_certificate.jpg",
+      certificateUrl: "/images/real/mimec_vawt_certificate.jpg",
       paperUrl: "https://drive.google.com/file/d/1_HjxMoGHGpRTiqtRXiBKqtbJmU8XY0cm/view?usp=sharing",
-      authors: ["Md. Jubair Uddin Zidan", "Wakil Ahmed", "Co-authors"],
+      authors: ["Md. Kotuvuddin Islam Monna", "Tanmoy Nath", "Md. Jubair Uddin Zidan"],
       abstract: "A numerical investigation evaluating aerodynamic self-starting capability and power coefficients (Cp) across diverse symmetrical and cambered NACA airfoil profiles for H-type Vertical Axis Wind Turbines (VAWT). Dynamic mesh formulations and sliding mesh interfaces were employed to simulate rotational unsteady vortex shedding under varying tip speed ratios (TSR).",
       keywords: ["VAWT", "Airfoil Aerodynamics", "Unsteady CFD"],
       tags: ["VAWT", "Airfoil Aerodynamics", "Unsteady CFD"]
