@@ -6532,6 +6532,77 @@ img {
   }
 }
 
+/* Industrial Attachment Featured Split Card Layout (Enlarged 270px full-height image) */
+.exp-featured-layout {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.exp-featured-image-box {
+  width: 270px;
+  min-width: 270px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: #F8FAFC;
+  box-shadow: 0 2px 8px rgba(11, 19, 43, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  align-self: stretch;
+}
+
+.exp-card:hover .exp-featured-image-box {
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14) !important;
+}
+
+.exp-featured-image {
+  width: 100%;
+  flex: 1;
+  min-height: 175px;
+  object-fit: cover;
+  display: block;
+}
+
+.exp-featured-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.exp-featured-header {
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.exp-featured-divider {
+  margin: 14px 0 12px;
+}
+
+.exp-featured-overview {
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .exp-featured-layout {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .exp-featured-image-box {
+    width: 100%;
+    min-width: 100%;
+    align-self: auto;
+  }
+  .exp-featured-image {
+    height: 180px;
+    min-height: 180px;
+  }
+}
+
 /* Responsibilities & Technical Learning Points with Thin Dividers */
 .exp-learnings-section {
   margin-top: 6px;

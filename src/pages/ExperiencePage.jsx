@@ -61,35 +61,11 @@ export const ExperiencePage = () => {
             </div>
           </div>
 
-          <div className="card exp-card">
-            {/* Header: Role first, Organization second, Dates & Location third */}
-            <div className="exp-card-header">
-              <div className="exp-org-logo-box">
-                <Factory size={18} className="exp-logo-icon" />
-              </div>
-              <div className="exp-header-text">
-                <div className="exp-header-top">
-                  <h3 className="exp-role-title">{experienceData.internship.role}</h3>
-                  <span className="exp-category-pill category-industrial">Industrial Attachment</span>
-                </div>
-                <div className="exp-org-name">{experienceData.internship.company}</div>
-                <div className="exp-meta-row">
-                  <span className="exp-meta-period">{experienceData.internship.period}</span>
-                  <span className="exp-meta-dot">·</span>
-                  <span className="exp-meta-location">
-                    <MapPin size={13} /> {experienceData.internship.location}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="exp-divider" />
-
-            {/* Body: Contained Supporting Image on Left + Overview on Right */}
-            <div className="exp-body-row">
-              {/* Contained supporting image on the left side */}
+          <div className="card exp-card exp-card-featured">
+            <div className="exp-featured-layout">
+              {/* Contained supporting image on the left side, full card height */}
               <div 
-                className="exp-contained-image-box"
+                className="exp-contained-image-box exp-featured-image-box"
                 style={{ cursor: 'zoom-in', position: 'relative' }}
                 onClick={() => setActiveImageModal({
                   title: `${experienceData.internship.company} — Facility`,
@@ -102,25 +78,51 @@ export const ExperiencePage = () => {
                 <img
                   src={experienceData.internship.imageUrl}
                   alt={experienceData.internship.company}
-                  className="exp-contained-image"
+                  className="exp-contained-image exp-featured-image"
                 />
                 <span className="exp-image-caption">RPCL Raozan Facility (Click to Enlarge)</span>
               </div>
 
-              <div className="exp-overview-col">
-                <p className="exp-overview-text">
-                  {experienceData.internship.overview}
-                </p>
+              {/* Right content column */}
+              <div className="exp-featured-content">
+                {/* Header: Role first, Organization second, Dates & Location third */}
+                <div className="exp-card-header exp-featured-header">
+                  <div className="exp-org-logo-box">
+                    <Factory size={18} className="exp-logo-icon" />
+                  </div>
+                  <div className="exp-header-text">
+                    <div className="exp-header-top">
+                      <h3 className="exp-role-title">{experienceData.internship.role}</h3>
+                      <span className="exp-category-pill category-industrial">Industrial Attachment</span>
+                    </div>
+                    <div className="exp-org-name">{experienceData.internship.company}</div>
+                    <div className="exp-meta-row">
+                      <span className="exp-meta-period">{experienceData.internship.period}</span>
+                      <span className="exp-meta-dot">·</span>
+                      <span className="exp-meta-location">
+                        <MapPin size={13} /> {experienceData.internship.location}
+                      </span>
+                    </div>
+                  </div>
+                </div>
 
-                {/* Expandable Technical Responsibilities Toggle */}
-                <button
-                  onClick={() => toggleSection('internship-learnings')}
-                  className="pub-expand-btn"
-                  aria-expanded={Boolean(expandedSections['internship-learnings'])}
-                >
-                  <span>{expandedSections['internship-learnings'] ? 'Hide Technical Responsibilities & Systems' : `View Key Technical Responsibilities & Learnings (${experienceData.internship.keyLearnings.length})`}</span>
-                  {expandedSections['internship-learnings'] ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                </button>
+                <div className="exp-divider exp-featured-divider" />
+
+                <div className="exp-overview-col exp-featured-overview">
+                  <p className="exp-overview-text">
+                    {experienceData.internship.overview}
+                  </p>
+
+                  {/* Expandable Technical Responsibilities Toggle */}
+                  <button
+                    onClick={() => toggleSection('internship-learnings')}
+                    className="pub-expand-btn"
+                    aria-expanded={Boolean(expandedSections['internship-learnings'])}
+                  >
+                    <span>{expandedSections['internship-learnings'] ? 'Hide Technical Responsibilities & Systems' : `View Key Technical Responsibilities & Learnings (${experienceData.internship.keyLearnings.length})`}</span>
+                    {expandedSections['internship-learnings'] ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                  </button>
+                </div>
               </div>
             </div>
 
