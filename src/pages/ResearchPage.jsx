@@ -13,7 +13,8 @@ import {
   CheckCircle2,
   FileText,
   Compass,
-  Clock
+  Clock,
+  Camera
 } from 'lucide-react';
 import { researchData } from '../data/portfolioData';
 import { InteractiveModal, ImageLightboxModal } from '../components/InteractiveModal';
@@ -599,8 +600,8 @@ export const ResearchPage = () => {
           {(researchData?.posterPresentations || []).map((poster, idx) => {
             const posterIndex = idx + 1;
             const isExpanded = Boolean(expandedItems[poster.id]);
-            const fullPosterImg = poster.posterUrl || poster.imageUrl || '/images/presentation_placeholder.jpg';
-            const thumbnailImg = poster.posterUrl || poster.imageUrl || poster.certificateUrl;
+            const fullPosterImg = poster.posterUrl || '/images/presentation_placeholder.jpg';
+            const thumbnailImg = poster.imageUrl || poster.posterUrl;
 
             return (
               <article key={poster.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
@@ -609,23 +610,23 @@ export const ResearchPage = () => {
                   <div 
                     className="award-card-media-side"
                     onClick={() => setActiveModalData({
-                      title: `${poster.title} - Full Technical Poster`,
+                      title: `${poster.title} - Presentation Session`,
                       subtitle: `${poster.event} • ${poster.venue} (${poster.date})${poster.posterId ? ` • ${poster.posterId}` : ''}`,
-                      imageUrl: fullPosterImg,
-                      description: poster.description
+                      imageUrl: thumbnailImg,
+                      description: `On-site presentation session at ${poster.event}. ${poster.description}`
                     })}
-                    title="Click to view full poster"
+                    title="Click to view presentation photograph"
                   >
                     <img 
                       src={thumbnailImg} 
-                      alt={poster.title} 
-                      className="award-side-img" 
+                      alt={`${poster.title} presentation session`} 
+                      className="award-side-img presentation-side-img" 
                       loading="lazy" 
                     />
                     <div className="award-side-overlay">
                       <span className="award-thumb-zoom-badge">
-                        <FileText size={12} />
-                        <span>View Poster</span>
+                        <Camera size={12} />
+                        <span>Session Photo</span>
                       </span>
                     </div>
                   </div>

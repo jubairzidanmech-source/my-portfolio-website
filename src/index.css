@@ -4875,6 +4875,12 @@ img {
   transition: transform 0.35s ease;
 }
 
+.award-side-img.presentation-side-img {
+  object-fit: cover !important;
+  object-position: center 25% !important;
+  padding: 0 !important;
+}
+
 .award-card-media-side:hover .award-side-img,
 .pub-list-card:hover .award-side-img {
   transform: scale(1.04);
