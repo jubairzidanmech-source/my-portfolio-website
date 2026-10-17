@@ -8,6 +8,7 @@ import { AwardsPage } from './pages/AwardsPage';
 import { ExperiencePage } from './pages/ExperiencePage';
 import { SkillsPage } from './pages/SkillsPage';
 import { ContactPage } from './pages/ContactPage';
+import { CinematicQuote } from './components/CinematicQuote';
 
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { MilestonesCarousel } from './components/MilestonesCarousel';
@@ -250,6 +251,13 @@ export function App() {
         <section id="contact" className="page-section">
           <ErrorBoundary>
             <ContactPage />
+          </ErrorBoundary>
+        </section>
+
+        {/* Cinematic Closing Reflection: immediately after Contact, before Footer */}
+        <section id="quote" className="cinematic-quote-section" aria-label="Closing Reflection">
+          <ErrorBoundary>
+            <CinematicQuote />
           </ErrorBoundary>
         </section>
       </main>

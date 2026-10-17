@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600;1,700&display=swap');
+
 /* ==========================================================================
    GILROY FONT FAMILY DECLARATIONS (Weights: 300, 400, 500, 600, 700, 800)
    ========================================================================== */
@@ -11740,6 +11742,181 @@ body [style*="cursor:zoom-in"] {
               opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* ==========================================================================
+   CINEMATIC CLOSING REFLECTION (Carl Sagan Quote Section)
+   Monumental, editorial typography placed after Contact and before Footer
+   ========================================================================== */
+
+.cinematic-quote-section {
+  width: 100%;
+  position: relative;
+  /* Generous, contemplative whitespace */
+  padding: clamp(96px, 13vh, 170px) 0 clamp(90px, 12vh, 150px);
+  background: transparent;
+  z-index: 10;
+  contain: layout style;
+}
+
+.cinematic-quote-container {
+  width: 100%;
+  max-width: var(--max-width, 1240px);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 48px);
+}
+
+.cinematic-quote-block {
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+}
+
+/* Line-by-line reveal mask: clips overflow while preventing letter descenders from clipping */
+.cinematic-quote-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.04em;
+}
+
+/* Master typographic statement: bold, commanding presence matching the homepage hero name */
+.cinematic-quote-line {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: clamp(2.6rem, 5.2vw, 4.8rem);
+  font-weight: 600;
+  line-height: 1.16;
+  letter-spacing: -0.03em;
+  color: var(--blue-midnight);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateY(115%);
+  opacity: 0;
+  /* Reset transition when leaving viewport so replay is crisp */
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Expressive italic serif for selected words/phrases creating sophisticated editorial juxtaposition */
+.cinematic-quote-serif {
+  font-family: 'Cormorant Garamond', 'Playfair Display', 'Baskerville', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding: 0 0.05em;
+  color: var(--blue-midnight);
+}
+
+/* Understated author attribution mask */
+.cinematic-quote-author-mask {
+  display: block;
+  overflow: hidden;
+  margin-top: clamp(28px, 4.2vw, 46px);
+  padding-bottom: 0.14em;
+}
+
+.cinematic-quote-author-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateY(115%);
+  opacity: 0;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cinematic-quote-dash {
+  color: var(--blue-royal);
+  font-weight: 600;
+  user-select: none;
+}
+
+.cinematic-quote-author-name {
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* --------------------------------------------------------------------------
+   STAGGERED DRAMATIC LINE-BY-LINE REVEAL (2.65–2.85s duration, 280ms stagger)
+   -------------------------------------------------------------------------- */
+
+.cinematic-quote-wrapper.is-revealed .cinematic-quote-mask-1 .cinematic-quote-line {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 2.65s cubic-bezier(0.16, 1, 0.3, 1) 0ms,
+              opacity 2.1s cubic-bezier(0.16, 1, 0.3, 1) 0ms;
+}
+
+.cinematic-quote-wrapper.is-revealed .cinematic-quote-mask-2 .cinematic-quote-line {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 2.75s cubic-bezier(0.16, 1, 0.3, 1) 280ms,
+              opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1) 280ms;
+}
+
+.cinematic-quote-wrapper.is-revealed .cinematic-quote-mask-3 .cinematic-quote-line {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 2.85s cubic-bezier(0.16, 1, 0.3, 1) 560ms,
+              opacity 2.3s cubic-bezier(0.16, 1, 0.3, 1) 560ms;
+}
+
+/* Reveal Carl Sagan attribution last */
+.cinematic-quote-wrapper.is-revealed .cinematic-quote-author-line {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1) 860ms,
+              opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1) 860ms;
+}
+
+/* Dark mode enhancements */
+[data-theme="dark"] .cinematic-quote-line {
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .cinematic-quote-serif {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .cinematic-quote-author-name {
+  color: #94A3B8;
+}
+
+[data-theme="dark"] .cinematic-quote-dash {
+  color: #60A5FA;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  .cinematic-quote-section {
+    padding: 72px 0 68px;
+  }
+
+  .cinematic-quote-line {
+    font-size: clamp(2rem, 7.5vw, 2.5rem);
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+  }
+
+  .cinematic-quote-author-mask {
+    margin-top: 24px;
+  }
+
+  .cinematic-quote-author-line {
+    font-size: 0.95rem;
+  }
+}
+
 /* Reduced Motion Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .timeline-row {
@@ -11752,10 +11929,16 @@ body [style*="cursor:zoom-in"] {
   .scroll-reveal-ready .reveal-desc,
   .scroll-reveal-ready .reveal-card,
   .scroll-reveal-ready .reveal-group > *,
-  .scroll-reveal-ready .reveal-timeline-row {
+  .scroll-reveal-ready .reveal-timeline-row,
+  .cinematic-quote-line,
+  .cinematic-quote-author-line {
     transform: none !important;
     opacity: 1 !important;
     transition: none !important;
+  }
+
+  .cinematic-quote-mask,
+  .cinematic-quote-author-mask {
     overflow: visible !important;
   }
 }
