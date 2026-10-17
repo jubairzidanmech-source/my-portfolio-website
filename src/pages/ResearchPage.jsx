@@ -122,10 +122,10 @@ export const ResearchPage = () => {
             <button 
               onClick={() => jumpToSubSection('research-posters')}
               className="research-subnav-btn"
-              title="Jump to Research Poster Presentation"
+              title="Jump to Research Poster Presentations"
             >
-              <span>Poster</span>
-              <span className="subnav-count">{(researchData?.posterPresentations || []).length || 1}</span>
+              <span>Posters</span>
+              <span className="subnav-count">{(researchData?.posterPresentations || []).length || 2}</span>
             </button>
             <span className="subnav-sep">·</span>
             <button 
@@ -591,7 +591,7 @@ export const ResearchPage = () => {
             </h2>
           </div>
           <span className="section-count-badge">
-            {(researchData?.posterPresentations?.length || 1)} Presentation
+            {(researchData?.posterPresentations?.length || 2)} {(researchData?.posterPresentations?.length === 1 ? 'Presentation' : 'Presentations')}
           </span>
         </div>
 
@@ -599,7 +599,9 @@ export const ResearchPage = () => {
           {(researchData?.posterPresentations || []).map((poster, idx) => {
             const posterIndex = idx + 1;
             const isExpanded = Boolean(expandedItems[poster.id]);
-            const posterImg = poster.imageUrl || poster.certificateUrl || '/images/presentation_placeholder.jpg';
+            const fullPosterImg = poster.posterUrl || poster.imageUrl || '/images/presentation_placeholder.jpg';
+            const thumbnailImg = poster.posterUrl || poster.imageUrl || poster.certificateUrl;
+
             return (
               <article key={poster.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
                 <div className="pub-card-split-row">
@@ -607,23 +609,23 @@ export const ResearchPage = () => {
                   <div 
                     className="award-card-media-side"
                     onClick={() => setActiveModalData({
-                      title: poster.title,
-                      subtitle: `${poster.event} • ${poster.venue} (${poster.date})`,
-                      imageUrl: posterImg,
+                      title: `${poster.title} - Full Technical Poster`,
+                      subtitle: `${poster.event} • ${poster.venue} (${poster.date})${poster.posterId ? ` • ${poster.posterId}` : ''}`,
+                      imageUrl: fullPosterImg,
                       description: poster.description
                     })}
-                    title="Click to view full poster artifact"
+                    title="Click to view full poster"
                   >
                     <img 
-                      src={posterImg} 
+                      src={thumbnailImg} 
                       alt={poster.title} 
                       className="award-side-img" 
                       loading="lazy" 
                     />
                     <div className="award-side-overlay">
                       <span className="award-thumb-zoom-badge">
-                        <ExternalLink size={12} />
-                        <span>Enlarge</span>
+                        <FileText size={12} />
+                        <span>View Poster</span>
                       </span>
                     </div>
                   </div>
@@ -640,6 +642,11 @@ export const ResearchPage = () => {
                         {poster.statusLabel && (
                           <span className="pub-status-badge">{poster.statusLabel}</span>
                         )}
+                        {poster.posterId && (
+                          <span className="pub-status-badge" style={{ background: 'rgba(59, 130, 246, 0.1)', color: 'var(--blue-royal)', borderColor: 'rgba(59, 130, 246, 0.25)' }}>
+                            {poster.posterId}
+                          </span>
+                        )}
                       </div>
                       <span className="pub-year">{poster.date}</span>
                     </div>
@@ -647,6 +654,12 @@ export const ResearchPage = () => {
                     <h3 className="pub-title">
                       {poster.title}
                     </h3>
+
+                    {poster.authors && (
+                      <p className="pub-authors-line" style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', margin: '2px 0 6px 0' }}>
+                        <span style={{ fontWeight: 600 }}>Authors:</span> {poster.authors}
+                      </p>
+                    )}
 
                     <div className="pub-citation">
                       <span className="pub-venue">{poster.event}</span>
@@ -660,8 +673,60 @@ export const ResearchPage = () => {
                       ))}
                     </div>
 
-                    {/* Expand / Collapse Disclosure Button */}
+                    {/* Action Buttons Row */}
                     <div className="pub-actions-row">
+                      {/* Primary Action: View the Full Poster */}
+                      {fullPosterImg && (
+                        <button
+                          onClick={() => setActiveModalData({
+                            title: `${poster.title} - Full Technical Poster`,
+                            subtitle: `${poster.event} (${poster.date})${poster.posterId ? ` • ${poster.posterId}` : ''}`,
+                            imageUrl: fullPosterImg,
+                            description: poster.description
+                          })}
+                          className="pub-full-paper-btn"
+                          title="View high-resolution technical poster"
+                        >
+                          <FileText size={13} />
+                          <span>View the Full Poster</span>
+                        </button>
+                      )}
+
+                      {/* Presentation Session Photo Button (if distinct from posterUrl) */}
+                      {poster.imageUrl && poster.posterUrl && poster.imageUrl !== poster.posterUrl && (
+                        <button
+                          onClick={() => setActiveModalData({
+                            title: `${poster.title} - Presentation Session`,
+                            subtitle: `${poster.event} (${poster.date})`,
+                            imageUrl: poster.imageUrl,
+                            description: `On-site presentation session at ${poster.event}. ${poster.description}`
+                          })}
+                          className="pub-visual-btn"
+                          title="View on-site presentation session photo"
+                        >
+                          <ExternalLink size={13} />
+                          <span>Presentation Photo</span>
+                        </button>
+                      )}
+
+                      {/* Award / Appreciation Crest Button */}
+                      {poster.certificateUrl && (
+                        <button
+                          onClick={() => setActiveModalData({
+                            title: `${poster.title} - Official ${poster.statusLabel?.includes('2nd') ? 'Award Crest' : 'Appreciation Crest'}`,
+                            subtitle: `${poster.event} (${poster.date})`,
+                            imageUrl: poster.certificateUrl,
+                            description: `Official Award / Appreciation Crest: ${poster.description}`
+                          })}
+                          className="pub-visual-btn"
+                          title="View official award/appreciation crest"
+                        >
+                          <Award size={13} />
+                          <span>{poster.statusLabel?.includes('2nd') ? 'Award Crest' : 'Appreciation Crest'}</span>
+                        </button>
+                      )}
+
+                      {/* Expand / Collapse Disclosure Button */}
                       <button
                         onClick={() => toggleExpand(poster.id)}
                         className="pub-expand-btn"
@@ -670,53 +735,11 @@ export const ResearchPage = () => {
                         <span>{isExpanded ? 'Hide Abstract & Details' : 'Read Abstract & View Credentials'}</span>
                         {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
                       </button>
-
-                      {poster.certificateUrl && poster.certificateUrl !== posterImg ? (
-                        <>
-                          <button
-                            onClick={() => setActiveModalData({
-                              title: `${poster.title} - Presentation Session`,
-                              subtitle: `${poster.event} (${poster.date})`,
-                              imageUrl: posterImg,
-                              description: `On-site presentation at ${poster.event}. ${poster.description}`
-                            })}
-                            className="pub-visual-btn"
-                          >
-                            <ExternalLink size={13} />
-                            <span>Presentation Photo</span>
-                          </button>
-                          <button
-                            onClick={() => setActiveModalData({
-                              title: `${poster.title} - Award Certificate`,
-                              subtitle: `${poster.event} (${poster.date})`,
-                              imageUrl: poster.certificateUrl,
-                              description: `Official Award Certificate: ${poster.description}`
-                            })}
-                            className="pub-visual-btn"
-                          >
-                            <Award size={13} />
-                            <span>Award Certificate</span>
-                          </button>
-                        </>
-                      ) : (
-                        <button
-                          onClick={() => setActiveModalData({
-                            title: poster.title,
-                            subtitle: `${poster.event} (${poster.date})`,
-                            imageUrl: posterImg,
-                            description: poster.description
-                          })}
-                          className="pub-visual-btn"
-                        >
-                          <ExternalLink size={13} />
-                          <span>View Poster Visuals</span>
-                        </button>
-                      )}
                     </div>
                   </div>
                 </div>
 
-                {/* EXPANDABLE POSTER ABSTRACT & CERTIFICATE */}
+                {/* EXPANDABLE POSTER ABSTRACT & CREDENTIALS */}
                 {isExpanded && (
                   <div className="pub-expanded-body">
                     <div className="pub-detail-section">
@@ -724,56 +747,92 @@ export const ResearchPage = () => {
                       <p className="pub-abstract-text">
                         {poster.description}
                       </p>
+                      {poster.affiliation && (
+                        <p style={{ marginTop: '6px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                          <strong>Affiliation:</strong> {poster.affiliation}
+                        </p>
+                      )}
                     </div>
 
                     <div className="pub-detail-section">
-                      <h4 className="pub-detail-heading">Poster Presentation & Award Credentials (Click to Enlarge)</h4>
+                      <h4 className="pub-detail-heading">Poster Artifacts & Credentials (Click any image to enlarge)</h4>
                       <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-                        <div 
-                          className="award-expanded-img-box"
-                          style={{ flex: '1 1 240px', maxWidth: '340px' }}
-                          onClick={() => setActiveModalData({
-                            title: `${poster.title} - Presentation Session`,
-                            subtitle: `${poster.event} (${poster.date})`,
-                            imageUrl: posterImg,
-                            description: `Presentation session at ${poster.event}. ${poster.description}`
-                          })}
-                          title="Click to view presentation photograph"
-                        >
-                          <img 
-                            src={posterImg} 
-                            alt={`${poster.title} - Presentation Session`} 
-                            className="award-expanded-img" 
-                          />
-                          <div className="award-side-overlay">
-                            <span className="award-thumb-zoom-badge">
-                              <ExternalLink size={12} />
-                              <span>Presentation Photo</span>
-                            </span>
-                          </div>
-                        </div>
-
-                        {poster.certificateUrl && poster.certificateUrl !== posterImg && (
+                        {/* 1. Full Technical Poster */}
+                        {fullPosterImg && (
                           <div 
                             className="award-expanded-img-box"
                             style={{ flex: '1 1 240px', maxWidth: '340px' }}
                             onClick={() => setActiveModalData({
-                              title: `${poster.title} - Award Certificate`,
+                              title: `${poster.title} - Full Technical Poster`,
+                              subtitle: `${poster.event} (${poster.date})${poster.posterId ? ` • ${poster.posterId}` : ''}`,
+                              imageUrl: fullPosterImg,
+                              description: poster.description
+                            })}
+                            title="Click to view full technical poster"
+                          >
+                            <img 
+                              src={fullPosterImg} 
+                              alt={`${poster.title} - Technical Poster`} 
+                              className="award-expanded-img" 
+                            />
+                            <div className="award-side-overlay">
+                              <span className="award-thumb-zoom-badge">
+                                <FileText size={12} />
+                                <span>Full Technical Poster</span>
+                              </span>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* 2. Presentation Photo (if distinct from posterUrl) */}
+                        {poster.imageUrl && poster.posterUrl && poster.imageUrl !== poster.posterUrl && (
+                          <div 
+                            className="award-expanded-img-box"
+                            style={{ flex: '1 1 240px', maxWidth: '340px' }}
+                            onClick={() => setActiveModalData({
+                              title: `${poster.title} - Presentation Session`,
+                              subtitle: `${poster.event} (${poster.date})`,
+                              imageUrl: poster.imageUrl,
+                              description: `On-site presentation session at ${poster.event}. ${poster.description}`
+                            })}
+                            title="Click to view presentation photograph"
+                          >
+                            <img 
+                              src={poster.imageUrl} 
+                              alt={`${poster.title} - Presentation Session`} 
+                              className="award-expanded-img" 
+                            />
+                            <div className="award-side-overlay">
+                              <span className="award-thumb-zoom-badge">
+                                <ExternalLink size={12} />
+                                <span>Presentation Photo</span>
+                              </span>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* 3. Official Award / Appreciation Crest */}
+                        {poster.certificateUrl && (
+                          <div 
+                            className="award-expanded-img-box"
+                            style={{ flex: '1 1 240px', maxWidth: '340px' }}
+                            onClick={() => setActiveModalData({
+                              title: `${poster.title} - Official ${poster.statusLabel?.includes('2nd') ? 'Award Crest' : 'Appreciation Crest'}`,
                               subtitle: `${poster.event} (${poster.date})`,
                               imageUrl: poster.certificateUrl,
-                              description: `Official Award Certificate: ${poster.description}`
+                              description: `Official Award / Appreciation Crest: ${poster.description}`
                             })}
-                            title="Click to view award certificate"
+                            title="Click to view award crest"
                           >
                             <img 
                               src={poster.certificateUrl} 
-                              alt={`${poster.title} - Award Certificate`} 
+                              alt={`${poster.title} - Award Crest`} 
                               className="award-expanded-img" 
                             />
                             <div className="award-side-overlay">
                               <span className="award-thumb-zoom-badge">
                                 <Award size={12} />
-                                <span>Award Certificate</span>
+                                <span>{poster.statusLabel?.includes('2nd') ? 'Award Crest (2nd Prize)' : 'Appreciation Crest'}</span>
                               </span>
                             </div>
                           </div>

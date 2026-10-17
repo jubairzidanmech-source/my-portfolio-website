@@ -296,16 +296,37 @@ export const researchData = {
   posterPresentations: [
     {
       id: "res-poster-1",
-      title: "Research Poster Presentation: Aerodynamic & CFD Flowfield Investigations",
+      title: "Driving Simulators: Paving the Way to a Safer Smart Bangladesh!",
+      posterId: "Poster ID: 97",
       event: "1st National Research Fair 2023",
       venue: "Chittagong University of Engineering & Technology (CUET)",
       date: "2023",
       type: "Poster Presentation",
       statusLabel: "Awarded 2nd Prize",
+      authors: "Ashraf Mahmud Rayed, Md. Jubair Uddin Zidan",
+      affiliation: "Department of Mechanical Engineering, CUET",
       imageUrl: "/images/real/cuet_poster_presentation.jpg",
+      posterUrl: "/images/real/poster_driving_simulators.jpg",
       certificateUrl: "/images/real_awards/award_cuet_research_fair_2023_poster2nd.png",
-      tags: ["Research Fair", "Aerodynamics", "CFD"],
-      description: "Awarded 2nd Prize (1st Runner-Up) for Research Poster Presentation organized by the Directorate of Research and Extension, Chittagong University of Engineering & Technology (CUET). Showcased computational aerodynamic modeling, vortex dynamics, and fluid flowfield investigations."
+      tags: ["Driving Simulators", "Traffic Safety", "Smart Bangladesh", "CUET"],
+      description: "Awarded 2nd Prize (1st Runner-Up) in the Poster Presentation category at the 1st National Research Fair 2023 organized by the Directorate of Research and Extension (DRE), CUET. Investigated Bangladeshi driver behavior, emotional stability, and traffic violation patterns to formulate driver education and simulator-based interventions for smart transit."
+    },
+    {
+      id: "res-poster-2",
+      title: "Strategic Utilization of Dispatchable Loads and Nodal Reserves for Improved Reserve Deliverability",
+      posterId: "Poster ID: 146",
+      event: "1st National Research Fair 2023",
+      venue: "Chittagong University of Engineering & Technology (CUET)",
+      date: "2023",
+      type: "Poster Presentation",
+      statusLabel: "Poster Presentation",
+      authors: "Joyonta Das Joya, Jubair Zidan, Shafin Hossain",
+      affiliation: "Department of Electrical & Electronic Engineering (EEE), CUET",
+      imageUrl: "/images/real/poster_dispatchable_loads.jpg",
+      posterUrl: "/images/real/poster_dispatchable_loads.jpg",
+      certificateUrl: "/images/real_awards/award_cuet_research_fair_2023_poster1.png",
+      tags: ["Power Systems", "Operating Reserves", "DERs", "Optimization", "CUET"],
+      description: "Presented at the 1st National Research Fair 2023 ('Knowledge Exploration for Smart Bangladesh') organized by the Directorate of Research and Extension (DRE), CUET. Addressed reserve deliverability issues in power networks with distributed energy resources (DERs), formulating sequential dispatchable load algorithms that reduce reserve delivery costs by 40–60% while satisfying transmission security constraints."
     }
   ],
 
@@ -452,42 +473,50 @@ export const awardsData = {
   posterPresentations: [
     {
       id: "post-1",
-      title: "Poster Presentation 1",
-      event: "Research Fair 2023",
+      title: "Strategic Utilization of Dispatchable Loads and Nodal Reserves for Improved Reserve Deliverability",
+      posterId: "Poster ID: 146",
+      event: "1st National Research Fair 2023",
       venue: "Chittagong University of Engineering & Technology (CUET)",
       year: "2023",
       imageUrl: "/images/real_awards/award_cuet_research_fair_2023_poster1.png",
-      description: "Presented research poster at the 1st National Research Fair 2023 ('Knowledge Exploration for Smart Bangladesh') organized by Chittagong University of Engineering & Technology (CUET)."
+      posterUrl: "/images/real/poster_dispatchable_loads.jpg",
+      description: "Appreciation award for research poster presentation at the 1st National Research Fair 2023 ('Knowledge Exploration for Smart Bangladesh') organized by the Directorate of Research and Extension (DRE), CUET."
     },
     {
       id: "post-2",
-      title: "Poster Presentation 2 (2nd Prize)",
-      event: "Research Fair 2023",
+      title: "Driving Simulators: Paving the Way to a Safer Smart Bangladesh! (2nd Prize)",
+      posterId: "Poster ID: 97",
+      event: "1st National Research Fair 2023",
       venue: "Chittagong University of Engineering & Technology (CUET)",
       year: "2023",
       imageUrl: "/images/real_awards/award_cuet_research_fair_2023_poster2nd.png",
-      description: "Awarded 2nd Prize for Research Poster Presentation organized by the Directorate of Research and Extension, Chittagong University of Engineering & Technology (CUET)."
+      posterUrl: "/images/real/poster_driving_simulators.jpg",
+      description: "Awarded 2nd Prize for Research Poster Presentation organized by the Directorate of Research and Extension (DRE), Chittagong University of Engineering & Technology (CUET)."
     }
   ],
 
   posters: [
     {
       id: "post-1",
-      title: "Poster Presentation 1",
-      event: "Research Fair 2023",
+      title: "Strategic Utilization of Dispatchable Loads and Nodal Reserves for Improved Reserve Deliverability",
+      posterId: "Poster ID: 146",
+      event: "1st National Research Fair 2023",
       venue: "Chittagong University of Engineering & Technology (CUET)",
       year: "2023",
       imageUrl: "/images/real_awards/award_cuet_research_fair_2023_poster1.png",
-      description: "Presented research poster at the 1st National Research Fair 2023 ('Knowledge Exploration for Smart Bangladesh') organized by Chittagong University of Engineering & Technology (CUET)."
+      posterUrl: "/images/real/poster_dispatchable_loads.jpg",
+      description: "Appreciation award for research poster presentation at the 1st National Research Fair 2023 ('Knowledge Exploration for Smart Bangladesh') organized by the Directorate of Research and Extension (DRE), CUET."
     },
     {
       id: "post-2",
-      title: "Poster Presentation 2 (2nd Prize)",
-      event: "Research Fair 2023",
+      title: "Driving Simulators: Paving the Way to a Safer Smart Bangladesh! (2nd Prize)",
+      posterId: "Poster ID: 97",
+      event: "1st National Research Fair 2023",
       venue: "Chittagong University of Engineering & Technology (CUET)",
       year: "2023",
       imageUrl: "/images/real_awards/award_cuet_research_fair_2023_poster2nd.png",
-      description: "Awarded 2nd Prize for Research Poster Presentation organized by the Directorate of Research and Extension, Chittagong University of Engineering & Technology (CUET)."
+      posterUrl: "/images/real/poster_driving_simulators.jpg",
+      description: "Awarded 2nd Prize for Research Poster Presentation organized by the Directorate of Research and Extension (DRE), Chittagong University of Engineering & Technology (CUET)."
     }
   ],
 
