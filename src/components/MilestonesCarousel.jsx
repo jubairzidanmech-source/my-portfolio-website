@@ -28,11 +28,8 @@ export const MilestonesCarousel = () => {
   const animationFrameRef = useRef(null);
   const lastTimeRef = useRef(null);
 
-  // Smooth speed multiplier for hover deceleration and acceleration
-  const speedMultiplierRef = useRef(1);
-
-  // Dynamic continuous speed: -35 pixels per second (moving right to left, 30–40 px/s)
-  const AUTO_SPEED = -35;
+  // Dynamic continuous speed: -52 pixels per second (moving right to left)
+  const AUTO_SPEED = -52;
 
   // Measure single repetition block width (8 items) from live DOM
   const measureBlockWidth = useCallback(() => {
@@ -96,13 +93,6 @@ export const MilestonesCarousel = () => {
 
       const blockWidth = blockWidthRef.current || measureBlockWidth() || 2000;
 
-      // Smooth deceleration into pause when hovered, smooth acceleration when unhovered
-      const targetMultiplier = isHoveredRef.current ? 0 : 1;
-      speedMultiplierRef.current += (targetMultiplier - speedMultiplierRef.current) * Math.min(dt * 7, 1);
-      if (Math.abs(speedMultiplierRef.current) < 0.001 && targetMultiplier === 0) {
-        speedMultiplierRef.current = 0;
-      }
-
       if (!isDraggingRef.current) {
         // Inertia decay after user releases drag
         if (Math.abs(velocityRef.current) > 0.3) {
@@ -110,9 +100,9 @@ export const MilestonesCarousel = () => {
           velocityRef.current *= 0.94;
         } else {
           velocityRef.current = 0;
-          // Smooth continuous conveyor glide with hover pause/resume
+          // Continuous conveyor glide (does not stop on click or hover)
           if (!prefersReducedMotion) {
-            posRef.current += AUTO_SPEED * speedMultiplierRef.current * dt;
+            posRef.current += AUTO_SPEED * dt;
           }
         }
 

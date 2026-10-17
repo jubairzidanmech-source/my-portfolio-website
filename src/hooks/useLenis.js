@@ -23,57 +23,23 @@ export function useLenis() {
       return;
     }
 
-    // Clean up any stale instances (prevents duplicates during React Fast Refresh)
+    // Clean up any stale instances (prevents duplicates during React StrictMode / Fast Refresh)
     if (window.__lenisInstance && typeof window.__lenisInstance.destroy === 'function') {
       window.__lenisInstance.destroy();
       window.__lenisInstance = null;
     }
 
-    /**
-     * Precision Trackpad / Magic Mouse Detector:
-     * - macOS trackpads and precision touchpads already deliver hardware-accelerated 
-     *   120Hz ProMotion kinetic scrolling natively at the compositor/GPU level.
-     * - Hijacking continuous trackpad gestures into a main-thread JavaScript lerp loop 
-     *   creates double-inertia latency (floating delay) and noticeable frame-pacing jitter 
-     *   that feels like 24-30 low FPS.
-     * - By returning false from virtualScroll on trackpad/pixel events, the browser's 
-     *   native compositor handles trackpad gestures with zero latency and 120 FPS buttery 
-     *   smoothness ("smooth like before"), while stepped external mouse wheels receive 
-     *   silky Lenis momentum interpolation.
-     */
-    const isPrecisionTrackpad = (event) => {
-      if (!event) return false;
-      // Line (1) or page (2) deltaMode indicates a physical mouse wheel
-      if (event.deltaMode !== 0) return false;
-      // Precision trackpads emit fractional deltas or horizontal component deltas
-      if (!Number.isInteger(event.deltaY) || !Number.isInteger(event.deltaX) || event.deltaX !== 0) {
-        return true;
-      }
-      // Small integer deltas (< 40) during continuous gestures are also trackpad packets
-      if (Math.abs(event.deltaY) < 40) {
-        return true;
-      }
-      return false;
-    };
-
-    // Initialize Lenis instance
+    // Initialize Lenis instance with optimal momentum easing
     const lenis = new Lenis({
-      lerp: 0.12, // Responsive momentum easing without sluggish lag or floating delay
+      lerp: 0.08,
       smoothWheel: true,
       wheelMultiplier: 1.0,
       touchMultiplier: 1.0,
-      syncTouch: false, // 100% native hardware touch scrolling on mobile devices
+      syncTouch: false,
       autoRaf: true,
       respectReducedMotion: true,
       anchors: true,
-      autoToggle: true,
-      virtualScroll: ({ event }) => {
-        // Delegate precision trackpad & Magic Mouse events to native 120Hz compositor
-        if (event && event.type === 'wheel' && isPrecisionTrackpad(event)) {
-          return false;
-        }
-        return true;
-      }
+      autoToggle: true
     });
 
     lenisRef.current = lenis;
