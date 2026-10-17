@@ -83,7 +83,7 @@ export const CinematicQuote = () => {
           {/* Line 1: Primary opening statement + cosmos */}
           <div className="cinematic-quote-mask cinematic-quote-mask-1">
             <span className="cinematic-quote-line">
-              "We are a way for the <span className="cinematic-quote-serif">cosmos</span>
+              "We are a way for the <span className="cinematic-quote-serif cinematic-quote-accent">cosmos</span>
             </span>
           </div>
 

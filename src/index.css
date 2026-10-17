@@ -11801,7 +11801,7 @@ body [style*="cursor:zoom-in"] {
               opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Expressive italic serif for selected words/phrases (DM Serif Display - tight kerning) */
+/* Expressive italic serif for selected words/phrases (DM Serif Display - tight kerning, royal blue) */
 .cinematic-quote-serif {
   font-family: 'DM Serif Display', Georgia, 'Times New Roman', serif;
   font-style: italic;
@@ -11810,10 +11810,10 @@ body [style*="cursor:zoom-in"] {
   letter-spacing: -0.035em;
   font-kerning: normal;
   padding: 0 0.02em;
-  color: var(--blue-midnight);
+  color: var(--blue-royal);
 }
 
-/* Royal blue accent for highlighted culmination ("know itself.") */
+/* Royal blue accent for highlighted serif words ("cosmos" and "know itself.") */
 .cinematic-quote-serif.cinematic-quote-accent {
   color: var(--blue-royal);
 }
@@ -11891,7 +11891,7 @@ body [style*="cursor:zoom-in"] {
 }
 
 [data-theme="dark"] .cinematic-quote-serif {
-  color: #FFFFFF;
+  color: #60A5FA;
 }
 
 [data-theme="dark"] .cinematic-quote-serif.cinematic-quote-accent {
