@@ -3966,13 +3966,13 @@ img {
   box-shadow: none !important;
 }
 
-/* Connecting spine line: spans from node halo down to the next node halo */
+/* Connecting spine line: spans from node down into the next node without gaps */
 .timeline-axis::before {
   content: '';
   position: absolute;
   left: 17.5px;
-  top: 36px;
-  bottom: -4px;
+  top: 30px;
+  bottom: -48px;
   width: 3px;
   background: linear-gradient(180deg, #2563EB, #4F46E5);
   border-radius: 9999px;
@@ -3982,7 +3982,7 @@ img {
 }
 
 [data-theme="dark"] .timeline-axis::before {
-  background: linear-gradient(180deg, #3B82F6, #6366F1);
+  background: linear-gradient(180deg, #3B82F6, #6366F1) !important;
   box-shadow: 0 0 10px rgba(59, 130, 246, 0.35);
 }
 
@@ -8012,7 +8012,7 @@ img {
 
 /* Timeline Cards, Spine & Markers in Dark Mode */
 [data-theme="dark"] .timeline-axis::before {
-  background: rgba(96, 165, 250, 0.25) !important;
+  background: linear-gradient(180deg, #3B82F6, #6366F1) !important;
 }
 
 [data-theme="dark"] .timeline-node-circle {
