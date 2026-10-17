@@ -2271,9 +2271,9 @@ img {
 }
 
 .timeline-academic-card:hover .academic-cgpa-subtle-tag {
-  background: rgba(255, 255, 255, 0.24) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
   color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
   font-weight: 600 !important;
 }
 
@@ -2293,9 +2293,9 @@ img {
 }
 
 .timeline-academic-card:hover .milestones-badge {
-  background: rgba(255, 255, 255, 0.22) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
   color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
   font-weight: 600 !important;
 }
 
@@ -2307,8 +2307,8 @@ img {
 /* Academic Milestones inside hovered academic cards (Pills, Icons & Titles) */
 .timeline-academic-card:hover .msc-milestone-item,
 .timeline-academic-card:hover .msc-milestones-grid.is-compact .msc-milestone-item.is-compact {
-  background: rgba(255, 255, 255, 0.22) !important;
-  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
   box-shadow: none !important;
 }
 
@@ -2459,8 +2459,8 @@ img {
 .competency-card:hover .skill-cat-icon-box,
 .exp-card:hover .exp-org-logo-box,
 .leadership-card:hover .exp-org-logo-box {
-  background: rgba(255, 255, 255, 0.24) !important;
-  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   color: #FFFFFF !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16) !important;
 }
@@ -2479,8 +2479,8 @@ img {
 
 /* Badges, Pills, Chips & Numbers across ALL cards */
 .pub-list-card:hover .pub-number {
-  background: rgba(255, 255, 255, 0.22) !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
   color: #DBEAFE !important;
   font-weight: 700 !important;
 }
@@ -2511,8 +2511,8 @@ img {
 .leadership-card:hover .category-industrial,
 .leadership-card:hover .category-teaching,
 .leadership-card:hover .category-leadership {
-  background: rgba(255, 255, 255, 0.24) !important;
-  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
   color: #FFFFFF !important;
   font-weight: 600 !important;
 }
@@ -2597,8 +2597,8 @@ img {
 .exp-card:hover .pub-expand-btn,
 .award-card:hover .pub-expand-btn,
 .award-card:hover .pub-visual-btn {
-  background: rgba(255, 255, 255, 0.2) !important;
-  border-color: rgba(255, 255, 255, 0.38) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
   color: #FFFFFF !important;
   cursor: pointer;
 }
@@ -4914,7 +4914,7 @@ img {
 }
 
 .pub-list-card:hover .award-card-media-side {
-  border-color: rgba(255, 255, 255, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
@@ -8997,22 +8997,22 @@ img {
 [data-theme="dark"] .award-card:hover .pub-category-badge,
 [data-theme="dark"] .pub-list-card:hover .pub-status-badge,
 [data-theme="dark"] .award-card:hover .pub-status-badge {
-  background: rgba(255, 255, 255, 0.22) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
   color: #FFFFFF !important;
-  border-color: rgba(255, 255, 255, 0.45) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 [data-theme="dark"] .pub-list-card:hover .pub-expand-btn,
 [data-theme="dark"] .award-card:hover .pub-expand-btn {
-  background: rgba(255, 255, 255, 0.18) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
   color: #FFFFFF !important;
-  border-color: rgba(255, 255, 255, 0.35) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 [data-theme="dark"] .pub-list-card:hover .pub-supervisor-block,
 [data-theme="dark"] .ongoing-research-card:hover .pub-supervisor-block {
-  background: rgba(255, 255, 255, 0.14) !important;
-  border-color: rgba(255, 255, 255, 0.28) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 [data-theme="dark"] .pub-list-card:hover .pub-supervisor-block *,
@@ -9034,9 +9034,9 @@ img {
 }
 
 [data-theme="dark"] .project-card:hover .project-tag {
-  background: rgba(255, 255, 255, 0.22) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
   color: #FFFFFF !important;
-  border-color: rgba(255, 255, 255, 0.45) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 [data-theme="dark"] .project-card:hover .project-action-btn {
@@ -9059,9 +9059,9 @@ img {
 }
 
 [data-theme="dark"] .skill-tech-card:hover .skill-pill {
-  background: rgba(255, 255, 255, 0.22) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
   color: #FFFFFF !important;
-  border-color: rgba(255, 255, 255, 0.45) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 [data-theme="dark"] .interest-card-light:hover .interest-title-light {
