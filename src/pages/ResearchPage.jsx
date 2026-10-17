@@ -12,7 +12,8 @@ import {
   ExternalLink,
   CheckCircle2,
   FileText,
-  Compass
+  Compass,
+  Clock
 } from 'lucide-react';
 import { researchData } from '../data/portfolioData';
 import { InteractiveModal, ImageLightboxModal } from '../components/InteractiveModal';
@@ -225,6 +226,12 @@ export const ResearchPage = () => {
                       <span className="pub-venue">{thesis.institution}</span>
                     </div>
 
+                    {thesis.desc && (
+                      <p className="pub-card-desc" style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.45, marginTop: '6px' }}>
+                        {thesis.desc}
+                      </p>
+                    )}
+
                     {thesis.supervisor && (
                       <div className="pub-supervisor-block" style={{ marginTop: '6px', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
                         <div><strong style={{ color: 'var(--text-primary)' }}>Supervisor:</strong> {thesis.supervisor}</div>
@@ -242,18 +249,25 @@ export const ResearchPage = () => {
                       ))}
                     </div>
 
-                    {/* Primary Action Button: See the Full Paper */}
+                    {/* Primary Action Button or In-Progress Status Note */}
                     <div className="pub-actions-row">
-                      <button
-                        type="button"
-                        onClick={() => handleOpenFullPaper(thesis)}
-                        className="pub-full-paper-btn"
-                        title="See the Full Paper"
-                      >
-                        <FileText size={14} />
-                        <span>See the Full Paper</span>
-                        <ExternalLink size={12} />
-                      </button>
+                      {thesis.paperUrl ? (
+                        <button
+                          type="button"
+                          onClick={() => handleOpenFullPaper(thesis)}
+                          className="pub-full-paper-btn"
+                          title="See the Full Paper"
+                        >
+                          <FileText size={14} />
+                          <span>See the Full Paper</span>
+                          <ExternalLink size={12} />
+                        </button>
+                      ) : thesis.statusNote ? (
+                        <div className="pub-dev-status-pill">
+                          <Clock size={13} style={{ flexShrink: 0, color: 'var(--blue-royal)' }} />
+                          <span>{thesis.statusNote}</span>
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 </div>

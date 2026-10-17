@@ -159,31 +159,19 @@ export const researchData = {
     {
       id: "thesis-msc",
       number: "02",
-      degree: "Master of Science (M.Sc.) Research / Review Paper",
-      categoryBadge: "Current M.Sc. / Review Paper",
-      status: "Currently in review by Supervisor",
+      degree: "Master of Science (M.Sc.) Research",
+      categoryBadge: "M.Sc. Research",
+      status: "In Progress",
       year: "2025 – 2026",
-      title: "Architected Auxetic Mechanical Metamaterials for Energy Absorption: Design, Fabrication, and Characterization",
-      author: "Jubair Zidan",
-      authors: ["Jubair Zidan", "Wakil Ahmed", "Dibosh Das"],
-      institution: "Chittagong University of Engineering and Technology, CUET",
-      supervisor: "Kazi Zahir Uddin",
-      supervisorAffiliation: "Postdoctoral Research Associate at Beckman Institute-University of Illinois Urbana-Champaign",
-      imageUrl: "/images/project_auxetic.jpg",
-      paperUrl: "https://www.researchgate.net/profile/Md-Jubair-Zidan-2",
-      tags: ["Auxetic Metamaterials", "Energy Absorption", "Lattice Fabrication", "Mechanical Characterization"],
-      abstract: "A literature review of architected auxetic mechanical metamaterials for energy absorption, examining how engineered geometries influence negative Poisson’s ratio and mechanical performance. Covers structural design, fabrication, characterization, and computational optimization, alongside applications and challenges in scalability, reproducibility, and long-term durability.",
-      methodology: [
-        "Review of auxetic geometries, including re-entrant cells, chiral configurations, lattices, and origami-inspired structures.",
-        "Examination of additive manufacturing methods, including SLA, SLS, and FDM, alongside mechanical testing and characterization techniques.",
-        "Review of finite element modeling, topology optimization, and machine learning approaches for tailoring auxetic behavior and energy absorption."
-      ],
-      keyResults: [
-        "Supervised by Kazi Zahir Uddin (Postdoctoral Research Associate at Beckman Institute-University of Illinois Urbana-Champaign)",
-        "Co-authored with Wakil Ahmed and Dibosh Das at Chittagong University of Engineering and Technology, CUET",
-        "Comprehensive review synthesis covering structural design paradigms, multiscale fabrication, and computational optimization",
-        "Currently in review by Supervisor prior to formal publication submission and master's evaluation"
-      ]
+      title: "Ongoing Research Exploration",
+      author: "Md. Jubair Uddin Zidan",
+      authors: ["Md. Jubair Uddin Zidan"],
+      institution: "Department of Mechanical Engineering, CUET",
+      imageUrl: "/images/project_fracture_healing.jpg",
+      tags: ["Fracture Mechanics", "LS-DYNA", "Self-Healing Materials", "Crack & Healing Simulation"],
+      desc: "Exploring fracture mechanics and computational simulation of crack propagation and self-healing behavior in materials using LS-DYNA.",
+      abstract: "Exploring fracture mechanics and computational simulation of crack propagation and self-healing behavior in materials using LS-DYNA.",
+      statusNote: "Research direction under development"
     }
   ],
 
