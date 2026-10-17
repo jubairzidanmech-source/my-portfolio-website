@@ -13,7 +13,7 @@ import {
 import { BscResultsDropdown } from '../components/BscResultsDropdown';
 
 // Academic CGPA / GPA Display (Clean typography without oversized boxes or bright badges)
-const CgpaStatNumber = ({ value, max, label, sublabel, badge }) => {
+const CgpaStatNumber = ({ value, max, label, sublabel }) => {
   return (
     <div className="academic-cgpa-item">
       <div className="academic-cgpa-primary">
@@ -23,7 +23,6 @@ const CgpaStatNumber = ({ value, max, label, sublabel, badge }) => {
         <span className="academic-cgpa-scale">
           / {typeof max === 'number' ? max.toFixed(2) : max}
         </span>
-        {badge && <span className="academic-cgpa-subtle-tag">{badge}</span>}
       </div>
       <div className="academic-cgpa-info">
         <span className="academic-cgpa-label">{label}</span>
@@ -115,7 +114,6 @@ export const AcademicsPage = () => {
                   value={5.00}
                   max={5.00}
                   label="Secondary School Certificate GPA"
-                  badge="Perfect GPA"
                 />
               </div>
             </div>
@@ -169,7 +167,6 @@ export const AcademicsPage = () => {
                   value={5.00}
                   max={5.00}
                   label="Higher Secondary Certificate GPA"
-                  badge="Perfect GPA"
                 />
               </div>
             </div>
@@ -228,7 +225,6 @@ export const AcademicsPage = () => {
                   value={3.41}
                   max={4.00}
                   label="Last 4 Semesters"
-                  badge="Major Focus"
                 />
               </div>
             </div>
@@ -379,7 +375,6 @@ export const AcademicsPage = () => {
                   max={4.00}
                   label="Coursework CGPA"
                   sublabel="Theory Courses"
-                  badge="Postgraduate"
                 />
               </div>
             </div>
