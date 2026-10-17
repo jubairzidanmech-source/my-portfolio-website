@@ -11801,14 +11801,14 @@ body [style*="cursor:zoom-in"] {
               opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Expressive italic serif for selected words/phrases creating sophisticated editorial juxtaposition */
+/* Expressive italic serif for selected words/phrases (Option B: Socialhaus Architectural Playfair Display) */
 .cinematic-quote-serif {
-  font-family: 'Instrument Serif', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
   font-style: italic;
-  font-weight: 400;
-  font-size: 1.14em;
-  letter-spacing: 0.005em;
-  padding: 0 0.04em;
+  font-weight: 500;
+  font-size: 1.05em;
+  letter-spacing: -0.015em;
+  padding: 0 0.03em;
   color: var(--blue-midnight);
 }
 
