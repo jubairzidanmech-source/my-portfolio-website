@@ -171,7 +171,7 @@ export const researchData = {
       supervisorAffiliation: "Postdoctoral Research Associate at Beckman Institute-University of Illinois Urbana-Champaign",
       imageUrl: "/images/project_auxetic.jpg",
       paperUrl: "https://www.researchgate.net/profile/Md-Jubair-Zidan-2",
-      tags: ["Auxetic Metamaterials", "Energy Absorption", "Lattice Fabrication", "Mechanical Characterization", "CUET"],
+      tags: ["Auxetic Metamaterials", "Energy Absorption", "Lattice Fabrication", "Mechanical Characterization"],
       abstract: "A literature review of architected auxetic mechanical metamaterials for energy absorption, examining how engineered geometries influence negative Poisson’s ratio and mechanical performance. Covers structural design, fabrication, characterization, and computational optimization, alongside applications and challenges in scalability, reproducibility, and long-term durability.",
       methodology: [
         "Review of auxetic geometries, including re-entrant cells, chiral configurations, lattices, and origami-inspired structures.",
@@ -313,7 +313,7 @@ export const researchData = {
       statusLabel: "Awarded 2nd Prize",
       imageUrl: "/images/real_awards/award_cuet_research_fair_2023_poster2nd.png",
       certificateUrl: "/images/real_awards/award_cuet_research_fair_2023_poster2nd.png",
-      tags: ["Research Fair", "Aerodynamics", "CFD", "CUET"],
+      tags: ["Research Fair", "Aerodynamics", "CFD"],
       description: "Awarded 2nd Prize (1st Runner-Up) for Research Poster Presentation organized by the Directorate of Research and Extension, Chittagong University of Engineering & Technology (CUET). Showcased computational aerodynamic modeling, vortex dynamics, and fluid flowfield investigations."
     }
   ],
@@ -329,7 +329,7 @@ export const researchData = {
       supervisor: "Kazi Zahir Uddin",
       supervisorAffiliation: "Postdoctoral Research Associate at Beckman Institute-University of Illinois Urbana-Champaign",
       institution: "Chittagong University of Engineering and Technology, CUET",
-      tags: ["Auxetic Metamaterials", "Energy Absorption", "Additive Manufacturing", "Topology Optimization", "CUET"],
+      tags: ["Auxetic Metamaterials", "Energy Absorption", "Additive Manufacturing", "Topology Optimization"],
       overview: "A literature review of architected auxetic mechanical metamaterials for energy absorption, examining how engineered geometries influence negative Poisson’s ratio and mechanical performance. Covers structural design, fabrication, characterization, and computational optimization, alongside applications and challenges in scalability, reproducibility, and long-term durability.",
       desc: "A literature review of architected auxetic mechanical metamaterials for energy absorption, examining how engineered geometries influence negative Poisson’s ratio and mechanical performance. Covers structural design, fabrication, characterization, and computational optimization, alongside applications and challenges in scalability, reproducibility, and long-term durability.",
       deliverables: [
