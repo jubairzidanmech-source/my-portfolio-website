@@ -243,7 +243,7 @@ export const ResearchPage = () => {
                       ))}
                     </div>
 
-                    {/* Expand / Collapse Disclosure Button */}
+                    {/* Expand / Collapse Disclosure Button & Publication Action Button */}
                     <div className="pub-actions-row">
                       <button
                         onClick={() => toggleExpand(thesis.id)}
@@ -255,16 +255,14 @@ export const ResearchPage = () => {
                       </button>
 
                       <button
-                        onClick={() => setActiveModalData({
-                          title: thesis.title,
-                          subtitle: `${thesis.degree} • ${thesis.institution} (${thesis.year})`,
-                          imageUrl: thesis.imageUrl,
-                          description: thesis.abstract
-                        })}
-                        className="pub-visual-btn"
+                        type="button"
+                        onClick={() => handleOpenFullPaper(thesis)}
+                        className="pub-full-paper-btn"
+                        title="See the Full Paper"
                       >
-                        <ExternalLink size={13} />
-                        <span>View CFD Visuals</span>
+                        <FileText size={14} />
+                        <span>See the Full Paper</span>
+                        <ExternalLink size={12} />
                       </button>
                     </div>
                   </div>
