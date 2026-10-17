@@ -47,7 +47,7 @@ export const ContactPage = () => {
         {/* Editorial Page Header */}
         <div className="contact-header-wrap">
           <h1 className="contact-main-heading">
-            Get in <span className="header-badge">Touch</span>
+            Get in Touch
           </h1>
           <p className="contact-subtitle">
             Open for Ph.D. inquiries, graduate fellowships, collaborative CFD & metamaterial investigations, co-authorship, and academic seminars.

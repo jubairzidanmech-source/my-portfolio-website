@@ -72,7 +72,7 @@ export const ResearchPage = () => {
           ========================================================================= */}
       <div className="page-intro">
         <h1 className="page-title">
-          Research & <span className="header-badge">Publications</span>
+          Research & Publications
         </h1>
         <p className="page-subtitle">
           Computational fluid dynamics, aeroacoustics, aerodynamic optimization, and architected mechanical metamaterials for energy absorption and advanced structural performance.

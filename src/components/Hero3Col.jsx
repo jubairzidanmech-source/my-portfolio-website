@@ -80,7 +80,7 @@ export const Hero3Col = ({ setActivePage }) => {
                 </span>
                 <span className="hero-name-mask">
                   <span className="hero-name-line hero-name-line-2">
-                    Uddin <span className="hero-name-badge">Zidan</span>
+                    Uddin Zidan
                   </span>
                 </span>
               </h1>
