@@ -302,7 +302,7 @@ export const researchData = {
       date: "2023",
       type: "Poster Presentation",
       statusLabel: "Awarded 2nd Prize",
-      imageUrl: "/images/real_awards/award_cuet_research_fair_2023_poster2nd.png",
+      imageUrl: "/images/real/cuet_poster_presentation.jpg",
       certificateUrl: "/images/real_awards/award_cuet_research_fair_2023_poster2nd.png",
       tags: ["Research Fair", "Aerodynamics", "CFD"],
       description: "Awarded 2nd Prize (1st Runner-Up) for Research Poster Presentation organized by the Directorate of Research and Extension, Chittagong University of Engineering & Technology (CUET). Showcased computational aerodynamic modeling, vortex dynamics, and fluid flowfield investigations."
