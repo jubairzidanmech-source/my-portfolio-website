@@ -404,9 +404,9 @@ img {
 .liquid-light-pool {
   position: absolute;
   pointer-events: none;
-  will-change: transform, border-radius;
+  will-change: transform;
   opacity: 0.65;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -425,7 +425,7 @@ img {
     rgba(186, 215, 250, 0.08) 65%,
     transparent 85%
   );
-  filter: blur(35px);
+  filter: blur(10px);
   animation: liquidMorphOne 24s ease-in-out infinite alternate;
 }
 
@@ -443,7 +443,7 @@ img {
     rgba(214, 230, 252, 0.07) 65%,
     transparent 85%
   );
-  filter: blur(35px);
+  filter: blur(10px);
   animation: liquidMorphTwo 26s ease-in-out infinite alternate;
 }
 
@@ -461,7 +461,7 @@ img {
     rgba(235, 240, 247, 0.03) 75%,
     transparent 88%
   );
-  filter: blur(38px);
+  filter: blur(10px);
   animation: liquidMorphThree 28s ease-in-out infinite alternate;
 }
 
@@ -478,7 +478,7 @@ img {
     rgba(186, 215, 250, 0.10) 45%,
     transparent 80%
   );
-  filter: blur(38px);
+  filter: blur(10px);
   animation: liquidMorphOne 25s ease-in-out infinite alternate-reverse;
 }
 
@@ -495,60 +495,53 @@ img {
     rgba(224, 236, 252, 0.08) 45%,
     transparent 78%
   );
-  filter: blur(32px);
+  filter: blur(10px);
   animation: liquidMorphTwo 28s ease-in-out infinite alternate-reverse;
 }
 
-
-
-
-
-/* Smooth, Flowing Organic Morphing Keyframes (Liquid Geometry) */
+/* Pure GPU-Accelerated Fluid Drift Animations (Zero Repaint / Zero Layout Thrashing) */
 @keyframes liquidMorphOne {
   0% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
-  25% {
-    border-radius: 40% 60% 65% 35% / 45% 55% 45% 55%;
+  33% {
+    transform: translate3d(-30px, 20px, 0) rotate(-2.5deg) scale(1.03);
   }
-  50% {
-    border-radius: 65% 35% 45% 55% / 35% 65% 55% 45%;
-  }
-  75% {
-    border-radius: 35% 65% 55% 45% / 55% 35% 65% 35%;
+  66% {
+    transform: translate3d(25px, -25px, 0) rotate(2deg) scale(0.97);
   }
   100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
 }
 
 @keyframes liquidMorphTwo {
   0% {
-    border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
   30% {
-    border-radius: 55% 45% 35% 65% / 40% 60% 40% 60%;
+    transform: translate3d(30px, -25px, 0) rotate(2.5deg) scale(0.98);
   }
   60% {
-    border-radius: 35% 65% 55% 45% / 65% 35% 55% 45%;
+    transform: translate3d(-25px, 30px, 0) rotate(-2deg) scale(1.02);
   }
   100% {
-    border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
 }
 
 @keyframes liquidMorphThree {
   0% {
-    border-radius: 50% 50% 30% 70% / 50% 50% 70% 30%;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
   33% {
-    border-radius: 65% 35% 55% 45% / 45% 55% 35% 65%;
+    transform: translate3d(20px, 30px, 0) rotate(2deg) scale(0.98);
   }
   66% {
-    border-radius: 35% 65% 45% 55% / 60% 40% 65% 35%;
+    transform: translate3d(-30px, -20px, 0) rotate(-2.5deg) scale(1.04);
   }
   100% {
-    border-radius: 50% 50% 30% 70% / 50% 50% 70% 30%;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
 }
 
@@ -657,6 +650,70 @@ img {
 @media (max-width: 768px) {
   .grid-layer {
     background-size: 60px 60px;
+  }
+
+  /* Mobile Background Hardware Compositing & Viewport Stability */
+  .aesthetic-bg-grid {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    contain: strict;
+  }
+
+  .dynamic-bg-gradient-mesh {
+    inset: -5%;
+    width: 110%;
+    height: 110%;
+  }
+
+  /* Pure native shader falloff eliminates blur convolution completely on mobile */
+  .liquid-light-pool {
+    filter: none !important;
+    opacity: 0.65;
+  }
+
+  /* Scaled to mobile viewport so 3x Retina doesn't allocate 245MB VRAM tiles */
+  .liquid-light-pool-1 {
+    width: 90vw;
+    height: 60vh;
+    top: -4%;
+    left: -10%;
+  }
+
+  .liquid-light-pool-2 {
+    width: 85vw;
+    height: 55vh;
+    top: -2%;
+    right: -10%;
+  }
+
+  .liquid-light-pool-3 {
+    width: 95vw;
+    height: 65vh;
+    bottom: -10%;
+    left: -8%;
+  }
+
+  .liquid-light-pool-4 {
+    width: 80vw;
+    height: 50vh;
+    top: 35%;
+    right: -8%;
+  }
+
+  .liquid-light-pool-5 {
+    width: 75vw;
+    height: 48vh;
+    top: 22%;
+    left: 12%;
+  }
+
+  [data-theme="dark"] .liquid-light-pool {
+    mix-blend-mode: normal !important;
+    opacity: 0.72;
+    filter: blur(8px) !important;
   }
 }
 
@@ -7509,7 +7566,7 @@ img {
     rgba(14, 165, 233, 0.30) 60%,
     rgba(2, 6, 23, 0) 80%
   );
-  filter: blur(28px);
+  filter: blur(10px);
 }
 
 /* Pool 2: Luminous Wave with Ice-White Core & Electric Cyan Crest (Top-Right) */
@@ -7522,7 +7579,7 @@ img {
     rgba(30, 27, 75, 0.15) 70%,
     transparent 82%
   );
-  filter: blur(26px);
+  filter: blur(10px);
 }
 
 /* Pool 3: Deep Abyssal Ultramarine & Indigo Ocean (Bottom-Left) */
@@ -7534,7 +7591,7 @@ img {
     rgba(30, 27, 75, 0.20) 68%,
     transparent 85%
   );
-  filter: blur(30px);
+  filter: blur(10px);
 }
 
 /* Pool 4: Vivid Neon Cyan Arc with Violet-Indigo Fringe (Center-Right) */
@@ -7546,7 +7603,7 @@ img {
     rgba(124, 58, 237, 0.35) 58%,
     transparent 80%
   );
-  filter: blur(28px);
+  filter: blur(10px);
 }
 
 /* Pool 5: Translucent Ice-Blue Liquid Core with White Sheen (Center Core) */
@@ -7558,7 +7615,7 @@ img {
     rgba(0, 71, 225, 0.38) 58%,
     transparent 80%
   );
-  filter: blur(28px);
+  filter: blur(10px);
 }
 
 
