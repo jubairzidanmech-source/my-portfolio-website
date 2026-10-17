@@ -11769,7 +11769,7 @@ body [style*="cursor:zoom-in"] {
   padding: 0;
   border: none;
   text-align: center;
-  max-width: 980px;
+  max-width: 1140px;
 }
 
 /* Line-by-line reveal mask: clips overflow while preventing letter descenders from clipping */
@@ -11785,9 +11785,9 @@ body [style*="cursor:zoom-in"] {
 .cinematic-quote-line {
   display: block;
   font-family: var(--font-sans);
-  font-size: clamp(2.6rem, 5.2vw, 4.8rem);
+  font-size: clamp(2.3rem, 4.5vw, 4.3rem);
   font-weight: 600;
-  line-height: 1.18;
+  line-height: 1.22;
   letter-spacing: -0.025em;
   color: var(--blue-midnight);
   text-align: center;
@@ -11855,7 +11855,7 @@ body [style*="cursor:zoom-in"] {
 }
 
 /* --------------------------------------------------------------------------
-   STAGGERED DRAMATIC LINE-BY-LINE REVEAL (2.65–2.85s duration, 280ms stagger)
+   STAGGERED DRAMATIC LINE-BY-LINE REVEAL (2-line structure + author)
    -------------------------------------------------------------------------- */
 
 .cinematic-quote-wrapper.is-revealed .cinematic-quote-mask-1 .cinematic-quote-line {
@@ -11868,23 +11868,16 @@ body [style*="cursor:zoom-in"] {
 .cinematic-quote-wrapper.is-revealed .cinematic-quote-mask-2 .cinematic-quote-line {
   transform: translateY(0);
   opacity: 1;
-  transition: transform 2.75s cubic-bezier(0.16, 1, 0.3, 1) 280ms,
-              opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1) 280ms;
-}
-
-.cinematic-quote-wrapper.is-revealed .cinematic-quote-mask-3 .cinematic-quote-line {
-  transform: translateY(0);
-  opacity: 1;
-  transition: transform 2.85s cubic-bezier(0.16, 1, 0.3, 1) 560ms,
-              opacity 2.3s cubic-bezier(0.16, 1, 0.3, 1) 560ms;
+  transition: transform 2.75s cubic-bezier(0.16, 1, 0.3, 1) 300ms,
+              opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1) 300ms;
 }
 
 /* Reveal Carl Sagan attribution last */
 .cinematic-quote-wrapper.is-revealed .cinematic-quote-author-line {
   transform: translateY(0);
   opacity: 1;
-  transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1) 860ms,
-              opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1) 860ms;
+  transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1) 620ms,
+              opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1) 620ms;
 }
 
 /* Dark mode enhancements */
@@ -11911,8 +11904,8 @@ body [style*="cursor:zoom-in"] {
   }
 
   .cinematic-quote-line {
-    font-size: clamp(2rem, 7.5vw, 2.5rem);
-    line-height: 1.18;
+    font-size: clamp(1.65rem, 6.2vw, 2.25rem);
+    line-height: 1.24;
     letter-spacing: -0.025em;
   }
 
