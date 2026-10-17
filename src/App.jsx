@@ -27,9 +27,20 @@ export function App() {
   // Manage subtle, smooth scroll-reveal animations across sections
   useScrollReveal();
 
+  const parseTargetPage = () => {
+    // 1. Check hash: #research, #/research, etc.
+    const rawHash = (window.location.hash || '').replace(/^#\/?/, '').toLowerCase().trim();
+    if (SECTIONS.includes(rawHash)) return rawHash;
+
+    // 2. Check pathname: /research, /awards, etc.
+    const rawPath = (window.location.pathname || '').replace(/^\/+/, '').toLowerCase().trim();
+    if (SECTIONS.includes(rawPath)) return rawPath;
+
+    return 'home';
+  };
+
   const getInitialPage = () => {
-    const hash = window.location.hash.replace('#', '').toLowerCase();
-    return SECTIONS.includes(hash) ? hash : 'home';
+    return parseTargetPage();
   };
 
   const [activePage, setActivePage] = useState(getInitialPage);
@@ -67,7 +78,7 @@ export function App() {
         window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
       }
       try {
-        window.history.replaceState(null, '', ' ');
+        window.history.replaceState(null, '', window.location.pathname.length > 1 ? window.location.pathname : ' ');
       } catch (e) {}
       return;
     }
@@ -95,29 +106,29 @@ export function App() {
     }
   };
 
-  // On initial mount, if URL has a hash, scroll to that section
+  // On initial mount, if URL has a section hash or path, scroll to that section
   useEffect(() => {
-    const hash = window.location.hash.replace('#', '').toLowerCase();
-    if (SECTIONS.includes(hash) && hash !== 'home') {
+    const target = parseTargetPage();
+    if (target && target !== 'home') {
       setTimeout(() => {
-        scrollToSection(hash, false);
+        scrollToSection(target, false);
       }, 150);
     }
   }, []);
 
-  // Sync with browser back/forward buttons (hashchange)
+  // Sync with browser back/forward buttons (hashchange and popstate)
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (SECTIONS.includes(hash)) {
-        scrollToSection(hash, true);
-      } else {
-        scrollToSection('home', true);
-      }
+    const handleUrlChange = () => {
+      const target = parseTargetPage();
+      scrollToSection(target, true);
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('hashchange', handleUrlChange);
+    window.addEventListener('popstate', handleUrlChange);
+    return () => {
+      window.removeEventListener('hashchange', handleUrlChange);
+      window.removeEventListener('popstate', handleUrlChange);
+    };
   }, []);
 
   // ScrollSpy: Accurately highlight current section in navbar using viewport screen coordinates
