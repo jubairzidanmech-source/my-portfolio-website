@@ -46,8 +46,8 @@ export function useScrollReveal() {
         }
       });
 
-      // Descriptions and subtitles to fade-up
-      const descriptions = section.querySelectorAll('.page-subtitle, .contact-subtitle, .research-subnav-bar');
+      // Descriptions, subtitles and metadata badges to fade-up
+      const descriptions = section.querySelectorAll('.page-subtitle, .contact-subtitle, .research-subnav-bar, .section-count-badge');
       descriptions.forEach((desc) => {
         desc.classList.add('reveal-desc');
       });
@@ -79,7 +79,7 @@ export function useScrollReveal() {
     document.body.classList.add('scroll-reveal-ready');
 
     // 3. Dual-Observer Architecture with Hysteresis (Prevents flickering & enables bidirectional repeat)
-    // Reveal Observer: triggers when element enters viewport
+    // Reveal Observer: triggers early when element approaches viewport to eliminate blank/empty space during fast scrolls
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -89,8 +89,8 @@ export function useScrollReveal() {
         });
       },
       {
-        threshold: 0.08,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.01,
+        rootMargin: '80px 0px 80px 0px'
       }
     );
 
@@ -105,7 +105,7 @@ export function useScrollReveal() {
       },
       {
         threshold: 0,
-        rootMargin: '50px 0px 50px 0px'
+        rootMargin: '160px 0px 160px 0px'
       }
     );
 
@@ -120,9 +120,9 @@ export function useScrollReveal() {
     );
 
     elementsToObserve.forEach((el) => {
-      // If already in viewport on mount, reveal immediately
+      // If already in or near viewport on mount, reveal immediately
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 40 && rect.bottom > 40) {
+      if (rect.top < window.innerHeight + 80 && rect.bottom > -80) {
         el.classList.add('is-revealed');
       }
 
