@@ -2668,12 +2668,17 @@ img {
 
 /* Experience & Leadership Org Logo Box: Frosted Glass Container with Luminous White Icon */
 .exp-card:hover .exp-org-logo-box,
-.leadership-card:hover .exp-org-logo-box,
 .exp-card:hover .leadership-logo-box,
 .leadership-card:hover .leadership-logo-box {
   background: rgba(255, 255, 255, 0.24) !important;
   border: 1px solid rgba(255, 255, 255, 0.45) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16) !important;
+}
+
+.leadership-card:hover .exp-org-logo-box {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
 }
 
 .exp-card:hover .exp-org-logo-box svg,
@@ -6295,10 +6300,10 @@ img {
 
 /* Small, Consistently Sized Organization Logos (38px x 38px) */
 .exp-org-logo-box {
-  width: 38px;
-  height: 38px;
-  min-width: 38px;
-  border-radius: 9px;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 10px;
   background: #FFFFFF;
   border: 1px solid var(--border-subtle);
   display: flex;
@@ -6318,6 +6323,43 @@ img {
 
 .exp-logo-icon {
   color: var(--blue-royal);
+}
+
+/* Prominent Extracurricular & Leadership Organization Logos (68px x 68px) */
+.leadership-card .exp-org-logo-box {
+  width: 68px;
+  height: 68px;
+  min-width: 68px;
+  border-radius: 14px;
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 23, 42, 0.09);
+  padding: 6px;
+  box-shadow: 0 2px 8px rgba(11, 19, 43, 0.05);
+  margin-top: 2px;
+}
+
+.leadership-card .exp-logo-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.leadership-card .exp-card-header {
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .leadership-card .exp-org-logo-box {
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    border-radius: 12px;
+    padding: 5px;
+  }
+
+  .leadership-card .exp-logo-icon {
+    width: 26px;
+    height: 26px;
+  }
 }
 
 .exp-header-text {
@@ -8280,6 +8322,13 @@ img {
 [data-theme="dark"] .leadership-logo-placeholder {
   background: rgba(30, 41, 59, 0.8) !important;
   border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Ensure Extracurricular & Leadership logos pop with maximum contrast and clarity in Dark Mode */
+[data-theme="dark"] .leadership-card .exp-org-logo-box {
+  background: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
 }
 
 [data-theme="dark"] .exp-card:hover .exp-org-logo-box,
