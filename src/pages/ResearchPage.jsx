@@ -667,20 +667,14 @@ export const ResearchPage = () => {
                       <span className="pub-location">{poster.venue}</span>
                     </div>
 
-                    {poster.description && (
-                      <p className="pub-card-desc" style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.45, margin: '6px 0 8px 0' }}>
-                        {poster.description}
-                      </p>
-                    )}
-
-                    <div className="pub-tags-row">
+                    <div className="pub-tags-row" style={{ marginTop: '6px' }}>
                       {(poster.tags || []).map((tag, tIdx) => (
                         <span key={tIdx} className="pub-tag-pill">{tag}</span>
                       ))}
                     </div>
 
                     {/* Action Buttons: View Full Poster & View Certificate */}
-                    <div className="pub-actions-row" style={{ marginTop: 'auto', paddingTop: '10px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                    <div className="pub-actions-row" style={{ marginTop: '8px', paddingTop: '4px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                       {fullPosterImg && (
                         <button
                           type="button"
