@@ -66,15 +66,14 @@ export const Navbar = ({ activePage, setActivePage, theme, toggleTheme, hasAnnou
       <header className={`site-navbar ${scrolled ? 'scrolled' : ''} ${hasAnnouncement ? 'with-announcement' : ''}`}>
         <div className="nav-outer-shell">
           <div className="nav-container">
-            {/* Brand Identity: Official Logo a.png (Dark Mode) / b.png (Light Mode) */}
+            {/* Brand Identity: Official Logo a.png (White script on blue/dark background) */}
             <button 
               className="brand-link" 
               onClick={() => handleNavClick('home')}
               aria-label="Jubair Zidan - Home"
             >
               <img 
-                key={theme}
-                src={theme === 'dark' ? '/a.png' : '/b.png'} 
+                src="/a.png" 
                 alt="Jubair Zidan" 
                 className="brand-logo-img" 
               />

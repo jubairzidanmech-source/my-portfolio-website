@@ -85,25 +85,9 @@ export const ExperiencePage = () => {
 
             <div className="exp-divider" />
 
-            {/* Body: Overview + Contained Supporting Image */}
+            {/* Body: Contained Supporting Image on Left + Overview on Right */}
             <div className="exp-body-row">
-              <div className="exp-overview-col">
-                <p className="exp-overview-text">
-                  {experienceData.internship.overview}
-                </p>
-
-                {/* Expandable Technical Responsibilities Toggle */}
-                <button
-                  onClick={() => toggleSection('internship-learnings')}
-                  className="pub-expand-btn"
-                  aria-expanded={Boolean(expandedSections['internship-learnings'])}
-                >
-                  <span>{expandedSections['internship-learnings'] ? 'Hide Technical Responsibilities & Systems' : `View Key Technical Responsibilities & Learnings (${experienceData.internship.keyLearnings.length})`}</span>
-                  {expandedSections['internship-learnings'] ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                </button>
-              </div>
-
-              {/* Contained supporting image (doesn't overpower role details) */}
+              {/* Contained supporting image on the left side */}
               <div 
                 className="exp-contained-image-box"
                 style={{ cursor: 'zoom-in', position: 'relative' }}
@@ -121,6 +105,22 @@ export const ExperiencePage = () => {
                   className="exp-contained-image"
                 />
                 <span className="exp-image-caption">RPCL Raozan Facility (Click to Enlarge)</span>
+              </div>
+
+              <div className="exp-overview-col">
+                <p className="exp-overview-text">
+                  {experienceData.internship.overview}
+                </p>
+
+                {/* Expandable Technical Responsibilities Toggle */}
+                <button
+                  onClick={() => toggleSection('internship-learnings')}
+                  className="pub-expand-btn"
+                  aria-expanded={Boolean(expandedSections['internship-learnings'])}
+                >
+                  <span>{expandedSections['internship-learnings'] ? 'Hide Technical Responsibilities & Systems' : `View Key Technical Responsibilities & Learnings (${experienceData.internship.keyLearnings.length})`}</span>
+                  {expandedSections['internship-learnings'] ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                </button>
               </div>
             </div>
 

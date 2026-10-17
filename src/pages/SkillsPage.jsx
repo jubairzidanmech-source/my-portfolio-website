@@ -21,6 +21,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { skillsData } from '../data/portfolioData';
+import { SoftwareLogo } from '../components/SoftwareLogo';
 
 export const SkillsPage = () => {
   // Category Icons: strictly identical size (17px) & stroke width (2)
@@ -128,7 +129,7 @@ export const SkillsPage = () => {
               <div className="skill-tools-wrap">
                 {cat.skills.map((skill, sIdx) => (
                   <span key={sIdx} className="skill-tool-pill">
-                    <span className="skill-tool-dot" />
+                    <SoftwareLogo name={skill} size={15} />
                     <span>{skill}</span>
                   </span>
                 ))}
