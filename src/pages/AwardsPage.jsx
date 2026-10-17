@@ -4,6 +4,7 @@ import {
   ChevronUp, 
   ExternalLink,
   FileText,
+  Award,
   Compass
 } from 'lucide-react';
 import { awardsData } from '../data/portfolioData';
@@ -225,6 +226,23 @@ const AwardCard = ({
             <span>{visualBtnText}</span>
           </button>
 
+          {item.certificateUrl && (
+            <button
+              type="button"
+              onClick={() => onOpenModal({
+                title: `${title} - Official Certificate`,
+                subtitle: `${authorLabel || ''} ${venueLabel ? `• ${venueLabel}` : ''} ${displayYear ? `(${displayYear})` : ''}`,
+                imageUrl: item.certificateUrl,
+                description: `Official Participation & Presentation Certificate: ${item.description}`
+              })}
+              className="pub-visual-btn"
+              title="View official participation certificate"
+            >
+              <Award size={13} />
+              <span>View Certificate</span>
+            </button>
+          )}
+
           {item.verificationUrl && (
             <a
               href={item.verificationUrl}
@@ -267,28 +285,57 @@ const AwardCard = ({
           </div>
 
           <div className="pub-detail-section">
-            <h4 className="pub-detail-heading">Award Image Artifact (Click to Enlarge)</h4>
-            <div 
-              className="award-expanded-img-box"
-              onClick={() => onOpenModal({
-                title: title,
-                subtitle: `${authorLabel || ''} ${venueLabel ? `• ${venueLabel}` : ''} ${displayYear ? `(${displayYear})` : ''}`,
-                imageUrl: imageUrl,
-                description: item.description
-              })}
-              title="Click to view full image"
-            >
-              <img
-                src={imageUrl}
-                alt={title}
-                className="award-expanded-img"
-              />
-              <div className="award-side-overlay">
-                <span className="award-thumb-zoom-badge">
-                  <ExternalLink size={12} />
-                  <span>View Full Image</span>
-                </span>
+            <h4 className="pub-detail-heading">Award & Credential Artifacts (Click to Enlarge)</h4>
+            <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+              <div 
+                className="award-expanded-img-box"
+                style={{ flex: '1 1 200px', maxWidth: '320px' }}
+                onClick={() => onOpenModal({
+                  title: title,
+                  subtitle: `${authorLabel || ''} ${venueLabel ? `• ${venueLabel}` : ''} ${displayYear ? `(${displayYear})` : ''}`,
+                  imageUrl: imageUrl,
+                  description: item.description
+                })}
+                title="Click to view award crest"
+              >
+                <img
+                  src={imageUrl}
+                  alt={title}
+                  className="award-expanded-img"
+                />
+                <div className="award-side-overlay">
+                  <span className="award-thumb-zoom-badge">
+                    <ExternalLink size={12} />
+                    <span>View Award Crest</span>
+                  </span>
+                </div>
               </div>
+
+              {item.certificateUrl && (
+                <div 
+                  className="award-expanded-img-box"
+                  style={{ flex: '1 1 200px', maxWidth: '320px' }}
+                  onClick={() => onOpenModal({
+                    title: `${title} - Official Certificate`,
+                    subtitle: `${authorLabel || ''} ${venueLabel ? `• ${venueLabel}` : ''} ${displayYear ? `(${displayYear})` : ''}`,
+                    imageUrl: item.certificateUrl,
+                    description: item.description
+                  })}
+                  title="Click to view official certificate"
+                >
+                  <img
+                    src={item.certificateUrl}
+                    alt={`${title} Certificate`}
+                    className="award-expanded-img"
+                  />
+                  <div className="award-side-overlay">
+                    <span className="award-thumb-zoom-badge">
+                      <Award size={12} />
+                      <span>View Certificate</span>
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

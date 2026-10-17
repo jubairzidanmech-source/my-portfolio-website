@@ -679,8 +679,8 @@ export const ResearchPage = () => {
                       ))}
                     </div>
 
-                    {/* Action Button: View the Full Poster Only */}
-                    <div className="pub-actions-row" style={{ marginTop: 'auto', paddingTop: '10px' }}>
+                    {/* Action Buttons: View Full Poster & View Certificate */}
+                    <div className="pub-actions-row" style={{ marginTop: 'auto', paddingTop: '10px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                       {fullPosterImg && (
                         <button
                           type="button"
@@ -695,6 +695,23 @@ export const ResearchPage = () => {
                         >
                           <FileText size={13} />
                           <span>View the Full Poster</span>
+                        </button>
+                      )}
+
+                      {poster.certificateUrl && (
+                        <button
+                          type="button"
+                          onClick={() => setActiveModalData({
+                            title: `${poster.title} - Official Certificate`,
+                            subtitle: `${poster.event} (${poster.date})${poster.posterId ? ` • ${poster.posterId}` : ''}`,
+                            imageUrl: poster.certificateUrl,
+                            description: `Official Participation & Presentation Certificate for "${poster.title}" presented at ${poster.event}.`
+                          })}
+                          className="pub-visual-btn"
+                          title="View official participation certificate"
+                        >
+                          <Award size={13} />
+                          <span>View Certificate</span>
                         </button>
                       )}
                     </div>
