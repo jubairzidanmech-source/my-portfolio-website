@@ -23,7 +23,7 @@ const SECTIONS = ['home', 'academics', 'research', 'awards', 'experience', 'skil
 export function App() {
   // Initialize and manage global Lenis smooth momentum scrolling
   useLenis();
-  // Manage subtle, smooth scroll-reveal animations across sections
+  // Manage bidirectional, repeatable scroll-reveal animations across sections
   useScrollReveal();
 
   const getInitialPage = () => {
@@ -160,22 +160,22 @@ export function App() {
       setActivePage((prev) => (prev !== currentSection ? currentSection : prev));
     };
 
-    let lastCheck = 0;
+    let rafId = null;
     const handleScroll = () => {
-      const now = performance.now();
-      if (now - lastCheck > 120) {
-        lastCheck = now;
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
         updateActiveSection();
-      }
+        rafId = null;
+      });
     };
 
     if (window.lenis) {
       window.lenis.on('scroll', handleScroll);
-    } else {
-      window.addEventListener('scroll', handleScroll, { passive: true });
     }
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
+      if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener('scroll', handleScroll);
       if (window.lenis) {
         window.lenis.off('scroll', handleScroll);

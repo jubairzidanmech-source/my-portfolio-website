@@ -400,15 +400,15 @@ img {
     radial-gradient(ellipse 90% 50% at 50% 14%, rgba(186, 215, 250, 0.42) 0%, rgba(214, 230, 252, 0.25) 45%, rgba(235, 240, 247, 0.05) 80%, transparent 100%);
 }
 
-/* Individual organic liquid light pools in soft, harmonious pale blue tones */
+/* Individual organic liquid light pools in soft, harmonious pale blue tones (100% GPU Hardware Accelerated, No Filter Blur Overhead) */
 .liquid-light-pool {
   position: absolute;
   pointer-events: none;
-  will-change: transform;
   opacity: 0.65;
   transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  will-change: transform;
 }
 
 /* Pool 1: Subtle cerulean blue glow behind the hero left */
@@ -417,15 +417,14 @@ img {
   left: -6%;
   width: 1300px;
   height: 1050px;
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  border-radius: 50%;
   background: radial-gradient(
-    ellipse 70% 65% at 45% 45%,
-    rgba(59, 130, 246, 0.24) 0%,
-    rgba(96, 165, 250, 0.16) 35%,
-    rgba(186, 215, 250, 0.08) 65%,
-    transparent 85%
+    ellipse 60% 55% at 50% 50%,
+    rgba(59, 130, 246, 0.20) 0%,
+    rgba(96, 165, 250, 0.12) 30%,
+    rgba(186, 215, 250, 0.05) 55%,
+    transparent 72%
   );
-  filter: blur(35px);
   animation: liquidMorphOne 24s ease-in-out infinite alternate;
 }
 
@@ -435,15 +434,14 @@ img {
   right: -6%;
   width: 1250px;
   height: 1000px;
-  border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+  border-radius: 50%;
   background: radial-gradient(
-    ellipse 65% 60% at 42% 42%,
-    rgba(96, 165, 250, 0.22) 0%,
-    rgba(147, 197, 253, 0.15) 35%,
-    rgba(214, 230, 252, 0.07) 65%,
-    transparent 85%
+    ellipse 60% 55% at 50% 50%,
+    rgba(96, 165, 250, 0.18) 0%,
+    rgba(147, 197, 253, 0.11) 32%,
+    rgba(214, 230, 252, 0.05) 55%,
+    transparent 72%
   );
-  filter: blur(35px);
   animation: liquidMorphTwo 26s ease-in-out infinite alternate;
 }
 
@@ -453,15 +451,14 @@ img {
   left: 5%;
   width: 1350px;
   height: 1150px;
-  border-radius: 50% 50% 30% 70% / 50% 50% 70% 30%;
+  border-radius: 50%;
   background: radial-gradient(
-    ellipse 75% 70% at 50% 50%,
-    rgba(186, 215, 250, 0.16) 0%,
-    rgba(214, 230, 252, 0.10) 45%,
-    rgba(235, 240, 247, 0.03) 75%,
-    transparent 88%
+    ellipse 65% 60% at 50% 50%,
+    rgba(186, 215, 250, 0.14) 0%,
+    rgba(214, 230, 252, 0.08) 35%,
+    rgba(235, 240, 247, 0.03) 60%,
+    transparent 75%
   );
-  filter: blur(38px);
   animation: liquidMorphThree 28s ease-in-out infinite alternate;
 }
 
@@ -471,14 +468,13 @@ img {
   right: -4%;
   width: 1150px;
   height: 950px;
-  border-radius: 60% 40% 50% 50% / 40% 60% 40% 60%;
+  border-radius: 50%;
   background: radial-gradient(
-    ellipse 65% 60% at 50% 50%,
-    rgba(147, 197, 253, 0.16) 0%,
-    rgba(186, 215, 250, 0.10) 45%,
-    transparent 80%
+    ellipse 60% 55% at 50% 50%,
+    rgba(147, 197, 253, 0.14) 0%,
+    rgba(186, 215, 250, 0.08) 35%,
+    transparent 70%
   );
-  filter: blur(38px);
   animation: liquidMorphOne 25s ease-in-out infinite alternate-reverse;
 }
 
@@ -488,14 +484,13 @@ img {
   left: 25%;
   width: 1050px;
   height: 900px;
-  border-radius: 45% 55% 65% 35% / 55% 45% 35% 65%;
+  border-radius: 50%;
   background: radial-gradient(
-    ellipse 60% 60% at 50% 50%,
-    rgba(186, 215, 250, 0.14) 0%,
-    rgba(224, 236, 252, 0.08) 45%,
-    transparent 78%
+    ellipse 55% 55% at 50% 50%,
+    rgba(186, 215, 250, 0.12) 0%,
+    rgba(224, 236, 252, 0.06) 35%,
+    transparent 70%
   );
-  filter: blur(32px);
   animation: liquidMorphTwo 28s ease-in-out infinite alternate-reverse;
 }
 
@@ -11209,7 +11204,7 @@ body [style*="cursor:zoom-in"] {
   letter-spacing: -0.02em;
 }
 
-/* 2. Full-bleed continuous conveyor wrapper with bidirectional curved ribbon */
+/* 2. Full-bleed continuous conveyor wrapper (minimal, clean, photography-focused) */
 .milestones-marquee-wrapper {
   position: relative;
   width: 100vw;
@@ -11218,25 +11213,14 @@ body [style*="cursor:zoom-in"] {
   margin-left: -50vw;
   margin-right: -50vw;
   overflow: hidden;
-  padding: 0;
+  padding: 24px 0 32px;
   min-height: 400px;
   user-select: none;
   cursor: grab;
   touch-action: pan-y;
   background: transparent !important;
-  /* Bidirectional Concave Curve: Top curves DOWN in center, Bottom curves UP in center */
-  clip-path: polygon(
-    0% 0%, 5% 2.5%, 10% 4.8%, 15% 6.9%, 20% 8.6%, 25% 10.1%, 30% 11.3%, 35% 12.3%, 40% 13.0%, 45% 13.4%, 50% 13.5%,
-    55% 13.4%, 60% 13.0%, 65% 12.3%, 70% 11.3%, 75% 10.1%, 80% 8.6%, 85% 6.9%, 90% 4.8%, 95% 2.5%, 100% 0%,
-    100% 100%, 95% 97.5%, 90% 95.2%, 85% 93.1%, 80% 91.4%, 75% 89.9%, 70% 88.7%, 65% 87.7%, 60% 87.0%, 55% 86.6%, 50% 86.5%,
-    45% 86.6%, 40% 87.0%, 35% 87.7%, 30% 88.7%, 25% 89.9%, 20% 91.4%, 15% 93.1%, 10% 95.2%, 5% 97.5%, 0% 100%
-  );
-  -webkit-clip-path: polygon(
-    0% 0%, 5% 2.5%, 10% 4.8%, 15% 6.9%, 20% 8.6%, 25% 10.1%, 30% 11.3%, 35% 12.3%, 40% 13.0%, 45% 13.4%, 50% 13.5%,
-    55% 13.4%, 60% 13.0%, 65% 12.3%, 70% 11.3%, 75% 10.1%, 80% 8.6%, 85% 6.9%, 90% 4.8%, 95% 2.5%, 100% 0%,
-    100% 100%, 95% 97.5%, 90% 95.2%, 85% 93.1%, 80% 91.4%, 75% 89.9%, 70% 88.7%, 65% 87.7%, 60% 87.0%, 55% 86.6%, 50% 86.5%,
-    45% 86.6%, 40% 87.0%, 35% 87.7%, 30% 88.7%, 25% 89.9%, 20% 91.4%, 15% 93.1%, 10% 95.2%, 5% 97.5%, 0% 100%
-  );
+  -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
 }
 
 .milestones-marquee-wrapper.is-grabbing,
@@ -11248,46 +11232,56 @@ body [style*="cursor:zoom-in"] {
 .milestones-marquee-track {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
   width: max-content;
   will-change: transform;
   pointer-events: auto;
   background: transparent !important;
 }
 
-/* 3. Wide Photography Cards (Reference Design: Wide format, No rounded edges) */
+/* 3. Tall Portrait-Oriented Photography Cards with Soft Rounded Corners */
 .marquee-photo-card {
   position: relative;
   flex-shrink: 0;
-  width: 380px;
-  height: 400px;
-  border-radius: 0 !important;
+  width: 250px;
+  height: 360px;
+  border-radius: 20px !important;
   overflow: hidden;
   cursor: pointer;
   background-color: var(--bg-card-subtle);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.16);
   transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 320ms ease, border-color 320ms ease;
 }
 
+/* Subtle organic rotations (±2–3°) for natural editorial feel */
+.marquee-photo-card:nth-child(8n + 1) { transform: rotate(-2.2deg); }
+.marquee-photo-card:nth-child(8n + 2) { transform: rotate(1.8deg); }
+.marquee-photo-card:nth-child(8n + 3) { transform: rotate(-1.5deg); }
+.marquee-photo-card:nth-child(8n + 4) { transform: rotate(2.4deg); }
+.marquee-photo-card:nth-child(8n + 5) { transform: rotate(-2.1deg); }
+.marquee-photo-card:nth-child(8n + 6) { transform: rotate(1.6deg); }
+.marquee-photo-card:nth-child(8n + 7) { transform: rotate(-2.3deg); }
+.marquee-photo-card:nth-child(8n + 8) { transform: rotate(2.0deg); }
+
 [data-theme="light"] .marquee-photo-card {
   border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 10px 22px -6px rgba(0, 0, 0, 0.08);
 }
 
-/* Hover: Pops out prominently with vertical lift, scale, and rich luminous elevation */
+/* Hover: subtle elegant lift, upright alignment, and rich shadow */
 .marquee-photo-card:hover,
 .marquee-photo-card:focus-visible {
-  transform: translateY(-16px) scale(1.06);
-  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.45), 0 0 0 2px var(--accent-blue);
-  border-color: rgba(37, 99, 235, 0.8);
+  transform: translateY(-8px) rotate(0deg) !important;
+  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.40), 0 0 0 1.5px var(--accent-blue);
+  border-color: rgba(37, 99, 235, 0.7);
   z-index: 10;
   outline: none;
 }
 
 [data-theme="light"] .marquee-photo-card:hover,
 [data-theme="light"] .marquee-photo-card:focus-visible {
-  box-shadow: 0 24px 50px -10px rgba(15, 23, 42, 0.28), 0 10px 20px -4px rgba(15, 23, 42, 0.16), 0 0 0 2px var(--accent-blue);
+  box-shadow: 0 20px 40px -8px rgba(15, 23, 42, 0.22), 0 0 0 1.5px var(--accent-blue);
 }
 
 .marquee-card-img {
@@ -11296,22 +11290,24 @@ body [style*="cursor:zoom-in"] {
   object-fit: cover;
   display: block;
   pointer-events: none;
+  border-radius: 20px;
   transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .marquee-photo-card:hover .marquee-card-img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
-/* Pure Photography First: overlay gently reveals on hover, keeping photos luminous */
+/* Pure Photography First: bottom gradient overlay keeps typography crisp */
 .marquee-card-overlay {
   position: absolute;
   inset: 0;
+  border-radius: 20px;
   background: linear-gradient(
     to bottom,
-    transparent 50%,
-    rgba(0, 0, 0, 0.42) 75%,
-    rgba(0, 0, 0, 0.88) 100%
+    transparent 52%,
+    rgba(0, 0, 0, 0.38) 74%,
+    rgba(0, 0, 0, 0.84) 100%
   );
   display: flex;
   flex-direction: column;
@@ -11320,7 +11316,7 @@ body [style*="cursor:zoom-in"] {
   color: #FFFFFF;
   text-align: left;
   pointer-events: none;
-  opacity: 0;
+  opacity: 0.95;
   transition: opacity 280ms ease;
 }
 
@@ -11346,12 +11342,12 @@ body [style*="cursor:zoom-in"] {
 }
 
 .marquee-card-title {
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   font-weight: 700;
   line-height: 1.25;
   color: #FFFFFF;
   margin: 0;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .marquee-card-expand {
@@ -11367,26 +11363,32 @@ body [style*="cursor:zoom-in"] {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .milestones-section {
-    margin-top: 36px;
-    margin-bottom: 28px;
+    margin-top: 32px;
+    margin-bottom: 24px;
   }
 
   .milestones-title {
-    font-size: 1.7rem;
+    font-size: 1.75rem;
+  }
+
+  .milestones-marquee-wrapper {
+    padding: 18px 0 24px;
+    min-height: 320px;
   }
 
   .marquee-photo-card {
-    width: 280px;
-    height: 280px;
-    border-radius: 0 !important;
+    width: 200px;
+    height: 290px;
+    border-radius: 16px !important;
+  }
+
+  .marquee-card-img,
+  .marquee-card-overlay {
+    border-radius: 16px;
   }
 
   .milestones-marquee-track {
     gap: 16px;
-  }
-
-  .milestones-curve-overlay {
-    height: 55px;
   }
 }
 
@@ -11561,7 +11563,4 @@ body [style*="cursor:zoom-in"] {
     overflow: visible !important;
   }
 }
-
-
-
 
