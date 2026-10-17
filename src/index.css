@@ -4956,7 +4956,7 @@ img {
 
 .pub-list-card.is-cert-card .award-card-media-side {
   width: 175px;
-  min-height: 180px;
+  min-height: 135px;
   align-self: stretch;
 }
 

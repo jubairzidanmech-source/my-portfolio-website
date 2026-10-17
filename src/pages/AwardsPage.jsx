@@ -87,25 +87,12 @@ const AwardCard = ({
 
             <div className="pub-citation">
               <span className="pub-author highlight">{authorLabel}</span>
-              {venueLabel && (
-                <>
-                  <span className="pub-sep">•</span>
-                  <span className="pub-venue">{venueLabel}</span>
-                </>
-              )}
             </div>
 
-            {/* Core Topic Overview */}
-            {(item.topicSummary || item.description) && (
-              <p className="cert-topic-desc">
-                {item.topicSummary || item.description}
-              </p>
-            )}
-
-            {/* Key Topic Competencies */}
-            {item.topics && item.topics.length > 0 && (
-              <div className="pub-tags-row" style={{ marginTop: '6px', marginBottom: '8px' }}>
-                {item.topics.map((topic, tIdx) => (
+            {/* Key Topic Competencies (Max 3) */}
+            {(item.topics || item.tags) && (item.topics || item.tags).length > 0 && (
+              <div className="pub-tags-row" style={{ marginTop: '8px', marginBottom: '8px' }}>
+                {(item.topics || item.tags).slice(0, 3).map((topic, tIdx) => (
                   <span key={tIdx} className="pub-tag-pill">{topic}</span>
                 ))}
               </div>
