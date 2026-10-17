@@ -377,11 +377,6 @@ export const ExperiencePage = () => {
                         <span className="exp-category-pill category-leadership">Leadership</span>
                       </div>
                       <div className="exp-org-name">{item.organization}</div>
-                      {item.tagline && (
-                        <div className="leadership-tagline">
-                          {item.tagline}
-                        </div>
-                      )}
                       <div className="exp-meta-row">
                         <span className="exp-meta-period">{item.period}</span>
                         <span className="exp-meta-dot">·</span>
@@ -410,6 +405,11 @@ export const ExperiencePage = () => {
                   {/* Responsibilities list with Thin Dividers */}
                   {isExpanded && (
                     <div className="exp-divided-list" style={{ marginTop: '12px' }}>
+                      {item.tagline && (
+                        <p className="exp-overview-text" style={{ marginBottom: '12px', fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
+                          {item.tagline}
+                        </p>
+                      )}
                       {item.highlights.map((hl, hIdx) => (
                         <div key={hIdx} className="exp-divided-item">
                           <div className="exp-item-point">
@@ -466,11 +466,6 @@ export const ExperiencePage = () => {
                         </span>
                       </div>
                       <div className="exp-org-name">{item.role}</div>
-                      {item.tagline && (
-                        <div className="leadership-tagline">
-                          {item.tagline}
-                        </div>
-                      )}
                       <div className="exp-meta-row">
                         <span className="exp-meta-period">Duration : {item.period}</span>
                         <span className="exp-meta-dot">·</span>
@@ -482,12 +477,6 @@ export const ExperiencePage = () => {
                   </div>
 
                   <div className="exp-divider" />
-
-                  {item.description && (
-                    <p className="exp-overview-text" style={{ marginBottom: '14px', fontSize: '0.88rem' }}>
-                      {item.description}
-                    </p>
-                  )}
 
                   {/* Expandable Key Initiatives Toggle */}
                   {item.highlights && item.highlights.length > 0 && (
@@ -504,6 +493,11 @@ export const ExperiencePage = () => {
 
                       {isExpanded && (
                         <div className="exp-divided-list" style={{ marginTop: '12px' }}>
+                          {(item.description || item.tagline) && (
+                            <p className="exp-overview-text" style={{ marginBottom: '12px', fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
+                              {item.description || item.tagline}
+                            </p>
+                          )}
                           {item.highlights.map((hl, hIdx) => (
                             <div key={hIdx} className="exp-divided-item">
                               <div className="exp-item-point">

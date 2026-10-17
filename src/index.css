@@ -6532,40 +6532,52 @@ img {
   color: var(--blue-royal);
 }
 
-/* Prominent Extracurricular & Leadership Organization Logos (68px x 68px) */
+/* Compact Leadership & Extracurricular Organization Logos (54px x 54px) */
+.leadership-card {
+  padding: 18px 22px;
+}
+
 .leadership-card .exp-org-logo-box {
-  width: 68px;
-  height: 68px;
-  min-width: 68px;
-  border-radius: 14px;
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  border-radius: 12px;
   background: #FFFFFF;
   border: 1px solid rgba(15, 23, 42, 0.09);
-  padding: 6px;
+  padding: 5px;
   box-shadow: 0 2px 8px rgba(11, 19, 43, 0.05);
   margin-top: 2px;
 }
 
 .leadership-card .exp-logo-icon {
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
 }
 
 .leadership-card .exp-card-header {
-  gap: 16px;
+  gap: 14px;
+}
+
+.leadership-card .exp-divider {
+  margin: 12px 0 10px;
 }
 
 @media (max-width: 640px) {
+  .leadership-card {
+    padding: 16px 18px;
+  }
+
   .leadership-card .exp-org-logo-box {
-    width: 58px;
-    height: 58px;
-    min-width: 58px;
-    border-radius: 12px;
-    padding: 5px;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 10px;
+    padding: 4px;
   }
 
   .leadership-card .exp-logo-icon {
-    width: 26px;
-    height: 26px;
+    width: 22px;
+    height: 22px;
   }
 }
 
