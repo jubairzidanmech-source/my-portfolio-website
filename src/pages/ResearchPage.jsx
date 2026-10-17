@@ -36,8 +36,9 @@ export const ResearchPage = () => {
   };
 
   const handleOpenFullPaper = (paper) => {
-    const targetUrl = paper.paperUrl || "https://www.researchgate.net/profile/Md-Jubair-Zidan-2";
-    window.open(targetUrl, '_blank', 'noopener,noreferrer');
+    if (paper && paper.paperUrl) {
+      window.open(paper.paperUrl, '_blank', 'noopener,noreferrer');
+    }
   };
 
   const projectFields = ['All', 'Fluid Mechanics', 'Materials Science'];
@@ -386,7 +387,8 @@ export const ResearchPage = () => {
                         type="button"
                         onClick={() => handleOpenFullPaper(paper)}
                         className="pub-full-paper-btn"
-                        title="See the Full Paper"
+                        title={paper.paperUrl ? "See the Full Paper" : "Paper Link Coming Soon"}
+                        disabled={!paper.paperUrl}
                       >
                         <FileText size={14} />
                         <span>See the Full Paper</span>
