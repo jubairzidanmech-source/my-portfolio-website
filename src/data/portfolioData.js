@@ -58,6 +58,8 @@ export const academicsData = [
     field: "Mechanical Engineering",
     institution: "Chittagong University of Engineering and Technology (CUET)",
     logoUrl: "/images/real/cuet_logo.png",
+    certificateUrl: "/images/real/cuet_bsc_certificate.jpg",
+    certificatePdfUrl: "/docs/CUET_BSc_Mechanical_Engineering_Certificate.pdf",
     period: "2019 – 2024",
     status: "Graduated",
     isOngoing: false,

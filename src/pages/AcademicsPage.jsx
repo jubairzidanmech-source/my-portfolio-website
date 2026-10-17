@@ -8,6 +8,7 @@ import {
   Eye, 
   FileText, 
   ExternalLink, 
+  Download,
   X 
 } from 'lucide-react';
 import { BscResultsDropdown } from '../components/BscResultsDropdown';
@@ -261,11 +262,12 @@ export const AcademicsPage = () => {
                       <button
                         onClick={() => setActiveDocModal({
                           title: "Bachelor of Science in Mechanical Engineering — Degree Certificate",
-                          subtitle: "Chittagong University of Engineering and Technology (CUET) · Conferred 2024",
+                          subtitle: "Chittagong University of Engineering and Technology (CUET) · Conferred 2025",
+                          imageUrl: "/images/real/cuet_bsc_certificate.jpg",
                           pdfUrl: "/docs/CUET_BSc_Mechanical_Engineering_Certificate.pdf",
                           filename: "CUET_BSc_Mechanical_Engineering_Certificate.pdf",
                           tag: "Official Degree Credential",
-                          note: "Certified academic degree record of Md. Jubair Uddin Zidan • Department of Mechanical Engineering"
+                          note: "Official Provisional Degree Certificate of Md. Jubair Uddin Zidan (Student No. 1803159, Sl. No. 9884) • Department of Mechanical Engineering, CUET"
                         })}
                         className="btn btn-primary academic-cert-btn-primary"
                         title="View official degree certificate"
@@ -444,8 +446,20 @@ export const AcademicsPage = () => {
               </div>
 
               <div className="cert-modal-header-actions">
+                {activeDocModal.pdfUrl && (
+                  <a
+                    href={activeDocModal.pdfUrl}
+                    download={activeDocModal.filename || "Certificate.pdf"}
+                    className="cert-modal-btn-open-tab"
+                    title="Download Official PDF"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <Download size={15} />
+                    <span>Download PDF</span>
+                  </a>
+                )}
                 <a
-                  href={activeDocModal.pdfUrl}
+                  href={activeDocModal.imageUrl || activeDocModal.pdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="cert-modal-btn-open-tab"
@@ -467,13 +481,40 @@ export const AcademicsPage = () => {
 
             {/* Modal Body / Viewer */}
             <div className="cert-modal-body">
-              <div className="cert-modal-pdf-container">
-                <iframe
-                  src={`${activeDocModal.pdfUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
-                  title={activeDocModal.title}
-                  className="cert-modal-iframe"
-                />
-              </div>
+              {activeDocModal.imageUrl ? (
+                <div 
+                  className="cert-modal-image-container"
+                  style={{ 
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    alignItems: 'center', 
+                    padding: '20px', 
+                    background: '#0B132B',
+                    minHeight: '440px' 
+                  }}
+                >
+                  <img
+                    src={activeDocModal.imageUrl}
+                    alt={activeDocModal.title}
+                    style={{ 
+                      maxWidth: '100%', 
+                      maxHeight: '74vh', 
+                      objectFit: 'contain', 
+                      borderRadius: '8px', 
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.45)',
+                      border: '1px solid rgba(255, 255, 255, 0.12)'
+                    }}
+                  />
+                </div>
+              ) : (
+                <div className="cert-modal-pdf-container">
+                  <iframe
+                    src={`${activeDocModal.pdfUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
+                    title={activeDocModal.title}
+                    className="cert-modal-iframe"
+                  />
+                </div>
+              )}
             </div>
 
             {/* Note Footer */}
