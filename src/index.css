@@ -6769,9 +6769,13 @@ img {
 }
 
 /* Industrial Attachment Featured Split Card Layout (Enlarged 270px full-height image) */
+.exp-card-featured {
+  padding: 12px 18px 12px 12px;
+}
+
 .exp-featured-layout {
   display: flex;
-  gap: 24px;
+  gap: 16px;
   align-items: stretch;
 }
 
@@ -6780,7 +6784,7 @@ img {
   min-width: 270px;
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
   border: 1px solid var(--border-subtle);
   background: #F8FAFC;
@@ -6930,9 +6934,12 @@ img {
 }
 
 @media (max-width: 768px) {
+  .exp-card-featured {
+    padding: 12px;
+  }
   .exp-featured-layout {
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
   }
   .exp-featured-image-box {
     width: 100%;
