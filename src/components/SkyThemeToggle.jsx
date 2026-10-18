@@ -2,11 +2,11 @@ import React from 'react';
 
 /**
  * SkyThemeToggle
- * Capsule pill light/dark toggle matching the user's reference design:
+ * Capsule pill light/dark toggle:
  * - Light Mode: Clean white pill, vibrant royal blue circle on the left with white sun icon,
- *   soft muted grey crescent moon on the right.
- * - Dark Mode: Deep midnight navy pill, twinkling white stars & dots constellation on the left,
- *   solid brilliant white crescent moon on the right.
+ *   soft muted slate crescent moon on the right.
+ * - Dark Mode: Off-white pill (high-visibility against dark background), soft muted sun on the left,
+ *   deep midnight navy circle on the right with glowing white crescent moon.
  */
 export const SkyThemeToggle = ({ theme, toggleTheme, id = 'theme-toggle' }) => {
   const isDark = theme === 'dark';
@@ -22,9 +22,9 @@ export const SkyThemeToggle = ({ theme, toggleTheme, id = 'theme-toggle' }) => {
       onClick={toggleTheme}
       className={`sky-theme-toggle ${isDark ? 'is-dark' : 'is-light'}`}
     >
-      {/* Left Slot: Sun badge (light) or Night Sky Stars (dark) */}
+      {/* Left Slot: Sun */}
       <div className="sky-toggle-left">
-        {/* Blue Circular Sun Badge (Light Mode) */}
+        {/* Blue Circular Sun Badge (Light Mode Active) */}
         <div className="sky-sun-badge" aria-hidden="true">
           <svg
             viewBox="0 0 24 24"
@@ -48,36 +48,64 @@ export const SkyThemeToggle = ({ theme, toggleTheme, id = 'theme-toggle' }) => {
           </svg>
         </div>
 
-        {/* Night Sky Stars & Dots Cluster (Dark Mode) */}
-        <div className="sky-stars-cluster" aria-hidden="true">
-          {/* Main sparkle star top-left */}
-          <svg viewBox="0 0 10 10" className="sky-star sky-star-1" width="7" height="7">
-            <path d="M5 0 Q5 5 10 5 Q5 5 5 10 Q5 5 0 5 Q5 5 5 0 Z" fill="#FFFFFF" />
+        {/* Muted Sun Icon (Dark Mode Inactive) */}
+        <div className="sky-sun-muted" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            width="13"
+            height="13"
+            fill="none"
+            stroke="#94A3B8"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+          >
+            <circle cx="12" cy="12" r="4" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="4" />
+            <line x1="12" y1="20" x2="12" y2="22" />
+            <line x1="2" y1="12" x2="4" y2="12" />
+            <line x1="20" y1="12" x2="22" y2="12" />
+            <line x1="4.93" y1="4.93" x2="6.34" y2="6.34" />
+            <line x1="17.66" y1="17.66" x2="19.07" y2="19.07" />
+            <line x1="4.93" y1="19.07" x2="6.34" y2="17.66" />
+            <line x1="17.66" y1="6.34" x2="19.07" y2="4.93" />
           </svg>
-          {/* Secondary sparkle star bottom-center */}
-          <svg viewBox="0 0 10 10" className="sky-star sky-star-2" width="5.5" height="5.5">
-            <path d="M5 0 Q5 5 10 5 Q5 5 5 10 Q5 5 0 5 Q5 5 5 0 Z" fill="#FFFFFF" />
-          </svg>
-          {/* Distant star dot far-left */}
-          <span className="sky-dot sky-dot-1" />
-          {/* Distant star dot top-right */}
-          <span className="sky-dot sky-dot-2" />
         </div>
       </div>
 
-      {/* Right Slot: Crescent Moon (Soft grey in light mode, brilliant white in dark mode) */}
-      <div className="sky-toggle-right" aria-hidden="true">
-        <svg
-          viewBox="0 0 24 24"
-          width="15"
-          height="15"
-          className="sky-moon-icon"
-        >
-          <path
-            d="M13.5 3.5 A8.5 8.5 0 0 1 13.5 20.5 A7 7 0 0 0 13.5 3.5 Z"
-            fill="currentColor"
-          />
-        </svg>
+      {/* Right Slot: Moon */}
+      <div className="sky-toggle-right">
+        {/* Muted Moon (Light Mode Inactive) */}
+        <div className="sky-moon-muted" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            width="13"
+            height="13"
+            fill="#94A3B8"
+            stroke="#94A3B8"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </div>
+
+        {/* Dark Midnight Moon Badge (Dark Mode Active) */}
+        <div className="sky-moon-badge" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            width="13"
+            height="13"
+            fill="#FFFFFF"
+            stroke="#FFFFFF"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="sky-moon-icon"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </div>
       </div>
     </button>
   );
