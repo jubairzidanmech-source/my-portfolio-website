@@ -937,55 +937,77 @@ export const ResearchPage = () => {
                     <div className="project-specs-expanded">
                       {project.detailedSpecs ? (
                         <div className="project-specs-structured">
-                          {project.detailedSpecs.objective && (
-                            <div className="project-spec-group">
-                              <div className="project-spec-heading">Objective</div>
-                              <p className="project-spec-text">
-                                {renderFormattedMarkdown(project.detailedSpecs.objective)}
-                              </p>
-                            </div>
-                          )}
+                          {Array.isArray(project.detailedSpecs.sections) ? (
+                            project.detailedSpecs.sections.map((sec, sIdx) => (
+                              <div key={sIdx} className="project-spec-group">
+                                <div className="project-spec-heading">{sec.title}</div>
+                                {sec.content && (
+                                  <p className="project-spec-text" style={sec.isItalic ? { fontStyle: 'italic' } : {}}>
+                                    {renderFormattedMarkdown(sec.content)}
+                                  </p>
+                                )}
+                                {Array.isArray(sec.items) && (
+                                  <ul className="project-spec-list">
+                                    {sec.items.map((item, iIdx) => (
+                                      <li key={iIdx}>{renderFormattedMarkdown(item)}</li>
+                                    ))}
+                                  </ul>
+                                )}
+                              </div>
+                            ))
+                          ) : (
+                            <>
+                              {project.detailedSpecs.objective && (
+                                <div className="project-spec-group">
+                                  <div className="project-spec-heading">Objective</div>
+                                  <p className="project-spec-text">
+                                    {renderFormattedMarkdown(project.detailedSpecs.objective)}
+                                  </p>
+                                </div>
+                              )}
 
-                          {project.detailedSpecs.modelingApproach && (
-                            <div className="project-spec-group">
-                              <div className="project-spec-heading">Modeling Approach</div>
-                              <ul className="project-spec-list">
-                                {project.detailedSpecs.modelingApproach.map((item, idx) => (
-                                  <li key={idx}>{renderFormattedMarkdown(item)}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
+                              {project.detailedSpecs.modelingApproach && (
+                                <div className="project-spec-group">
+                                  <div className="project-spec-heading">Modeling Approach</div>
+                                  <ul className="project-spec-list">
+                                    {project.detailedSpecs.modelingApproach.map((item, idx) => (
+                                      <li key={idx}>{renderFormattedMarkdown(item)}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
 
-                          {project.detailedSpecs.loadingConditions && (
-                            <div className="project-spec-group">
-                              <div className="project-spec-heading">Loading Conditions</div>
-                              <ul className="project-spec-list">
-                                {project.detailedSpecs.loadingConditions.map((item, idx) => (
-                                  <li key={idx}>{renderFormattedMarkdown(item)}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
+                              {project.detailedSpecs.loadingConditions && (
+                                <div className="project-spec-group">
+                                  <div className="project-spec-heading">Loading Conditions</div>
+                                  <ul className="project-spec-list">
+                                    {project.detailedSpecs.loadingConditions.map((item, idx) => (
+                                      <li key={idx}>{renderFormattedMarkdown(item)}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
 
-                          {project.detailedSpecs.evaluationVerification && (
-                            <div className="project-spec-group">
-                              <div className="project-spec-heading">Evaluation and Verification</div>
-                              <ul className="project-spec-list">
-                                {project.detailedSpecs.evaluationVerification.map((item, idx) => (
-                                  <li key={idx}>{renderFormattedMarkdown(item)}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
+                              {project.detailedSpecs.evaluationVerification && (
+                                <div className="project-spec-group">
+                                  <div className="project-spec-heading">Evaluation and Verification</div>
+                                  <ul className="project-spec-list">
+                                    {project.detailedSpecs.evaluationVerification.map((item, idx) => (
+                                      <li key={idx}>{renderFormattedMarkdown(item)}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
 
-                          {project.detailedSpecs.toolsAndMethods && (
-                            <div className="project-spec-group">
-                              <div className="project-spec-heading">Tools and Methods</div>
-                              <p className="project-spec-text" style={{ fontStyle: 'italic' }}>
-                                {renderFormattedMarkdown(project.detailedSpecs.toolsAndMethods)}
-                              </p>
-                            </div>
+                              {project.detailedSpecs.toolsAndMethods && (
+                                <div className="project-spec-group">
+                                  <div className="project-spec-heading">Tools and Methods</div>
+                                  <p className="project-spec-text" style={{ fontStyle: 'italic' }}>
+                                    {renderFormattedMarkdown(project.detailedSpecs.toolsAndMethods)}
+                                  </p>
+                                </div>
+                              )}
+                            </>
                           )}
                         </div>
                       ) : (

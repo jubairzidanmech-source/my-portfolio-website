@@ -380,24 +380,42 @@ export const researchData = {
         tools: ["ANSYS", "Nonlinear FEA", "Contact Modeling", "Bolt Preload", "Thermal Strain Analysis", "Mesh Refinement"],
         metrics: "Assessed flange-bolt safety margins and contact behavior under combined 12.17–47.72 psi exhaust pressure, 700°F thermal load, and 50% breaking strength bolt preload.",
         detailedSpecs: {
-          objective: "Assess bolt safety margins and flange separation in the 100-bolt joint connecting the middle and lower nozzle sections of the Saturn V F-1 engine.",
-          modelingApproach: [
-            "Developed a nonlinear finite element model in ANSYS with contact interactions between assembly components.",
-            "Modeled the 300-series stainless-steel nozzle and A-286 steel bolts and nuts.",
-            "Incorporated temperature-dependent material properties and thermal strains."
-          ],
-          loadingConditions: [
-            "Linearly varying internal exhaust pressure: **12.17–47.72 psi**.",
-            "Thermal loading corresponding to a gas temperature of **700°F**.",
-            "Two equivalent forces of **1,000 lbf each**, representing the effect of omitted regeneration channels.",
-            "Bolt preload set to **50% of breaking strength**."
-          ],
-          evaluationVerification: [
-            "Assessed flange-bolt safety margins under combined mechanical and thermal loading.",
-            "Examined contact behavior and gaps developing between the joined nozzle sections.",
-            "Verified the numerical model through mesh refinement and comparison with hand calculations."
-          ],
-          toolsAndMethods: "ANSYS · Nonlinear FEA · Contact Modeling · Bolt Preload · Thermal Strain Analysis · Mesh Refinement."
+          sections: [
+            {
+              title: "Objective",
+              content: "Assess bolt safety margins and flange separation in the 100-bolt joint connecting the middle and lower nozzle sections of the Saturn V F-1 engine."
+            },
+            {
+              title: "Modeling Approach",
+              items: [
+                "Developed a nonlinear finite element model in ANSYS with contact interactions between assembly components.",
+                "Modeled the 300-series stainless-steel nozzle and A-286 steel bolts and nuts.",
+                "Incorporated temperature-dependent material properties and thermal strains."
+              ]
+            },
+            {
+              title: "Loading Conditions",
+              items: [
+                "Linearly varying internal exhaust pressure: **12.17–47.72 psi**.",
+                "Thermal loading corresponding to a gas temperature of **700°F**.",
+                "Two equivalent forces of **1,000 lbf each**, representing the effect of omitted regeneration channels.",
+                "Bolt preload set to **50% of breaking strength**."
+              ]
+            },
+            {
+              title: "Evaluation and Verification",
+              items: [
+                "Assessed flange-bolt safety margins under combined mechanical and thermal loading.",
+                "Examined contact behavior and gaps developing between the joined nozzle sections.",
+                "Verified the numerical model through mesh refinement and comparison with hand calculations."
+              ]
+            },
+            {
+              title: "Tools and Methods",
+              content: "ANSYS · Nonlinear FEA · Contact Modeling · Bolt Preload · Thermal Strain Analysis · Mesh Refinement.",
+              isItalic: true
+            }
+          ]
         }
       },
       {
@@ -411,6 +429,56 @@ export const researchData = {
         tools: ["ANSYS Fluent", "Wind Tunnel Testing", "Prototype Fabrication", "Sliding Mesh", "SolidWorks"],
         metrics: "Integrated unsteady CFD simulation with physical prototype wind-tunnel testing, achieving self-starting threshold at low wind speeds (<3.5 m/s) with sustained peak power coefficient.",
         paperUrl: "https://drive.google.com/file/d/1slEW4Ju9-KRzcv94nxoMbt2gV3eWBuDs/view?usp=drive_link"
+      },
+      {
+        id: "proj-fm-4",
+        title: "Steady-State 3D CFD Analysis of a Carotid Artery Bifurcation",
+        field: "Fluid Mechanics",
+        category: "Biomedical Fluid Dynamics & CFD",
+        year: "2024",
+        imageUrl: "",
+        description: "Investigate blood-flow behavior through a carotid artery bifurcation using ANSYS Fluent, focusing on velocity fields, pressure distribution, and flow division between the two arterial branches.",
+        tools: ["ANSYS Fluent", "3D CFD", "Internal-Flow Meshing", "Steady-State Analysis", "Biomedical Flow Modeling", "Velocity & Pressure Visualization"],
+        metrics: "Characterized hemodynamics, velocity gradients, and pressure drop across 6.3 mm inlet and 4.5 mm / 3.0 mm branching outlets under 100 mmHg physiologic outflow pressure.",
+        detailedSpecs: {
+          sections: [
+            {
+              title: "Objective",
+              content: "Investigate blood-flow behavior through a carotid artery bifurcation using ANSYS Fluent, focusing on velocity fields, pressure distribution, and flow division between the two arterial branches."
+            },
+            {
+              title: "Geometry and Mesh",
+              items: [
+                "Used a three-dimensional vascular geometry derived from a luminal casting of a carotid artery bifurcation.",
+                "Modeled one inlet with an approximate diameter of **6.3 mm** and two outlets measuring **4.5 mm** and **3.0 mm**.",
+                "Generated a computational mesh for the internal fluid domain to resolve flow through the branching geometry."
+              ]
+            },
+            {
+              title: "Physical Model and Boundary Conditions",
+              items: [
+                "Performed a **steady-state simulation**, excluding pulsatile and cyclic variations in blood flow.",
+                "Assigned a blood density of **1,060 kg/m³**.",
+                "Approximated blood as a **constant-viscosity Newtonian fluid**, simplifying its actual non-Newtonian behavior.",
+                "Defined an inlet velocity condition and maintained both outlets at **100 mmHg**, approximately **13,332 Pa**.",
+                "Applied a **no-slip wall condition**, setting fluid velocity to zero at the arterial walls."
+              ]
+            },
+            {
+              title: "Analysis and Evaluation",
+              items: [
+                "Examined velocity distributions and flow patterns through the main artery and daughter branches.",
+                "Analyzed pressure variation across the bifurcation and the influence of branching geometry on flow behavior.",
+                "Visualized the numerical results and compared flow characteristics with expected physical behavior."
+              ]
+            },
+            {
+              title: "Tools and Methods",
+              content: "ANSYS Fluent · 3D CFD · Internal-Flow Meshing · Steady-State Analysis · Biomedical Flow Modeling · Velocity and Pressure Visualization",
+              isItalic: true
+            }
+          ]
+        }
       }
     ],
     "Materials Science": [
