@@ -479,6 +479,62 @@ export const researchData = {
             }
           ]
         }
+      },
+      {
+        id: "proj-fm-5",
+        title: "Transient Non-Newtonian CFD of Pulsatile Arterial Blood Flow",
+        field: "Fluid Mechanics",
+        category: "Hemodynamics & Non-Newtonian CFD",
+        year: "2024",
+        imageUrl: "",
+        description: "Developed a transient CFD simulation in ANSYS Fluent to investigate blood flow through a carotid artery bifurcation, capturing pulsatile flow dynamics and shear-dependent blood viscosity.",
+        tools: ["ANSYS Fluent", "Transient CFD", "Carreau Rheology", "Shear-Thinning Flow", "Pulsatile Inlet UDFs", "3D Meshing", "Biomedical Fluid Dynamics"],
+        metrics: "Coupled Carreau shear-thinning rheology with time-dependent UDF pulsatile inflow waveforms to model time-resolved arterial flow acceleration and deceleration cycles.",
+        detailedSpecs: {
+          sections: [
+            {
+              title: "Objective",
+              content: "Developed a transient CFD simulation in ANSYS Fluent to investigate blood flow through a carotid artery bifurcation, capturing pulsatile flow dynamics and shear-dependent blood viscosity."
+            },
+            {
+              title: "Geometry and Mesh",
+              items: [
+                "Generated a three-dimensional mesh for the complex internal geometry of a branching artery.",
+                "Prepared the fluid domain to resolve spatial flow variations through the parent artery and daughter branches."
+              ]
+            },
+            {
+              title: "Advanced Physical Modeling",
+              items: [
+                "Used the **Carreau non-Newtonian model** to represent blood’s shear-thinning behavior, allowing apparent viscosity to vary with local shear rate.",
+                "Implemented **time-dependent inlet conditions through user-defined functions (UDFs)** to reproduce pulsatile inflow.",
+                "Configured a **transient solution** to capture flow acceleration and deceleration throughout the imposed pulse cycle."
+              ]
+            },
+            {
+              title: "Analysis Focus",
+              items: [
+                "Examined how velocity fields, pressure distributions, and bifurcation flow patterns evolve with time.",
+                "Investigated the interaction between pulsatile forcing, branching geometry, and shear-dependent viscosity.",
+                "Evaluated how material-model assumptions and inlet boundary conditions affect the predicted flow response."
+              ]
+            },
+            {
+              title: "Added Capabilities Compared with the Steady Model",
+              items: [
+                "**Time-resolved flow:** Captures variations within the pulse cycle that a steady solution cannot represent.",
+                "**Variable blood viscosity:** Accounts for local shear-rate effects instead of prescribing constant viscosity.",
+                "**Programmable inlet waveform:** Uses UDFs to control inflow as a function of simulation time.",
+                "**More realistic physiological representation:** Combines pulsatility and non-Newtonian rheology within the same simulation."
+              ]
+            },
+            {
+              title: "Tools and Methods",
+              content: "ANSYS Fluent · Transient CFD · Carreau Rheology · Shear-Thinning Flow · Pulsatile Inlet UDFs · 3D Meshing · Biomedical Fluid Dynamics",
+              isItalic: true
+            }
+          ]
+        }
       }
     ],
     "Materials Science": [
