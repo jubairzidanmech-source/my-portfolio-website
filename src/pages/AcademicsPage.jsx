@@ -396,7 +396,7 @@ export const AcademicsPage = () => {
                 </div>
 
                 <div className="msc-milestones-grid is-compact">
-                  <div className="msc-milestone-item is-compact">
+                  <div className="msc-milestone-item is-compact is-completed">
                     <CheckCircle2 size={15} className="msc-milestone-icon msc-icon-check" />
                     <span className="msc-milestone-title">
                       Theory Coursework: Finished
@@ -410,7 +410,7 @@ export const AcademicsPage = () => {
                     </span>
                   </div>
 
-                  <div className="msc-milestone-item is-compact">
+                  <div className="msc-milestone-item is-compact is-tentative">
                     <Sparkles size={15} className="msc-milestone-icon msc-icon-sparkles" />
                     <span className="msc-milestone-title">
                       Conferral: Aug – Sept 2026 / Jan 2027 (Tentative)

@@ -155,9 +155,10 @@ export const BscResultsDropdown = () => {
         <span 
           className="milestones-badge" 
           style={{ 
-            background: 'rgba(16, 185, 129, 0.1)', 
-            color: '#10B981', 
-            borderColor: 'rgba(16, 185, 129, 0.25)' 
+            background: 'rgba(16, 185, 129, 0.12)', 
+            color: '#059669', 
+            border: 'none',
+            fontWeight: 600
           }}
         >
           Degree Conferred · 161.50 Credits
