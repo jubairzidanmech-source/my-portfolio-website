@@ -29,21 +29,21 @@
   font-family: 'Gilroy';
   font-style: normal;
   font-weight: 600;
-  src: local('Gilroy-Medium'), local('Gilroy Medium'), url('https://fonts.cdnfonts.com/s/16219/Gilroy-Medium.woff') format('woff');
+  src: local('Gilroy-Bold'), local('Gilroy Bold'), url('https://fonts.cdnfonts.com/s/16219/Gilroy-Bold.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Gilroy';
   font-style: normal;
   font-weight: 700;
-  src: local('Gilroy-Medium'), local('Gilroy Medium'), url('https://fonts.cdnfonts.com/s/16219/Gilroy-Medium.woff') format('woff');
+  src: local('Gilroy-Bold'), local('Gilroy Bold'), url('https://fonts.cdnfonts.com/s/16219/Gilroy-Bold.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Gilroy';
   font-style: normal;
   font-weight: 800;
-  src: local('Gilroy-Medium'), local('Gilroy Medium'), url('https://fonts.cdnfonts.com/s/16219/Gilroy-Medium.woff') format('woff');
+  src: local('Gilroy-Heavy'), local('Gilroy Heavy'), url('https://fonts.cdnfonts.com/s/16219/Gilroy-Heavy.woff') format('woff');
 }
 
 /* ==========================================================================
@@ -5303,8 +5303,8 @@ img {
 }
 
 .pub-title {
-  font-size: 0.98rem;
-  font-weight: 650;
+  font-size: 1.02rem;
+  font-weight: 700;
   line-height: 1.34;
   color: var(--text-primary);
   margin: 3px 0 1px;
