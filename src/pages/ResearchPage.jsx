@@ -866,7 +866,7 @@ export const ResearchPage = () => {
                     <img src={project.imageUrl} alt={project.title} className="project-thumb" />
                   ) : (
                     <div className="project-thumb-placeholder">
-                      <Layers size={28} className="project-placeholder-icon" />
+                      <Layers size={20} className="project-placeholder-icon" />
                       <span className="project-placeholder-text">FEA Simulation Model</span>
                       <span className="project-placeholder-sub">Visual Documentation Pending</span>
                     </div>
