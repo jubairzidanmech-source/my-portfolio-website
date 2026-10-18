@@ -607,12 +607,12 @@ export const ResearchPage = () => {
                   <div 
                     className="award-card-media-side"
                     onClick={() => setActiveModalData({
-                      title: `${poster.title} - Full Technical Poster`,
+                      title: `${poster.title} - Presentation Session`,
                       subtitle: `${poster.event} • ${poster.venue} (${poster.date})${poster.posterId ? ` • ${poster.posterId}` : ''}`,
-                      imageUrl: fullPosterImg,
+                      imageUrl: poster.imageUrl || thumbnailImg,
                       description: poster.description
                     })}
-                    title="Click to view full technical poster"
+                    title="Click to view full presentation photograph"
                   >
                     <img 
                       src={thumbnailImg} 
@@ -622,8 +622,8 @@ export const ResearchPage = () => {
                     />
                     <div className="award-side-overlay">
                       <span className="award-thumb-zoom-badge">
-                        <FileText size={12} />
-                        <span>View Poster</span>
+                        <Camera size={12} />
+                        <span>View Photo</span>
                       </span>
                     </div>
                   </div>
