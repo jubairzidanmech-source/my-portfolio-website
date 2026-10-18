@@ -659,16 +659,9 @@ export const ResearchPage = () => {
                       </p>
                     )}
 
-                    <div className="pub-citation">
-                      <span className="pub-venue">{poster.event}</span>
-                      <span className="pub-sep">•</span>
-                      <span className="pub-location">{poster.venue}</span>
-                    </div>
-
-                    <div className="pub-tags-row" style={{ marginTop: '6px' }}>
-                      {(poster.tags || []).map((tag, tIdx) => (
-                        <span key={tIdx} className="pub-tag-pill">{tag}</span>
-                      ))}
+                    <div className="pub-citation pub-citation-stacked">
+                      <div className="pub-venue">{poster.event}</div>
+                      <div className="pub-location" style={{ color: 'var(--text-muted)' }}>{poster.venue}</div>
                     </div>
 
                     {/* Action Buttons: View Full Poster & View Certificate */}
