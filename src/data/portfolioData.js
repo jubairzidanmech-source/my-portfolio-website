@@ -535,6 +535,77 @@ export const researchData = {
             }
           ]
         }
+      },
+      {
+        id: "proj-fm-6",
+        title: "One-Way Fluid–Structure Interaction Analysis of a Wind Turbine Blade",
+        field: "Fluid Mechanics",
+        category: "Aero-Structural FSI & Composites",
+        year: "2024",
+        imageUrl: "",
+        description: "Performed a steady-state, one-way FSI analysis using ANSYS Fluent and ANSYS Mechanical to evaluate aerodynamic loading, generated torque, and the resulting stresses and deformation of a composite wind turbine blade.",
+        tools: ["ANSYS Fluent", "ANSYS Mechanical", "One-Way FSI", "Orthotropic Composite Modeling", "Variable-Thickness Structures", "Rotational Periodicity", "Aerodynamic Torque"],
+        metrics: "Coupled turbulent CFD (12 m/s, TSR ~8) with orthotropic composite FEA across a 43.2 m blade with tapered skin (100–5 mm) and spar (100–30 mm).",
+        detailedSpecs: {
+          sections: [
+            {
+              title: "Objective",
+              content: "Performed a steady-state, one-way FSI analysis using ANSYS Fluent and ANSYS Mechanical to evaluate aerodynamic loading, generated torque, and the resulting stresses and deformation of a composite wind turbine blade."
+            },
+            {
+              title: "Blade Geometry",
+              items: [
+                "Modeled a **43.2 m blade** transitioning from a cylindrical root through **S818, S825, and S826 airfoil profiles**.",
+                "Incorporated spanwise twist with a **4° tip pitch angle** and a **1 m root offset** from the rotation axis.",
+                "Represented the structural blade using an outer skin and an internal reinforcing spar."
+              ]
+            },
+            {
+              title: "Part 1 — Aerodynamic CFD",
+              items: [
+                "Generated the surrounding fluid-domain mesh and used **rotational periodicity** to extend a single-blade solution to a three-bladed rotor.",
+                "Simulated turbulent airflow at **12 m/s** with a rotor angular velocity of **−2.22 rad/s**, corresponding to a tip-speed ratio of approximately **8**.",
+                "Assigned air properties at **15°C**: density of **1.225 kg/m³** and dynamic viscosity of **1.7894 × 10⁻⁵ Pa·s**.",
+                "Computed blade-surface pressure distributions, visualized flow streamlines, and evaluated aerodynamic torque."
+              ]
+            },
+            {
+              title: "Part 2 — Structural FEA",
+              items: [
+                "Transferred the CFD pressure field from Fluent to Mechanical as distributed loads on the blade surface.",
+                "Defined a linearly tapered outer-skin thickness, decreasing from **100 mm at the root to 5 mm at the tip**.",
+                "Defined a tapered internal spar, decreasing from **100 mm near the root to 30 mm at the tip**.",
+                "Approximated the composite using **orthotropic elastic properties**, accounting for directional differences in stiffness."
+              ]
+            },
+            {
+              title: "Composite Material Properties",
+              table: {
+                headers: ["Property", "Value"],
+                rows: [
+                  ["Density", "1,550 kg/m³"],
+                  ["Young’s modulus, Ex", "113.75 GPa"],
+                  ["Young’s moduli, Ey / Ez", "7.583 / 7.583 GPa"],
+                  ["Shear moduli, Gxy / Gyz / Gxz", "5.446 / 2.964 / 2.964 GPa"],
+                  ["Poisson’s ratios, νxy / νyz / νxz", "0.32 / 0.37 / 0.35"]
+                ]
+              }
+            },
+            {
+              title: "Analysis and Evaluation",
+              items: [
+                "Evaluated stress distributions and blade deformation under the imported aerodynamic pressure loads.",
+                "Combined aerodynamic and structural modeling to examine the response of a tapered, internally reinforced composite blade.",
+                "Applied **one-way coupling**, transferring fluid loads to the structural model without feeding blade deformation back into the flow solution."
+              ]
+            },
+            {
+              title: "Tools and Methods",
+              content: "ANSYS Fluent · ANSYS Mechanical · CFD · Structural FEA · One-Way FSI · Orthotropic Composite Modeling · Variable-Thickness Structures · Rotational Periodicity · Aerodynamic Torque",
+              isItalic: true
+            }
+          ]
+        }
       }
     ],
     "Materials Science": [

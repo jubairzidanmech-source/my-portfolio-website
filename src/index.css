@@ -6437,6 +6437,54 @@ img {
   color: #FFFFFF !important;
 }
 
+.project-spec-table-wrap {
+  overflow-x: auto;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+}
+
+.project-spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.80rem;
+  text-align: left;
+}
+
+.project-spec-table th {
+  background: rgba(30, 58, 138, 0.06);
+  color: var(--blue-royal);
+  font-weight: 600;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+[data-theme="dark"] .project-spec-table th {
+  background: rgba(30, 58, 138, 0.25);
+  color: #93C5FD;
+}
+
+.project-spec-table td {
+  padding: 5px 10px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.project-spec-table tr:last-child td {
+  border-bottom: none;
+}
+
+.project-card:hover .project-spec-table th {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.project-card:hover .project-spec-table td {
+  color: #F1F5F9 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
 /* Dark Mode Overrides for Research & Publications */
 [data-theme="dark"] .pub-list-card,
 [data-theme="dark"] .project-card {

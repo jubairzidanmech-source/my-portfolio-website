@@ -953,6 +953,30 @@ export const ResearchPage = () => {
                                     ))}
                                   </ul>
                                 )}
+                                {sec.table && (
+                                  <div className="project-spec-table-wrap">
+                                    <table className="project-spec-table">
+                                      {sec.table.headers && (
+                                        <thead>
+                                          <tr>
+                                            {sec.table.headers.map((h, hIdx) => (
+                                              <th key={hIdx}>{h}</th>
+                                            ))}
+                                          </tr>
+                                        </thead>
+                                      )}
+                                      <tbody>
+                                        {sec.table.rows.map((row, rIdx) => (
+                                          <tr key={rIdx}>
+                                            {row.map((cell, cIdx) => (
+                                              <td key={cIdx}>{cell}</td>
+                                            ))}
+                                          </tr>
+                                        ))}
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                )}
                               </div>
                             ))
                           ) : (
