@@ -359,17 +359,6 @@ export const researchData = {
   projectsByField: {
     "Fluid Mechanics": [
       {
-        id: "proj-fm-1",
-        title: "F1 Venturi Tunnel Ground Effect Aerodynamic Simulation",
-        field: "Fluid Mechanics",
-        category: "Aerodynamics & CFD",
-        year: "2024",
-        imageUrl: "/images/project_f1_cfd.jpg",
-        description: "Comparative computational fluid dynamics study analyzing underside ground effect downforce and drag mitigation comparing pre-2022 flat floors against 2022 Venturi tunnel geometries.",
-        tools: ["ANSYS Fluent", "SpaceClaim", "CFD Post", "MATLAB"],
-        metrics: "Demonstrated dramatic increase in floor-induced downforce with minimized turbulence wake disturbance."
-      },
-      {
         id: "proj-fm-2",
         title: "Nonlinear FEA of an F-1 Rocket Engine Nozzle Joint",
         field: "Fluid Mechanics",
