@@ -860,10 +860,6 @@ export const ResearchPage = () => {
                     {project.title}
                   </h3>
 
-                  <p className="project-desc">
-                    {project.description}
-                  </p>
-
                   <div className="project-tools">
                     {(project.tools || []).map((tool, i) => (
                       <span key={i} className="tool-chip">{tool}</span>
@@ -897,6 +893,12 @@ export const ResearchPage = () => {
                   {/* EXPANDABLE SPECIFICATIONS */}
                   {isProjectExpanded && (
                     <div className="project-specs-expanded">
+                      <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--blue-royal)', marginBottom: '4px' }}>
+                        Project Overview & Scope
+                      </div>
+                      <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55, marginBottom: '8px' }}>
+                        {project.description}
+                      </p>
                       <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--blue-royal)', marginBottom: '4px' }}>
                         Simulation & Modeling Scope
                       </div>
