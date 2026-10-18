@@ -22,6 +22,7 @@ const AwardCard = ({
   badgeClass, 
   badgeLabel, 
   statusLabel, 
+  yearLabel,
   title, 
   authorLabel, 
   venueLabel, 
@@ -33,7 +34,7 @@ const AwardCard = ({
   isMinimal = false
 }) => {
   const imageUrl = item.imageUrl || '/images/award_placeholder.jpg';
-  const displayYear = yearLabel || item.year;
+  const displayYear = yearLabel || item?.year;
 
   if (isCertCard) {
     return (
