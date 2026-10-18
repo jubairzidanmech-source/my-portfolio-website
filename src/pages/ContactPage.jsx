@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { contactData, personalData } from '../data/portfolioData';
 import { CVModal } from '../components/CVModal';
+import { LiveDualClock } from '../components/LiveDualClock';
 
 export const ContactPage = () => {
   const [copied, setCopied] = useState(false);
@@ -138,16 +139,17 @@ export const ContactPage = () => {
               </p>
             </div>
 
-            <div className="contact-meta-group">
-              <span className="contact-meta-label">LOCATION & TIMEZONE</span>
-              <div className="contact-meta-loc-row">
-                <MapPin size={14} className="contact-loc-pin" />
-                <span>{contactData.shortLocation}</span>
+            <div className="contact-meta-group contact-timezone-meta-group">
+              <div className="contact-tz-header-row">
+                <span className="contact-meta-label">LOCATION & TIMEZONE</span>
+                <div className="contact-meta-loc-row">
+                  <MapPin size={12} className="contact-loc-pin" />
+                  <span>{contactData.shortLocation}</span>
+                </div>
               </div>
-              <div className="contact-meta-time-row">
-                <Clock size={13} />
-                <span>Local Time: {contactData.timeZone}</span>
-              </div>
+
+              {/* Live Dual-Timezone Clock (Dhaka & Visitor Local Time) */}
+              <LiveDualClock />
             </div>
           </div>
         </div>

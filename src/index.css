@@ -8068,6 +8068,302 @@ img {
   flex-shrink: 0;
 }
 
+/* ==========================================================================
+   LIVE DUAL-TIMEZONE CLOCK WIDGET (CONTACT SECTION)
+   ========================================================================== */
+
+.contact-tz-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+
+.dual-clock-widget {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.dual-clock-card {
+  border-radius: 14px;
+  padding: 13px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 114px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dual-clock-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Primary Card: Jubair's Time (Dark Navy - visually prominent) */
+.dual-clock-card.is-primary {
+  background: #0B132B;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 16px rgba(11, 19, 43, 0.16);
+}
+
+[data-theme="dark"] .dual-clock-card.is-primary {
+  background: #0A1128;
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+/* Secondary Card: My Time (Soft Light-Gray - Visitor) */
+.dual-clock-card.is-secondary {
+  background: #F1F5F9;
+  color: #0F172A;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="dark"] .dual-clock-card.is-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #F8FAFC;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Card Top Row */
+.dual-clock-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.dual-clock-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.dual-clock-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.dual-clock-card.is-primary .dual-clock-badge {
+  color: #60A5FA;
+}
+
+.dual-clock-card.is-secondary .dual-clock-badge {
+  color: #64748B;
+}
+
+[data-theme="dark"] .dual-clock-card.is-secondary .dual-clock-badge {
+  color: #94A3B8;
+}
+
+.dual-clock-city {
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dual-clock-card.is-primary .dual-clock-city {
+  color: #FFFFFF;
+}
+
+.dual-clock-card.is-secondary .dual-clock-city {
+  color: #0F172A;
+}
+
+[data-theme="dark"] .dual-clock-card.is-secondary .dual-clock-city {
+  color: #F8FAFC;
+}
+
+.dual-clock-utc {
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-feature-settings: 'tnum';
+  padding: 2px 7px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.dual-clock-card.is-primary .dual-clock-utc {
+  background: rgba(255, 255, 255, 0.1);
+  color: #93C5FD;
+}
+
+.dual-clock-card.is-secondary .dual-clock-utc {
+  background: rgba(0, 0, 0, 0.06);
+  color: #475569;
+}
+
+[data-theme="dark"] .dual-clock-card.is-secondary .dual-clock-utc {
+  background: rgba(255, 255, 255, 0.08);
+  color: #CBD5E1;
+}
+
+/* Card Main Time Row */
+.dual-clock-main {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 3px 0 1px 0;
+}
+
+.dual-clock-time {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.dual-clock-digits {
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  font-feature-settings: 'tnum';
+  font-family: 'Gilroy', var(--font-sans);
+}
+
+.dual-clock-card.is-primary .dual-clock-digits {
+  color: #FFFFFF;
+}
+
+.dual-clock-card.is-secondary .dual-clock-digits {
+  color: #0F172A;
+}
+
+[data-theme="dark"] .dual-clock-card.is-secondary .dual-clock-digits {
+  color: #FFFFFF;
+}
+
+.dual-clock-ampm {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.dual-clock-card.is-primary .dual-clock-ampm {
+  color: #93C5FD;
+}
+
+.dual-clock-card.is-secondary .dual-clock-ampm {
+  color: #64748B;
+}
+
+[data-theme="dark"] .dual-clock-card.is-secondary .dual-clock-ampm {
+  color: #93C5FD;
+}
+
+/* Day / Night Indicator Pill */
+.dual-clock-period {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.70rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.dual-clock-period.is-day {
+  background: rgba(245, 158, 11, 0.16);
+  color: #D97706;
+}
+
+.dual-clock-period.is-day .period-icon.sun {
+  color: #F59E0B;
+}
+
+.dual-clock-card.is-primary .dual-clock-period.is-day {
+  background: rgba(245, 158, 11, 0.2);
+  color: #FDE68A;
+}
+
+.dual-clock-period.is-night {
+  background: rgba(99, 102, 241, 0.14);
+  color: #4F46E5;
+}
+
+.dual-clock-period.is-night .period-icon.moon {
+  color: #6366F1;
+}
+
+.dual-clock-card.is-primary .dual-clock-period.is-night {
+  background: rgba(129, 140, 248, 0.22);
+  color: #C7D2FE;
+}
+
+[data-theme="dark"] .dual-clock-card.is-secondary .dual-clock-period.is-day {
+  background: rgba(245, 158, 11, 0.2);
+  color: #FDE68A;
+}
+
+[data-theme="dark"] .dual-clock-card.is-secondary .dual-clock-period.is-night {
+  background: rgba(129, 140, 248, 0.2);
+  color: #C7D2FE;
+}
+
+/* Card Bottom Row: Date & Relative Diff */
+.dual-clock-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.dual-clock-date {
+  font-size: 0.74rem;
+  font-weight: 500;
+}
+
+.dual-clock-card.is-primary .dual-clock-date {
+  color: #94A3B8;
+}
+
+.dual-clock-card.is-secondary .dual-clock-date {
+  color: #64748B;
+}
+
+[data-theme="dark"] .dual-clock-card.is-secondary .dual-clock-date {
+  color: #94A3B8;
+}
+
+.dual-clock-diff-pill {
+  font-size: 0.66rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563EB;
+}
+
+[data-theme="dark"] .dual-clock-diff-pill {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93C5FD;
+}
+
+/* Responsive Stacking */
+@media (max-width: 540px) {
+  .dual-clock-widget {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
 /* Clean Row for Professional Profiles */
 .contact-profiles-section {
   padding-top: 24px;
