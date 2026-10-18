@@ -193,22 +193,23 @@ export const ExperiencePage = () => {
                   </div>
                 </div>
 
-                <div className="exp-divider exp-featured-divider" />
-
                 <div className="exp-overview-col exp-featured-overview">
                   <p className="exp-overview-text">
                     {experienceData.internship.overview}
                   </p>
 
-                  {/* Expandable Technical Responsibilities Toggle */}
-                  <button
-                    onClick={() => toggleSection('internship-learnings')}
-                    className="pub-expand-btn"
-                    aria-expanded={Boolean(expandedSections['internship-learnings'])}
-                  >
-                    <span>{expandedSections['internship-learnings'] ? 'Hide Technical Responsibilities & Systems' : `View Key Technical Responsibilities & Learnings (${experienceData.internship.keyLearnings.length})`}</span>
-                    {expandedSections['internship-learnings'] ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                  </button>
+                  {/* Expandable Technical Responsibilities Subtle Toggle Link */}
+                  <div className="exp-subtle-toggle-row">
+                    <button
+                      type="button"
+                      onClick={() => toggleSection('internship-learnings')}
+                      className="exp-subtle-toggle-btn"
+                      aria-expanded={Boolean(expandedSections['internship-learnings'])}
+                    >
+                      <span>{expandedSections['internship-learnings'] ? 'Hide Responsibilities' : `Responsibilities (${experienceData.internship.keyLearnings.length})`}</span>
+                      {expandedSections['internship-learnings'] ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -387,17 +388,15 @@ export const ExperiencePage = () => {
                     </div>
                   </div>
 
-                  <div className="exp-divider" />
-
-                  {/* Expandable Responsibilities Inline Toggle */}
-                  <div>
+                  {/* Expandable Responsibilities Subtle Toggle Link */}
+                  <div className="exp-subtle-toggle-row">
                     <button
+                      type="button"
                       onClick={() => toggleSection(`lead-${item.id}`)}
-                      className="pub-expand-btn"
-                      style={{ width: '100%', justifyContent: 'space-between' }}
+                      className="exp-subtle-toggle-btn"
                       aria-expanded={isExpanded}
                     >
-                      <span>{isExpanded ? 'Hide Core Responsibilities' : `View Core Responsibilities (${item.highlights.length})`}</span>
+                      <span>{isExpanded ? 'Hide Responsibilities' : `Responsibilities (${item.highlights.length})`}</span>
                       {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                     </button>
                   </div>
@@ -476,20 +475,20 @@ export const ExperiencePage = () => {
                     </div>
                   </div>
 
-                  <div className="exp-divider" />
-
-                  {/* Expandable Key Initiatives Toggle */}
+                  {/* Expandable Key Initiatives / Responsibilities Subtle Toggle Link */}
                   {item.highlights && item.highlights.length > 0 && (
-                    <div>
-                      <button
-                        onClick={() => toggleSection(`vol-${item.id}`)}
-                        className="pub-expand-btn"
-                        style={{ width: '100%', justifyContent: 'space-between' }}
-                        aria-expanded={isExpanded}
-                      >
-                        <span>{isExpanded ? 'Hide Key Initiatives' : `View Key Initiatives (${item.highlights.length})`}</span>
-                        {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-                      </button>
+                    <>
+                      <div className="exp-subtle-toggle-row">
+                        <button
+                          type="button"
+                          onClick={() => toggleSection(`vol-${item.id}`)}
+                          className="exp-subtle-toggle-btn"
+                          aria-expanded={isExpanded}
+                        >
+                          <span>{isExpanded ? 'Hide Responsibilities' : `Responsibilities (${item.highlights.length})`}</span>
+                          {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                        </button>
+                      </div>
 
                       {isExpanded && (
                         <div className="exp-divided-list" style={{ marginTop: '12px' }}>
@@ -508,7 +507,7 @@ export const ExperiencePage = () => {
                           ))}
                         </div>
                       )}
-                    </div>
+                    </>
                   )}
                 </div>
               );

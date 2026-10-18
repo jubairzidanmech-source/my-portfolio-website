@@ -6752,6 +6752,7 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 20px;
+  align-items: start;
 }
 
 .exp-card,
@@ -6845,6 +6846,105 @@ img {
 
 .leadership-card .exp-divider {
   margin: 12px 0 10px;
+}
+
+/* Subtle Text Link Toggle (Leadership, Volunteering, Industrial Attachment) */
+.exp-subtle-toggle-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.exp-subtle-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 2px 0;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 550;
+  color: #1D4ED8;
+  cursor: pointer;
+  transition: color 0.16s ease, opacity 0.16s ease;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.exp-subtle-toggle-btn span {
+  color: #1D4ED8;
+  transition: color 0.16s ease;
+}
+
+.exp-subtle-toggle-btn svg {
+  color: #1D4ED8;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, color 0.16s ease;
+}
+
+.exp-subtle-toggle-btn:hover {
+  text-decoration: underline;
+  color: #1E40AF;
+}
+
+.exp-subtle-toggle-btn:hover span {
+  color: #1E40AF;
+  text-decoration: underline;
+}
+
+.exp-subtle-toggle-btn:hover svg {
+  color: #1E40AF;
+}
+
+[data-theme="dark"] .exp-subtle-toggle-btn,
+[data-theme="dark"] .exp-subtle-toggle-btn span,
+[data-theme="dark"] .exp-subtle-toggle-btn svg {
+  color: #60A5FA;
+}
+
+[data-theme="dark"] .exp-subtle-toggle-btn:hover,
+[data-theme="dark"] .exp-subtle-toggle-btn:hover span,
+[data-theme="dark"] .exp-subtle-toggle-btn:hover svg {
+  color: #93C5FD;
+}
+
+/* Card hover state contrast (when card background turns solid blue in hover state) */
+.exp-card:hover .exp-subtle-toggle-btn,
+.leadership-card:hover .exp-subtle-toggle-btn {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.exp-card:hover .exp-subtle-toggle-btn span,
+.leadership-card:hover .exp-subtle-toggle-btn span {
+  color: rgba(255, 255, 255, 0.95) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.exp-card:hover .exp-subtle-toggle-btn svg,
+.leadership-card:hover .exp-subtle-toggle-btn svg {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.exp-card:hover .exp-subtle-toggle-btn:hover,
+.leadership-card:hover .exp-subtle-toggle-btn:hover {
+  color: #FFFFFF !important;
+}
+
+.exp-card:hover .exp-subtle-toggle-btn:hover span,
+.leadership-card:hover .exp-subtle-toggle-btn:hover span {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  text-decoration: underline;
+}
+
+.exp-card:hover .exp-subtle-toggle-btn:hover svg,
+.leadership-card:hover .exp-subtle-toggle-btn:hover svg {
+  color: #FFFFFF !important;
 }
 
 @media (max-width: 640px) {
@@ -7199,6 +7299,7 @@ img {
 
 .exp-featured-overview {
   padding: 0;
+  margin-top: 10px;
 }
 
 @media (max-width: 768px) {
