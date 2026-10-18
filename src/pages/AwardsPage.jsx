@@ -3,6 +3,7 @@ import {
   ChevronDown, 
   ChevronUp, 
   ExternalLink,
+  ArrowUpRight,
   FileText,
   Award,
   Compass
@@ -340,6 +341,130 @@ const AwardCard = ({
   );
 };
 
+// Event Organization & Leadership Card (Refined, minimal, balanced design)
+const EventOrgCard = ({
+  item,
+  isExpanded,
+  onToggle,
+  onOpenModal
+}) => {
+  const imageUrl = item.imageUrl || '/images/award_placeholder.jpg';
+  const organizer = item.organizer || item.event;
+  const venue = item.venue || item.cohort;
+
+  return (
+    <article
+      className={`pub-list-card org-card ${isExpanded ? 'is-expanded' : ''}`}
+      onClick={() => onToggle(item.id)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onToggle(item.id);
+        }
+      }}
+      aria-expanded={isExpanded}
+      title="Click card to expand or collapse details"
+    >
+      <div className="pub-card-split-row org-card-split-row">
+        {/* Left: Certificate Thumbnail with softened background and reduced weight */}
+        <div
+          className="org-media-side"
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenModal({
+              title: item.title,
+              subtitle: `${organizer || ''} ${venue ? `• ${venue}` : ''} (${item.year})`,
+              imageUrl: imageUrl,
+              description: item.description
+            });
+          }}
+          title="Click to view full credential image"
+        >
+          <img
+            src={imageUrl}
+            alt={item.title}
+            className="org-media-img"
+            loading="lazy"
+          />
+          <div className="award-side-overlay">
+            <span className="award-thumb-zoom-badge">
+              <ExternalLink size={12} />
+              <span>Enlarge</span>
+            </span>
+          </div>
+        </div>
+
+        {/* Right: Content with clear visual hierarchy */}
+        <div className="pub-card-main org-card-main">
+          {/* Header Row: Subtle category & role pill on left, Year & chevron on right */}
+          <div className="org-header-row">
+            <div className="org-badge-group">
+              <span className="org-category-pill">
+                {item.category || "Organization"}
+              </span>
+              <span className="org-role-tag">Organizer</span>
+            </div>
+            <div className="org-meta-right">
+              <span className="org-year">{item.year}</span>
+              <span className="org-expand-icon" aria-hidden="true">
+                {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+              </span>
+            </div>
+          </div>
+
+          {/* Prominent Title */}
+          <h3 className="org-title">
+            {item.title}
+          </h3>
+
+          {/* Organization & Venue */}
+          <div className="org-citation">
+            <span className="org-organizer">{organizer}</span>
+            {venue && (
+              <>
+                <span className="org-sep">•</span>
+                <span className="org-venue">{venue}</span>
+              </>
+            )}
+          </div>
+
+          {/* Action Row: Subtle Text Link with external-link icon (not a heavy button) */}
+          <div className="org-action-row">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenModal({
+                  title: item.title,
+                  subtitle: `${organizer || ''} ${venue ? `• ${venue}` : ''} (${item.year})`,
+                  imageUrl: imageUrl,
+                  description: item.description
+                });
+              }}
+              className="org-credential-link"
+              title="View full certificate credential"
+            >
+              <span>View Credential</span>
+              <ArrowUpRight size={13} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Expandable Accordion Body (Smooth animation, minimal text, no extra boxes) */}
+      {isExpanded && (
+        <div className="org-expanded-body" onClick={(e) => e.stopPropagation()}>
+          <p className="org-expanded-desc">
+            {item.description}
+          </p>
+        </div>
+      )}
+    </article>
+  );
+};
+
 export const AwardsPage = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [expandedAwards, setExpandedAwards] = useState({});
@@ -613,25 +738,13 @@ export const AwardsPage = () => {
         </div>
 
         <div className="pub-grid-2col">
-          {(awardsData?.organization || []).map((item, idx) => (
-            <AwardCard
+          {(awardsData?.organization || []).map((item) => (
+            <EventOrgCard
               key={item.id}
               item={item}
-              itemIndex={idx + 1}
               isExpanded={Boolean(expandedAwards[item.id])}
               onToggle={toggleAward}
               onOpenModal={handleOpenModal}
-              badgeClass={item.cohort ? "manuscript" : "presentation"}
-              badgeLabel={item.category || "Organization"}
-              statusLabel="Organizer"
-              title={item.title}
-              authorLabel={item.organizer || item.event}
-              venueLabel={item.venue || item.cohort}
-              expandOpenText="View Responsibilities & Scale"
-              expandCloseText="Hide Details"
-              visualBtnText="View Credential"
-              detailHeading="Scope & Leadership Responsibilities"
-              isMinimal={true}
             />
           ))}
         </div>
