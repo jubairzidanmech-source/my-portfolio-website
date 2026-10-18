@@ -271,22 +271,24 @@ export const Footer = ({ activePage, setActivePage }) => {
 
         {/* ================= DISCREET BOTTOM ROW ================= */}
         <div className="footer-bottom-bar">
-          <div className="footer-bottom-left">
-            <p className="footer-copyright">
-              © {new Date().getFullYear()} Md. Jubair Uddin Zidan · Department of Mechanical Engineering, CUET
-            </p>
-          </div>
+          <div className="footer-bottom-bar-inner">
+            <div className="footer-bottom-left">
+              <p className="footer-copyright">
+                © {new Date().getFullYear()} Md. Jubair Uddin Zidan · Department of Mechanical Engineering, CUET
+              </p>
+            </div>
 
-          <div className="footer-bottom-right">
-            <button
-              onClick={scrollToTop}
-              className="footer-back-to-top-btn"
-              aria-label="Scroll back to top"
-              title="Scroll to top of page"
-            >
-              <span>Back to top</span>
-              <ArrowUp size={13} />
-            </button>
+            <div className="footer-bottom-right">
+              <button
+                onClick={scrollToTop}
+                className="footer-back-to-top-btn"
+                aria-label="Scroll back to top"
+                title="Scroll to top of page"
+              >
+                <span>Back to top</span>
+                <ArrowUp size={13} />
+              </button>
+            </div>
           </div>
         </div>
       </div>

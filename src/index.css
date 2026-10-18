@@ -733,7 +733,7 @@ img {
 .site-main {
   flex: 1;
   padding-top: calc(var(--header-height) + 24px);
-  padding-bottom: 80px;
+  padding-bottom: 0;
   position: relative;
   z-index: 1;
 }
@@ -8141,25 +8141,30 @@ img {
 .site-footer {
   position: relative;
   width: 100%;
-  background: transparent;
-  padding: 0 clamp(16px, 3.5vw, 44px) clamp(24px, 4vw, 48px);
-  margin-top: clamp(48px, 7vh, 88px);
+  background: #08132b;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top-left-radius: clamp(36px, 4.5vw, 64px);
+  border-top-right-radius: clamp(36px, 4.5vw, 64px);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0 -24px 60px -15px rgba(2, 6, 23, 0.45);
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
   contain: layout style;
   z-index: 10;
+  overflow: hidden;
 }
 
 .footer-editorial-card {
   position: relative;
-  max-width: 1320px;
+  width: 100%;
   margin: 0 auto;
-  background: #08132b;
-  border-top-left-radius: clamp(36px, 5.5vw, 60px);
-  border-top-right-radius: clamp(36px, 5.5vw, 60px);
-  border-bottom-left-radius: clamp(24px, 3.5vw, 40px);
-  border-bottom-right-radius: clamp(24px, 3.5vw, 40px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 32px 80px -20px rgba(2, 6, 23, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  overflow: hidden;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
 }
 
 /* Subtle CFD & Aerodynamic Engineering Linework Backdrop */
@@ -8169,7 +8174,6 @@ img {
   pointer-events: none;
   overflow: hidden;
   z-index: 1;
-  border-radius: inherit;
 }
 
 .footer-linework-svg {
@@ -8179,14 +8183,17 @@ img {
   opacity: 0.95;
 }
 
-/* Three-Column Grid */
+/* Three-Column Grid — Precisely aligned with upper cards container */
 .footer-content-grid {
   position: relative;
   z-index: 2;
+  width: 100%;
+  max-width: var(--max-width, 1240px);
+  margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(300px, 1.25fr) minmax(280px, 1.15fr) minmax(240px, 1fr);
   gap: clamp(28px, 4vw, 56px);
-  padding: clamp(40px, 5.5vw, 68px) clamp(24px, 4.5vw, 60px) clamp(32px, 4vw, 52px);
+  padding: clamp(56px, 7vw, 84px) 28px clamp(40px, 5vw, 60px);
   align-items: start;
   opacity: 0;
   transform: translateY(18px);
@@ -8456,14 +8463,10 @@ img {
 .footer-bottom-bar {
   position: relative;
   z-index: 2;
+  width: 100%;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 20px clamp(24px, 4.5vw, 60px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  background: rgba(0, 0, 0, 0.16);
+  padding: 22px 0;
+  background: rgba(0, 0, 0, 0.2);
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.12s, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
@@ -8472,6 +8475,18 @@ img {
 .site-footer.is-revealed .footer-bottom-bar {
   opacity: 1;
   transform: translateY(0);
+}
+
+.footer-bottom-bar-inner {
+  width: 100%;
+  max-width: var(--max-width, 1240px);
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .footer-copyright {
@@ -8520,21 +8535,20 @@ img {
 
 @media (max-width: 768px) {
   .site-footer {
-    padding: 0 12px 20px;
-    margin-top: 40px;
+    padding: 0;
+    margin-top: 0;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
   }
 
   .footer-editorial-card {
-    border-top-left-radius: 32px;
-    border-top-right-radius: 32px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 0;
   }
 
   .footer-content-grid {
     grid-template-columns: 1fr;
     gap: 36px;
-    padding: 36px 20px 28px;
+    padding: 44px 28px 32px;
   }
 
   .footer-left-subgrid {
@@ -8543,10 +8557,26 @@ img {
   }
 
   .footer-bottom-bar {
+    padding: 18px 0;
+  }
+
+  .footer-bottom-bar-inner {
     flex-direction: column;
     align-items: flex-start;
-    padding: 18px 20px;
+    padding: 0 28px;
     gap: 14px;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer-content-grid {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .footer-bottom-bar-inner {
+    padding-left: 14px;
+    padding-right: 14px;
   }
 }
 
@@ -10153,10 +10183,10 @@ img {
 }
 
 /* Editorial Footer Dark Mode */
-[data-theme="dark"] .footer-editorial-card {
+[data-theme="dark"] .site-footer {
   background: #03081a !important;
-  border-color: rgba(255, 255, 255, 0.07) !important;
-  box-shadow: 0 32px 80px -20px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 -24px 60px -15px rgba(0, 0, 0, 0.75) !important;
 }
 
 [data-theme="dark"] .footer-bottom-bar {
