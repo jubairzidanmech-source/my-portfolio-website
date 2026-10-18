@@ -1089,7 +1089,7 @@ export const experienceData = {
     {
       id: "cams",
       organization: "CUET Automotive and Mobility Society",
-      role: "Joint Publication Secretary",
+      role: "(Joint) Publication Secretary",
       tagline: "Collegiate automotive R&D society dedicated to energy-efficient vehicle prototyping, mobility innovations, and technical publications",
       logoUrl: "/images/real/cams_logo.png",
       period: "2021 – 2024",

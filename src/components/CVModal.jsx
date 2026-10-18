@@ -398,7 +398,7 @@ export const CVModal = ({ isOpen, onClose }) => {
                 <ul className="cv-item-bullets">
                   <li><strong>Treasurer</strong>, American Society of Mechanical Engineers (ASME), CUET Student Branch (2023 – 2024)</li>
                   <li><strong>President</strong>, Supply Chain & Business Alliance CUET (2023 – 2024)</li>
-                  <li><strong>Joint Publication Secretary</strong>, CUET Automotive and Mobility Society (CAMS) (2023 – 2024)</li>
+                  <li><strong>(Joint) Publication Secretary</strong>, CUET Automotive and Mobility Society (CAMS) (2023 – 2024)</li>
                 </ul>
               </section>
 
