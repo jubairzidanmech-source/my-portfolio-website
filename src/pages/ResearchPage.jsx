@@ -489,8 +489,8 @@ export const ResearchPage = () => {
                         className="pub-expand-btn"
                         aria-expanded={isExpanded}
                       >
-                        <span>{isExpanded ? 'Hide Abstract & Details' : 'Read Abstract & View Credentials'}</span>
-                        <ChevronDown size={15} className={`accordion-chevron ${isExpanded ? 'is-expanded' : ''}`} />
+                        <span>{isExpanded ? 'Hide Abstract & Details' : 'Abstract & Details'}</span>
+                        <ChevronDown size={14} className={`accordion-chevron ${isExpanded ? 'is-expanded' : ''}`} />
                       </button>
 
                       <button
@@ -780,8 +780,8 @@ export const ResearchPage = () => {
                       className="pub-expand-btn"
                       aria-expanded={isExpanded}
                     >
-                      <span>{isExpanded ? 'Hide Abstract & Scope' : 'Read Scope & Technical Objectives'}</span>
-                      <ChevronDown size={15} className={`accordion-chevron ${isExpanded ? 'is-expanded' : ''}`} />
+                      <span>{isExpanded ? 'Hide Scope & Objectives' : 'Scope & Technical Objectives'}</span>
+                      <ChevronDown size={14} className={`accordion-chevron ${isExpanded ? 'is-expanded' : ''}`} />
                     </button>
                   </div>
                 </div>

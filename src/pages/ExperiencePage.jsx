@@ -303,11 +303,11 @@ export const ExperiencePage = () => {
 
               <button
                 onClick={() => toggleSection('syllabus-coverage')}
-                className="pub-expand-btn"
+                className="exp-subtle-toggle-btn"
                 aria-expanded={Boolean(expandedSections['syllabus-coverage'])}
               >
-                <span>{expandedSections['syllabus-coverage'] ? 'Hide Curriculum Topics' : 'Explore Detailed Topics Covered'}</span>
-                <ChevronDown size={15} className={`accordion-chevron ${expandedSections['syllabus-coverage'] ? 'is-expanded' : ''}`} />
+                <span>{expandedSections['syllabus-coverage'] ? 'Hide Curriculum Topics' : 'Curriculum Topics (38)'}</span>
+                <ChevronDown size={14} className={`accordion-chevron ${expandedSections['syllabus-coverage'] ? 'is-expanded' : ''}`} />
               </button>
             </div>
 

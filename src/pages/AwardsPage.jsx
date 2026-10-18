@@ -25,8 +25,7 @@ const AwardCard = ({
   title, 
   authorLabel, 
   venueLabel, 
-  yearLabel,
-  expandOpenText = 'View Description & Details',
+  expandOpenText = 'Description & Details',
   expandCloseText = 'Hide Details',
   visualBtnText = 'View Award Artifact',
   detailHeading = 'Recognition & Description',
@@ -200,7 +199,7 @@ const AwardCard = ({
             aria-expanded={isExpanded}
           >
             <span>{isExpanded ? expandCloseText : expandOpenText}</span>
-            <ChevronDown size={15} className={`accordion-chevron ${isExpanded ? 'is-expanded' : ''}`} />
+            <ChevronDown size={14} className={`accordion-chevron ${isExpanded ? 'is-expanded' : ''}`} />
           </button>
 
           <button
@@ -431,8 +430,21 @@ const EventOrgCard = ({
             )}
           </div>
 
-          {/* Action Row: Subtle Text Link with external-link icon (not a heavy button) */}
-          <div className="org-action-row">
+          {/* Action Row: Subtle Text Link dropdown toggle and credential link */}
+          <div className="org-action-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap' }}>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggle(item.id);
+              }}
+              className="exp-subtle-toggle-btn"
+              aria-expanded={isExpanded}
+            >
+              <span>{isExpanded ? 'Hide Details' : 'Responsibilities & Scale'}</span>
+              <ChevronDown size={14} className={`accordion-chevron ${isExpanded ? 'is-expanded' : ''}`} />
+            </button>
+
             <button
               type="button"
               onClick={(e) => {
@@ -629,9 +641,8 @@ export const AwardsPage = () => {
               statusLabel="Exposition"
               title={item.title}
               authorLabel={item.event}
-              venueLabel={item.venue}
-              expandOpenText="View Presentation Details"
-              expandCloseText="Hide Abstract & Details"
+              expandOpenText="Presentation Details"
+              expandCloseText="Hide Details"
               visualBtnText="View Trophy & Award Crest"
               detailHeading="Presentation Details"
             />

@@ -2590,14 +2590,10 @@ img {
   border-color: rgba(255, 255, 255, 0.35) !important;
 }
 
-/* Buttons inside cards */
-.pub-list-card:hover .pub-expand-btn,
+/* Buttons inside cards (Modals & Actions) */
 .pub-list-card:hover .pub-visual-btn,
 .pub-list-card:hover .pub-action-btn,
-.project-card:hover .project-action-btn,
-.timeline-academic-card:hover .pub-expand-btn,
-.exp-card:hover .pub-expand-btn,
-.award-card:hover .pub-expand-btn,
+.timeline-academic-card:hover .pub-action-btn,
 .award-card:hover .pub-visual-btn {
   background: rgba(15, 35, 95, 0.45) !important;
   border: 1px solid rgba(147, 197, 253, 0.18) !important;
@@ -2605,54 +2601,132 @@ img {
   cursor: pointer;
 }
 
-.pub-list-card:hover .pub-expand-btn span,
 .pub-list-card:hover .pub-visual-btn span,
 .pub-list-card:hover .pub-action-btn span,
-.project-card:hover .project-action-btn span,
-.timeline-academic-card:hover .pub-expand-btn span,
-.exp-card:hover .pub-expand-btn span,
-.award-card:hover .pub-expand-btn span,
+.timeline-academic-card:hover .pub-action-btn span,
 .award-card:hover .pub-visual-btn span {
   color: #FFFFFF !important;
 }
 
-.pub-list-card:hover .pub-expand-btn:hover,
 .pub-list-card:hover .pub-visual-btn:hover,
 .pub-list-card:hover .pub-action-btn:hover,
-.project-card:hover .project-action-btn:hover,
-.timeline-academic-card:hover .pub-expand-btn:hover,
-.exp-card:hover .pub-expand-btn:hover,
-.award-card:hover .pub-expand-btn:hover,
+.timeline-academic-card:hover .pub-action-btn:hover,
 .award-card:hover .pub-visual-btn:hover {
   background: #FFFFFF !important;
   border-color: #FFFFFF !important;
   color: #1D4ED8 !important;
 }
 
-.pub-list-card:hover .pub-expand-btn:hover span,
 .pub-list-card:hover .pub-visual-btn:hover span,
 .pub-list-card:hover .pub-action-btn:hover span,
-.project-card:hover .project-action-btn:hover span,
-.timeline-academic-card:hover .pub-expand-btn:hover span,
-.exp-card:hover .pub-expand-btn:hover span,
-.award-card:hover .pub-expand-btn:hover span,
+.timeline-academic-card:hover .pub-action-btn:hover span,
 .award-card:hover .pub-visual-btn:hover span,
-.pub-list-card:hover button:hover span,
-.timeline-academic-card:hover button:not(.bsc-dropdown-trigger-btn):hover span,
-.project-card:hover button:hover span,
-.exp-card:hover button:hover span,
-.award-card:hover button:hover span {
+.pub-list-card:hover button:not(.pub-expand-btn):not(.project-action-btn):not(.exp-subtle-toggle-btn):hover span,
+.timeline-academic-card:hover button:not(.bsc-dropdown-trigger-btn):not(.pub-expand-btn):not(.project-action-btn):not(.exp-subtle-toggle-btn):hover span,
+.project-card:hover button:not(.pub-expand-btn):not(.project-action-btn):not(.exp-subtle-toggle-btn):hover span,
+.exp-card:hover button:not(.pub-expand-btn):not(.project-action-btn):not(.exp-subtle-toggle-btn):hover span,
+.award-card:hover button:not(.pub-expand-btn):not(.project-action-btn):not(.exp-subtle-toggle-btn):hover span {
   color: #1D4ED8 !important;
   -webkit-text-fill-color: #1D4ED8 !important;
 }
 
-.pub-list-card:hover button:hover svg,
-.timeline-academic-card:hover button:not(.bsc-dropdown-trigger-btn):hover svg,
-.project-card:hover button:hover svg,
-.exp-card:hover button:hover svg,
-.award-card:hover button:hover svg {
+.pub-list-card:hover button:not(.pub-expand-btn):not(.project-action-btn):not(.exp-subtle-toggle-btn):hover svg,
+.timeline-academic-card:hover button:not(.bsc-dropdown-trigger-btn):not(.pub-expand-btn):not(.project-action-btn):not(.exp-subtle-toggle-btn):hover svg,
+.project-card:hover button:not(.pub-expand-btn):not(.project-action-btn):not(.exp-subtle-toggle-btn):hover svg,
+.exp-card:hover button:not(.pub-expand-btn):not(.project-action-btn):not(.exp-subtle-toggle-btn):hover svg,
+.award-card:hover button:not(.pub-expand-btn):not(.project-action-btn):not(.exp-subtle-toggle-btn):hover svg {
   color: #1D4ED8 !important;
   stroke: #1D4ED8 !important;
+}
+
+/* Subtle Dropdown Accordion Toggle Links inside cards on hover */
+.pub-list-card:hover .pub-expand-btn,
+.pub-list-card:hover .exp-subtle-toggle-btn,
+.timeline-academic-card:hover .pub-expand-btn,
+.timeline-academic-card:hover .exp-subtle-toggle-btn,
+.exp-card:hover .pub-expand-btn,
+.exp-card:hover .exp-subtle-toggle-btn,
+.award-card:hover .pub-expand-btn,
+.award-card:hover .exp-subtle-toggle-btn,
+.project-card:hover .project-action-btn,
+.leadership-card:hover .exp-subtle-toggle-btn {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.pub-list-card:hover .pub-expand-btn span,
+.pub-list-card:hover .exp-subtle-toggle-btn span,
+.timeline-academic-card:hover .pub-expand-btn span,
+.timeline-academic-card:hover .exp-subtle-toggle-btn span,
+.exp-card:hover .pub-expand-btn span,
+.exp-card:hover .exp-subtle-toggle-btn span,
+.award-card:hover .pub-expand-btn span,
+.award-card:hover .exp-subtle-toggle-btn span,
+.project-card:hover .project-action-btn span,
+.leadership-card:hover .exp-subtle-toggle-btn span {
+  color: rgba(255, 255, 255, 0.95) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.pub-list-card:hover .pub-expand-btn svg,
+.pub-list-card:hover .exp-subtle-toggle-btn svg,
+.timeline-academic-card:hover .pub-expand-btn svg,
+.timeline-academic-card:hover .exp-subtle-toggle-btn svg,
+.exp-card:hover .pub-expand-btn svg,
+.exp-card:hover .exp-subtle-toggle-btn svg,
+.award-card:hover .pub-expand-btn svg,
+.award-card:hover .exp-subtle-toggle-btn svg,
+.project-card:hover .project-action-btn svg,
+.leadership-card:hover .exp-subtle-toggle-btn svg {
+  color: rgba(255, 255, 255, 0.95) !important;
+  stroke: rgba(255, 255, 255, 0.95) !important;
+}
+
+.pub-list-card:hover .pub-expand-btn:hover,
+.pub-list-card:hover .exp-subtle-toggle-btn:hover,
+.timeline-academic-card:hover .pub-expand-btn:hover,
+.timeline-academic-card:hover .exp-subtle-toggle-btn:hover,
+.exp-card:hover .pub-expand-btn:hover,
+.exp-card:hover .exp-subtle-toggle-btn:hover,
+.award-card:hover .pub-expand-btn:hover,
+.award-card:hover .exp-subtle-toggle-btn:hover,
+.project-card:hover .project-action-btn:hover,
+.leadership-card:hover .exp-subtle-toggle-btn:hover {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #FFFFFF !important;
+}
+
+.pub-list-card:hover .pub-expand-btn:hover span,
+.pub-list-card:hover .exp-subtle-toggle-btn:hover span,
+.timeline-academic-card:hover .pub-expand-btn:hover span,
+.timeline-academic-card:hover .exp-subtle-toggle-btn:hover span,
+.exp-card:hover .pub-expand-btn:hover span,
+.exp-card:hover .exp-subtle-toggle-btn:hover span,
+.award-card:hover .pub-expand-btn:hover span,
+.award-card:hover .exp-subtle-toggle-btn:hover span,
+.project-card:hover .project-action-btn:hover span,
+.leadership-card:hover .exp-subtle-toggle-btn:hover span {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  text-decoration: underline !important;
+}
+
+.pub-list-card:hover .pub-expand-btn:hover svg,
+.pub-list-card:hover .exp-subtle-toggle-btn:hover svg,
+.timeline-academic-card:hover .pub-expand-btn:hover svg,
+.timeline-academic-card:hover .exp-subtle-toggle-btn:hover svg,
+.exp-card:hover .pub-expand-btn:hover svg,
+.exp-card:hover .exp-subtle-toggle-btn:hover svg,
+.award-card:hover .pub-expand-btn:hover svg,
+.award-card:hover .exp-subtle-toggle-btn:hover svg,
+.project-card:hover .project-action-btn:hover svg,
+.leadership-card:hover .exp-subtle-toggle-btn:hover svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
 }
 
 /* Dividers & Borders inside cards */
@@ -3850,30 +3924,81 @@ img {
 .project-action-btn {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: var(--blue-royal);
-  background: transparent;
-  border: none;
+  gap: 4px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 2px 0 !important;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 550;
+  color: #1D4ED8;
   cursor: pointer;
-  padding: 0;
-  transition: all 0.22s ease;
+  transition: color 0.16s ease, opacity 0.16s ease;
+  line-height: 1.25;
+  text-decoration: none;
 }
 
-[data-theme="dark"] .project-action-btn {
-  color: #BFDBFE;
+.project-action-btn span {
+  color: #1D4ED8;
+  transition: color 0.16s ease;
+}
+
+.project-action-btn svg,
+.project-action-btn .accordion-chevron {
+  color: #1D4ED8;
+  flex-shrink: 0;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), color 0.16s ease;
+}
+
+.project-action-btn:hover {
+  text-decoration: underline;
+  color: #1E40AF;
+  background: transparent !important;
+}
+
+.project-action-btn:hover span {
+  color: #1E40AF;
+  text-decoration: underline;
+}
+
+.project-action-btn:hover svg,
+.project-action-btn:hover .accordion-chevron {
+  color: #1E40AF;
+}
+
+[data-theme="dark"] .project-action-btn,
+[data-theme="dark"] .project-action-btn span,
+[data-theme="dark"] .project-action-btn svg,
+[data-theme="dark"] .project-action-btn .accordion-chevron {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #60A5FA;
+}
+
+[data-theme="dark"] .project-action-btn:hover,
+[data-theme="dark"] .project-action-btn:hover span,
+[data-theme="dark"] .project-action-btn:hover svg,
+[data-theme="dark"] .project-action-btn:hover .accordion-chevron {
+  color: #93C5FD;
+  text-decoration: underline;
+  background: transparent !important;
 }
 
 .project-card:hover .project-action-btn {
   color: #FFFFFF !important;
-  transform: translateX(3px);
+  background: transparent !important;
+  border: none !important;
+}
+
+.project-card:hover .project-action-btn span {
+  color: #FFFFFF !important;
 }
 
 .project-card:hover .project-action-btn svg {
   color: #FFFFFF !important;
   stroke: #FFFFFF !important;
-  transform: translate(2px, -2px);
 }
 
 .project-body {
@@ -5394,22 +5519,47 @@ img {
 .pub-expand-btn {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--blue-royal);
-  background: rgba(37, 99, 235, 0.08);
-  border: 1px solid rgba(37, 99, 235, 0.2);
-  padding: 5px 12px;
-  border-radius: 6px;
+  gap: 4px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 2px 0 !important;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 550;
+  color: #1D4ED8;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: color 0.16s ease, opacity 0.16s ease;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.pub-expand-btn span {
+  color: #1D4ED8;
+  transition: color 0.16s ease;
+}
+
+.pub-expand-btn svg,
+.pub-expand-btn .accordion-chevron {
+  color: #1D4ED8;
+  flex-shrink: 0;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), color 0.16s ease;
 }
 
 .pub-expand-btn:hover {
-  background: rgba(37, 99, 235, 0.15);
-  border-color: rgba(37, 99, 235, 0.4);
-  transform: translateY(-1px);
+  text-decoration: underline;
+  color: #1E40AF;
+  background: transparent !important;
+}
+
+.pub-expand-btn:hover span {
+  color: #1E40AF;
+  text-decoration: underline;
+}
+
+.pub-expand-btn:hover svg,
+.pub-expand-btn:hover .accordion-chevron {
+  color: #1E40AF;
 }
 
 .pub-visual-btn {
@@ -5935,19 +6085,23 @@ img {
 .project-action-btn {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--blue-royal);
-  background: none;
-  border: none;
+  gap: 4px;
+  font-size: 0.82rem;
+  font-weight: 550;
+  color: #1D4ED8;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
   cursor: pointer;
-  padding: 4px 0;
-  transition: color 0.2s ease;
+  padding: 2px 0 !important;
+  transition: color 0.16s ease;
+  line-height: 1.25;
+  text-decoration: none;
 }
 
 .project-action-btn:hover {
-  color: #1D4ED8;
+  color: #1E40AF;
+  text-decoration: underline;
 }
 
 .project-modal-btn {
@@ -6001,15 +6155,23 @@ img {
   color: #38BDF8;
 }
 
-[data-theme="dark"] .pub-expand-btn {
-  background: rgba(56, 189, 248, 0.12);
-  border-color: rgba(56, 189, 248, 0.25);
-  color: #38BDF8;
+[data-theme="dark"] .pub-expand-btn,
+[data-theme="dark"] .pub-expand-btn span,
+[data-theme="dark"] .pub-expand-btn svg,
+[data-theme="dark"] .pub-expand-btn .accordion-chevron {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #60A5FA;
 }
 
-[data-theme="dark"] .pub-expand-btn:hover {
-  background: rgba(56, 189, 248, 0.2);
-  border-color: rgba(56, 189, 248, 0.45);
+[data-theme="dark"] .pub-expand-btn:hover,
+[data-theme="dark"] .pub-expand-btn:hover span,
+[data-theme="dark"] .pub-expand-btn:hover svg,
+[data-theme="dark"] .pub-expand-btn:hover .accordion-chevron {
+  color: #93C5FD;
+  text-decoration: underline;
+  background: transparent !important;
 }
 
 [data-theme="dark"] .pub-visual-btn {
@@ -10348,9 +10510,10 @@ img {
 
 [data-theme="dark"] .pub-list-card:hover .pub-expand-btn,
 [data-theme="dark"] .award-card:hover .pub-expand-btn {
-  background: rgba(15, 35, 95, 0.45) !important;
+  background: transparent !important;
   color: #FFFFFF !important;
-  border: 1px solid rgba(147, 197, 253, 0.18) !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 [data-theme="dark"] .pub-list-card:hover .pub-supervisor-block,
