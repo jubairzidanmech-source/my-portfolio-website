@@ -884,8 +884,12 @@ export const ResearchPage = () => {
                     {project.title}
                   </h3>
 
+                  <p className="project-desc" title={project.description}>
+                    {project.description}
+                  </p>
+
                   <div className="project-tools">
-                    {(project.tools || []).map((tool, i) => (
+                    {(project.tools || []).slice(0, 3).map((tool, i) => (
                       <span key={i} className="tool-chip">{tool}</span>
                     ))}
                   </div>
