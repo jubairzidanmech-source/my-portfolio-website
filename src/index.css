@@ -7946,65 +7946,424 @@ img {
 }
 
 /* ==========================================================================
-   Compact Understated Footer
+   Footer — Premium Editorial Direction
+   Inspired by reference design:
+   - Deep navy card container with generously rounded top corners.
+   - Balanced three-column composition (Left: Contact/Socials, Center: Branding/Academic Identity, Right: Navigation).
+   - Fluid aerodynamic & CFD streamlines background pattern.
+   - Discreet bottom row with copyright, affiliation, and back to top.
    ========================================================================== */
 
 .site-footer {
-  background: #091636;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 24px 0 20px;
-  margin-top: 56px;
-  color: #94A3B8;
   position: relative;
+  width: 100%;
+  background: transparent;
+  padding: 0 clamp(16px, 3.5vw, 44px) clamp(24px, 4vw, 48px);
+  margin-top: clamp(48px, 7vh, 88px);
+  contain: layout style;
+  z-index: 10;
 }
 
-.footer-compact-container {
+.footer-editorial-card {
+  position: relative;
+  max-width: 1320px;
+  margin: 0 auto;
+  background: #08132b;
+  border-top-left-radius: clamp(36px, 5.5vw, 60px);
+  border-top-right-radius: clamp(36px, 5.5vw, 60px);
+  border-bottom-left-radius: clamp(24px, 3.5vw, 40px);
+  border-bottom-right-radius: clamp(24px, 3.5vw, 40px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 32px 80px -20px rgba(2, 6, 23, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+/* Subtle CFD & Aerodynamic Engineering Linework Backdrop */
+.footer-linework-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.footer-linework-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.95;
+}
+
+/* Three-Column Grid */
+.footer-content-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(300px, 1.25fr) minmax(280px, 1.15fr) minmax(240px, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+  padding: clamp(40px, 5.5vw, 68px) clamp(24px, 4.5vw, 60px) clamp(32px, 4vw, 52px);
+  align-items: start;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-footer.is-revealed .footer-content-grid {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Eyebrows & Sub-labels */
+.footer-col-eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #64748B;
+  margin-bottom: 20px;
+  font-family: var(--font-mono, monospace);
+}
+
+.footer-sub-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #475569;
+  margin-bottom: 12px;
+  font-family: var(--font-mono, monospace);
+}
+
+/* ================= LEFT COLUMN ================= */
+.footer-col-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-left-subgrid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.footer-contact-block {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: #94A3B8;
+}
+
+.footer-contact-inst {
+  font-weight: 600;
+  color: #E2E8F0;
+  margin: 0 0 4px;
+}
+
+.footer-contact-uni {
+  color: #94A3B8;
+  margin: 0 0 4px;
+}
+
+.footer-contact-city {
+  color: #64748B;
+  margin: 0 0 16px;
+}
+
+.footer-email-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-email-link {
+  font-size: 0.82rem;
+  color: #60A5FA;
+  text-decoration: none;
+  word-break: break-all;
+  transition: color 0.18s ease;
+  font-weight: 500;
+}
+
+.footer-email-link:hover {
+  color: #93C5FD;
+  text-decoration: underline;
+}
+
+.footer-email-secondary {
+  color: #94A3B8;
+}
+
+.footer-social-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-social-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: #CBD5E1;
+  text-decoration: none;
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-social-link:hover {
+  color: #FFFFFF;
+  transform: translateX(3px);
+  border-bottom-color: rgba(96, 165, 250, 0.3);
+}
+
+.footer-social-label {
+  letter-spacing: 0.01em;
+}
+
+.footer-external-arrow {
+  color: #64748B;
+  transition: transform 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.footer-social-link:hover .footer-external-arrow {
+  color: #60A5FA;
+  transform: translate(2px, -2px);
+}
+
+/* ================= CENTER COLUMN ================= */
+.footer-col-center {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 14px;
   text-align: center;
+  justify-content: center;
+  padding: 0 clamp(8px, 1.5vw, 20px);
 }
 
-.footer-compact-nav {
-  display: flex;
+.footer-center-logo-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 16px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+}
+
+.footer-center-logo-btn:hover {
+  transform: scale(1.06);
+  filter: brightness(1.18);
+}
+
+.footer-center-logo-img {
+  height: clamp(48px, 6vw, 56px);
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+}
+
+.footer-center-name {
+  font-family: var(--font-heading, inherit);
+  font-size: clamp(1.3rem, 2.3vw, 1.7rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin: 0 0 8px;
+}
+
+.footer-center-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #60A5FA;
+  margin: 0 0 4px;
+  letter-spacing: 0.01em;
+}
+
+.footer-center-uni {
+  font-size: 0.82rem;
+  color: #94A3B8;
+  margin: 0 0 12px;
+}
+
+.footer-center-motto {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #64748B;
+  max-width: 340px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ================= RIGHT COLUMN ================= */
+.footer-col-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-nav-subgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
-.footer-compact-link {
-  font-size: 0.84rem;
+.footer-nav-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  font-size: 0.85rem;
   font-weight: 500;
   color: #94A3B8;
   background: transparent;
   border: none;
+  padding: 4px 0;
   cursor: pointer;
-  padding: 4px 6px;
-  transition: color 0.18s ease;
+  text-align: left;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  font-family: inherit;
 }
 
-.footer-compact-link:hover {
+.footer-nav-item:hover {
   color: #FFFFFF;
+  transform: translateX(2px);
 }
 
-.footer-compact-link.active {
+.footer-nav-item.is-active {
   color: #60A5FA;
   font-weight: 600;
 }
 
-.footer-compact-dot {
-  color: #475569;
-  font-size: 0.8rem;
-  user-select: none;
+.footer-cv-nav-item {
+  color: #38BDF8;
+  font-weight: 600;
 }
 
-.footer-compact-meta {
+.footer-cv-nav-item:hover {
+  color: #93C5FD;
+}
+
+.footer-cv-nav-item .footer-external-arrow {
+  color: #38BDF8;
+}
+
+/* ================= DISCREET BOTTOM ROW ================= */
+.footer-bottom-bar {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px clamp(24px, 4.5vw, 60px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: rgba(0, 0, 0, 0.16);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.12s, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+}
+
+.site-footer.is-revealed .footer-bottom-bar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer-copyright {
   font-size: 0.78rem;
   color: #64748B;
-  line-height: 1.4;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.footer-back-to-top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #94A3B8;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.footer-back-to-top-btn:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Responsive Editorial Layout */
+@media (max-width: 1080px) {
+  .footer-content-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footer-col-center {
+    grid-column: 1 / -1;
+    order: -1;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 0 12px 20px;
+    margin-top: 40px;
+  }
+
+  .footer-editorial-card {
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+  .footer-content-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 36px 20px 28px;
+  }
+
+  .footer-left-subgrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 20px;
+    gap: 14px;
+  }
 }
 
 /* ==========================================================================
@@ -9618,10 +9977,16 @@ img {
   border-top-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Compact Footer Dark Mode */
-[data-theme="dark"] .site-footer {
-  background: #020617 !important;
-  border-top-color: rgba(255, 255, 255, 0.08) !important;
+/* Editorial Footer Dark Mode */
+[data-theme="dark"] .footer-editorial-card {
+  background: #03081a !important;
+  border-color: rgba(255, 255, 255, 0.07) !important;
+  box-shadow: 0 32px 80px -20px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .footer-bottom-bar {
+  background: rgba(0, 0, 0, 0.28) !important;
+  border-top-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 /* Luminous Frosted Blue Gradient on cards in Dark Mode (Calibrated for high contrast) */
