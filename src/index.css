@@ -3864,7 +3864,7 @@ img {
 .project-thumb-wrapper {
   position: relative;
   width: 100%;
-  height: 100px;
+  height: 180px;
   overflow: hidden;
   background: var(--lavender-soft);
 }
@@ -6182,7 +6182,7 @@ img {
 .project-thumb-wrapper {
   position: relative;
   width: 100%;
-  height: 100px;
+  height: 180px;
   overflow: hidden;
   background: #0B132B;
 }
@@ -6200,20 +6200,20 @@ img {
 
 .project-field-badge {
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 10px;
+  left: 10px;
   background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(6px);
   color: #FFFFFF;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 9999px;
   z-index: 2;
 }
 
 .project-body {
-  padding: 10px 14px 10px;
+  padding: 12px 16px 12px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -6223,22 +6223,22 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.68rem;
+  font-size: 0.70rem;
   font-weight: 600;
   color: var(--blue-royal);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
   height: 16px;
 }
 
 .project-title {
-  font-size: 0.88rem;
+  font-size: 0.94rem;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.32;
   color: var(--text-primary);
   margin-bottom: 6px;
-  height: 2.6em;
+  height: 2.65em;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -6247,7 +6247,7 @@ img {
 }
 
 .project-desc {
-  font-size: 0.80rem;
+  font-size: 0.81rem;
   color: var(--text-secondary);
   line-height: 1.45;
   margin-bottom: 6px;
@@ -6344,7 +6344,7 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 6px;
   background: linear-gradient(135deg, #0B132B 0%, #1E293B 100%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   user-select: none;
@@ -6362,14 +6362,14 @@ img {
 }
 
 .project-placeholder-text {
-  font-size: 0.74rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: #F8FAFC;
   letter-spacing: 0.01em;
 }
 
 .project-placeholder-sub {
-  font-size: 0.65rem;
+  font-size: 0.70rem;
   color: #94A3B8;
 }
 
