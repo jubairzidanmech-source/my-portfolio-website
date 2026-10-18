@@ -6156,7 +6156,6 @@ img {
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 16px;
   margin-top: 18px;
-  align-items: start;
 }
 
 .project-card {
@@ -6169,6 +6168,7 @@ img {
   transition: var(--card-transition);
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
   cursor: default;
+  height: 100%;
 }
 
 .project-card:hover {
@@ -6182,7 +6182,7 @@ img {
 .project-thumb-wrapper {
   position: relative;
   width: 100%;
-  height: 96px;
+  height: 100px;
   overflow: hidden;
   background: #0B132B;
 }
@@ -6209,31 +6209,41 @@ img {
   font-weight: 700;
   padding: 2px 8px;
   border-radius: 9999px;
+  z-index: 2;
 }
 
 .project-body {
   padding: 10px 14px 10px;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .project-meta {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 0.68rem;
   font-weight: 600;
   color: var(--blue-royal);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
+  height: 16px;
 }
 
 .project-title {
   font-size: 0.88rem;
   font-weight: 700;
-  line-height: 1.26;
+  line-height: 1.3;
   color: var(--text-primary);
-  margin-bottom: 5px;
+  margin-bottom: 6px;
+  height: 2.6em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .project-desc {
@@ -6249,6 +6259,9 @@ img {
   gap: 4px;
   margin-top: 2px;
   margin-bottom: 6px;
+  height: 48px;
+  overflow: hidden;
+  align-content: flex-start;
 }
 
 .tool-chip {
@@ -6258,6 +6271,7 @@ img {
   border-radius: 4px;
   background: rgba(37, 99, 235, 0.08);
   color: var(--blue-royal);
+  white-space: nowrap;
 }
 
 .project-card-footer {
@@ -6266,8 +6280,9 @@ img {
   justify-content: space-between;
   gap: 8px;
   padding-top: 6px;
-  margin-top: 2px;
+  margin-top: auto;
   border-top: 1px solid var(--border-subtle);
+  min-height: 30px;
 }
 
 .project-action-btn {
@@ -6323,33 +6338,33 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.08) 0%, rgba(15, 23, 42, 0.04) 100%);
-  border-bottom: 1px solid var(--border-subtle);
+  gap: 3px;
+  background: linear-gradient(135deg, #0B132B 0%, #1E293B 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   user-select: none;
   transition: background var(--transition-normal);
 }
 
 [data-theme="dark"] .project-thumb-placeholder {
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.22) 0%, rgba(15, 23, 42, 0.45) 100%);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%);
 }
 
 .project-placeholder-icon {
-  color: var(--blue-royal);
-  opacity: 0.85;
+  color: #38BDF8;
+  opacity: 0.95;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .project-placeholder-text {
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #F8FAFC;
   letter-spacing: 0.01em;
 }
 
 .project-placeholder-sub {
-  font-size: 0.66rem;
-  color: var(--text-muted);
+  font-size: 0.65rem;
+  color: #94A3B8;
 }
 
 .project-card:hover .project-thumb-placeholder {

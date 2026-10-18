@@ -880,7 +880,7 @@ export const ResearchPage = () => {
                     <span>{project.year}</span>
                   </div>
 
-                  <h3 className="project-title">
+                  <h3 className="project-title" title={project.title}>
                     {project.title}
                   </h3>
 

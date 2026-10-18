@@ -409,7 +409,7 @@ export const researchData = {
       },
       {
         id: "proj-fm-3",
-        title: "Numerical and Experimental Performance Analysis of a Darrieus-Savonius Hybrid Vertical Axis Wind Turbine for Low Wind Speed Conditions",
+        title: "Numerical and Experimental Performance Analysis of a Darrieus-Savonius Hybrid VAWT",
         field: "Fluid Mechanics",
         category: "Renewable Energy Aerodynamics",
         year: "2024",
