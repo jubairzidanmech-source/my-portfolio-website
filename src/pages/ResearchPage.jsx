@@ -346,6 +346,19 @@ export const ResearchPage = () => {
                       <Award size={13} />
                       <span>View Certificate</span>
                     </button>
+
+                    {/* Primary Action Button: See the Full Paper placed under certificate & image */}
+                    <button
+                      type="button"
+                      onClick={() => handleOpenFullPaper(paper)}
+                      className="pub-full-paper-btn pub-cert-paper-btn"
+                      title={paper.paperUrl ? "See the Full Paper" : "Paper Link Coming Soon"}
+                      disabled={!paper.paperUrl}
+                    >
+                      <FileText size={13} />
+                      <span>See the Full Paper</span>
+                      <ExternalLink size={11} />
+                    </button>
                   </div>
 
                   {/* Right: Text & Scholarly Details */}
@@ -379,21 +392,6 @@ export const ResearchPage = () => {
                       {(paper.tags || paper.keywords || []).slice(0, 3).map((tag, tIdx) => (
                         <span key={tIdx} className="pub-tag-pill">{tag}</span>
                       ))}
-                    </div>
-
-                    {/* Primary Action Button: See the Full Paper */}
-                    <div className="pub-actions-row">
-                      <button
-                        type="button"
-                        onClick={() => handleOpenFullPaper(paper)}
-                        className="pub-full-paper-btn"
-                        title={paper.paperUrl ? "See the Full Paper" : "Paper Link Coming Soon"}
-                        disabled={!paper.paperUrl}
-                      >
-                        <FileText size={14} />
-                        <span>See the Full Paper</span>
-                        <ExternalLink size={12} />
-                      </button>
                     </div>
                   </div>
                 </div>

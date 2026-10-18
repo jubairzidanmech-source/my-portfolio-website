@@ -5240,19 +5240,19 @@ img {
   color: #1D4ED8 !important;
 }
 
-/* Publication Certificate Media Column & Bottom Button */
+/* Publication Certificate Media Column & Bottom Buttons */
 .pub-cert-col {
   width: 175px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .pub-cert-col .award-card-media-side {
   width: 100%;
-  min-height: 135px;
-  height: 135px;
+  min-height: 118px;
+  height: 118px;
   margin: 0;
 }
 
@@ -5262,7 +5262,7 @@ img {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  font-size: 0.77rem;
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--blue-royal);
   background: rgba(37, 99, 235, 0.08);
@@ -5294,6 +5294,94 @@ img {
   border-color: #38BDF8;
   color: #38BDF8;
   box-shadow: 0 2px 10px rgba(56, 189, 248, 0.25);
+}
+
+/* See the Full Paper button inside Certificate Column */
+.pub-cert-paper-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #FFFFFF !important;
+  background: var(--blue-royal);
+  border: 1px solid var(--blue-royal);
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.22);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.pub-cert-paper-btn:hover {
+  background: var(--blue-royal-dark, #1D4ED8);
+  border-color: var(--blue-royal-dark, #1D4ED8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.32);
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .pub-cert-paper-btn {
+  background: #2563EB;
+  border-color: #3B82F6;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+}
+
+[data-theme="dark"] .pub-cert-paper-btn:hover {
+  background: #1D4ED8;
+  border-color: #60A5FA;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.45);
+}
+
+/* Publication card hover overrides for buttons in certificate column */
+.pub-list-card:hover .pub-cert-col .pub-cert-bottom-btn {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  color: #FFFFFF !important;
+}
+
+.pub-list-card:hover .pub-cert-col .pub-cert-bottom-btn span {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+.pub-list-card:hover .pub-cert-col .pub-cert-bottom-btn svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+.pub-list-card:hover .pub-cert-col .pub-cert-bottom-btn:hover {
+  background: rgba(255, 255, 255, 0.32) !important;
+  border-color: #FFFFFF !important;
+}
+
+.pub-list-card:hover .pub-cert-col .pub-cert-paper-btn {
+  background: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  color: #1D4ED8 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2) !important;
+}
+
+.pub-list-card:hover .pub-cert-col .pub-cert-paper-btn span {
+  color: #1D4ED8 !important;
+  -webkit-text-fill-color: #1D4ED8 !important;
+}
+
+.pub-list-card:hover .pub-cert-col .pub-cert-paper-btn svg {
+  color: #1D4ED8 !important;
+  stroke: #1D4ED8 !important;
+}
+
+.pub-list-card:hover .pub-cert-col .pub-cert-paper-btn:hover {
+  background: #F8FAFC !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28) !important;
 }
 
 @media (max-width: 640px) {
