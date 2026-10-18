@@ -14,6 +14,7 @@ const JUBAIR_TZ = 'Asia/Dhaka';
 const formatCityName = (tz) => {
   if (!tz) return 'Local Time';
   if (tz === 'UTC' || tz === 'GMT' || tz === 'Etc/UTC' || tz === 'Etc/GMT') return 'UTC';
+  if (tz === 'Asia/Dhaka') return 'Dhaka, Bangladesh';
   const parts = tz.split('/');
   const rawCity = parts[parts.length - 1];
   return rawCity.replace(/_/g, ' ');
@@ -124,79 +125,84 @@ export const LiveDualClock = () => {
   const diffBadgeText = getTimeDiffText(jubair.diffMinutes, visitor.diffMinutes);
 
   return (
-    <div className="dual-clock-widget" aria-label="Live dual timezone clock widget">
-      {/* Left Card: Jubair's Time (Primary - Dark Navy with subtle blue accents) */}
-      <div className="dual-clock-card is-primary">
-        <div className="dual-clock-top">
-          <div className="dual-clock-meta">
-            <span className="dual-clock-badge">Jubair's Time</span>
-            <span className="dual-clock-city">Dhaka, Bangladesh</span>
+    <div className="dual-clock-wrapper">
+      <div className="dual-clock-widget" aria-label="Live dual timezone clock widget">
+        {/* Left Card: Jubair's Time (Primary - Dark Navy with subtle blue accents) */}
+        <div className="dual-clock-card is-primary">
+          <div className="dual-clock-top">
+            <div className="dual-clock-meta">
+              <span className="dual-clock-badge">Jubair's Time</span>
+              <span className="dual-clock-city">Dhaka, Bangladesh</span>
+            </div>
+            <span className="dual-clock-utc">{jubair.utcOffset}</span>
           </div>
-          <span className="dual-clock-utc">{jubair.utcOffset}</span>
+
+          <div className="dual-clock-main">
+            <div className="dual-clock-time">
+              <span className="dual-clock-digits">{jubair.hours}:{jubair.minutes}</span>
+              <span className="dual-clock-ampm">{jubair.ampm}</span>
+            </div>
+            <div className={`dual-clock-period ${jubair.isDay ? 'is-day' : 'is-night'}`}>
+              {jubair.isDay ? (
+                <>
+                  <Sun size={12} className="period-icon sun" />
+                  <span>Day</span>
+                </>
+              ) : (
+                <>
+                  <Moon size={12} className="period-icon moon" />
+                  <span>Night</span>
+                </>
+              )}
+            </div>
+          </div>
+
+          <div className="dual-clock-bottom">
+            <span className="dual-clock-date">{jubair.dateStr}</span>
+          </div>
         </div>
 
-        <div className="dual-clock-main">
-          <div className="dual-clock-time">
-            <span className="dual-clock-digits">{jubair.hours}:{jubair.minutes}</span>
-            <span className="dual-clock-ampm">{jubair.ampm}</span>
+        {/* Right Card: My Time (Secondary - Visitor's Browser Timezone) */}
+        <div className="dual-clock-card is-secondary">
+          <div className="dual-clock-top">
+            <div className="dual-clock-meta">
+              <span className="dual-clock-badge">My Time</span>
+              <span className="dual-clock-city" title={visitorTz}>{visitorCity}</span>
+            </div>
+            <span className="dual-clock-utc">{visitor.utcOffset}</span>
           </div>
-          <div className={`dual-clock-period ${jubair.isDay ? 'is-day' : 'is-night'}`}>
-            {jubair.isDay ? (
-              <>
-                <Sun size={12} className="period-icon sun" />
-                <span>Day</span>
-              </>
-            ) : (
-              <>
-                <Moon size={12} className="period-icon moon" />
-                <span>Night</span>
-              </>
-            )}
-          </div>
-        </div>
 
-        <div className="dual-clock-bottom">
-          <span className="dual-clock-date">{jubair.dateStr}</span>
+          <div className="dual-clock-main">
+            <div className="dual-clock-time">
+              <span className="dual-clock-digits">{visitor.hours}:{visitor.minutes}</span>
+              <span className="dual-clock-ampm">{visitor.ampm}</span>
+            </div>
+            <div className={`dual-clock-period ${visitor.isDay ? 'is-day' : 'is-night'}`}>
+              {visitor.isDay ? (
+                <>
+                  <Sun size={12} className="period-icon sun" />
+                  <span>Day</span>
+                </>
+              ) : (
+                <>
+                  <Moon size={12} className="period-icon moon" />
+                  <span>Night</span>
+                </>
+              )}
+            </div>
+          </div>
+
+          <div className="dual-clock-bottom">
+            <span className="dual-clock-date">{visitor.dateStr}</span>
+          </div>
         </div>
       </div>
 
-      {/* Right Card: My Time (Secondary - Visitor's Browser Timezone) */}
-      <div className="dual-clock-card is-secondary">
-        <div className="dual-clock-top">
-          <div className="dual-clock-meta">
-            <span className="dual-clock-badge">My Time</span>
-            <span className="dual-clock-city" title={visitorTz}>{visitorCity}</span>
-          </div>
-          <span className="dual-clock-utc">{visitor.utcOffset}</span>
+      {diffBadgeText && diffBadgeText !== 'Same time zone' && (
+        <div className="dual-clock-diff-footer">
+          <span className="dual-clock-diff-pill">{diffBadgeText}</span>
         </div>
-
-        <div className="dual-clock-main">
-          <div className="dual-clock-time">
-            <span className="dual-clock-digits">{visitor.hours}:{visitor.minutes}</span>
-            <span className="dual-clock-ampm">{visitor.ampm}</span>
-          </div>
-          <div className={`dual-clock-period ${visitor.isDay ? 'is-day' : 'is-night'}`}>
-            {visitor.isDay ? (
-              <>
-                <Sun size={12} className="period-icon sun" />
-                <span>Day</span>
-              </>
-            ) : (
-              <>
-                <Moon size={12} className="period-icon moon" />
-                <span>Night</span>
-              </>
-            )}
-          </div>
-        </div>
-
-        <div className="dual-clock-bottom">
-          <span className="dual-clock-date">{visitor.dateStr}</span>
-          {diffBadgeText && (
-            <span className="dual-clock-diff-pill">{diffBadgeText}</span>
-          )}
-        </div>
-      </div>
+      )}
     </div>
   );
 };
