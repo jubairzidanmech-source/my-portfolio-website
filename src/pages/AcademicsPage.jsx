@@ -445,12 +445,12 @@ export const AcademicsPage = () => {
                 </div>
               </div>
 
-              <div className="cert-modal-header-actions">
+              <div className="cert-modal-actions cert-modal-header-actions">
                 {activeDocModal.pdfUrl && (
                   <a
                     href={activeDocModal.pdfUrl}
                     download={activeDocModal.filename || "Certificate.pdf"}
-                    className="cert-modal-btn-open-tab"
+                    className="cert-modal-btn cert-modal-btn-open-tab"
                     title="Download Official PDF"
                     style={{ textDecoration: 'none' }}
                   >
@@ -462,7 +462,7 @@ export const AcademicsPage = () => {
                   href={activeDocModal.imageUrl || activeDocModal.pdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="cert-modal-btn-open-tab"
+                  className="cert-modal-btn cert-modal-btn-open-tab"
                   title="Open in new browser tab"
                 >
                   <ExternalLink size={15} />
@@ -470,7 +470,7 @@ export const AcademicsPage = () => {
                 </a>
                 <button
                   onClick={() => setActiveDocModal(null)}
-                  className="cert-modal-close-btn"
+                  className="cert-modal-close cert-modal-close-btn"
                   title="Close modal (Esc)"
                   aria-label="Close modal"
                 >
@@ -480,25 +480,15 @@ export const AcademicsPage = () => {
             </div>
 
             {/* Modal Body / Viewer */}
-            <div className="cert-modal-body">
+            <div className="cert-modal-stage cert-modal-body">
               {activeDocModal.imageUrl ? (
-                <div 
-                  className="cert-modal-image-container"
-                  style={{ 
-                    display: 'flex', 
-                    justifyContent: 'center', 
-                    alignItems: 'center', 
-                    padding: '20px', 
-                    background: '#0B132B',
-                    minHeight: '440px' 
-                  }}
-                >
+                <div className="cert-modal-image-container">
                   <img
                     src={activeDocModal.imageUrl}
                     alt={activeDocModal.title}
                     style={{ 
                       maxWidth: '100%', 
-                      maxHeight: '74vh', 
+                      maxHeight: '100%', 
                       objectFit: 'contain', 
                       borderRadius: '8px', 
                       boxShadow: '0 8px 32px rgba(0, 0, 0, 0.45)',
@@ -509,20 +499,27 @@ export const AcademicsPage = () => {
               ) : (
                 <div className="cert-modal-pdf-container">
                   <iframe
-                    src={`${activeDocModal.pdfUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
+                    src={`${activeDocModal.pdfUrl}#toolbar=1&navpanes=0&scrollbar=1&view=FitH`}
                     title={activeDocModal.title}
-                    className="cert-modal-iframe"
+                    className="cert-pdf-iframe cert-modal-iframe"
                   />
                 </div>
               )}
             </div>
 
             {/* Note Footer */}
-            {activeDocModal.note && (
+            {(activeDocModal.note || activeDocModal.filename) && (
               <div className="cert-modal-footer">
-                <p className="cert-modal-note-text">
-                  {activeDocModal.note}
-                </p>
+                {activeDocModal.note && (
+                  <p className="cert-modal-note-text">
+                    {activeDocModal.note}
+                  </p>
+                )}
+                {activeDocModal.filename && (
+                  <span className="cert-modal-filename">
+                    {activeDocModal.filename}
+                  </span>
+                )}
               </div>
             )}
           </div>
