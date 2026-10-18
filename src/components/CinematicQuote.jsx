@@ -8,7 +8,7 @@ import React, { useEffect, useRef, useState } from 'react';
  * Features:
  * - Editorial typographic juxtaposition: modern geometric sans-serif paired with expressive italic serif.
  * - Cinematic masked upward text reveal with 2.5–3.0s duration and gradual deceleration easing.
- * - Staggered line-by-line reveal (280ms stagger), revealing Carl Sagan's attribution last.
+ * - Staggered line-by-line reveal (280ms stagger), revealing Albert Einstein's attribution last.
  * - Bidirectional IntersectionObserver: animates in when entering, resets on scroll-away for replay.
  * - Respects prefers-reduced-motion.
  * - Exceptionally responsive typography scaling fluidly from mobile to ultra-wide displays.
@@ -80,25 +80,25 @@ export const CinematicQuote = () => {
     >
       <div className="container cinematic-quote-container">
         <blockquote className="cinematic-quote-block">
-          {/* Line 1: Primary opening statement + cosmos */}
+          {/* Line 1: Primary opening statement + Imagination */}
           <div className="cinematic-quote-mask cinematic-quote-mask-1">
             <span className="cinematic-quote-line">
-              "We are a way for the <span className="cinematic-quote-serif cinematic-quote-accent">cosmos</span>
+              "<span className="cinematic-quote-serif cinematic-quote-accent">Imagination</span> is more important
             </span>
           </div>
 
-          {/* Line 2: Existential culmination highlight */}
+          {/* Line 2: Contrasting knowledge culmination */}
           <div className="cinematic-quote-mask cinematic-quote-mask-2">
             <span className="cinematic-quote-line">
-              to <span className="cinematic-quote-serif cinematic-quote-accent">know itself.</span>"
+              than <span className="cinematic-quote-serif cinematic-quote-accent">knowledge.</span>"
             </span>
           </div>
 
-          {/* Understated Attribution: Carl Sagan (revealed last) */}
+          {/* Understated Attribution: Albert Einstein (revealed last) */}
           <footer className="cinematic-quote-author-mask">
             <cite className="cinematic-quote-author-line">
               <span className="cinematic-quote-dash">—</span>
-              <span className="cinematic-quote-author-name">Carl Sagan</span>
+              <span className="cinematic-quote-author-name">Albert Einstein</span>
             </cite>
           </footer>
         </blockquote>

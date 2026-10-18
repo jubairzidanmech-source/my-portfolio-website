@@ -12281,7 +12281,7 @@ body [style*="cursor:zoom-in"] {
 }
 
 /* ==========================================================================
-   CINEMATIC CLOSING REFLECTION (Carl Sagan Quote Section)
+   CINEMATIC CLOSING REFLECTION (Closing Quote Section)
    Monumental, editorial typography placed after Contact and before Footer
    ========================================================================== */
 
@@ -12415,7 +12415,7 @@ body [style*="cursor:zoom-in"] {
               opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1) 300ms;
 }
 
-/* Reveal Carl Sagan attribution last */
+/* Reveal author attribution last */
 .cinematic-quote-wrapper.is-revealed .cinematic-quote-author-line {
   transform: translateY(0);
   opacity: 1;
