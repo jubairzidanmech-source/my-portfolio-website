@@ -457,10 +457,6 @@ export const ResearchPage = () => {
                     <div className="pub-header-row">
                       <div className="pub-meta-left">
                         <span className="pub-number">0{presIndex}</span>
-                        <span className="pub-category-badge presentation">
-                          <Presentation size={12} style={{ display: 'inline', marginRight: 4 }} />
-                          {pres.type}
-                        </span>
                         <span className="pub-status-badge">Live Podium</span>
                       </div>
                       <span className="pub-year">{pres.date}</span>
@@ -634,17 +630,8 @@ export const ResearchPage = () => {
                     <div className="pub-header-row">
                       <div className="pub-meta-left">
                         <span className="pub-number">0{posterIndex}</span>
-                        <span className="pub-category-badge presentation">
-                          <Presentation size={12} style={{ display: 'inline', marginRight: 4 }} />
-                          {poster.type || 'Poster Presentation'}
-                        </span>
-                        {poster.statusLabel && (
+                        {poster.statusLabel && poster.statusLabel !== 'Poster Presentation' && (
                           <span className="pub-status-badge">{poster.statusLabel}</span>
-                        )}
-                        {poster.posterId && (
-                          <span className="pub-status-badge" style={{ background: 'rgba(59, 130, 246, 0.1)', color: 'var(--blue-royal)', borderColor: 'rgba(59, 130, 246, 0.25)' }}>
-                            {poster.posterId}
-                          </span>
                         )}
                       </div>
                       <span className="pub-year">{poster.date}</span>
