@@ -5015,21 +5015,24 @@ img {
   padding: 0 !important;
 }
 
-/* Presentation Cards Full-Height Card Media Layout (Poster & Oral) */
+/* Presentation & Thesis Cards Full-Height Card Media Layout (Poster, Oral & Thesis) */
 .pub-poster-card,
-.pub-oral-card {
+.pub-oral-card,
+.pub-thesis-card {
   height: 100%;
 }
 
 .pub-poster-split-row,
-.pub-oral-split-row {
+.pub-oral-split-row,
+.pub-thesis-split-row {
   height: 100%;
   flex: 1;
   align-items: stretch !important;
 }
 
 .pub-poster-media,
-.pub-oral-media {
+.pub-oral-media,
+.pub-thesis-media {
   width: 185px !important;
   min-width: 185px !important;
   max-width: 185px !important;
@@ -5047,7 +5050,9 @@ img {
 .pub-poster-media .award-side-img,
 .pub-poster-media .presentation-side-img,
 .pub-oral-media .award-side-img,
-.pub-oral-media .presentation-side-img {
+.pub-oral-media .presentation-side-img,
+.pub-thesis-media .award-side-img,
+.pub-thesis-media .thesis-side-img {
   width: 100% !important;
   height: 100% !important;
   min-height: 100% !important;
@@ -5067,8 +5072,14 @@ img {
   object-position: center center !important;
 }
 
+.pub-thesis-media .award-side-img,
+.pub-thesis-media .thesis-side-img {
+  object-position: center center !important;
+}
+
 .pub-poster-main,
-.pub-oral-main {
+.pub-oral-main,
+.pub-thesis-main {
   flex: 1;
   min-width: 0;
   display: flex;
@@ -5079,7 +5090,8 @@ img {
 
 @media (max-width: 768px) {
   .pub-poster-media,
-  .pub-oral-media {
+  .pub-oral-media,
+  .pub-thesis-media {
     width: 155px !important;
     min-width: 155px !important;
     max-width: 155px !important;
@@ -5088,12 +5100,14 @@ img {
 
 @media (max-width: 640px) {
   .pub-poster-split-row,
-  .pub-oral-split-row {
+  .pub-oral-split-row,
+  .pub-thesis-split-row {
     flex-direction: column !important;
     gap: 12px !important;
   }
   .pub-poster-media,
-  .pub-oral-media {
+  .pub-oral-media,
+  .pub-thesis-media {
     width: 100% !important;
     min-width: 100% !important;
     max-width: 100% !important;

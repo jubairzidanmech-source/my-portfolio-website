@@ -169,11 +169,11 @@ export const ResearchPage = () => {
         <div className="pub-grid-2col">
           {(researchData?.theses || []).map((thesis, idx) => {
             return (
-              <article key={thesis.id} className="pub-list-card">
-                <div className="pub-card-split-row">
+              <article key={thesis.id} className="pub-list-card pub-thesis-card">
+                <div className="pub-card-split-row pub-thesis-split-row">
                   {/* Left: Simulation Visual Thumbnail */}
                   <div 
-                    className="award-card-media-side"
+                    className="award-card-media-side pub-thesis-media"
                     onClick={() => setActiveModalData({
                       title: thesis.title,
                       subtitle: `${thesis.degree} • ${thesis.institution} (${thesis.year})`,
@@ -185,7 +185,7 @@ export const ResearchPage = () => {
                     <img 
                       src={thesis.imageUrl} 
                       alt={thesis.title} 
-                      className="award-side-img" 
+                      className="award-side-img thesis-side-img" 
                       loading="lazy" 
                     />
                     <div className="award-side-overlay">
@@ -197,7 +197,7 @@ export const ResearchPage = () => {
                   </div>
 
                   {/* Right: Thesis Scholarly Details */}
-                  <div className="pub-card-main">
+                  <div className="pub-card-main pub-thesis-main">
                     <div className="pub-header-row">
                       <div className="pub-meta-left">
                         <span className="pub-number">{thesis.number || `0${idx + 1}`}</span>
@@ -252,7 +252,7 @@ export const ResearchPage = () => {
                     </div>
 
                     {/* Primary Action Button or In-Progress Status Note */}
-                    <div className="pub-actions-row">
+                    <div className="pub-actions-row" style={{ marginTop: 'auto', paddingTop: '8px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                       {thesis.id === 'thesis-msc' && thesis.statusNote ? (
                         <div className="pub-dev-status-pill">
                           <Clock size={13} style={{ flexShrink: 0, color: 'var(--blue-royal)' }} />
