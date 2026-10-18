@@ -20,6 +20,22 @@ import { researchData } from '../data/portfolioData';
 import { InteractiveModal, ImageLightboxModal } from '../components/InteractiveModal';
 import { SmoothCollapse } from '../components/SmoothCollapse';
 
+// Helper to parse simple markdown bold **text** safely
+const renderFormattedMarkdown = (text) => {
+  if (typeof text !== 'string') return text;
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return (
+        <strong key={i} className="project-spec-bold">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return part;
+  });
+};
+
 export const ResearchPage = () => {
   // Active category filter for Projects
   const [selectedField, setSelectedField] = useState('All');
@@ -833,16 +849,28 @@ export const ResearchPage = () => {
               <div key={project.id} className="project-card">
                 <div 
                   className="project-thumb-wrapper"
-                  onClick={() => setActiveModalData({
-                    title: project.title,
-                    subtitle: `${project.category} (${project.year}) • Tools: ${(project.tools || []).join(', ')}`,
-                    imageUrl: project.imageUrl,
-                    description: project.description
-                  })}
-                  style={{ cursor: 'pointer' }}
-                  title="Click to view full image"
+                  onClick={() => {
+                    if (project.imageUrl) {
+                      setActiveModalData({
+                        title: project.title,
+                        subtitle: `${project.category} (${project.year}) • Tools: ${(project.tools || []).join(', ')}`,
+                        imageUrl: project.imageUrl,
+                        description: project.description
+                      });
+                    }
+                  }}
+                  style={{ cursor: project.imageUrl ? 'pointer' : 'default' }}
+                  title={project.imageUrl ? "Click to view full image" : ""}
                 >
-                  <img src={project.imageUrl} alt={project.title} className="project-thumb" />
+                  {project.imageUrl ? (
+                    <img src={project.imageUrl} alt={project.title} className="project-thumb" />
+                  ) : (
+                    <div className="project-thumb-placeholder">
+                      <Layers size={28} className="project-placeholder-icon" />
+                      <span className="project-placeholder-text">FEA Simulation Model</span>
+                      <span className="project-placeholder-sub">Visual Documentation Pending</span>
+                    </div>
+                  )}
                   <span className="project-field-badge">{project.field}</span>
                 </div>
 
@@ -886,47 +914,106 @@ export const ResearchPage = () => {
                           <span>Paper</span>
                         </a>
                       )}
-                      <button
-                        onClick={() => setActiveModalData({
-                          title: project.title,
-                          subtitle: `${project.category} (${project.year}) • Tools: ${(project.tools || []).join(', ')}`,
-                          imageUrl: project.imageUrl,
-                          description: project.description
-                        })}
-                        className="project-modal-btn"
-                        title="View Full-Size Visual"
-                      >
-                        <ExternalLink size={13} />
-                        <span>Preview</span>
-                      </button>
+                      {project.imageUrl && (
+                        <button
+                          onClick={() => setActiveModalData({
+                            title: project.title,
+                            subtitle: `${project.category} (${project.year}) • Tools: ${(project.tools || []).join(', ')}`,
+                            imageUrl: project.imageUrl,
+                            description: project.description
+                          })}
+                          className="project-modal-btn"
+                          title="View Full-Size Visual"
+                        >
+                          <ExternalLink size={13} />
+                          <span>Preview</span>
+                        </button>
+                      )}
                     </div>
                   </div>
 
                   {/* EXPANDABLE SPECIFICATIONS */}
                   <SmoothCollapse isOpen={isProjectExpanded}>
                     <div className="project-specs-expanded">
-                      <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--blue-royal)', marginBottom: '4px' }}>
-                        Project Overview & Scope
-                      </div>
-                      <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55, marginBottom: '8px' }}>
-                        {project.description}
-                      </p>
-                      {project.metrics && (
+                      {project.detailedSpecs ? (
+                        <div className="project-specs-structured">
+                          {project.detailedSpecs.objective && (
+                            <div className="project-spec-group">
+                              <div className="project-spec-heading">Objective</div>
+                              <p className="project-spec-text">
+                                {renderFormattedMarkdown(project.detailedSpecs.objective)}
+                              </p>
+                            </div>
+                          )}
+
+                          {project.detailedSpecs.modelingApproach && (
+                            <div className="project-spec-group">
+                              <div className="project-spec-heading">Modeling Approach</div>
+                              <ul className="project-spec-list">
+                                {project.detailedSpecs.modelingApproach.map((item, idx) => (
+                                  <li key={idx}>{renderFormattedMarkdown(item)}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {project.detailedSpecs.loadingConditions && (
+                            <div className="project-spec-group">
+                              <div className="project-spec-heading">Loading Conditions</div>
+                              <ul className="project-spec-list">
+                                {project.detailedSpecs.loadingConditions.map((item, idx) => (
+                                  <li key={idx}>{renderFormattedMarkdown(item)}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {project.detailedSpecs.evaluationVerification && (
+                            <div className="project-spec-group">
+                              <div className="project-spec-heading">Evaluation and Verification</div>
+                              <ul className="project-spec-list">
+                                {project.detailedSpecs.evaluationVerification.map((item, idx) => (
+                                  <li key={idx}>{renderFormattedMarkdown(item)}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {project.detailedSpecs.toolsAndMethods && (
+                            <div className="project-spec-group">
+                              <div className="project-spec-heading">Tools and Methods</div>
+                              <p className="project-spec-text" style={{ fontStyle: 'italic' }}>
+                                {renderFormattedMarkdown(project.detailedSpecs.toolsAndMethods)}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      ) : (
                         <>
                           <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--blue-royal)', marginBottom: '4px' }}>
-                            Key Findings & Performance Metrics
+                            Project Overview & Scope
                           </div>
                           <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55, marginBottom: '8px' }}>
-                            {project.metrics}
+                            {project.description}
+                          </p>
+                          {project.metrics && (
+                            <>
+                              <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--blue-royal)', marginBottom: '4px' }}>
+                                Key Findings & Performance Metrics
+                              </div>
+                              <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55, marginBottom: '8px' }}>
+                                {project.metrics}
+                              </p>
+                            </>
+                          )}
+                          <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--blue-royal)', marginBottom: '4px' }}>
+                            Simulation & Modeling Scope
+                          </div>
+                          <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
+                            High-resolution spatial discretization, turbulence modeling verification, physical boundary conditions, and validation against empirical benchmark literature.
                           </p>
                         </>
                       )}
-                      <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--blue-royal)', marginBottom: '4px' }}>
-                        Simulation & Modeling Scope
-                      </div>
-                      <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
-                        High-resolution spatial discretization, turbulence modeling verification, physical boundary conditions, and validation against empirical benchmark literature.
-                      </p>
                     </div>
                   </SmoothCollapse>
                 </div>

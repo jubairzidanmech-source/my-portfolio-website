@@ -6315,6 +6315,128 @@ img {
   border-top: 1px dashed var(--border-subtle);
 }
 
+.project-thumb-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.08) 0%, rgba(15, 23, 42, 0.04) 100%);
+  border-bottom: 1px solid var(--border-subtle);
+  user-select: none;
+  transition: background var(--transition-normal);
+}
+
+[data-theme="dark"] .project-thumb-placeholder {
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.22) 0%, rgba(15, 23, 42, 0.45) 100%);
+}
+
+.project-placeholder-icon {
+  color: var(--blue-royal);
+  opacity: 0.85;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.project-placeholder-text {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+.project-placeholder-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.project-card:hover .project-thumb-placeholder {
+  background: rgba(0, 0, 0, 0.28) !important;
+}
+
+.project-card:hover .project-placeholder-icon {
+  color: #93C5FD !important;
+  transform: scale(1.08);
+}
+
+.project-card:hover .project-placeholder-text {
+  color: #FFFFFF !important;
+}
+
+.project-card:hover .project-placeholder-sub {
+  color: #DBEAFE !important;
+}
+
+.project-specs-structured {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-spec-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.project-spec-heading {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--blue-royal);
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+[data-theme="dark"] .project-spec-heading {
+  color: #60A5FA;
+}
+
+.project-card:hover .project-spec-heading {
+  color: #93C5FD !important;
+}
+
+.project-spec-text {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.project-card:hover .project-spec-text {
+  color: #F1F5F9 !important;
+}
+
+.project-spec-list {
+  margin: 2px 0 0 18px;
+  padding: 0;
+  list-style-type: disc;
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.project-spec-list li {
+  margin-bottom: 5px;
+}
+
+.project-spec-list li:last-child {
+  margin-bottom: 0;
+}
+
+.project-card:hover .project-spec-list li {
+  color: #F1F5F9 !important;
+}
+
+.project-spec-bold {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.project-card:hover .project-spec-bold {
+  color: #FFFFFF !important;
+}
+
 /* Dark Mode Overrides for Research & Publications */
 [data-theme="dark"] .pub-list-card,
 [data-theme="dark"] .project-card {

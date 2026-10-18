@@ -371,14 +371,34 @@ export const researchData = {
       },
       {
         id: "proj-fm-2",
-        title: "Aeroacoustic Jet Noise Attenuation with Serrated Chevron Nozzles",
+        title: "Nonlinear FEA of an F-1 Rocket Engine Nozzle Joint",
         field: "Fluid Mechanics",
-        category: "Aeroacoustics",
+        category: "Aerospace Propulsion & Structural FEA",
         year: "2024",
-        imageUrl: "/images/project_chevron.jpg",
-        description: "Aeroacoustic numerical modeling of N12 and N16 chevron exhaust nozzles to suppress jet mixing noise and vortex breakdown in commercial turbofan engines.",
-        tools: ["ANSYS Fluent Acoustics", "FW-H Formulation", "OriginPro"],
-        metrics: "Identified up to 4.2 dB overall sound pressure level (OASPL) reduction at high frequency bands."
+        imageUrl: "",
+        description: "Assess bolt safety margins and flange separation in the 100-bolt joint connecting the middle and lower nozzle sections of the Saturn V F-1 engine.",
+        tools: ["ANSYS", "Nonlinear FEA", "Contact Modeling", "Bolt Preload", "Thermal Strain Analysis", "Mesh Refinement"],
+        metrics: "Assessed flange-bolt safety margins and contact behavior under combined 12.17–47.72 psi exhaust pressure, 700°F thermal load, and 50% breaking strength bolt preload.",
+        detailedSpecs: {
+          objective: "Assess bolt safety margins and flange separation in the 100-bolt joint connecting the middle and lower nozzle sections of the Saturn V F-1 engine.",
+          modelingApproach: [
+            "Developed a nonlinear finite element model in ANSYS with contact interactions between assembly components.",
+            "Modeled the 300-series stainless-steel nozzle and A-286 steel bolts and nuts.",
+            "Incorporated temperature-dependent material properties and thermal strains."
+          ],
+          loadingConditions: [
+            "Linearly varying internal exhaust pressure: **12.17–47.72 psi**.",
+            "Thermal loading corresponding to a gas temperature of **700°F**.",
+            "Two equivalent forces of **1,000 lbf each**, representing the effect of omitted regeneration channels.",
+            "Bolt preload set to **50% of breaking strength**."
+          ],
+          evaluationVerification: [
+            "Assessed flange-bolt safety margins under combined mechanical and thermal loading.",
+            "Examined contact behavior and gaps developing between the joined nozzle sections.",
+            "Verified the numerical model through mesh refinement and comparison with hand calculations."
+          ],
+          toolsAndMethods: "ANSYS · Nonlinear FEA · Contact Modeling · Bolt Preload · Thermal Strain Analysis · Mesh Refinement."
+        }
       },
       {
         id: "proj-fm-3",
