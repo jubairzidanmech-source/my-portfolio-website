@@ -422,12 +422,12 @@ export const ResearchPage = () => {
             const isExpanded = Boolean(expandedItems[pres.id]);
             const presImg = pres.imageUrl || pres.certificateUrl || '/images/presentation_placeholder.jpg';
             return (
-              <article key={pres.id} className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
+              <article key={pres.id} className={`pub-list-card pub-oral-card ${isExpanded ? 'is-expanded' : ''}`}>
                 {/* Side-by-Side Row: Image on the Left, Text on the Right */}
-                <div className="pub-card-split-row">
+                <div className="pub-card-split-row pub-oral-split-row">
                   {/* Left: Full-Visible Visual Thumbnail */}
                   <div 
-                    className="award-card-media-side"
+                    className="award-card-media-side pub-oral-media"
                     onClick={() => setActiveModalData({
                       title: pres.title,
                       subtitle: `${pres.event} • ${pres.venue} (${pres.date})`,
@@ -439,19 +439,19 @@ export const ResearchPage = () => {
                     <img 
                       src={presImg} 
                       alt={pres.title} 
-                      className="award-side-img" 
+                      className="award-side-img presentation-side-img" 
                       loading="lazy" 
                     />
                     <div className="award-side-overlay">
                       <span className="award-thumb-zoom-badge">
-                        <ExternalLink size={12} />
-                        <span>Enlarge</span>
+                        <Camera size={12} />
+                        <span>View Photo</span>
                       </span>
                     </div>
                   </div>
 
                   {/* Right: Text & Details Content */}
-                  <div className="pub-card-main">
+                  <div className="pub-card-main pub-oral-main">
                     <div className="pub-header-row">
                       <div className="pub-meta-left">
                         <span className="pub-number">0{presIndex}</span>
@@ -477,7 +477,7 @@ export const ResearchPage = () => {
                     </div>
 
                     {/* Expand / Collapse Disclosure Button */}
-                    <div className="pub-actions-row">
+                    <div className="pub-actions-row" style={{ marginTop: 'auto', paddingTop: '8px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                       <button
                         onClick={() => toggleExpand(pres.id)}
                         className="pub-expand-btn"

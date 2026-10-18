@@ -5015,18 +5015,21 @@ img {
   padding: 0 !important;
 }
 
-/* Poster Presentation Full-Height Card Media Layout */
-.pub-poster-card {
+/* Presentation Cards Full-Height Card Media Layout (Poster & Oral) */
+.pub-poster-card,
+.pub-oral-card {
   height: 100%;
 }
 
-.pub-poster-split-row {
+.pub-poster-split-row,
+.pub-oral-split-row {
   height: 100%;
   flex: 1;
   align-items: stretch !important;
 }
 
-.pub-poster-media {
+.pub-poster-media,
+.pub-oral-media {
   width: 185px !important;
   min-width: 185px !important;
   max-width: 185px !important;
@@ -5042,18 +5045,30 @@ img {
 }
 
 .pub-poster-media .award-side-img,
-.pub-poster-media .presentation-side-img {
+.pub-poster-media .presentation-side-img,
+.pub-oral-media .award-side-img,
+.pub-oral-media .presentation-side-img {
   width: 100% !important;
   height: 100% !important;
   min-height: 100% !important;
   max-height: none !important;
   object-fit: cover !important;
-  object-position: center 20% !important;
   padding: 0 !important;
   display: block;
 }
 
-.pub-poster-main {
+.pub-poster-media .award-side-img,
+.pub-poster-media .presentation-side-img {
+  object-position: center 20% !important;
+}
+
+.pub-oral-media .award-side-img,
+.pub-oral-media .presentation-side-img {
+  object-position: center center !important;
+}
+
+.pub-poster-main,
+.pub-oral-main {
   flex: 1;
   min-width: 0;
   display: flex;
@@ -5063,7 +5078,8 @@ img {
 }
 
 @media (max-width: 768px) {
-  .pub-poster-media {
+  .pub-poster-media,
+  .pub-oral-media {
     width: 155px !important;
     min-width: 155px !important;
     max-width: 155px !important;
@@ -5071,11 +5087,13 @@ img {
 }
 
 @media (max-width: 640px) {
-  .pub-poster-split-row {
+  .pub-poster-split-row,
+  .pub-oral-split-row {
     flex-direction: column !important;
     gap: 12px !important;
   }
-  .pub-poster-media {
+  .pub-poster-media,
+  .pub-oral-media {
     width: 100% !important;
     min-width: 100% !important;
     max-width: 100% !important;
