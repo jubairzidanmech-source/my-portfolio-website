@@ -5656,14 +5656,12 @@ img {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  animation: fadeIn 0.25s ease-out;
 }
 
 .pub-expanded-minimal {
   margin-top: 10px;
   padding-top: 10px;
   border-top: 1px solid var(--border-subtle);
-  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .pub-minimal-text {
@@ -5895,7 +5893,6 @@ img {
   margin-top: 10px;
   padding-top: 10px;
   border-top: 1px solid var(--border-subtle);
-  animation: fadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: default;
   user-select: text;
 }
@@ -6126,7 +6123,6 @@ img {
   margin-top: 12px;
   padding-top: 12px;
   border-top: 1px dashed var(--border-subtle);
-  animation: fadeIn 0.2s ease;
 }
 
 /* Dark Mode Overrides for Research & Publications */
@@ -8947,18 +8943,21 @@ img {
    SMOOTH COLLAPSE & ACCORDION SYSTEM
    Universal fluid height transitions with staggered upward fade-in
    and synchronized reverse collapse animations across all cards.
+   Refined for slower, fluid, cinematic deceleration consistent with scroll-reveal.
    ========================================================================== */
 
 .smooth-collapse-wrapper {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.58s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: grid-template-rows 0.88s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   width: 100%;
+  will-change: grid-template-rows;
 }
 
 .smooth-collapse-wrapper.is-open {
   grid-template-rows: 1fr;
+  transition: grid-template-rows 0.92s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .smooth-collapse-inner {
@@ -8966,10 +8965,10 @@ img {
   overflow: hidden;
   visibility: hidden;
   opacity: 0;
-  transform: translateY(14px);
-  transition: visibility 0.58s,
-              opacity 0.42s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.54s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(16px);
+  transition: visibility 0.92s,
+              opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
+              transform 0.84s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 
@@ -8979,13 +8978,13 @@ img {
   transform: translateY(0);
 }
 
-/* Reverse animation on collapse: immediately fade and smoothly glide down */
+/* Reverse animation on collapse: gracefully fade and glide down with gentle deceleration */
 .smooth-collapse-wrapper:not(.is-open) .smooth-collapse-inner {
-  transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.48s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.58s;
+  transition: opacity 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.72s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.88s;
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(12px);
 }
 
 /* Staggered Reveal for child elements inside all expandable sections */
@@ -8996,8 +8995,8 @@ img {
 .smooth-collapse-wrapper.is-open .project-specs-expanded > *,
 .smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > * {
   opacity: 0;
-  transform: translateY(10px);
-  animation: smoothStaggerItemReveal 0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(12px);
+  animation: smoothStaggerItemReveal 0.82s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(1),
@@ -9006,7 +9005,7 @@ img {
 .smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(1),
 .smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(1),
 .smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(1) {
-  animation-delay: 0.04s;
+  animation-delay: 0.06s;
 }
 
 .smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(2),
@@ -9015,7 +9014,7 @@ img {
 .smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(2),
 .smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(2),
 .smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(2) {
-  animation-delay: 0.08s;
+  animation-delay: 0.12s;
 }
 
 .smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(3),
@@ -9024,7 +9023,7 @@ img {
 .smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(3),
 .smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(3),
 .smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(3) {
-  animation-delay: 0.12s;
+  animation-delay: 0.18s;
 }
 
 .smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(4),
@@ -9033,7 +9032,7 @@ img {
 .smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(4),
 .smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(4),
 .smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(4) {
-  animation-delay: 0.16s;
+  animation-delay: 0.24s;
 }
 
 .smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(5),
@@ -9042,7 +9041,7 @@ img {
 .smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(5),
 .smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(5),
 .smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(5) {
-  animation-delay: 0.20s;
+  animation-delay: 0.30s;
 }
 
 .smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(6),
@@ -9051,7 +9050,7 @@ img {
 .smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(6),
 .smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(6),
 .smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(6) {
-  animation-delay: 0.24s;
+  animation-delay: 0.36s;
 }
 
 .smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(7),
@@ -9060,7 +9059,7 @@ img {
 .smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(7),
 .smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(7),
 .smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(7) {
-  animation-delay: 0.28s;
+  animation-delay: 0.42s;
 }
 
 .smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(8),
@@ -9069,7 +9068,7 @@ img {
 .smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(8),
 .smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(8),
 .smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(8) {
-  animation-delay: 0.32s;
+  animation-delay: 0.48s;
 }
 
 .smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(n+9),
@@ -9078,13 +9077,13 @@ img {
 .smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(n+9),
 .smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(n+9),
 .smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(n+9) {
-  animation-delay: 0.36s;
+  animation-delay: 0.54s;
 }
 
 @keyframes smoothStaggerItemReveal {
   0% {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
   100% {
     opacity: 1;
@@ -9092,16 +9091,16 @@ img {
   }
 }
 
-/* Collapse instant reverse without delay */
+/* Collapse instant reverse without delay for responsive interrupts */
 .smooth-collapse-wrapper:not(.is-open) * {
   animation: none !important;
   transition-delay: 0s !important;
 }
 
-/* Synchronized Chevron Rotation */
+/* Synchronized Chevron Rotation with Fluid Deceleration */
 .accordion-chevron {
   display: inline-block;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: transform 0.78s cubic-bezier(0.16, 1, 0.3, 1) !important;
   transform-origin: center center;
 }
 
@@ -9112,7 +9111,7 @@ img {
 
 .bsc-dropdown-chevron-icon {
   display: inline-block;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.78s cubic-bezier(0.16, 1, 0.3, 1);
   transform-origin: center center;
 }
 
