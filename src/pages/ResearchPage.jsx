@@ -831,7 +831,17 @@ export const ResearchPage = () => {
             const isProjectExpanded = Boolean(expandedItems[project.id]);
             return (
               <div key={project.id} className="project-card">
-                <div className="project-thumb-wrapper">
+                <div 
+                  className="project-thumb-wrapper"
+                  onClick={() => setActiveModalData({
+                    title: project.title,
+                    subtitle: `${project.category} (${project.year}) • Tools: ${(project.tools || []).join(', ')}`,
+                    imageUrl: project.imageUrl,
+                    description: project.description
+                  })}
+                  style={{ cursor: 'pointer' }}
+                  title="Click to view full image"
+                >
                   <img src={project.imageUrl} alt={project.title} className="project-thumb" />
                   <span className="project-field-badge">{project.field}</span>
                 </div>
@@ -862,18 +872,34 @@ export const ResearchPage = () => {
                       <ChevronDown size={14} className={`accordion-chevron ${isProjectExpanded ? 'is-expanded' : ''}`} />
                     </button>
 
-                    <button
-                      onClick={() => setActiveModalData({
-                        title: project.title,
-                        subtitle: `${project.category} (${project.year}) • Tools: ${(project.tools || []).join(', ')}`,
-                        imageUrl: project.imageUrl,
-                        description: project.description
-                      })}
-                      className="project-modal-btn"
-                    >
-                      <ExternalLink size={14} />
-                      <span>Preview</span>
-                    </button>
+                    <div style={{ display: 'flex', gap: '6px' }}>
+                      {project.paperUrl && (
+                        <a
+                          href={project.paperUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-modal-btn"
+                          title="View Full Technical Paper (Google Drive)"
+                          style={{ textDecoration: 'none' }}
+                        >
+                          <FileText size={13} />
+                          <span>Paper</span>
+                        </a>
+                      )}
+                      <button
+                        onClick={() => setActiveModalData({
+                          title: project.title,
+                          subtitle: `${project.category} (${project.year}) • Tools: ${(project.tools || []).join(', ')}`,
+                          imageUrl: project.imageUrl,
+                          description: project.description
+                        })}
+                        className="project-modal-btn"
+                        title="View Full-Size Visual"
+                      >
+                        <ExternalLink size={13} />
+                        <span>Preview</span>
+                      </button>
+                    </div>
                   </div>
 
                   {/* EXPANDABLE SPECIFICATIONS */}
@@ -885,6 +911,16 @@ export const ResearchPage = () => {
                       <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55, marginBottom: '8px' }}>
                         {project.description}
                       </p>
+                      {project.metrics && (
+                        <>
+                          <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--blue-royal)', marginBottom: '4px' }}>
+                            Key Findings & Performance Metrics
+                          </div>
+                          <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55, marginBottom: '8px' }}>
+                            {project.metrics}
+                          </p>
+                        </>
+                      )}
                       <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--blue-royal)', marginBottom: '4px' }}>
                         Simulation & Modeling Scope
                       </div>

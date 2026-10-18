@@ -258,8 +258,8 @@ export const researchData = {
       location: "Khulna, Bangladesh",
       date: "17 – 19 December, 2026",
       status: "Upcoming Conference",
-      imageUrl: "/images/conference_certificate_placeholder.svg",
-      certificateUrl: "/images/conference_certificate_placeholder.svg",
+      imageUrl: "/images/real/vawt_prototype.jpg",
+      certificateUrl: "/images/real/vawt_prototype.jpg",
       paperUrl: "https://drive.google.com/file/d/1slEW4Ju9-KRzcv94nxoMbt2gV3eWBuDs/view?usp=drive_link",
       authors: ["Md. Jubair Uddin Zidan", "Research Team"],
       abstract: "Coupled numerical and wind-tunnel experimental performance analysis of an innovative hybrid Darrieus-Savonius vertical axis wind turbine configuration engineered specifically for urban and low-wind-speed coastal regimes.",
@@ -382,14 +382,15 @@ export const researchData = {
       },
       {
         id: "proj-fm-3",
-        title: "Aerodynamic Optimization of Darrieus-Savonius Hybrid VAWT",
+        title: "Numerical and Experimental Performance Analysis of a Darrieus-Savonius Hybrid Vertical Axis Wind Turbine for Low Wind Speed Conditions",
         field: "Fluid Mechanics",
         category: "Renewable Energy Aerodynamics",
         year: "2024",
         imageUrl: "/images/real/vawt_prototype.jpg",
-        description: "Unsteady numerical analysis with sliding meshes exploring torque coefficient enhancements and aerodynamic self-starting in hybrid vertical axis wind turbines.",
-        tools: ["ANSYS Fluent Sliding Mesh", "SolidWorks Flow", "Python"],
-        metrics: "Achieved self-starting threshold at wind speeds below 3.5 m/s while preserving peak power coefficient."
+        description: "Coupled numerical CFD and wind-tunnel experimental performance analysis of an innovative hybrid Darrieus-Savonius vertical axis wind turbine configuration engineered specifically for urban and low-wind-speed coastal regimes.",
+        tools: ["ANSYS Fluent", "Wind Tunnel Testing", "Prototype Fabrication", "Sliding Mesh", "SolidWorks"],
+        metrics: "Integrated unsteady CFD simulation with physical prototype wind-tunnel testing, achieving self-starting threshold at low wind speeds (<3.5 m/s) with sustained peak power coefficient.",
+        paperUrl: "https://drive.google.com/file/d/1slEW4Ju9-KRzcv94nxoMbt2gV3eWBuDs/view?usp=drive_link"
       }
     ],
     "Materials Science": [
