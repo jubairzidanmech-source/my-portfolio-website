@@ -212,20 +212,19 @@ export const ResearchPage = () => {
                       {thesis.title}
                     </h3>
 
-                    <div className="pub-citation">
+                    <div className="pub-citation pub-citation-stacked">
                       {Array.isArray(thesis.authors) ? (
-                        <span className="pub-authors">
+                        <div className="pub-authors">
                           {thesis.authors.map((author, aIdx) => (
                             <span key={aIdx} className={author.includes('Zidan') ? 'pub-author highlight' : 'pub-author'}>
                               {author}{aIdx < thesis.authors.length - 1 ? ', ' : ''}
                             </span>
                           ))}
-                        </span>
+                        </div>
                       ) : (
-                        <span className="pub-author highlight">{thesis.author}</span>
+                        <div className="pub-author highlight">{thesis.author}</div>
                       )}
-                      <span className="pub-sep">•</span>
-                      <span className="pub-venue">{thesis.institution}</span>
+                      <div className="pub-venue">{thesis.institution}</div>
                     </div>
 
                     {thesis.desc && (
@@ -363,16 +362,15 @@ export const ResearchPage = () => {
                       {paper.title}
                     </h3>
 
-                    <div className="pub-citation">
-                      <span className="pub-authors">
+                    <div className="pub-citation pub-citation-stacked">
+                      <div className="pub-authors">
                         {paper.authors.map((author, aIdx) => (
                           <span key={aIdx} className={author.includes('Zidan') ? 'pub-author highlight' : 'pub-author'}>
                             {author}{aIdx < paper.authors.length - 1 ? ', ' : ''}
                           </span>
                         ))}
-                      </span>
-                      <span className="pub-sep">•</span>
-                      <span className="pub-venue">{paper.conference}</span>
+                      </div>
+                      <div className="pub-venue">{paper.conference}</div>
                     </div>
 
                     {/* Compact Tags Row: max 3 tags */}
@@ -750,16 +748,15 @@ export const ResearchPage = () => {
                     {work.title}
                   </h3>
 
-                  <div className="pub-citation">
-                    <span className="pub-authors">
+                  <div className="pub-citation pub-citation-stacked">
+                    <div className="pub-authors">
                       {work.authors.map((author, aIdx) => (
                         <span key={aIdx} className={author.includes('Zidan') ? 'pub-author highlight' : 'pub-author'}>
                           {author}{aIdx < work.authors.length - 1 ? ', ' : ''}
                         </span>
                       ))}
-                    </span>
-                    <span className="pub-sep">•</span>
-                    <span className="pub-venue">{work.institution}</span>
+                    </div>
+                    <div className="pub-venue">{work.institution}</div>
                   </div>
 
                   {work.supervisor && (
