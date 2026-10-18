@@ -596,11 +596,11 @@ export const ResearchPage = () => {
             const thumbnailImg = poster.imageUrl || poster.posterUrl;
 
             return (
-              <article key={poster.id} className="pub-list-card">
-                <div className="pub-card-split-row">
+              <article key={poster.id} className="pub-list-card pub-poster-card">
+                <div className="pub-card-split-row pub-poster-split-row">
                   {/* Left: Visual Thumbnail */}
                   <div 
-                    className="award-card-media-side"
+                    className="award-card-media-side pub-poster-media"
                     onClick={() => setActiveModalData({
                       title: `${poster.title} - Presentation Session`,
                       subtitle: `${poster.event} • ${poster.venue} (${poster.date})${poster.posterId ? ` • ${poster.posterId}` : ''}`,
@@ -624,7 +624,7 @@ export const ResearchPage = () => {
                   </div>
 
                   {/* Right: Text & Details Content */}
-                  <div className="pub-card-main">
+                  <div className="pub-card-main pub-poster-main">
                     <div className="pub-header-row">
                       <div className="pub-meta-left">
                         <span className="pub-number">0{posterIndex}</span>
@@ -651,7 +651,7 @@ export const ResearchPage = () => {
                     </div>
 
                     {/* Action Buttons: View Full Poster & View Certificate */}
-                    <div className="pub-actions-row" style={{ marginTop: '8px', paddingTop: '4px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                    <div className="pub-actions-row" style={{ marginTop: 'auto', paddingTop: '8px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                       {fullPosterImg && (
                         <button
                           type="button"

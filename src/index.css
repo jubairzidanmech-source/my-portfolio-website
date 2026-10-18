@@ -5015,6 +5015,76 @@ img {
   padding: 0 !important;
 }
 
+/* Poster Presentation Full-Height Card Media Layout */
+.pub-poster-card {
+  height: 100%;
+}
+
+.pub-poster-split-row {
+  height: 100%;
+  flex: 1;
+  align-items: stretch !important;
+}
+
+.pub-poster-media {
+  width: 185px !important;
+  min-width: 185px !important;
+  max-width: 185px !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: none !important;
+  align-self: stretch !important;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #0B132B;
+}
+
+.pub-poster-media .award-side-img,
+.pub-poster-media .presentation-side-img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center 20% !important;
+  padding: 0 !important;
+  display: block;
+}
+
+.pub-poster-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .pub-poster-media {
+    width: 155px !important;
+    min-width: 155px !important;
+    max-width: 155px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .pub-poster-split-row {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .pub-poster-media {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: 220px !important;
+    min-height: 220px !important;
+    max-height: 240px !important;
+  }
+}
+
 .award-card-media-side:hover .award-side-img,
 .pub-list-card:hover .award-side-img {
   transform: scale(1.04);
