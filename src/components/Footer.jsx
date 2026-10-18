@@ -51,7 +51,13 @@ export const Footer = ({ activePage, setActivePage }) => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (setActivePage) {
+      setActivePage('home');
+    } else if (window.lenis) {
+      window.lenis.scrollTo(0);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const navColumn1 = [

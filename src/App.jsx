@@ -59,7 +59,7 @@ export function App() {
     setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  const isManualScrolling = useRef(false);
+  const isManualScrolling = useRef(getInitialPage() !== 'home');
   const scrollTimer = useRef(null);
 
   // Smoothly or instantly scrolls down to the specified section
@@ -67,13 +67,21 @@ export function App() {
     setActivePage(sectionId);
     isManualScrolling.current = true;
     if (scrollTimer.current) clearTimeout(scrollTimer.current);
+    // Safety fallback timer in case Lenis onComplete or scroll event is delayed
     scrollTimer.current = setTimeout(() => {
       isManualScrolling.current = false;
-    }, 900);
+    }, 1600);
 
     if (sectionId === 'home') {
       if (window.lenis) {
-        window.lenis.scrollTo(0, { immediate: !smooth });
+        window.lenis.scrollTo(0, {
+          immediate: !smooth,
+          onComplete: () => {
+            isManualScrolling.current = false;
+            setActivePage('home');
+            if (scrollTimer.current) clearTimeout(scrollTimer.current);
+          }
+        });
       } else {
         window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
       }
@@ -85,15 +93,21 @@ export function App() {
 
     const element = document.getElementById(sectionId);
     if (element) {
-      // Dynamic header offset accounting for fixed announcement bar + sticky navbar
-      const navOffset = announcementVisible ? 128 : 94;
+      // Lenis natively honors the section's CSS scrollMarginTop (148px / 136px),
+      // so passing offset: 0 places the section top cleanly below the sticky header.
       if (window.lenis) {
         window.lenis.scrollTo(element, {
-          offset: -navOffset,
-          immediate: !smooth
+          offset: 0,
+          immediate: !smooth,
+          onComplete: () => {
+            isManualScrolling.current = false;
+            setActivePage(sectionId);
+            if (scrollTimer.current) clearTimeout(scrollTimer.current);
+          }
         });
       } else {
         const elementPosition = element.getBoundingClientRect().top;
+        const navOffset = announcementVisible ? 148 : 136;
         const offsetPosition = elementPosition + window.pageYOffset - navOffset;
         window.scrollTo({
           top: Math.max(0, offsetPosition),
@@ -106,13 +120,39 @@ export function App() {
     }
   };
 
+  // Release manual scroll lock immediately when user manually scrolls or touches
+  useEffect(() => {
+    const handleUserInteraction = () => {
+      if (isManualScrolling.current) {
+        isManualScrolling.current = false;
+        if (scrollTimer.current) clearTimeout(scrollTimer.current);
+      }
+    };
+
+    window.addEventListener('wheel', handleUserInteraction, { passive: true });
+    window.addEventListener('touchmove', handleUserInteraction, { passive: true });
+    const handleKeyDown = (e) => {
+      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Space'].includes(e.code)) {
+        handleUserInteraction();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown, { passive: true });
+
+    return () => {
+      window.removeEventListener('wheel', handleUserInteraction);
+      window.removeEventListener('touchmove', handleUserInteraction);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   // On initial mount, if URL has a section hash or path, scroll to that section
   useEffect(() => {
     const target = parseTargetPage();
     if (target && target !== 'home') {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         scrollToSection(target, false);
       }, 150);
+      return () => clearTimeout(timer);
     }
   }, []);
 
@@ -147,13 +187,14 @@ export function App() {
       }
 
       // Bottom of page: ensure contact is highlighted when user reaches the end
-      if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 50) {
+      if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 80) {
         setActivePage((prev) => (prev !== 'contact' ? 'contact' : prev));
         return;
       }
 
-      // Dynamic trigger line just below sticky header + announcement bar
-      const triggerY = announcementVisible ? 160 : 120;
+      // Dynamic trigger line: generous threshold comfortably below header clearance (~136px - 148px)
+      // Math.max(220, 32% of viewport) reliably captures the landed section
+      const triggerY = Math.max(220, Math.floor(window.innerHeight * 0.32));
 
       // Determine active section via getBoundingClientRect()
       let currentSection = 'home';
