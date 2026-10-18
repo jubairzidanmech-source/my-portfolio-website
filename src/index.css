@@ -6754,7 +6754,7 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 20px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .exp-card,
@@ -6822,7 +6822,32 @@ img {
 
 /* Compact Leadership & Extracurricular Organization Logos (54px x 54px) */
 .leadership-card {
-  padding: 18px 22px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 156px;
+  box-sizing: border-box;
+}
+
+.leadership-card .exp-card-header {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.leadership-card .exp-header-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.leadership-card .exp-org-name {
+  min-height: 2.7em;
+  margin-bottom: 6px;
 }
 
 .leadership-card .exp-org-logo-box {
@@ -6842,10 +6867,6 @@ img {
   height: 26px;
 }
 
-.leadership-card .exp-card-header {
-  gap: 14px;
-}
-
 .leadership-card .exp-divider {
   margin: 12px 0 10px;
 }
@@ -6856,6 +6877,11 @@ img {
   justify-content: flex-end;
   align-items: center;
   width: 100%;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.leadership-card .exp-subtle-toggle-row {
   margin-top: auto;
   padding-top: 10px;
 }

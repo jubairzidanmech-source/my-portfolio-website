@@ -376,7 +376,6 @@ export const ExperiencePage = () => {
                     <div className="exp-header-text">
                       <div className="exp-header-top">
                         <h3 className="exp-role-title">{item.role}</h3>
-                        <span className="exp-category-pill category-leadership">Leadership</span>
                       </div>
                       <div className="exp-org-name">{item.organization}</div>
                       <div className="exp-meta-row">
@@ -461,9 +460,6 @@ export const ExperiencePage = () => {
                     <div className="exp-header-text">
                       <div className="exp-header-top">
                         <h3 className="exp-role-title">{item.organization}</h3>
-                        <span className="exp-category-pill category-volunteering" style={{ background: 'rgba(168, 85, 247, 0.1)', color: '#a855f7', borderColor: 'rgba(168, 85, 247, 0.25)' }}>
-                          Volunteering
-                        </span>
                       </div>
                       <div className="exp-org-name">{item.role}</div>
                       <div className="exp-meta-row">
