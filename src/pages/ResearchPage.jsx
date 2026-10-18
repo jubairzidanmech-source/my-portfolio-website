@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { researchData } from '../data/portfolioData';
 import { InteractiveModal, ImageLightboxModal } from '../components/InteractiveModal';
+import { SmoothCollapse } from '../components/SmoothCollapse';
 
 export const ResearchPage = () => {
   // Active category filter for Projects
@@ -489,7 +490,7 @@ export const ResearchPage = () => {
                         aria-expanded={isExpanded}
                       >
                         <span>{isExpanded ? 'Hide Abstract & Details' : 'Read Abstract & View Credentials'}</span>
-                        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                        <ChevronDown size={15} className={`accordion-chevron ${isExpanded ? 'is-expanded' : ''}`} />
                       </button>
 
                       <button
@@ -509,7 +510,7 @@ export const ResearchPage = () => {
                 </div>
 
                 {/* EXPANDABLE PRESENTATION ABSTRACT & CERTIFICATE */}
-                {isExpanded && (
+                <SmoothCollapse isOpen={isExpanded}>
                   <div className="pub-expanded-body">
                     <div className="pub-detail-section">
                       <h4 className="pub-detail-heading">Presentation Summary</h4>
@@ -572,7 +573,7 @@ export const ResearchPage = () => {
                       </div>
                     )}
                   </div>
-                )}
+                </SmoothCollapse>
               </article>
             );
           })}
@@ -780,13 +781,13 @@ export const ResearchPage = () => {
                       aria-expanded={isExpanded}
                     >
                       <span>{isExpanded ? 'Hide Abstract & Scope' : 'Read Scope & Technical Objectives'}</span>
-                      {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                      <ChevronDown size={15} className={`accordion-chevron ${isExpanded ? 'is-expanded' : ''}`} />
                     </button>
                   </div>
                 </div>
 
                 {/* EXPANDABLE MANUSCRIPT DETAILS */}
-                {isExpanded && (
+                <SmoothCollapse isOpen={isExpanded}>
                   <div className="pub-expanded-body">
                     <div className="pub-detail-section">
                       <h4 className="pub-detail-heading">Research Overview</h4>
@@ -807,7 +808,7 @@ export const ResearchPage = () => {
                       </ul>
                     </div>
                   </div>
-                )}
+                </SmoothCollapse>
               </article>
             );
           })}
@@ -873,7 +874,7 @@ export const ResearchPage = () => {
                       aria-expanded={isProjectExpanded}
                     >
                       <span>{isProjectExpanded ? 'Hide Specifications' : 'Technical Specifications'}</span>
-                      {isProjectExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                      <ChevronDown size={14} className={`accordion-chevron ${isProjectExpanded ? 'is-expanded' : ''}`} />
                     </button>
 
                     <button
@@ -891,7 +892,7 @@ export const ResearchPage = () => {
                   </div>
 
                   {/* EXPANDABLE SPECIFICATIONS */}
-                  {isProjectExpanded && (
+                  <SmoothCollapse isOpen={isProjectExpanded}>
                     <div className="project-specs-expanded">
                       <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--blue-royal)', marginBottom: '4px' }}>
                         Project Overview & Scope
@@ -906,7 +907,7 @@ export const ResearchPage = () => {
                         High-resolution spatial discretization, turbulence modeling verification, physical boundary conditions, and validation against empirical benchmark literature.
                       </p>
                     </div>
-                  )}
+                  </SmoothCollapse>
                 </div>
               </div>
             );

@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { awardsData } from '../data/portfolioData';
 import { InteractiveModal, ImageLightboxModal } from '../components/InteractiveModal';
+import { SmoothCollapse } from '../components/SmoothCollapse';
 
 // Reusable Award Card with visual placeholder/artifact thumbnail, actions & modal
 const AwardCard = ({ 
@@ -199,7 +200,7 @@ const AwardCard = ({
             aria-expanded={isExpanded}
           >
             <span>{isExpanded ? expandCloseText : expandOpenText}</span>
-            {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+            <ChevronDown size={15} className={`accordion-chevron ${isExpanded ? 'is-expanded' : ''}`} />
           </button>
 
           <button
@@ -264,8 +265,8 @@ const AwardCard = ({
       </div>
 
       {/* 4. Expandable Accordion Body */}
-      {isExpanded && (
-        isMinimal ? (
+      <SmoothCollapse isOpen={isExpanded}>
+        {isMinimal ? (
           <div className="pub-expanded-minimal">
             <p className="pub-minimal-text">
               {item.description}
@@ -335,8 +336,8 @@ const AwardCard = ({
               </div>
             </div>
           </div>
-        )
-      )}
+        )}
+      </SmoothCollapse>
     </article>
   );
 };
@@ -409,7 +410,7 @@ const EventOrgCard = ({
             <div className="org-meta-right">
               <span className="org-year">{item.year}</span>
               <span className="org-expand-icon" aria-hidden="true">
-                {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                <ChevronDown size={15} className={`accordion-chevron ${isExpanded ? 'is-expanded' : ''}`} />
               </span>
             </div>
           </div>
@@ -454,13 +455,13 @@ const EventOrgCard = ({
       </div>
 
       {/* Expandable Accordion Body (Smooth animation, minimal text, no extra boxes) */}
-      {isExpanded && (
+      <SmoothCollapse isOpen={isExpanded}>
         <div className="org-expanded-body" onClick={(e) => e.stopPropagation()}>
           <p className="org-expanded-desc">
             {item.description}
           </p>
         </div>
-      )}
+      </SmoothCollapse>
     </article>
   );
 };

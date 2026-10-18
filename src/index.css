@@ -8409,6 +8409,203 @@ img {
 }
 
 /* ==========================================================================
+   SMOOTH COLLAPSE & ACCORDION SYSTEM
+   Universal fluid height transitions with staggered upward fade-in
+   and synchronized reverse collapse animations across all cards.
+   ========================================================================== */
+
+.smooth-collapse-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.58s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  width: 100%;
+}
+
+.smooth-collapse-wrapper.is-open {
+  grid-template-rows: 1fr;
+}
+
+.smooth-collapse-inner {
+  min-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: visibility 0.58s,
+              opacity 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.54s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.smooth-collapse-wrapper.is-open .smooth-collapse-inner {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reverse animation on collapse: immediately fade and smoothly glide down */
+.smooth-collapse-wrapper:not(.is-open) .smooth-collapse-inner {
+  transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.58s;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Staggered Reveal for child elements inside all expandable sections */
+.smooth-collapse-wrapper.is-open .exp-divided-item,
+.smooth-collapse-wrapper.is-open .pub-expanded-body > *,
+.smooth-collapse-wrapper.is-open .pub-expanded-minimal > *,
+.smooth-collapse-wrapper.is-open .org-expanded-body > *,
+.smooth-collapse-wrapper.is-open .project-specs-expanded > *,
+.smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > * {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: smoothStaggerItemReveal 0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(1),
+.smooth-collapse-wrapper.is-open .pub-expanded-body > *:nth-child(1),
+.smooth-collapse-wrapper.is-open .pub-expanded-minimal > *:nth-child(1),
+.smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(1),
+.smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(1),
+.smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(1) {
+  animation-delay: 0.04s;
+}
+
+.smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(2),
+.smooth-collapse-wrapper.is-open .pub-expanded-body > *:nth-child(2),
+.smooth-collapse-wrapper.is-open .pub-expanded-minimal > *:nth-child(2),
+.smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(2),
+.smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(2),
+.smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(3),
+.smooth-collapse-wrapper.is-open .pub-expanded-body > *:nth-child(3),
+.smooth-collapse-wrapper.is-open .pub-expanded-minimal > *:nth-child(3),
+.smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(3),
+.smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(3),
+.smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(3) {
+  animation-delay: 0.12s;
+}
+
+.smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(4),
+.smooth-collapse-wrapper.is-open .pub-expanded-body > *:nth-child(4),
+.smooth-collapse-wrapper.is-open .pub-expanded-minimal > *:nth-child(4),
+.smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(4),
+.smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(4),
+.smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(4) {
+  animation-delay: 0.16s;
+}
+
+.smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(5),
+.smooth-collapse-wrapper.is-open .pub-expanded-body > *:nth-child(5),
+.smooth-collapse-wrapper.is-open .pub-expanded-minimal > *:nth-child(5),
+.smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(5),
+.smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(5),
+.smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(5) {
+  animation-delay: 0.20s;
+}
+
+.smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(6),
+.smooth-collapse-wrapper.is-open .pub-expanded-body > *:nth-child(6),
+.smooth-collapse-wrapper.is-open .pub-expanded-minimal > *:nth-child(6),
+.smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(6),
+.smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(6),
+.smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(6) {
+  animation-delay: 0.24s;
+}
+
+.smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(7),
+.smooth-collapse-wrapper.is-open .pub-expanded-body > *:nth-child(7),
+.smooth-collapse-wrapper.is-open .pub-expanded-minimal > *:nth-child(7),
+.smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(7),
+.smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(7),
+.smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(7) {
+  animation-delay: 0.28s;
+}
+
+.smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(8),
+.smooth-collapse-wrapper.is-open .pub-expanded-body > *:nth-child(8),
+.smooth-collapse-wrapper.is-open .pub-expanded-minimal > *:nth-child(8),
+.smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(8),
+.smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(8),
+.smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(8) {
+  animation-delay: 0.32s;
+}
+
+.smooth-collapse-wrapper.is-open .exp-divided-item:nth-child(n+9),
+.smooth-collapse-wrapper.is-open .pub-expanded-body > *:nth-child(n+9),
+.smooth-collapse-wrapper.is-open .pub-expanded-minimal > *:nth-child(n+9),
+.smooth-collapse-wrapper.is-open .org-expanded-body > *:nth-child(n+9),
+.smooth-collapse-wrapper.is-open .project-specs-expanded > *:nth-child(n+9),
+.smooth-collapse-wrapper.is-open .bsc-dropdown-menu-content > *:nth-child(n+9) {
+  animation-delay: 0.36s;
+}
+
+@keyframes smoothStaggerItemReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Collapse instant reverse without delay */
+.smooth-collapse-wrapper:not(.is-open) * {
+  animation: none !important;
+  transition-delay: 0s !important;
+}
+
+/* Synchronized Chevron Rotation */
+.accordion-chevron {
+  display: inline-block;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform-origin: center center;
+}
+
+.accordion-chevron.is-expanded,
+.is-expanded .accordion-chevron {
+  transform: rotate(180deg);
+}
+
+.bsc-dropdown-chevron-icon {
+  display: inline-block;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center center;
+}
+
+.bsc-dropdown-chevron-icon.is-open {
+  transform: rotate(180deg);
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  .smooth-collapse-wrapper {
+    transition-duration: 0.01ms !important;
+  }
+  .smooth-collapse-inner {
+    transition-duration: 0.01ms !important;
+    transform: none !important;
+  }
+  .smooth-collapse-wrapper.is-open * {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    transform: none !important;
+  }
+  .accordion-chevron,
+  .bsc-dropdown-chevron-icon {
+    transition: none !important;
+  }
+}
+
+/* ==========================================================================
    DARK MODE COMPONENT POLISH & LIQUID GLASS OVERRIDES
    ========================================================================== */
 

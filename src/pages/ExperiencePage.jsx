@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { experienceData } from '../data/portfolioData';
 import { InteractiveModal, ImageLightboxModal } from '../components/InteractiveModal';
+import { SmoothCollapse } from '../components/SmoothCollapse';
 
 export const ExperiencePage = () => {
   const [activeSubject, setActiveSubject] = useState(0);
@@ -207,7 +208,7 @@ export const ExperiencePage = () => {
                       aria-expanded={Boolean(expandedSections['internship-learnings'])}
                     >
                       <span>{expandedSections['internship-learnings'] ? 'Hide Responsibilities' : `Responsibilities (${experienceData.internship.keyLearnings.length})`}</span>
-                      {expandedSections['internship-learnings'] ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                      <ChevronDown size={14} className={`accordion-chevron ${expandedSections['internship-learnings'] ? 'is-expanded' : ''}`} />
                     </button>
                   </div>
                 </div>
@@ -215,7 +216,7 @@ export const ExperiencePage = () => {
             </div>
 
             {/* Responsibilities & Technical Learning Points with Thin Dividers */}
-            {expandedSections['internship-learnings'] && (
+            <SmoothCollapse isOpen={Boolean(expandedSections['internship-learnings'])}>
               <div className="exp-learnings-section">
                 <div className="exp-divider" />
                 <h4 className="exp-section-title">
@@ -236,7 +237,7 @@ export const ExperiencePage = () => {
                   ))}
                 </div>
               </div>
-            )}
+            </SmoothCollapse>
           </div>
         </section>
       )}
@@ -306,11 +307,11 @@ export const ExperiencePage = () => {
                 aria-expanded={Boolean(expandedSections['syllabus-coverage'])}
               >
                 <span>{expandedSections['syllabus-coverage'] ? 'Hide Curriculum Topics' : 'Explore Detailed Topics Covered'}</span>
-                {expandedSections['syllabus-coverage'] ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                <ChevronDown size={15} className={`accordion-chevron ${expandedSections['syllabus-coverage'] ? 'is-expanded' : ''}`} />
               </button>
             </div>
 
-            {expandedSections['syllabus-coverage'] && (
+            <SmoothCollapse isOpen={Boolean(expandedSections['syllabus-coverage'])}>
               <div style={{ marginTop: '16px' }}>
                 <div className="exp-divider" />
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
@@ -336,7 +337,7 @@ export const ExperiencePage = () => {
                   ))}
                 </div>
               </div>
-            )}
+            </SmoothCollapse>
           </div>
         </section>
       )}
@@ -397,12 +398,12 @@ export const ExperiencePage = () => {
                       aria-expanded={isExpanded}
                     >
                       <span>{isExpanded ? 'Hide Responsibilities' : `Responsibilities (${item.highlights.length})`}</span>
-                      {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                      <ChevronDown size={14} className={`accordion-chevron ${isExpanded ? 'is-expanded' : ''}`} />
                     </button>
                   </div>
 
                   {/* Responsibilities list with Thin Dividers */}
-                  {isExpanded && (
+                  <SmoothCollapse isOpen={isExpanded}>
                     <div className="exp-divided-list" style={{ marginTop: '12px' }}>
                       {item.tagline && (
                         <p className="exp-overview-text" style={{ marginBottom: '12px', fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
@@ -418,7 +419,7 @@ export const ExperiencePage = () => {
                         </div>
                       ))}
                     </div>
-                  )}
+                  </SmoothCollapse>
                 </div>
               );
             })}
@@ -486,11 +487,11 @@ export const ExperiencePage = () => {
                           aria-expanded={isExpanded}
                         >
                           <span>{isExpanded ? 'Hide Responsibilities' : `Responsibilities (${item.highlights.length})`}</span>
-                          {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                          <ChevronDown size={14} className={`accordion-chevron ${isExpanded ? 'is-expanded' : ''}`} />
                         </button>
                       </div>
 
-                      {isExpanded && (
+                      <SmoothCollapse isOpen={isExpanded}>
                         <div className="exp-divided-list" style={{ marginTop: '12px' }}>
                           {(item.description || item.tagline) && (
                             <p className="exp-overview-text" style={{ marginBottom: '12px', fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
@@ -506,7 +507,7 @@ export const ExperiencePage = () => {
                             </div>
                           ))}
                         </div>
-                      )}
+                      </SmoothCollapse>
                     </>
                   )}
                 </div>

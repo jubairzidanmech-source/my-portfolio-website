@@ -9,6 +9,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { bscSummaryData, bscSemesterResults } from '../data/bscResultsData';
+import { SmoothCollapse } from './SmoothCollapse';
 
 export const BscResultsDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -194,14 +195,14 @@ export const BscResultsDropdown = () => {
               {isOpen ? 'Close Menu' : 'Browse Results'}
             </span>
             <span className="bsc-dropdown-chevron">
-              {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+              <ChevronDown size={18} className={`bsc-dropdown-chevron-icon ${isOpen ? 'is-open' : ''}`} />
             </span>
           </div>
         </button>
 
         {/* Dropdown Menu Content Body */}
-        {isOpen && (
-          <div className="bsc-dropdown-menu-content animate-fade-in">
+        <SmoothCollapse isOpen={isOpen}>
+          <div className="bsc-dropdown-menu-content">
             {/* Dropdown Menu Selector Controls */}
             <div className="bsc-dropdown-nav-row">
               <div className="bsc-select-wrapper">
@@ -465,7 +466,7 @@ export const BscResultsDropdown = () => {
               </div>
             )}
           </div>
-        )}
+        </SmoothCollapse>
       </div>
     </div>
   );
