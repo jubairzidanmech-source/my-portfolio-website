@@ -4842,6 +4842,11 @@ img {
   grid-column: 1 / -1;
 }
 
+.pub-list-card.is-minimal-card.is-expanded {
+  grid-column: auto;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+}
+
 /* Award & Certificate & Presentation Side-by-Side Card Layout */
 .pub-card-split-row {
   display: flex;
@@ -5500,6 +5505,24 @@ img {
   flex-direction: column;
   gap: 16px;
   animation: fadeIn 0.25s ease-out;
+}
+
+.pub-expanded-minimal {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pub-minimal-text {
+  font-size: 0.86rem;
+  line-height: 1.62;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+[data-theme="dark"] .pub-minimal-text {
+  color: #94A3B8;
 }
 
 .pub-detail-section {

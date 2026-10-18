@@ -28,7 +28,8 @@ const AwardCard = ({
   expandCloseText = 'Hide Details',
   visualBtnText = 'View Award Artifact',
   detailHeading = 'Recognition & Description',
-  isCertCard = false
+  isCertCard = false,
+  isMinimal = false
 }) => {
   const imageUrl = item.imageUrl || '/images/award_placeholder.jpg';
   const displayYear = yearLabel || item.year;
@@ -126,7 +127,7 @@ const AwardCard = ({
   }
 
   return (
-    <article className={`pub-list-card ${isExpanded ? 'is-expanded' : ''}`}>
+    <article className={`pub-list-card ${isExpanded ? 'is-expanded' : ''} ${isMinimal ? 'is-minimal-card' : ''}`}>
       {/* Side-by-Side Row: Image on the Left, Text on the Right */}
       <div className="pub-card-split-row">
         {/* Left: Full-Visible Visual Thumbnail */}
@@ -263,69 +264,77 @@ const AwardCard = ({
 
       {/* 4. Expandable Accordion Body */}
       {isExpanded && (
-        <div className="pub-expanded-body">
-          <div className="pub-detail-section">
-            <h4 className="pub-detail-heading">{detailHeading}</h4>
-            <p className="pub-abstract-text">
+        isMinimal ? (
+          <div className="pub-expanded-minimal">
+            <p className="pub-minimal-text">
               {item.description}
             </p>
           </div>
+        ) : (
+          <div className="pub-expanded-body">
+            <div className="pub-detail-section">
+              <h4 className="pub-detail-heading">{detailHeading}</h4>
+              <p className="pub-abstract-text">
+                {item.description}
+              </p>
+            </div>
 
-          <div className="pub-detail-section">
-            <h4 className="pub-detail-heading">Award & Credential Artifacts (Click to Enlarge)</h4>
-            <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-              <div 
-                className="award-expanded-img-box"
-                style={{ flex: '1 1 200px', maxWidth: '320px' }}
-                onClick={() => onOpenModal({
-                  title: title,
-                  subtitle: `${authorLabel || ''} ${venueLabel ? `• ${venueLabel}` : ''} ${displayYear ? `(${displayYear})` : ''}`,
-                  imageUrl: imageUrl,
-                  description: item.description
-                })}
-                title="Click to view award crest"
-              >
-                <img
-                  src={imageUrl}
-                  alt={title}
-                  className="award-expanded-img"
-                />
-                <div className="award-side-overlay">
-                  <span className="award-thumb-zoom-badge">
-                    <ExternalLink size={12} />
-                    <span>View Award Crest</span>
-                  </span>
-                </div>
-              </div>
-
-              {item.certificateUrl && (
+            <div className="pub-detail-section">
+              <h4 className="pub-detail-heading">Award & Credential Artifacts (Click to Enlarge)</h4>
+              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
                 <div 
                   className="award-expanded-img-box"
                   style={{ flex: '1 1 200px', maxWidth: '320px' }}
                   onClick={() => onOpenModal({
-                    title: `${title} - Official Certificate`,
+                    title: title,
                     subtitle: `${authorLabel || ''} ${venueLabel ? `• ${venueLabel}` : ''} ${displayYear ? `(${displayYear})` : ''}`,
-                    imageUrl: item.certificateUrl,
+                    imageUrl: imageUrl,
                     description: item.description
                   })}
-                  title="Click to view official certificate"
+                  title="Click to view award crest"
                 >
                   <img
-                    src={item.certificateUrl}
-                    alt={`${title} Certificate`}
+                    src={imageUrl}
+                    alt={title}
                     className="award-expanded-img"
                   />
                   <div className="award-side-overlay">
                     <span className="award-thumb-zoom-badge">
-                      <Award size={12} />
-                      <span>View Certificate</span>
+                      <ExternalLink size={12} />
+                      <span>View Award Crest</span>
                     </span>
                   </div>
                 </div>
-              )}
+
+                {item.certificateUrl && (
+                  <div 
+                    className="award-expanded-img-box"
+                    style={{ flex: '1 1 200px', maxWidth: '320px' }}
+                    onClick={() => onOpenModal({
+                      title: `${title} - Official Certificate`,
+                      subtitle: `${authorLabel || ''} ${venueLabel ? `• ${venueLabel}` : ''} ${displayYear ? `(${displayYear})` : ''}`,
+                      imageUrl: item.certificateUrl,
+                      description: item.description
+                    })}
+                    title="Click to view official certificate"
+                  >
+                    <img
+                      src={item.certificateUrl}
+                      alt={`${title} Certificate`}
+                      className="award-expanded-img"
+                    />
+                    <div className="award-side-overlay">
+                      <span className="award-thumb-zoom-badge">
+                        <Award size={12} />
+                        <span>View Certificate</span>
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        )
       )}
     </article>
   );
@@ -622,6 +631,7 @@ export const AwardsPage = () => {
               expandCloseText="Hide Details"
               visualBtnText="View Credential"
               detailHeading="Scope & Leadership Responsibilities"
+              isMinimal={true}
             />
           ))}
         </div>
